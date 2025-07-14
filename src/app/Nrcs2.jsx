@@ -20,13 +20,7 @@ import FlashMessage from "./FlashMessage";
 
 const Nrcs2 = () => {
 
-
-    const [fileHandle, setFileHandle] = useState(null); // Store file handle
-    const [fileHandle2, setFileHandle2] = useState(null); // Store file handle
-
-
     const [pageName, setPageName] = useState("new Graphics");
-
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("0600 Hrs");
     const [selectedRunOrderTitle2, setSelectedRunOrderTitle2] = useState("0700 Hrs");
