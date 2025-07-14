@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
     getFormattedDatetimeNumber,
     addressmysql,
-    templateLayers,
+
 } from "./lib/common";
 import Script from "./Script";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
@@ -20,22 +20,12 @@ import FlashMessage from "./FlashMessage";
 
 const Nrcs2 = () => {
 
-    const [yScroll, setYScroll] = useState(0.00);
-    const [yScroll2, setYScroll2] = useState(0.00);
-    const [yBreakingNewsLowerthird, setYBreakingNewsLowerthird] = useState(0.00);
-    const [yNewsUpdateLowerthird, setYyNewsUpdateLowerthird] = useState(0.00);
-    const [yTwoliner, setYTwoliner] = useState(0.00);
-    const [yDateTimeSwitcher, setYDateTimeSwitcher] = useState(0.00);
 
-    const [lines, setLines] = useState([]);
-    const [lines2, setLines2] = useState([]);
     const [fileHandle, setFileHandle] = useState(null); // Store file handle
     const [fileHandle2, setFileHandle2] = useState(null); // Store file handle
 
-    const newdatabase = true;
 
     const [pageName, setPageName] = useState("new Graphics");
-    const refPageName = useRef();
 
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("0600 Hrs");
@@ -60,7 +50,6 @@ const Nrcs2 = () => {
     const [loading2, setLoading2] = useState(false);  // Initialize loading state to true
     const [isLoading, setIsLoading] = useState(false);
 
-    const [directoryHandle, setDirectoryHandle] = useState(null);
     const [flashMessage, setFlashMessage] = useState("");
     const [selectedDate, setSelectedDate] = useState(() => {
         const today = new Date();
@@ -78,13 +67,10 @@ const Nrcs2 = () => {
         return `${yyyy}-${mm}-${dd}`;
     });
 
-    const [showdateandTime, setShowdateandTime] = useState(false);
-    const [ltr, setLtr] = useState(true);
-    const [databaseConnection, setDatabaseConnection] = useState('false');
+
 
     //r3
 
-    const [isClient, setIsClient] = useState(false)
     const [data, setData] = useState([])
     const [selectedProject, setSelectedProject] = useState(null)
     const [selectedScene, setSelectedScene] = useState(null)
@@ -132,65 +118,24 @@ const Nrcs2 = () => {
     // r3
 
 
-    const readFile = async (handle) => {
-        if (!handle) return;
 
-        try {
-            const file = await handle.getFile(); // Get a fresh file object
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                const content = e.target.result;
-                const linesArray = content.split(/\r?\n/).filter(line => line.trim() !== '');
-                setLines(linesArray);
-            };
-
-            reader.readAsText(file);
-        } catch (error) {
-            console.error("Error reading file:", error);
-        }
-    };
-
-    const readFile2 = async (handle2) => {
-        if (!handle2) return;
-
-        try {
-            const file = await handle2.getFile(); // Get a fresh file object
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                const content = e.target.result;
-                const linesArray = content.split(/\r?\n/).filter(line => line.trim() !== '');
-                setLines2(linesArray);
-            };
-
-            reader.readAsText(file);
-        } catch (error) {
-            console.error("Error reading file:", error);
-        }
-    };
 
 
     useEffect(() => {
-        if (!window.chNumber) return;
-        endpoint(`call ${window.chNumber}-${templateLayers.nrcsscroll} startScroll(${JSON.stringify(lines)})`);
-        executeScript(`document.getElementById('hindi').contentWindow.postMessage({ action: 'callFunction', data: ${JSON.stringify(lines)} }, '*')`);
-
-    }, [lines])
-
-    useEffect(() => {
-        if (!window.chNumber) return;
-        endpoint(`call ${window.chNumber}-${templateLayers.urduScroll} setData1(${JSON.stringify(lines2)})`);
-        executeScript(`document.getElementById('urdu').contentWindow.postMessage({ action: 'callFunction', data: ${JSON.stringify(lines2)} }, '*')`);
-    }, [lines2])
-
-
-    // TOP OF YOUR COMPONENT
-    useEffect(() => {
-        if (graphics && graphics[currentGraphics]) {
+        if (
+            Array.isArray(graphics) &&
+            graphics.length > 0 &&
+            currentGraphics >= 0 &&
+            currentGraphics < graphics.length
+        ) {
             const val = graphics[currentGraphics];
 
-            if (!val.gfxtemplatetext) return;
+            if (!val?.gfxtemplatetext || val.gfxtemplatetext.trim() === "") {
+                console.log("No gfxtemplatetext for graphics item:", val);
+                setSavedExportValues({});
+                setExportValues({});
+                return;
+            }
 
             try {
                 const parsed = JSON.parse(val.gfxtemplatetext);
@@ -198,75 +143,29 @@ const Nrcs2 = () => {
 
                 setSavedExportValues(pageValue);
                 setExportValues(pageValue);
-
             } catch (e) {
-                console.error("Invalid JSON:", e);
+                console.error("Invalid JSON in graphics item:", val, e);
+                setSavedExportValues({});
+                setExportValues({});
             }
+        } else {
+            // If graphics array is empty or invalid index
+            setSavedExportValues({});
+            setExportValues({});
         }
     }, [graphics, currentGraphics]);
 
 
-    const handleFileSelection = async () => {
-        try {
-            const [handle] = await window.showOpenFilePicker({
-                types: [{ description: "Text Files", accept: { "text/plain": [".txt"] } }],
-                multiple: false,
-            });
 
-            setFileHandle(handle); // Store handle for later updates
-            await readFile(handle); // Read file immediately
-        } catch (error) {
-            console.error("File selection cancelled or failed:", error);
-        }
-    };
 
-    const handleFileSelection2 = async () => {
-        try {
-            const [handle2] = await window.showOpenFilePicker({
-                types: [{ description: "Text Files", accept: { "text/plain": [".txt"] } }],
-                multiple: false,
-            });
 
-            setFileHandle2(handle2); // Store handle for later updates
-            await readFile2(handle2); // Read file immediately
-        } catch (error) {
-            console.error("File selection cancelled or failed:", error);
-        }
-    };
 
-    const handleUpdate = async () => {
-        if (fileHandle) {
-            await readFile(fileHandle);
-        } else {
-            console.warn("No file selected.");
-        }
-    };
-
-    const handleUpdate2 = async () => {
-        if (fileHandle2) {
-            await readFile2(fileHandle2);
-        } else {
-            console.warn("No file selected.");
-        }
-    };
 
 
     const handleDateChange = (event) => {
         const date = event.target.value;
         setSelectedDate(date)
     };
-
-    const handleDateChange2 = (event) => {
-        const date = event.target.value;
-        setSelectedDate2(date)
-    };
-
-    const showMessage = (msg) => {
-        setFlashMessage(msg);
-        // Clear the message after 3 seconds (optional, but prevents stacking messages)
-        setTimeout(() => setFlashMessage(""), 3000);
-    };
-
 
 
     const getAllKeyValue = () => {
@@ -432,15 +331,21 @@ const Nrcs2 = () => {
             alert('no template is selected')
             return;
         }
+
+        const newGfxText = JSON.stringify({ pageValue: savedExportValues });
+
         const newGraphics = graphics.map((val) =>
             val.GraphicsID === graphicsID
                 ? {
                     ...val,
-                    Graphicstext1: JSON.stringify({ pageValue: savedExportValues }),
+                    Graphicstext1: newGfxText,
+                    gfxtemplatetext: newGfxText, // ensure consistency!
                 }
                 : val
         );
+
         setGraphics(newGraphics);
+
         try {
             await fetch(addressmysql() + "/setGraphics", {
                 method: "POST",
@@ -448,17 +353,17 @@ const Nrcs2 = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    Graphicstext1: JSON.stringify({ pageValue: savedExportValues }),
+                    Graphicstext1: newGfxText,
                     graphicsID,
                 }),
             });
         } catch (error) {
-            // console.error('Error saving content:', error);
+            console.error('Error saving content:', error);
         }
     };
+
     const addNew = async () => {
         const GraphicsID = getFormattedDatetimeNumber(); // Generate GraphicsID once
-        const aa = Math.floor(Math.random() * 1000); // Generate a random number for the scene
         const newGraphics = [
             ...graphics,
             {
@@ -788,7 +693,7 @@ const Nrcs2 = () => {
                 <div style={{ display: "flex" }}>
                     <div style={{ minWidth: 450, maxWidth: 450, marginTop: 45 }}>
                         <div>
-                            {newdatabase &&
+                            {
                                 <div>
                                     <label htmlFor="date-selector">Select a date: </label>
                                     <input
