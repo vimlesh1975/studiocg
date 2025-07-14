@@ -24,6 +24,7 @@ export default function Mongodb() {
             .then((res) => res.json())
             .then((data) => {
                 console.log('Fetched stories:', data.stories);
+
                 setStories(data.stories || []);
             })
             .catch((error) => {
@@ -75,7 +76,7 @@ export default function Mongodb() {
                 <ul>
                     {stories.map((story, i) => (
                         <li key={i}>
-                            <strong>{story.storyID}</strong> — {story.storySlug}
+                            <strong>{story.MosId}</strong> — {story.Name}
                         </li>
                     ))}
                 </ul>
