@@ -736,7 +736,7 @@ const Nrcs2 = () => {
                             </label>
                         </div>
 
-                        <div style={{ height: 500, overflow: "auto", border: '1px solid red' }}>
+                        <div style={{ height: 750, overflow: "auto", border: '1px solid red' }}>
                             {slugs &&
                                 slugs?.map((val, i) => (<div
                                     title={val.ScriptID}
@@ -763,16 +763,6 @@ const Nrcs2 = () => {
                                 </div>
                                 ))}
                         </div>
-
-
-                        <div style={{ border: '1px solid red' }}>
-                            {/* <button onClick={updateGraphicsToDatabase}>
-                                Update Graphics
-                            </button> */}
-                            {/* <button onClick={addNew}>Add New</button> */}
-                        </div>
-
-
 
                     </div>
                     <div>
