@@ -440,7 +440,7 @@ const Nrcs2 = () => {
                 }
                 : val
         );
-        // setGraphics(newGraphics);
+        setGraphics(newGraphics);
         try {
             await fetch(addressmysql() + "/setGraphics", {
                 method: "POST",

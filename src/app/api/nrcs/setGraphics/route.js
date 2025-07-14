@@ -10,7 +10,7 @@ export async function POST(req) {
 
         const { Graphicstext1, graphicsID } = body;
 
-        const query = `UPDATE graphics SET gfxtemplatetext = ? where GraphicsID=?`;
+        const query = `UPDATE graphics2 SET gfxtemplatetext = ? where GraphicsID=?`;
 
         connection = await mysql.createConnection(config);
 
