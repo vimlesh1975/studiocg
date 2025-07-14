@@ -766,9 +766,9 @@ const Nrcs2 = () => {
 
 
                         <div style={{ border: '1px solid red' }}>
-                            <button onClick={updateGraphicsToDatabase}>
+                            {/* <button onClick={updateGraphicsToDatabase}>
                                 Update Graphics
-                            </button>
+                            </button> */}
                             {/* <button onClick={addNew}>Add New</button> */}
                         </div>
 
@@ -957,6 +957,9 @@ const Nrcs2 = () => {
 
                                                 return (
                                                     <div style={{ border: '1px solid #ccc', }}>
+                                                        <button onClick={updateGraphicsToDatabase}>
+                                                            Update Graphics
+                                                        </button>
                                                         <table border="1" cellPadding="8" cellSpacing="0" style={{ borderCollapse: "collapse" }}>
                                                             <thead>
                                                                 <tr>
@@ -1113,7 +1116,6 @@ const Nrcs2 = () => {
                                         <div style={{ display: 'flex' }}>
                                             <div style={{ border: '1px solid red', width: 250, }}>
                                                 <button onClick={fullstructure}>Get Full Structure</button>
-                                                <button onClick={addNew}>Add New</button>
 
                                                 <h2>Project:</h2>
                                                 <select
@@ -1210,6 +1212,8 @@ const Nrcs2 = () => {
                                             <div style={{ border: '1px solid red', width: 850 }}>
                                                 <div>
                                                     <h3>Variables</h3>
+                                                    <button onClick={addNew}>Attach selected template to selected slug</button>
+
                                                     {exports.length > 0 && (
                                                         <div style={{ height: 850, overflow: 'auto' }}>
                                                             <table border="1" cellPadding="8" cellSpacing="0">
