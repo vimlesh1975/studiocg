@@ -769,7 +769,7 @@ const Nrcs2 = () => {
                             <button onClick={updateGraphicsToDatabase}>
                                 Update Graphics
                             </button>
-                            <button onClick={addNew}>Add New</button>
+                            {/* <button onClick={addNew}>Add New</button> */}
                         </div>
 
 
@@ -1113,6 +1113,8 @@ const Nrcs2 = () => {
                                         <div style={{ display: 'flex' }}>
                                             <div style={{ border: '1px solid red', width: 250, }}>
                                                 <button onClick={fullstructure}>Get Full Structure</button>
+                                                <button onClick={addNew}>Add New</button>
+
                                                 <h2>Project:</h2>
                                                 <select
                                                     style={{ width: 240, padding: '6px 12px', marginBottom: '12px' }}
