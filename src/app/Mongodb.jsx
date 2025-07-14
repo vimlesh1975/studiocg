@@ -168,42 +168,47 @@ export default function Mongodb() {
                                     alt={item.Caption}
                                     style={{ width: 50, height: 50 }}
                                 />
-                                <button
-                                    onClick={async (e) => {
-                                        e.stopPropagation();
-                                        try {
-                                            await fetch("/api/takeitem", {
+
+
+
+                                <strong>{item.MosId}</strong> — {item.Caption}{" "}
+                                {item.SceneFullName}
+                                <div>
+                                    <button
+                                        onClick={async (e) => {
+                                            e.stopPropagation();
+                                            try {
+                                                await fetch("/api/takeitem", {
+                                                    method: "POST",
+                                                    headers: {
+                                                        "Content-Type": "application/json",
+                                                    },
+                                                    body: JSON.stringify({ itemId: item.MosId }),
+                                                });
+                                            } catch (err) { }
+                                        }}
+                                    >
+                                        Play on R3Engine Program
+                                    </button>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            fetch("/api/timeline", {
                                                 method: "POST",
                                                 headers: {
                                                     "Content-Type": "application/json",
                                                 },
-                                                body: JSON.stringify({ itemId: item.MosId }),
+                                                body: JSON.stringify({
+                                                    project: item.SceneFullName.split("/")[0],
+                                                    scene: item.SceneFullName.split("/")[1],
+                                                    timeline: "In",
+                                                }),
                                             });
-                                        } catch (err) { }
-                                    }}
-                                >
-                                    Play on R3Engine Program
-                                </button>
-                                <strong>{item.MosId}</strong> — {item.Caption}{" "}
-                                {item.SceneFullName}
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        fetch("/api/timeline", {
-                                            method: "POST",
-                                            headers: {
-                                                "Content-Type": "application/json",
-                                            },
-                                            body: JSON.stringify({
-                                                project: item.SceneFullName.split("/")[0],
-                                                scene: item.SceneFullName.split("/")[1],
-                                                timeline: "In",
-                                            }),
-                                        });
-                                    }}
-                                >
-                                    Play directly on R3Engine
-                                </button>
+                                        }}
+                                    >
+                                        Play directly on R3Engine
+                                    </button>
+                                </div>
                             </div>
                         ))}
                     </div>
