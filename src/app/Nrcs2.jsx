@@ -776,103 +776,96 @@ const Nrcs2 = () => {
                             {loading ? <img src="./loader.gif" alt="Loading..." /> :
                                 <Droppable droppableId="graphics1">
                                     {(provided) => (
-                                        <table {...provided.droppableProps} ref={provided.innerRef}>
-                                            <tbody>
-                                                {graphics.length ? (
-                                                    graphics.map((val, i) => (
-                                                        <Draggable
-                                                            key={val.GraphicsID}
-                                                            draggableId={val.GraphicsID.toString()}
-                                                            index={i}
-                                                        >
-                                                            {(provided, snapshot) => (
-                                                                <>
-                                                                    <tr
-                                                                        ref={provided.innerRef}
-                                                                        {...provided.draggableProps}
-                                                                        onClick={async () => {
-                                                                            setGraphicsID(val.GraphicsID);
-                                                                            setCurrentGraphics(i);
-                                                                            setCurrentGraphics2(-1);
-                                                                            setPageName(val.GraphicsTemplate + "_copy");
-                                                                            console.log(graphics[i]);
-                                                                            getAllKeyValue();
-                                                                        }}
-                                                                        style={{
-                                                                            backgroundColor:
-                                                                                currentGraphics === i ? "green" : "#E7DBD8",
-                                                                            color:
-                                                                                currentGraphics === i ? "white" : "black",
-                                                                            margin: 10,
-                                                                            padding: 10,
-                                                                            ...provided.draggableProps.style,
+                                        <div
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+                                        >
+                                            {graphics.length ? (
+                                                graphics.map((val, i) => (
+                                                    <Draggable
+                                                        key={val.GraphicsID}
+                                                        draggableId={val.GraphicsID.toString()}
+                                                        index={i}
+                                                    >
+                                                        {(provided, snapshot) => (
+                                                            <div
+                                                                ref={provided.innerRef}
+                                                                {...provided.draggableProps}
+                                                                style={{
+                                                                    border: "1px solid #ccc",
+                                                                    backgroundColor:
+                                                                        currentGraphics === i ? "green" : "#E7DBD8",
+                                                                    color:
+                                                                        currentGraphics === i ? "white" : "black",
+                                                                    padding: "10px",
+                                                                    ...provided.draggableProps.style,
+                                                                }}
+                                                                onClick={async () => {
+                                                                    setGraphicsID(val.GraphicsID);
+                                                                    setCurrentGraphics(i);
+                                                                    setCurrentGraphics2(-1);
+                                                                    setPageName(val.GraphicsTemplate + "_copy");
+                                                                    console.log(graphics[i]);
+                                                                    getAllKeyValue();
+                                                                }}
+                                                            >
+                                                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                    <span>{i + 1}</span>
+
+                                                                    <span {...provided.dragHandleProps}>
+                                                                        <VscMove />
+                                                                    </span>
+
+                                                                    <button
+                                                                        style={{ cursor: "pointer" }}
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            deleteGraphic(val.GraphicsID);
                                                                         }}
                                                                     >
-                                                                        <td>{i + 1}</td>
+                                                                        <VscTrash />
+                                                                    </button>
 
-                                                                        <td {...provided.dragHandleProps}>
-                                                                            <VscMove />
-                                                                        </td>
+                                                                    <input
+                                                                        style={{ width: 340 }}
+                                                                        type="text"
+                                                                        value={val.GraphicsTemplate}
+                                                                        onChange={(e) =>
+                                                                            handleTemplateChange(
+                                                                                val.GraphicsID,
+                                                                                e.target.value
+                                                                            )
+                                                                        }
+                                                                        onClick={(e) => e.stopPropagation()}
+                                                                    />
+                                                                </div>
 
-                                                                        <td>
-                                                                            <button
-                                                                                style={{ cursor: "pointer" }}
-                                                                                onClick={() => deleteGraphic(val.GraphicsID)}
-                                                                            >
-                                                                                <VscTrash />
-                                                                            </button>
-                                                                        </td>
-
-                                                                        <td>
-                                                                            <input
-                                                                                style={{ width: 340 }}
-                                                                                type="text"
-                                                                                value={val.GraphicsTemplate}
-                                                                                onChange={(e) =>
-                                                                                    handleTemplateChange(
-                                                                                        val.GraphicsID,
-                                                                                        e.target.value
-                                                                                    )
-                                                                                }
-                                                                            />
-                                                                        </td>
-
-                                                                        <td>
-                                                                            {/* remove the image from here */}
-                                                                        </td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td colSpan={5}>
-                                                                            <img
-                                                                                src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
-                                                                                alt="thumb"
-                                                                                style={{
-                                                                                    width: 300,
-                                                                                    height: "auto",
-                                                                                    objectFit: "contain",
-                                                                                    border: "1px solid #ccc",
-                                                                                    marginTop: "4px",
-                                                                                }}
-                                                                            />
-                                                                        </td>
-                                                                    </tr>
-                                                                </>
-
-
-                                                            )}
-                                                        </Draggable>
-                                                    ))
-                                                ) : (
-                                                    <tr>
-                                                        <td>No Graphics</td>
-                                                    </tr>
-                                                )}
-                                                {provided.placeholder}
-                                            </tbody>
-                                        </table>
+                                                                <div style={{ marginTop: "8px" }}>
+                                                                    <img
+                                                                        src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
+                                                                        alt="thumb"
+                                                                        style={{
+                                                                            width: 300,
+                                                                            height: "auto",
+                                                                            objectFit: "contain",
+                                                                            border: "1px solid #ccc",
+                                                                            marginTop: "4px",
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </Draggable>
+                                                ))
+                                            ) : (
+                                                <div>No Graphics</div>
+                                            )}
+                                            {provided.placeholder}
+                                        </div>
                                     )}
                                 </Droppable>
+
                             }
                         </div>
 
