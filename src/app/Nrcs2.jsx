@@ -85,7 +85,7 @@ const Nrcs2 = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const fullstructure = () => {
-        setIsClient(true)
+        // setIsClient(true)
         fetch("/api/fullstructure")
             .then((res) => res.json())
             .then((data) => {
@@ -772,102 +772,7 @@ const Nrcs2 = () => {
                             <button onClick={addNew}>Add New</button>
                         </div>
 
-                        <div style={{ maxHeight: 250, minHeight: 250, overflow: "auto", border: '1px solid red' }}>
-                            {loading ? <img src="./loader.gif" alt="Loading..." /> :
-                                <Droppable droppableId="graphics1">
-                                    {(provided) => (
-                                        <div
-                                            {...provided.droppableProps}
-                                            ref={provided.innerRef}
-                                            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-                                        >
-                                            {graphics.length ? (
-                                                graphics.map((val, i) => (
-                                                    <Draggable
-                                                        key={val.GraphicsID}
-                                                        draggableId={val.GraphicsID.toString()}
-                                                        index={i}
-                                                    >
-                                                        {(provided, snapshot) => (
-                                                            <div
-                                                                ref={provided.innerRef}
-                                                                {...provided.draggableProps}
-                                                                style={{
-                                                                    border: "1px solid #ccc",
-                                                                    backgroundColor:
-                                                                        currentGraphics === i ? "green" : "#E7DBD8",
-                                                                    color:
-                                                                        currentGraphics === i ? "white" : "black",
-                                                                    padding: "10px",
-                                                                    ...provided.draggableProps.style,
-                                                                }}
-                                                                onClick={async () => {
-                                                                    setGraphicsID(val.GraphicsID);
-                                                                    setCurrentGraphics(i);
-                                                                    setCurrentGraphics2(-1);
-                                                                    setPageName(val.GraphicsTemplate + "_copy");
-                                                                    console.log(graphics[i]);
-                                                                    getAllKeyValue();
-                                                                }}
-                                                            >
-                                                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                                                    <span>{i + 1}</span>
 
-                                                                    <span {...provided.dragHandleProps}>
-                                                                        <VscMove />
-                                                                    </span>
-
-                                                                    <button
-                                                                        style={{ cursor: "pointer" }}
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            deleteGraphic(val.GraphicsID);
-                                                                        }}
-                                                                    >
-                                                                        <VscTrash />
-                                                                    </button>
-
-                                                                    <input
-                                                                        style={{ width: 340 }}
-                                                                        type="text"
-                                                                        value={val.GraphicsTemplate}
-                                                                        onChange={(e) =>
-                                                                            handleTemplateChange(
-                                                                                val.GraphicsID,
-                                                                                e.target.value
-                                                                            )
-                                                                        }
-                                                                        onClick={(e) => e.stopPropagation()}
-                                                                    />
-                                                                </div>
-
-                                                                <div style={{ marginTop: "8px" }}>
-                                                                    <img
-                                                                        src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
-                                                                        alt="thumb"
-                                                                        style={{
-                                                                            width: 300,
-                                                                            height: "auto",
-                                                                            objectFit: "contain",
-                                                                            border: "1px solid #ccc",
-                                                                            marginTop: "4px",
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        )}
-                                                    </Draggable>
-                                                ))
-                                            ) : (
-                                                <div>No Graphics</div>
-                                            )}
-                                            {provided.placeholder}
-                                        </div>
-                                    )}
-                                </Droppable>
-
-                            }
-                        </div>
 
                     </div>
                     <div>
@@ -884,70 +789,154 @@ const Nrcs2 = () => {
 
                             <TabPanel>
                                 <div style={{ border: '1px solid blue', display: 'flex' }}>
-                                    <div style={{ height: 800, overflow: 'auto', border: '1px solid red', }}>
-                                        <table style={{ width: 450, borderCollapse: 'collapse' }}>
-                                            <thead>
-                                                <tr style={{ backgroundColor: '#f2f2f2' }}>
-                                                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Scene Path</th>
-                                                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {graphics?.map((val, i) => {
-                                                    const [project, scene] = (val.gfxpart2 || "").split("/");
 
-                                                    return (
-                                                        <tr key={i}>
-                                                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-
-                                                                {val.gfxpart2}
-                                                                <div style={{ border: '1px solid red', backgroundColor: 'grey' }}>
-                                                                    <img src={`/api/images/${project}/${scene}/thumb.png`} alt="thumb" width={300} />
-                                                                </div>
-
-                                                            </td>
-                                                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                                                                <button
-                                                                    onClick={() => {
-                                                                        fetch("/api/playwithexportedvalues", {
-                                                                            method: "POST",
-                                                                            headers: { "Content-Type": "application/json" },
-                                                                            body: JSON.stringify({
-                                                                                project,
-                                                                                scene,
-                                                                                timeline: "In",
-                                                                                exportedvalues: Object.entries(savedExportValues).map(([name, value]) => ({ name, value: value.value })),
-
-                                                                            }),
-                                                                        });
-                                                                    }}
-                                                                    style={{ marginRight: "10px" }}
+                                    <div style={{ maxHeight: 800, minHeight: 800, overflow: "auto", border: '1px solid red' }}>
+                                        {loading ? <img src="./loader.gif" alt="Loading..." /> :
+                                            <Droppable droppableId="graphics1">
+                                                {(provided) => (
+                                                    <div
+                                                        {...provided.droppableProps}
+                                                        ref={provided.innerRef}
+                                                        style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+                                                    >
+                                                        {graphics.length ? (
+                                                            graphics.map((val, i) => (
+                                                                <Draggable
+                                                                    key={val.GraphicsID}
+                                                                    draggableId={val.GraphicsID.toString()}
+                                                                    index={i}
                                                                 >
-                                                                    Play
-                                                                </button>
-                                                                <button
-                                                                    onClick={() => {
-                                                                        fetch("/api/timeline", {
-                                                                            method: "POST",
-                                                                            headers: { "Content-Type": "application/json" },
-                                                                            body: JSON.stringify({
-                                                                                project,
-                                                                                scene,
-                                                                                timeline: "Out",
-                                                                            }),
-                                                                        });
-                                                                    }}
-                                                                >
-                                                                    Stop
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                            </tbody>
-                                        </table>
+                                                                    {(provided, snapshot) => (
+                                                                        <div
+                                                                            ref={provided.innerRef}
+                                                                            {...provided.draggableProps}
+                                                                            style={{
+                                                                                border: "1px solid #ccc",
+                                                                                backgroundColor:
+                                                                                    currentGraphics === i ? "green" : "#E7DBD8",
+                                                                                color:
+                                                                                    currentGraphics === i ? "white" : "black",
+                                                                                padding: "10px",
+                                                                                ...provided.draggableProps.style,
+                                                                            }}
+                                                                            onClick={async () => {
+                                                                                setGraphicsID(val.GraphicsID);
+                                                                                setCurrentGraphics(i);
+                                                                                setCurrentGraphics2(-1);
+                                                                                setPageName(val.GraphicsTemplate + "_copy");
+                                                                                console.log(graphics[i]);
+                                                                                getAllKeyValue();
+                                                                            }}
+                                                                        >
+                                                                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                                <span>{i + 1}</span>
+
+                                                                                <span {...provided.dragHandleProps}>
+                                                                                    <VscMove />
+                                                                                </span>
+
+                                                                                <button
+                                                                                    style={{ cursor: "pointer" }}
+                                                                                    onClick={(e) => {
+                                                                                        e.stopPropagation();
+                                                                                        deleteGraphic(val.GraphicsID);
+                                                                                    }}
+                                                                                >
+                                                                                    <VscTrash />
+                                                                                </button>
+
+                                                                                <input
+                                                                                    style={{ width: 340 }}
+                                                                                    type="text"
+                                                                                    value={val.GraphicsTemplate}
+                                                                                    onChange={(e) =>
+                                                                                        handleTemplateChange(
+                                                                                            val.GraphicsID,
+                                                                                            e.target.value
+                                                                                        )
+                                                                                    }
+                                                                                    onClick={(e) => e.stopPropagation()}
+                                                                                />
+                                                                            </div>
+
+                                                                            <div>  {val.gfxpart2}</div>
+                                                                            <div style={{ marginTop: "8px", display: 'flex', }}>
+                                                                                <div >
+                                                                                    <img
+                                                                                        src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
+                                                                                        alt="thumb"
+                                                                                        style={{
+                                                                                            width: 300,
+                                                                                            height: "auto",
+                                                                                            objectFit: "contain",
+                                                                                            border: "1px solid #ccc",
+                                                                                            marginTop: "4px",
+                                                                                        }}
+                                                                                    />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <div>
+                                                                                        <div>
+                                                                                            <button
+                                                                                                onClick={() => {
+                                                                                                    const [project, scene] = (val.gfxpart2 || "").split("/");
+                                                                                                    fetch("/api/playwithexportedvalues", {
+                                                                                                        method: "POST",
+                                                                                                        headers: { "Content-Type": "application/json" },
+                                                                                                        body: JSON.stringify({
+                                                                                                            project,
+                                                                                                            scene,
+                                                                                                            timeline: "In",
+                                                                                                            exportedvalues: Object.entries(savedExportValues).map(([name, value]) => ({ name, value: value.value })),
+
+                                                                                                        }),
+                                                                                                    });
+                                                                                                }}
+                                                                                                style={{ marginRight: "10px" }}
+                                                                                            >
+                                                                                                Play
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <button
+                                                                                                onClick={() => {
+                                                                                                    const [project, scene] = (val.gfxpart2 || "").split("/");
+
+                                                                                                    fetch("/api/timeline", {
+                                                                                                        method: "POST",
+                                                                                                        headers: { "Content-Type": "application/json" },
+                                                                                                        body: JSON.stringify({
+                                                                                                            project,
+                                                                                                            scene,
+                                                                                                            timeline: "Out",
+                                                                                                        }),
+                                                                                                    });
+                                                                                                }}
+                                                                                            >
+                                                                                                Stop
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    )}
+                                                                </Draggable>
+                                                            ))
+                                                        ) : (
+                                                            <div>No Graphics</div>
+                                                        )}
+                                                        {provided.placeholder}
+                                                    </div>
+                                                )}
+                                            </Droppable>
+
+                                        }
                                     </div>
-
                                     <div style={{ height: 800, width: 1000, overflow: 'auto', border: '1px solid red' }}>
                                         <div>
                                             {graphics && graphics[currentGraphics] && (() => {
@@ -1216,7 +1205,7 @@ const Nrcs2 = () => {
                                                     </>
                                                 )}
                                             </div>
-                                            <div style={{ border: '1px solid red', width: 950 }}>
+                                            <div style={{ border: '1px solid red', width: 850 }}>
                                                 <div>
                                                     <h3>Variables</h3>
                                                     {exports.length > 0 && (
@@ -1248,7 +1237,7 @@ const Nrcs2 = () => {
                                                                         if (exp.type === "String") {
                                                                             inputField = (
                                                                                 <textarea
-                                                                                    style={{ width: 680, height: 60, resize: "vertical" }}
+                                                                                    style={{ width: 640, height: 60, resize: "vertical" }}
                                                                                     value={val?.value || ""}
                                                                                     onChange={(e) => handleChange(e.target.value)}
                                                                                 />
