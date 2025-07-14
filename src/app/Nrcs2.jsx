@@ -133,7 +133,7 @@ const Nrcs2 = () => {
             if (!val?.gfxtemplatetext || val.gfxtemplatetext.trim() === "") {
                 console.log("No gfxtemplatetext for graphics item:", val);
                 setSavedExportValues({});
-                setExportValues({});
+                // setExportValues({});
                 return;
             }
 
@@ -142,16 +142,16 @@ const Nrcs2 = () => {
                 const pageValue = parsed.pageValue || {};
 
                 setSavedExportValues(pageValue);
-                setExportValues(pageValue);
+                // setExportValues(pageValue);
             } catch (e) {
                 console.error("Invalid JSON in graphics item:", val, e);
                 setSavedExportValues({});
-                setExportValues({});
+                // setExportValues({});
             }
         } else {
             // If graphics array is empty or invalid index
             setSavedExportValues({});
-            setExportValues({});
+            // setExportValues({});
         }
     }, [graphics, currentGraphics]);
 
