@@ -1482,7 +1482,7 @@ const Nrcs2 = () => {
                                                         <div>
                                                             <button
                                                                 onClick={async () => {
-                                                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value: value.value }))
                                                                     const res = await fetch("/api/setExports", {
                                                                         method: "POST",
                                                                         headers: { "Content-Type": "application/json" },
