@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 export default function R3Controller() {
     const [isClient, setIsClient] = useState(false)
     const [data, setData] = useState([])
+    const [allDocs, setAllDocs] = useState([])
     const [selectedProject, setSelectedProject] = useState(null)
     const [selectedScene, setSelectedScene] = useState(null)
     const [exports, setExports] = useState([])
@@ -25,7 +26,8 @@ export default function R3Controller() {
         fetch("/api/fullstructure")
             .then((res) => res.json())
             .then((data) => {
-                setData(data.projectData)
+                setData(data.projectData);
+                setAllDocs(data.allDocs || []);
                 setSelectedProject(data.projectData[0]?.name || null)
             })
             .catch((err) => console.error("Failed to fetch structure", err)
@@ -144,6 +146,8 @@ export default function R3Controller() {
 
                 <div>
                     <h3>Variables</h3>
+                    {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+
                     {exports.length > 0 && (
                         <div style={{ height: 850, overflow: 'auto' }}>
 

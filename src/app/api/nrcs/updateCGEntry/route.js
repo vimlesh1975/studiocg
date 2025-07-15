@@ -7,7 +7,7 @@ export async function POST(req) {
 
     try {
         const body = await req.json();
-        console.log(body)
+        // console.log(body)
 
         const { cgValue, ScriptID, NewsId, selectedDate } = body;
 

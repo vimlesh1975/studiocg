@@ -4,8 +4,24 @@ import { NextResponse } from 'next/server'
 import { getR3Client } from '../../lib/r3client.js'
 import fs from 'fs'
 import path from 'path'
+import { MongoClient } from 'mongodb';
+
+
 
 export async function GET() {
+
+
+  const mongoUri = "mongodb://localhost:27017";
+  const MongoClient1 = new MongoClient(mongoUri);
+  await MongoClient1.connect();
+
+  const db = MongoClient1.db(process.env.PROJECT_NAME);
+  const collection = db.collection('Graphics');
+  const allDocs = await collection.find().toArray();
+  // console.log(allDocs)
+
+
+
   const r3 = await getR3Client()
   const projects = await r3.getProjects()
   const projectData = []
@@ -41,9 +57,10 @@ export async function GET() {
 
     projectData.push({
       name: project,
-      scenes: sceneData
+      scenes: sceneData,
+
     })
   }
 
-  return NextResponse.json({ projectData })
+  return NextResponse.json({ projectData, allDocs })
 }

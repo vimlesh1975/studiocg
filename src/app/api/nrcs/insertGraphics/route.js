@@ -14,7 +14,8 @@ export async function POST(req) {
             GraphicsOrder,
             ScriptID,
             GraphicsTemplate,
-            gfxpart2
+            gfxpart2,
+            gfxpart3
         } = body;
 
         const values = [
@@ -23,11 +24,11 @@ export async function POST(req) {
             GraphicsOrder,
             ScriptID,
             GraphicsTemplate,
-            gfxpart2
+            gfxpart2,
+            gfxpart3
         ];
 
-        const query = `INSERT INTO graphics2 (GraphicsID, gfxtemplatetext, slno, ScriptID, gfxtemplatename, gfxpart2) VALUES (?, ?, ?, ?, ?, ?)`
-
+        const query = `INSERT INTO graphics2 (GraphicsID, gfxtemplatetext, slno, ScriptID, gfxtemplatename, gfxpart2, gfxpart3) VALUES (?, ?, ?, ?, ?, ?, ?)`
 
         connection = await mysql.createConnection(config);
 

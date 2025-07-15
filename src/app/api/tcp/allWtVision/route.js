@@ -33,10 +33,11 @@ export async function POST(req) {
 
     const db = MongoClient1.db(process.env.PROJECT_NAME);
     const collection = db.collection('Graphics');
+    // const collection = db.collection('GraphicTemplates');
     const allDocs = await collection.find().toArray();
 
     if (allDocs.length > 0) {
-      console.log("✅ First document:", allDocs.length);
+      console.log("✅allDocs:", allDocs.length);
     } else {
       console.log("⚠️ No documents found.");
     }

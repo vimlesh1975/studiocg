@@ -19,7 +19,7 @@ import FlashMessage from "./FlashMessage";
 
 
 const Nrcs2 = () => {
-
+    const [allDocs, setAllDocs] = useState([])
     const [pageName, setPageName] = useState("new Graphics");
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("0600 Hrs");
@@ -83,7 +83,8 @@ const Nrcs2 = () => {
         fetch("/api/fullstructure")
             .then((res) => res.json())
             .then((data) => {
-                setData(data.projectData)
+                setData(data.projectData);
+                setAllDocs(data.allDocs || []);
                 setSelectedProject(data.projectData[0]?.name || null)
             })
             .catch((err) => console.error("Failed to fetch structure", err)
@@ -367,7 +368,7 @@ const Nrcs2 = () => {
                 ScriptID,
                 GraphicsTemplate: pageName,
                 gfxpart2: `${selectedProject}/${selectedScene}`,
-
+                gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
             },
         ];
         setGraphics(newGraphics);
@@ -387,7 +388,7 @@ const Nrcs2 = () => {
                     ScriptID,
                     GraphicsTemplate: pageName,
                     gfxpart2: `${selectedProject}/${selectedScene}`,
-
+                    gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
                 }),
             });
         } catch (error) {
@@ -1187,6 +1188,7 @@ const Nrcs2 = () => {
                                                 <div>
                                                     <h3>Variables</h3>
                                                     <button onClick={addNew}>Attach selected template to selected slug</button>
+                                                    {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
 
                                                     {exports.length > 0 && (
                                                         <div style={{ height: 850, overflow: 'auto' }}>
