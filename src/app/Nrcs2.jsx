@@ -670,15 +670,6 @@ const Nrcs2 = () => {
             body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
         });
     }
-    const allnull = async () => {
-        const res = await fetch("/api/tcp/allitemcolornull", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
-        });
-    }
 
 
     return (<div>
@@ -698,7 +689,6 @@ const Nrcs2 = () => {
                                     />
                                     <button onClick={senToSanvad}>to Samvad</button>
                                     <button onClick={senToWtVision}>to Wt Vision</button>
-                                    <button onClick={allnull}>null</button>
                                 </div>
                             }
                         </div>
