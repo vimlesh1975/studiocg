@@ -8,7 +8,7 @@ import { MongoClient } from 'mongodb';
 
 export async function POST(req) {
   try {
-    const { selectedDate, selectedRunOrderTitle, allDocs } = await req.json();
+    const { selectedDate, selectedRunOrderTitle } = await req.json();
 
     const connection = await mysql.createConnection(config);
 
@@ -23,7 +23,17 @@ export async function POST(req) {
       [selectedRunOrderTitle, selectedDate]
     );
 
+    const [graphicsrows] = await connection.execute(
+      `SELECT *
+            FROM graphics2
+          `,
+    );
+
+
     console.log("✅ Rows fetched:", rows.length);
+    console.log("✅ Rows fetched:", rows[0]);
+    console.log("✅ graphicsrows fetched:", graphicsrows.length);
+    console.log("✅ graphicsrows fetched:", graphicsrows[0]);
 
     //mongo
 
@@ -31,8 +41,12 @@ export async function POST(req) {
     const MongoClient1 = new MongoClient(mongoUri);
     await MongoClient1.connect();
 
+    const db = MongoClient1.db(process.env.PROJECT_NAME);
+    const collection = db.collection('Graphics');
+    const allDocs = await collection.find().toArray();
+
     if (allDocs.length > 0) {
-      console.log("✅allDocs:", allDocs.length);
+      console.log("✅ First document:", allDocs.length);
     } else {
       console.log("⚠️ No documents found.");
     }

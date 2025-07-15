@@ -668,7 +668,7 @@ const Nrcs2 = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ selectedDate, selectedRunOrderTitle, allDocs })
+            body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
         });
     }
 
