@@ -7,11 +7,14 @@ import { config } from '../../../lib/db.js';
 import { MongoClient } from 'mongodb';
 
 export async function POST(req) {
+  let MongoClient1;
+
   try {
     const { selectedDate, selectedRunOrderTitle } = await req.json();
 
     const connection = await mysql.createConnection(config);
 
+    // Fetch script rows
     const [rows] = await connection.execute(
       `
             SELECT *
@@ -23,22 +26,26 @@ export async function POST(req) {
       [selectedRunOrderTitle, selectedDate]
     );
 
+    // Fetch graphics rows
     const [graphicsrows] = await connection.execute(
-      `SELECT *
-            FROM graphics2
-          `,
+      `SELECT * FROM graphics2`
     );
 
+    // Build graphics lookup by ScriptID
+    const graphicsMap = {};
+    for (const graphic of graphicsrows) {
+      const scriptID = graphic.ScriptID;
+      if (!graphicsMap[scriptID]) {
+        graphicsMap[scriptID] = [];
+      }
+      graphicsMap[scriptID].push(graphic);
+    }
 
     console.log("✅ Rows fetched:", rows.length);
-    console.log("✅ Rows fetched:", rows[0]);
-    console.log("✅ graphicsrows fetched:", graphicsrows.length);
-    console.log("✅ graphicsrows fetched:", graphicsrows[0]);
 
-    //mongo
-
+    // Mongo
     const mongoUri = "mongodb://localhost:27017";
-    const MongoClient1 = new MongoClient(mongoUri);
+    MongoClient1 = new MongoClient(mongoUri);
     await MongoClient1.connect();
 
     const db = MongoClient1.db(process.env.PROJECT_NAME);
@@ -46,14 +53,14 @@ export async function POST(req) {
     const allDocs = await collection.find().toArray();
 
     if (allDocs.length > 0) {
-      console.log("✅ First document:", allDocs.length);
+      console.log("✅ Mongo documents fetched:", allDocs.length);
     } else {
-      console.log("⚠️ No documents found.");
+      console.log("⚠️ No documents found in Graphics collection.");
+      return NextResponse.json(
+        { error: "No MongoDB graphics documents found." },
+        { status: 500 }
+      );
     }
-
-    // await MongoClient1.close();
-    //mongo
-
 
     if (rows.length === 0) {
       return NextResponse.json({ message: "⚠️ No rows found." });
@@ -72,58 +79,73 @@ export async function POST(req) {
       const storyID = story.ScriptID || `STORY${i + 1}`;
       const storySlug = story.SlugName || `Story ${i + 1}`;
 
-      const itemID = `item_${i + 1}`;
-      // Repeat Mongo documents if there are fewer than MySQL rows
-      const mongoDoc = allDocs[i % allDocs.length];
+      const graphicsForStory = graphicsMap[storyID] || [];
 
-      const objID = `${mongoDoc._id.Key1},${mongoDoc._id.Key2}`;
-      const graphicID = objID;
-      const mosID = 'SAMVAD';
-      const itemType = 'GraphicPage';
-      const thumbnail = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wD/AP+';
-      const categoryColor = 'Green';
-      const outputChannel = 'Channel 1';
-      const autoUpdate = 'true';
+      let itemsXml = "";
 
-      const tags = [
-        { tN: 'tHeaderA', tT: '2', tV: story.SlugName || '' },
-        { tN: 'tHeaderB', tT: '2', tV: story.SlugName || '' },
-        { tN: 'vWindows', tT: 'Float', tV: '6' },
-        { tN: 'tTextA01', tT: '2', tV: 'मौसम ने ली करवट 01' },
-        { tN: 'tTextB01', tT: '2', tV: 'मौसम ने ली करवट 11' }
-      ];
+      if (graphicsForStory.length > 0) {
+        for (let j = 0; j < graphicsForStory.length; j++) {
+          const graphic = graphicsForStory[j];
 
-      let tagsXml = tags
-        .map(tag =>
-          `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`
-        )
-        .join('\n');
+          const itemID = `item_${storyID}_${j + 1}`;
 
-      const itemXml = `
-        <item>
-          <itemID>${itemID}</itemID>
-          <objID>${objID}</objID>
-          <mosID>${mosID}</mosID>
-          <itemType>${itemType}</itemType>
-          <Thumbnail>${thumbnail}</Thumbnail>
-          <metadata>
-            <graphicID>${graphicID}</graphicID>
-            <categoryColor>${categoryColor}</categoryColor>
-            <tags>
+          // Pick a Mongo doc for additional info
+          const mongoDoc = allDocs[(i + j) % allDocs.length];
+
+          const objID = `${mongoDoc._id.Key1},${mongoDoc._id.Key2}`;
+          const graphicID = objID;
+          const mosID = 'SAMVAD';
+          const itemType = 'GraphicPage';
+          const thumbnail = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wD/AP+';
+          const categoryColor = 'Green';
+          const outputChannel = 'Channel 1';
+          const autoUpdate = 'true';
+
+          const tags = [
+            { tN: 'tHeaderA', tT: '2', tV: story.SlugName || '' },
+            { tN: 'tHeaderB', tT: '2', tV: story.SlugName || '' },
+            { tN: 'vWindows', tT: 'Float', tV: '6' },
+            { tN: 'tTextA01', tT: '2', tV: 'मौसम ने ली करवट 01' },
+            { tN: 'tTextB01', tT: '2', tV: 'मौसम ने ली करवट 11' }
+          ];
+
+          const tagsXml = tags
+            .map(tag =>
+              `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`
+            )
+            .join('\n');
+
+          const itemXml = `
+            <item>
+              <itemID>${itemID}</itemID>
+              <objID>${objID}</objID>
+              <mosID>${mosID}</mosID>
+              <itemType>${itemType}</itemType>
+              <Thumbnail>${thumbnail}</Thumbnail>
+              <metadata>
+                <graphicID>${graphicID}</graphicID>
+                <categoryColor>${categoryColor}</categoryColor>
+                <tags>
 ${tagsXml}
-            </tags>
-            <color>${categoryColor}</color>
-            <outputChannel>${outputChannel}</outputChannel>
-            <autoUpdate>${autoUpdate}</autoUpdate>
-          </metadata>
-        </item>`.trim();
+                </tags>
+                <color>${categoryColor}</color>
+                <outputChannel>${outputChannel}</outputChannel>
+                <autoUpdate>${autoUpdate}</autoUpdate>
+              </metadata>
+            </item>`.trim();
 
-      storiesXml += `
-      <story>
-        <storyID>${storyID}</storyID>
-        <storySlug>${storySlug}</storySlug>
-${itemXml}
-      </story>`;
+          itemsXml += `\n${itemXml}`;
+        }
+      }
+
+      const storyXml = `
+        <story>
+          <storyID>${storyID}</storyID>
+          <storySlug>${storySlug}</storySlug>
+          ${itemsXml}
+        </story>`.trim();
+
+      storiesXml += `\n${storyXml}`;
     }
 
     // Build single MOS message
@@ -142,25 +164,17 @@ ${storiesXml}
   </roElementAction>
 </mos>`.trim();
 
-    // console.log("🚀 Sending single MOS roElementAction INSERT with all stories:\n", mosXml);
-
     client.write(toUTF16BE(compressed(mosXml)));
 
-    setTimeout(async () => {
-      const db1 = MongoClient1.db('slidecg');
-      const collection1 = db1.collection('story_items');
+    // Perform Mongo update immediately rather than in setTimeout
+    const db1 = MongoClient1.db('slidecg');
+    const collection1 = db1.collection('story_items');
+    await collection1.updateMany(
+      { MosId: { $regex: '^item_' } },
+      { $set: { Color: null } }
+    );
 
-      // Update all documents where MosId starts with "item"
-      await collection1.updateMany(
-        { MosId: { $regex: '^item_' } }, // starts with "item"
-        { $set: { Color: null } }
-      );
-      await MongoClient1.close();
-    }, 5000);
-
-
-
-
+    await MongoClient1.close();
 
     return NextResponse.json({
       message: `✅ Single roElementAction INSERT message sent for roID ${roID}`
@@ -168,6 +182,9 @@ ${storiesXml}
 
   } catch (err) {
     console.error("❌ Error:", err);
+    if (MongoClient1) {
+      await MongoClient1.close().catch(() => { });
+    }
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
