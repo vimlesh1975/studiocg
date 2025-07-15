@@ -48,19 +48,6 @@ export async function POST(req) {
     MongoClient1 = new MongoClient(mongoUri);
     await MongoClient1.connect();
 
-    const db = MongoClient1.db(process.env.PROJECT_NAME);
-    const collection = db.collection('Graphics');
-    const allDocs = await collection.find().toArray();
-
-    if (allDocs.length > 0) {
-      console.log("✅ Mongo documents fetched:", allDocs.length);
-    } else {
-      console.log("⚠️ No documents found in Graphics collection.");
-      return NextResponse.json(
-        { error: "No MongoDB graphics documents found." },
-        { status: 500 }
-      );
-    }
 
     if (rows.length === 0) {
       return NextResponse.json({ message: "⚠️ No rows found." });
@@ -89,8 +76,6 @@ export async function POST(req) {
 
           const itemID = `item_${storyID}_${j + 1}`;
 
-          // Pick a Mongo doc for additional info
-          const mongoDoc = allDocs[(i + j) % allDocs.length];
 
           const objID = `${process.env.PROJECT_NAME},${graphic.gfxpart3}`;
           const graphicID = objID;
