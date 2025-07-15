@@ -11,6 +11,7 @@ import Npmmosclient from './Npmmosclient'
 import R3Controller from './R3Controller'
 import Mongodb from './Mongodb'
 import Nrcs2 from './Nrcs2'
+import MosServer from './MosServer'
 
 
 
@@ -33,6 +34,7 @@ export default function Page() {
         <Tab> Reddis</Tab>
         <Tab> MosApi</Tab>
         <Tab> Npmmosclient</Tab>
+        <Tab> MosServer</Tab>
 
 
       </TabList>
@@ -59,6 +61,9 @@ export default function Page() {
 
       <TabPanel>
         < Npmmosclient />
+      </TabPanel>
+      <TabPanel>
+        < MosServer />
       </TabPanel>
 
     </Tabs>
