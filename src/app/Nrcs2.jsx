@@ -668,7 +668,7 @@ const Nrcs2 = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
+            body: JSON.stringify({ selectedDate, selectedRunOrderTitle, allDocs })
         });
     }
 
@@ -835,6 +835,7 @@ const Nrcs2 = () => {
                                                                             </div>
 
                                                                             <div>  {val.gfxpart2}</div>
+                                                                            <div>  {val.gfxpart3}</div>
                                                                             <div style={{ marginTop: "8px", display: 'flex', }}>
                                                                                 <div >
                                                                                     <img

@@ -8,7 +8,7 @@ import { MongoClient } from 'mongodb';
 
 export async function POST(req) {
   try {
-    const { selectedDate, selectedRunOrderTitle } = await req.json();
+    const { selectedDate, selectedRunOrderTitle, allDocs } = await req.json();
 
     const connection = await mysql.createConnection(config);
 
@@ -30,11 +30,6 @@ export async function POST(req) {
     const mongoUri = "mongodb://localhost:27017";
     const MongoClient1 = new MongoClient(mongoUri);
     await MongoClient1.connect();
-
-    const db = MongoClient1.db(process.env.PROJECT_NAME);
-    const collection = db.collection('Graphics');
-    // const collection = db.collection('GraphicTemplates');
-    const allDocs = await collection.find().toArray();
 
     if (allDocs.length > 0) {
       console.log("✅allDocs:", allDocs.length);
