@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'R3 Controller App',
+  title: 'R3 Controller Appr_150725_1',
   description: 'Control R³ Space Engine scenes',
 }
 
