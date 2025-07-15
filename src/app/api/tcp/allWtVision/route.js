@@ -92,7 +92,7 @@ export async function POST(req) {
           // Pick a Mongo doc for additional info
           const mongoDoc = allDocs[(i + j) % allDocs.length];
 
-          const objID = `${mongoDoc._id.Key1},${mongoDoc._id.Key2}`;
+          const objID = `${process.env.PROJECT_NAME},${graphic.gfxpart3}`;
           const graphicID = objID;
           const mosID = 'SAMVAD';
           const itemType = 'GraphicPage';
