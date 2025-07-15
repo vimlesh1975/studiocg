@@ -56,7 +56,6 @@ export async function POST(req) {
     const client = await getMosTcpClient();
 
     const roID = `${process.env.MOS_DEVICE_ID}_RO`;
-    const roSlug = `${selectedRunOrderTitle}_${selectedDate}`;
 
     let storiesXml = "";
 
@@ -86,19 +85,47 @@ export async function POST(req) {
           const outputChannel = 'Channel 1';
           const autoUpdate = 'true';
 
-          const tags = [
-            { tN: 'tHeaderA', tT: '2', tV: story.SlugName || '' },
-            { tN: 'tHeaderB', tT: '2', tV: story.SlugName || '' },
-            { tN: 'vWindows', tT: 'Float', tV: '6' },
-            { tN: 'tTextA01', tT: '2', tV: 'मौसम ने ली करवट 01' },
-            { tN: 'tTextB01', tT: '2', tV: 'मौसम ने ली करवट 11' }
-          ];
+          const gfxTemplateTextJson = JSON.parse(graphic.gfxtemplatetext);
+
+          const pageValue = gfxTemplateTextJson.pageValue;
+
+          let tags = [];
+
+          try {
+            const gfxTemplate = JSON.parse(graphic.gfxtemplatetext);
+            for (const [tagName, tagDetails] of Object.entries(gfxTemplate.pageValue)) {
+              tags.push({
+                tN: tagName,
+                tT: tagDetails.type,
+                tV: tagDetails.value
+              });
+            }
+          } catch (err) {
+            console.error("⚠️ Could not parse gfxTemplateText:", err);
+          }
+
+
+
+          // const tags = [
+          //   { tN: 'tHeaderA', tT: '2', tV: story.SlugName || '' },
+          //   { tN: 'tHeaderB', tT: '2', tV: story.SlugName || '' },
+          //   { tN: 'vWindows', tT: 'Float', tV: '6' },
+          //   { tN: 'tTextA01', tT: '2', tV: 'मौसम ने ली करवट 01' },
+          //   { tN: 'tTextB01', tT: '2', tV: 'मौसम ने ली करवट 11' }
+          // ];
+
+
+
+          // const tagsXml = tags
+          //   .map(tag =>
+          //     `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`
+          //   )
+          //   .join('\n');
 
           const tagsXml = tags
-            .map(tag =>
-              `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`
-            )
+            .map(tag => `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`)
             .join('\n');
+
 
           const itemXml = `
             <item>
