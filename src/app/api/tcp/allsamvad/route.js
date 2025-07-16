@@ -10,14 +10,28 @@ export async function POST(req) {
 
     const connection = await mysql.createConnection(config);
 
+    // const [rows] = await connection.execute(
+    //   `
+    //     SELECT *
+    //     FROM script
+    //     WHERE deleted = 0
+    //       AND bulletinname = ?
+    //       AND bulletindate = ?
+    //   `,
+    //   [selectedRunOrderTitle, selectedDate]
+    // );
+
+
+    // Fetch script rows
     const [rows] = await connection.execute(
       `
-        SELECT *
-        FROM script
-        WHERE deleted = 0
-          AND bulletinname = ?
-          AND bulletindate = ?
-      `,
+            SELECT *
+            FROM script
+            WHERE deleted = 0
+              AND bulletinname = ?
+              AND bulletindate = ?
+              ORDER BY slno
+          `,
       [selectedRunOrderTitle, selectedDate]
     );
 
