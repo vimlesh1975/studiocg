@@ -29,8 +29,9 @@ export async function POST(req) {
 
     // Fetch graphics rows
     const [graphicsrows] = await connection.execute(
-      `SELECT * FROM graphics2`
+      `SELECT * FROM graphics2 ORDER BY ScriptID, slno`
     );
+
 
     // Build graphics lookup by ScriptID
     const graphicsMap = {};
@@ -41,6 +42,11 @@ export async function POST(req) {
       }
       graphicsMap[scriptID].push(graphic);
     }
+
+    for (const scriptID in graphicsMap) {
+      graphicsMap[scriptID].sort((a, b) => (a.slno || 0) - (b.slno || 0));
+    }
+
 
     console.log("✅ Rows fetched:", rows.length);
 

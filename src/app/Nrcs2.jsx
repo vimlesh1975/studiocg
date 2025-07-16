@@ -710,7 +710,7 @@ const Nrcs2 = () => {
                                     ))}
                             </select>
                             <button onClick={() => fetchNewsID()}>Refresh RO</button>
-                            {slugs.length} slugs
+                            {slugs?.length} slugs
                             <label>
                                 <input
                                     type="checkbox"
