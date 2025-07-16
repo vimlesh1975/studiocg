@@ -33,11 +33,14 @@ export const mosStart = `<mos>`
 
 export const mos = `</mos>`
 
-export const compressed = (pretty) =>
-  pretty
-    .replace(/\s*\n\s*/g, '')      // remove newlines and surrounding spaces
-    .replace(/>\s+</g, '><')       // collapse closing + opening tags
-    .trim();                       // remove leading/trailing whitespace
+export const compressed = (pretty) => {
+  if (!pretty) return '';
+  return pretty
+    .replace(/\s*\n\s*/g, '')
+    .replace(/>\s+</g, '><')
+    .trim();
+};
+
 
 export const getFormattedDatetimeNumber = (date = new Date()) => {
   const year = date.getFullYear();

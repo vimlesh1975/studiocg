@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function HomePage() {
     const [status, setStatus] = useState('');
@@ -14,6 +14,10 @@ export default function HomePage() {
             setStatus('Failed to start server');
         }
     };
+
+    useEffect(() => {
+        startServer();
+    }, [])
 
     return (
         <main style={{ padding: '2rem' }}>
