@@ -165,15 +165,17 @@ ${storiesXml}
 
     client.write(toUTF16BE(compressed(mosXml)));
 
-    // Perform Mongo update immediately rather than in setTimeout
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
     const db1 = MongoClient1.db('slidecg');
     const collection1 = db1.collection('story_items');
     await collection1.updateMany(
       { MosId: { $regex: '^item_' } },
       { $set: { Color: null } }
     );
-
     await MongoClient1.close();
+
+
 
     return NextResponse.json({
       message: `✅ Single roElementAction INSERT message sent for roID ${roID}`

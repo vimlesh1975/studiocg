@@ -662,15 +662,41 @@ const Nrcs2 = () => {
         });
     }
 
+    // const senToWtVision = async () => {
+    //     const res = await fetch("/api/tcp/allWtVision", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
+    //     });
+    // }
+
     const senToWtVision = async () => {
-        const res = await fetch("/api/tcp/allWtVision", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
-        });
-    }
+        try {
+            setLoading(true);
+
+            const res = await fetch("/api/tcp/allWtVision", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
+            });
+
+            const data = await res.json();
+            console.log(data);
+            alert(data.message);
+
+            // show success message or handle errors
+        } catch (err) {
+            alert("Error sending to WtVision. Check console for details.", err.error);
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
 
     return (<div>
@@ -689,7 +715,13 @@ const Nrcs2 = () => {
                                         onChange={handleDateChange}
                                     />
                                     <button onClick={senToSanvad}>to Samvad</button>
-                                    <button onClick={senToWtVision}>to Wt Vision</button>
+
+                                    <button
+                                        onClick={senToWtVision}
+                                        disabled={loading}
+                                    >
+                                        {loading ? "Sending..." : "Send to WtVision"}
+                                    </button>
                                 </div>
                             }
                         </div>
