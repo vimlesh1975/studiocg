@@ -11,6 +11,19 @@ export function toUTF16BE(str) {
   return utf16be;
 }
 
+export function fromUTF16BE(buffer) {
+  const utf16le = Buffer.alloc(buffer.length);
+
+  // Swap every pair of bytes to convert to LE
+  for (let i = 0; i < buffer.length; i += 2) {
+    utf16le[i] = buffer[i + 1];
+    utf16le[i + 1] = buffer[i];
+  }
+
+  return utf16le.toString('utf16le');
+}
+
+
 export const fix = `
 <mosID>${process.env.MOS_ID}</mosID>
 <ncsID>${process.env.MOS_DEVICE_ID}</ncsID>
