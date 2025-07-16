@@ -774,7 +774,7 @@ const Nrcs2 = () => {
                                                         ref={provided.innerRef}
                                                         style={{ display: "flex", flexDirection: "column", gap: "12px" }}
                                                     >
-                                                        {graphics.length ? (
+                                                        {graphics?.length ? (
                                                             graphics.map((val, i) => (
                                                                 <Draggable
                                                                     key={val.GraphicsID}

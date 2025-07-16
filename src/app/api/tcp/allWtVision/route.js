@@ -22,6 +22,7 @@ export async function POST(req) {
             WHERE deleted = 0
               AND bulletinname = ?
               AND bulletindate = ?
+              ORDER BY slno
           `,
       [selectedRunOrderTitle, selectedDate]
     );
@@ -85,9 +86,7 @@ export async function POST(req) {
           const outputChannel = 'Channel 1';
           const autoUpdate = 'true';
 
-          const gfxTemplateTextJson = JSON.parse(graphic.gfxtemplatetext);
 
-          const pageValue = gfxTemplateTextJson.pageValue;
 
           let tags = [];
 
@@ -103,24 +102,6 @@ export async function POST(req) {
           } catch (err) {
             console.error("⚠️ Could not parse gfxTemplateText:", err);
           }
-
-
-
-          // const tags = [
-          //   { tN: 'tHeaderA', tT: '2', tV: story.SlugName || '' },
-          //   { tN: 'tHeaderB', tT: '2', tV: story.SlugName || '' },
-          //   { tN: 'vWindows', tT: 'Float', tV: '6' },
-          //   { tN: 'tTextA01', tT: '2', tV: 'मौसम ने ली करवट 01' },
-          //   { tN: 'tTextB01', tT: '2', tV: 'मौसम ने ली करवट 11' }
-          // ];
-
-
-
-          // const tagsXml = tags
-          //   .map(tag =>
-          //     `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`
-          //   )
-          //   .join('\n');
 
           const tagsXml = tags
             .map(tag => `              <tag tN="${tag.tN}" tT="${tag.tT}">${tag.tV}</tag>`)
