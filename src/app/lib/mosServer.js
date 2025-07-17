@@ -1,75 +1,82 @@
 import net from 'net';
-import { toUTF16BE, fix, mosStart, mos, compressed, fromUTF16BE } from '../lib/common.js';
+import { toUTF16BE, fromUTF16BE, compressed } from './common.js';
 import { MongoClient } from 'mongodb';
 
+let serverInstances = []; // For all ports
 
-let serverInstance = null;
+const PORTS = [11540, 11541, 11542];
+const HOST = '0.0.0.0';
 
 export function startMosServer() {
-    if (serverInstance) {
-        console.log('MOS Server already running.');
+    if (serverInstances.length > 0) {
+        console.log('MOS Servers already running.');
         return;
     }
 
-    const PORT = 11540;
-    const HOST = '0.0.0.0';
+    for (const PORT of PORTS) {
+        const server = net.createServer((socket) => {
+            console.log(`✅ Client connected on port ${PORT}:`, socket.remoteAddress);
 
-    serverInstance = net.createServer((socket) => {
-        console.log('✅ Client connected:', socket.remoteAddress);
+            socket.on('data', async (data) => {
+                let xml = fromUTF16BE(data).trim();
+                console.log(`📥 XML from ${PORT}:\n`, xml);
 
-        socket.on('data', async (data) => {
-            let xml = fromUTF16BE(data);
-            console.log(xml)
-            if (xml.includes("<roReqAll/>")) {
-                console.log('<roReqAll/> received');
-                const mos = `
-                <mos>
-                <ncsID>DDNRCS</ncsID>
-                <mosID>WTVISION.STUDIO.MOS</mosID>
-                   <roID>${process.env.MOS_DEVICE_ID}_RO</roID>
-                </mos>
-                `
-                socket.write(toUTF16BE(compressed(mos)));
+                if (xml.includes('<roReqAll/>')) {
+                    console.log('<roReqAll/> received');
+                    const mos = `
+            <mos>
+              <ncsID>DDNRCS</ncsID>
+              <mosID>WTVISION.STUDIO.MOS</mosID>
+              <roID>${process.env.MOS_DEVICE_ID || 'MOSDEVICE'}_RO</roID>
+            </mos>
+          `;
+                    socket.write(toUTF16BE(compressed(mos)));
 
-            } else if (xml.includes("<roReq>")) {
-                console.log(`received: ${xml}`);
+                } else if (xml.includes('<roReq>')) {
+                    console.log('<roReq> received');
 
-                // await new Promise((resolve) => setTimeout(resolve, 5000));
+                    try {
+                        const res = await fetch('http://localhost:3000/api/tcp/allWtVisiononroReq', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                selectedDate: '2025-07-16',
+                                selectedRunOrderTitle: '0600 Hrs',
+                            }),
+                        });
 
-                const res = await fetch(`http://localhost:3000/api/tcp/allWtVisiononroReq`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ selectedDate: '2025-07-16', selectedRunOrderTitle: '0600 Hrs' })
-                });
+                        const { mosXml } = await res.json();
+                        socket.write(toUTF16BE(compressed(mosXml)));
 
-                const data = await res.json();
-                socket.write(toUTF16BE(compressed(data.mosXml)));
+                        await new Promise((resolve) => setTimeout(resolve, 5000));
 
-                await new Promise((resolve) => setTimeout(resolve, 5000));
-                // Mongo
-                const mongoUri = "mongodb://localhost:27017";
-                const MongoClient1 = new MongoClient(mongoUri);
-                await MongoClient1.connect();
-                const db1 = MongoClient1.db('slidecg');
-                const collection1 = db1.collection('story_items');
-                await collection1.updateMany(
-                    { MosId: { $regex: '^item_' } },
-                    { $set: { Color: null } }
-                );
-                await MongoClient1.close();
-            }
-            else {
-                console.log(`received: ${xml}`);
-            }
+                        // Update MongoDB
+                        const mongoUri = 'mongodb://localhost:27017';
+                        const client = new MongoClient(mongoUri);
+                        await client.connect();
+                        const db = client.db('slidecg');
+                        await db.collection('story_items').updateMany(
+                            { MosId: { $regex: '^item_' } },
+                            { $set: { Color: null } }
+                        );
+                        await client.close();
+                    } catch (error) {
+                        console.error('❌ Error handling <roReq>:', error);
+                    }
+
+                } else {
+                    console.log(`🟡 Unrecognized message:\n${xml}`);
+                }
+            });
+
+            socket.on('end', () => console.log(`❌ Client disconnected from ${PORT}`));
+            socket.on('error', (err) => console.error(`⚠️ Socket error on ${PORT}:`, err));
         });
 
-        socket.on('end', () => console.log('❌ Client disconnected'));
-        socket.on('error', (err) => console.error('⚠️ Socket error:', err));
-    });
+        server.listen(PORT, HOST, () => {
+            console.log(`🚀 MOS TCP Server running on ${HOST}:${PORT}`);
+        });
 
-    serverInstance.listen(PORT, HOST, () => {
-        console.log(`🚀 MOS TCP Server running on ${HOST}:${PORT}`);
-    });
+        serverInstances.push(server);
+    }
 }

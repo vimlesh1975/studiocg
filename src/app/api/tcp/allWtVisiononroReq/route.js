@@ -4,10 +4,8 @@ import { toUTF16BE, fix, mosStart, mos, compressed } from '../../../lib/common.j
 import mysql from 'mysql2/promise';
 import { config } from '../../../lib/db.js';
 
-import { MongoClient } from 'mongodb';
 
 export async function POST(req) {
-  let MongoClient1;
 
   const selectedDate = () => {
     const today = new Date();
@@ -59,10 +57,7 @@ export async function POST(req) {
 
     console.log("✅ Rows fetched:", rows.length);
 
-    // Mongo
-    const mongoUri = "mongodb://localhost:27017";
-    MongoClient1 = new MongoClient(mongoUri);
-    await MongoClient1.connect();
+
 
 
     if (rows.length === 0) {
@@ -168,21 +163,6 @@ ${tagsXml}
                   </roReplace>
                 </mos>`.trim();
 
-    // client.write(toUTF16BE(compressed(mosXml)));
-
-
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
-
-    // const db1 = MongoClient1.db('slidecg');
-    // const collection1 = db1.collection('story_items');
-    // await collection1.updateMany(
-    //   { MosId: { $regex: '^item_' } },
-    //   { $set: { Color: null } }
-    // );
-    // await MongoClient1.close();
-
-
-
     // Instead of sending it right now, just return it to the caller:
     return NextResponse.json({
       message: "✅ MOS message built successfully.",
@@ -191,9 +171,6 @@ ${tagsXml}
 
   } catch (err) {
     console.error("❌ Error:", err);
-    if (MongoClient1) {
-      await MongoClient1.close().catch(() => { });
-    }
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
