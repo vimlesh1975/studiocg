@@ -39,13 +39,18 @@ export default function Mosapi() {
                     onChange={(e) => setitemId(e.target.value)}
                     type="text"
                     value={itemId} />
-
                 <button
                     onClick={() => callApi('/api/takeitem', { itemId })}
-
                 >
                     🔄 Send Take Command
                 </button>
+
+                <button
+                    onClick={() => callApi('/api/outitem', { itemId })}
+                >
+                    🔄 Remove Item
+                </button>
+
             </div>
             <div>
                 ShowId: <input
