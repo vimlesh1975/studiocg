@@ -11,8 +11,8 @@ export async function GET() {
         await client.connect();
 
         // Set and get a value
-        await client.set('hello', 'world');
-        const helloValue = await client.get('hello');
+        // await client.set('hello', 'world');
+        // const helloValue = await client.get('hello');
 
         // Get all keys
         const allKeys = await client.keys('*');
@@ -44,7 +44,6 @@ export async function GET() {
 
         return NextResponse.json({
             message: '✅ Redis Test Completed!',
-            helloValue,
             allKeys,
             patternResults,
             allKeyDetails

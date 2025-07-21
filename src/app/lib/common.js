@@ -1,3 +1,6 @@
+
+import Image from 'next/image';
+
 export function toUTF16BE(str) {
   const utf16le = Buffer.from(str, 'utf16le'); // Node only supports utf16le
   const utf16be = Buffer.alloc(utf16le.length);
@@ -80,10 +83,11 @@ export function LoadingModal() {
         zIndex: 9999,
       }}
     >
-      <img
-        src="./loader.gif"
+      <Image
+        src="/loader.gif" // assumes loader.gif is in public/
         alt="Loading..."
-        style={{ width: "100px", height: "100px" }}
+        width={100}
+        height={100}
       />
     </div>
   );
