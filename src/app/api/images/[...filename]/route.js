@@ -2,7 +2,8 @@ import fs from "fs";
 import path from "path";
 import mime from "mime";
 
-export async function GET(req, { params }) {
+export async function GET(req, props) {
+    const params = await props.params;
     try {
         const fileSegments = params.filename || [];
 
@@ -11,8 +12,8 @@ export async function GET(req, { params }) {
         const basePath = path.resolve(process.env.R3_PATH);
         const imagePath = path.resolve(basePath, relativePath);
 
-        console.log("Request for:", fileSegments);
-        console.log("Resolved full path:", imagePath);
+        // console.log("Request for:", fileSegments);
+        // console.log("Resolved full path:", imagePath);
 
         if (!imagePath.startsWith(basePath)) {
             return new Response("Forbidden", { status: 403 });
