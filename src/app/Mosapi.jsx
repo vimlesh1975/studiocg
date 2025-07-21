@@ -40,20 +40,20 @@ export default function Mosapi() {
                     type="text"
                     value={itemId} />
                 <button
-                    onClick={() => callApi('/api/takeitem', { itemId })}
+                    onClick={() => callApi('/api/mosapi/takeitem', { itemId })}
                 >
                     🔄 Send Take Command
                 </button>
 
                 <button
-                    onClick={() => callApi('/api/outitem', { itemId })}
+                    onClick={() => callApi('/api/mosapi/outitem', { itemId })}
                 >
                     🔄 Remove Item
                 </button>
 
 
                 <button
-                    onClick={() => callApi('/api/clearchannel', {})}
+                    onClick={() => callApi('/api/mosapi/clearchannel', {})}
                 >
                     🔄clear channel
                 </button>
@@ -66,13 +66,13 @@ export default function Mosapi() {
                     type="text"
                     value={showId} />
                 <button
-                    onClick={() => callApi('/api/takeshow', { showId })}
+                    onClick={() => callApi('/api/mosapi/takeshow', { showId })}
                 >
                     🔄Load show in Studio CG
                 </button>
 
                 <button
-                    onClick={() => callApi('/api/unloadshow', { showId })}
+                    onClick={() => callApi('/api/mosapi/unloadshow', { showId })}
                 >
                     unload show from Studio CG
                 </button>
