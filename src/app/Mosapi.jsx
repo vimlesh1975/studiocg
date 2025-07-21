@@ -51,6 +51,14 @@ export default function Mosapi() {
                     🔄 Remove Item
                 </button>
 
+
+                <button
+                    onClick={() => callApi('/api/clearchannel', {})}
+                >
+                    🔄clear channel
+                </button>
+
+
             </div>
             <div>
                 ShowId: <input
@@ -59,10 +67,16 @@ export default function Mosapi() {
                     value={showId} />
                 <button
                     onClick={() => callApi('/api/takeshow', { showId })}
-
                 >
                     🔄Load show in Studio CG
                 </button>
+
+                <button
+                    onClick={() => callApi('/api/unloadshow', { showId })}
+                >
+                    unload show from Studio CG
+                </button>
+
             </div>
 
 
