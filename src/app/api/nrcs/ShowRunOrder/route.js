@@ -21,7 +21,7 @@ export async function GET(req) {
     createdtime AS CreatedTime, 
     scriptmodifiedtime as ScriptLastModifiedTime,
     approved AS Approval, 
-    graphicsid as MediaInsert,
+    graphicsid2 as MediaInsert,
     dropstory AS DropStory
     FROM script 
     WHERE deleted = 0 AND bulletinname = ? AND bulletindate = ? 

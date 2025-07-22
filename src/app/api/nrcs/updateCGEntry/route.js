@@ -19,7 +19,7 @@ export async function POST(req) {
             : [cgValue, ScriptID, NewsId];
 
         const query = newdatabase
-            ? `UPDATE script SET graphicsid = ? WHERE ScriptID = ?`
+            ? `UPDATE script SET graphicsid2 = ? WHERE ScriptID = ?`
             : `UPDATE runorder SET MediaInsert = ? WHERE ScriptID = ? AND NewsId = ?`;
 
         connection = await mysql.createConnection(config);
