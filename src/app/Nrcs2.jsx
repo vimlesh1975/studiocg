@@ -805,12 +805,12 @@ const Nrcs2 = () => {
                                     title={val.ScriptID}
                                     onClick={() => {
                                         setScriptID(val.ScriptID);
-                                        setCurrentSlug(i);
-                                        setCurrentSlugSlugName(val.SlugName);
+                                        setCurrentSlug2(i);
+                                        // setCurrentSlugSlugName2(val.SlugName);
                                     }}
                                     key={i} style={{
-                                        display: 'flex', color: currentSlug === i ? "white" : "black",
-                                        backgroundColor: currentSlug === i ? "green" : "#E7DBD8",
+                                        display: 'flex', color: currentSlug2 === i ? "white" : "black",
+                                        backgroundColor: currentSlug2 === i ? "green" : "#E7DBD8",
                                         margin: 10,
                                     }}>
                                     <div
