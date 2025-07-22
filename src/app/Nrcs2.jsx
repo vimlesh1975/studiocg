@@ -163,7 +163,10 @@ const Nrcs2 = () => {
         setSelectedDate(date)
     };
 
-
+    const handleDateChange2 = (event) => {
+        const date = event.target.value;
+        setSelectedDate2(date)
+    };
     const getAllKeyValue = () => {
 
     }
@@ -209,7 +212,7 @@ const Nrcs2 = () => {
         } catch (error) {
             // console.error('Error fetching data:', error);
         }
-    }, [selectedRunOrderTitle, setSlugs, selectedDate]);
+    }, [selectedRunOrderTitle, selectedDate]);
 
 
 
@@ -228,7 +231,7 @@ const Nrcs2 = () => {
                     addressmysql() + `/ShowRunOrder?NewsId=${selectedRunOrderTitle2}&date=${selectedDate2}`
                 );
                 const data = await res.json();
-                setSlugs2(data);
+                setSlugs2(data.data);
             } catch (error) {
                 // console.error('Error fetching users:', error);
             }
@@ -692,29 +695,25 @@ const Nrcs2 = () => {
 
     return (<div>
         <DragDropContext onDragEnd={handleOnDragEnd}>
-            <div>
-                <div style={{ display: "flex" }}>
-                    <div style={{ minWidth: 450, maxWidth: 450, marginTop: 45 }}>
+            <div style={{ display: "flex" }}>
+                <div style={{ minWidth: 450, maxWidth: 450, marginTop: 5 }}>
+                    <div>
                         <div>
-                            {
-                                <div>
-                                    <label htmlFor="date-selector">Select a date: </label>
-                                    <input
-                                        id="date-selector"
-                                        type="date"
-                                        value={selectedDate}
-                                        onChange={handleDateChange}
-                                    />
-                                    <button onClick={senToSanvad}>to Samvad</button>
+                            <label htmlFor="date-selector">Select a date: </label>
+                            <input
+                                id="date-selector"
+                                type="date"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                            />
+                            <button onClick={senToSanvad}>to Samvad</button>
 
-                                    <button
-                                        onClick={senToWtVision}
-                                        disabled={loading}
-                                    >
-                                        Send to WtVision
-                                    </button>
-                                </div>
-                            }
+                            <button
+                                onClick={senToWtVision}
+                                disabled={loading}
+                            >
+                                Send to WtVision
+                            </button>
                         </div>
                         <div>
                             Run Orders:
@@ -743,8 +742,7 @@ const Nrcs2 = () => {
                                 Live
                             </label>
                         </div>
-
-                        <div style={{ height: 750, overflow: "auto", border: '1px solid red' }}>
+                        <div style={{ height: 350, overflow: "auto", border: '1px solid red' }}>
                             {slugs &&
                                 slugs?.map((val, i) => (<div
                                     title={val.ScriptID}
@@ -771,194 +769,510 @@ const Nrcs2 = () => {
                                 </div>
                                 ))}
                         </div>
-
                     </div>
-                    <div>
-                        <Tabs
-                            forceRenderTabPanel={true}
-                        >
-                            <TabList>
-                                <Tab>Player</Tab>
-                                <Tab>Templates</Tab>
-                                <Tab>Script</Tab>
+                    <div style={{ marginTop: 20, }}>
+                        <div>
+                            <label htmlFor="date-selector">Select a date: </label>
+                            <input
+                                id="date-selector"
+                                type="date"
+                                value={selectedDate2}
+                                onChange={handleDateChange2}
+                            />
 
-                            </TabList>
+                        </div>
+                        <div>
+                            Run Orders:
+                            <select
+                                value={selectedRunOrderTitle2}
+                                onChange={handleSelectionChange2}
+                            >
+                                <option value="" disabled>
+                                    Select a Run Order
+                                </option>
+                                {runOrderTitles &&
+                                    runOrderTitles?.map((runOrderTitle, i) => (
+                                        <option key={i} value={runOrderTitle.title}>
+                                            {runOrderTitle.title}
+                                        </option>
+                                    ))}
+                            </select>
+                            {slugs2?.length} slugs
+                        </div>
+                        <div style={{ height: 350, overflow: "auto", border: '1px solid red' }}>
+                            {slugs2 &&
+                                slugs2?.map((val, i) => (<div
+                                    title={val.ScriptID}
+                                    onClick={() => {
+                                        setScriptID(val.ScriptID);
+                                        setCurrentSlug(i);
+                                        setCurrentSlugSlugName(val.SlugName);
+                                    }}
+                                    key={i} style={{
+                                        display: 'flex', color: currentSlug === i ? "white" : "black",
+                                        backgroundColor: currentSlug === i ? "green" : "#E7DBD8",
+                                        margin: 10,
+                                    }}>
+                                    <div
+                                        style={{
+                                            minWidth: 320,
+                                            maxWidth: 320,
+                                        }}
+                                    >
+                                        {i + 1}{" "}
+                                        <label style={{ cursor: "pointer" }}>{val.SlugName}</label>{" "}
+                                    </div>
+                                    <div>{val.MediaInsert}</div>
+                                </div>
+                                ))}
+                        </div>
+                    </div>
 
 
-                            <TabPanel>
+                </div>
+                <div>
+                    <Tabs
+                        forceRenderTabPanel={true}
+                    >
+                        <TabList>
+                            <Tab>Player</Tab>
+                            <Tab>Templates</Tab>
+                            <Tab>Script</Tab>
 
-                                {loading && <LoadingModal />}
+                        </TabList>
 
-                                <div style={{ border: '1px solid blue', display: 'flex' }}>
-                                    <div style={{ maxHeight: 800, minHeight: 800, overflow: "auto", border: '1px solid red' }}>
-                                        <Droppable droppableId="graphics1">
-                                            {(provided) => (
-                                                <div
-                                                    {...provided.droppableProps}
-                                                    ref={provided.innerRef}
-                                                    style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-                                                >
-                                                    {graphics?.length ? (
-                                                        graphics.map((val, i) => (
-                                                            <Draggable
-                                                                key={val.GraphicsID}
-                                                                draggableId={val.GraphicsID.toString()}
-                                                                index={i}
-                                                            >
-                                                                {(provided, snapshot) => (
-                                                                    <div
-                                                                        ref={provided.innerRef}
-                                                                        {...provided.draggableProps}
-                                                                        style={{
-                                                                            border: "1px solid #ccc",
-                                                                            backgroundColor:
-                                                                                currentGraphics === i ? "green" : "#E7DBD8",
-                                                                            color:
-                                                                                currentGraphics === i ? "white" : "black",
-                                                                            padding: "10px",
-                                                                            ...provided.draggableProps.style,
-                                                                        }}
-                                                                        onClick={async () => {
-                                                                            setGraphicsID(val.GraphicsID);
-                                                                            setCurrentGraphics(i);
-                                                                            setCurrentGraphics2(-1);
-                                                                            setPageName(val.GraphicsTemplate + "_copy");
-                                                                            console.log(graphics[i]);
-                                                                            getAllKeyValue();
-                                                                        }}
-                                                                    >
-                                                                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                                                            <span>{i + 1}</span>
 
-                                                                            <span {...provided.dragHandleProps}>
-                                                                                <VscMove />
-                                                                            </span>
+                        <TabPanel>
 
-                                                                            <button
-                                                                                style={{ cursor: "pointer" }}
-                                                                                onClick={(e) => {
-                                                                                    e.stopPropagation();
-                                                                                    deleteGraphic(val.GraphicsID);
+                            {loading && <LoadingModal />}
+
+                            <div style={{ border: '1px solid blue', display: 'flex' }}>
+                                <div style={{ maxHeight: 800, minHeight: 800, overflow: "auto", border: '1px solid red' }}>
+                                    <Droppable droppableId="graphics1">
+                                        {(provided) => (
+                                            <div
+                                                {...provided.droppableProps}
+                                                ref={provided.innerRef}
+                                                style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+                                            >
+                                                {graphics?.length ? (
+                                                    graphics.map((val, i) => (
+                                                        <Draggable
+                                                            key={val.GraphicsID}
+                                                            draggableId={val.GraphicsID.toString()}
+                                                            index={i}
+                                                        >
+                                                            {(provided, snapshot) => (
+                                                                <div
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    style={{
+                                                                        border: "1px solid #ccc",
+                                                                        backgroundColor:
+                                                                            currentGraphics === i ? "green" : "#E7DBD8",
+                                                                        color:
+                                                                            currentGraphics === i ? "white" : "black",
+                                                                        padding: "10px",
+                                                                        ...provided.draggableProps.style,
+                                                                    }}
+                                                                    onClick={async () => {
+                                                                        setGraphicsID(val.GraphicsID);
+                                                                        setCurrentGraphics(i);
+                                                                        setCurrentGraphics2(-1);
+                                                                        setPageName(val.GraphicsTemplate + "_copy");
+                                                                        console.log(graphics[i]);
+                                                                        getAllKeyValue();
+                                                                    }}
+                                                                >
+                                                                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                        <span>{i + 1}</span>
+
+                                                                        <span {...provided.dragHandleProps}>
+                                                                            <VscMove />
+                                                                        </span>
+
+                                                                        <button
+                                                                            style={{ cursor: "pointer" }}
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                deleteGraphic(val.GraphicsID);
+                                                                            }}
+                                                                        >
+                                                                            <VscTrash />
+                                                                        </button>
+
+                                                                        <input
+                                                                            style={{ width: 340 }}
+                                                                            type="text"
+                                                                            value={val.GraphicsTemplate}
+                                                                            onChange={(e) =>
+                                                                                handleTemplateChange(
+                                                                                    val.GraphicsID,
+                                                                                    e.target.value
+                                                                                )
+                                                                            }
+                                                                            onClick={(e) => e.stopPropagation()}
+                                                                        />
+                                                                    </div>
+
+                                                                    <div>  {val.gfxpart2}</div>
+                                                                    <div>  {val.gfxpart3}</div>
+                                                                    <div style={{ marginTop: "8px", display: 'flex', }}>
+                                                                        <div >
+                                                                            <img
+                                                                                src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
+                                                                                alt="thumb"
+                                                                                style={{
+                                                                                    width: 300,
+                                                                                    height: "auto",
+                                                                                    objectFit: "contain",
+                                                                                    border: "1px solid #ccc",
+                                                                                    marginTop: "4px",
                                                                                 }}
-                                                                            >
-                                                                                <VscTrash />
-                                                                            </button>
-
-                                                                            <input
-                                                                                style={{ width: 340 }}
-                                                                                type="text"
-                                                                                value={val.GraphicsTemplate}
-                                                                                onChange={(e) =>
-                                                                                    handleTemplateChange(
-                                                                                        val.GraphicsID,
-                                                                                        e.target.value
-                                                                                    )
-                                                                                }
-                                                                                onClick={(e) => e.stopPropagation()}
                                                                             />
                                                                         </div>
-
-                                                                        <div>  {val.gfxpart2}</div>
-                                                                        <div>  {val.gfxpart3}</div>
-                                                                        <div style={{ marginTop: "8px", display: 'flex', }}>
-                                                                            <div >
-                                                                                <img
-                                                                                    src={`/api/images/${val.gfxpart2.split("/")[0]}/${val.gfxpart2.split("/")[1]}/thumb.png`}
-                                                                                    alt="thumb"
-                                                                                    style={{
-                                                                                        width: 300,
-                                                                                        height: "auto",
-                                                                                        objectFit: "contain",
-                                                                                        border: "1px solid #ccc",
-                                                                                        marginTop: "4px",
-                                                                                    }}
-                                                                                />
-                                                                            </div>
+                                                                        <div>
                                                                             <div>
                                                                                 <div>
-                                                                                    <div>
-                                                                                        <button
-                                                                                            onClick={() => {
-                                                                                                const [project, scene] = (val.gfxpart2 || "").split("/");
-                                                                                                fetch("/api/playwithexportedvalues", {
-                                                                                                    method: "POST",
-                                                                                                    headers: { "Content-Type": "application/json" },
-                                                                                                    body: JSON.stringify({
-                                                                                                        project,
-                                                                                                        scene,
-                                                                                                        timeline: "In",
-                                                                                                        exportedvalues: Object.entries(savedExportValues).map(([name, value]) => ({ name, value: value.value })),
+                                                                                    <button
+                                                                                        onClick={() => {
+                                                                                            const [project, scene] = (val.gfxpart2 || "").split("/");
+                                                                                            fetch("/api/playwithexportedvalues", {
+                                                                                                method: "POST",
+                                                                                                headers: { "Content-Type": "application/json" },
+                                                                                                body: JSON.stringify({
+                                                                                                    project,
+                                                                                                    scene,
+                                                                                                    timeline: "In",
+                                                                                                    exportedvalues: Object.entries(savedExportValues).map(([name, value]) => ({ name, value: value.value })),
 
-                                                                                                    }),
-                                                                                                });
-                                                                                            }}
-                                                                                            style={{ marginRight: "10px" }}
-                                                                                        >
-                                                                                            Play
-                                                                                        </button>
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <button
-                                                                                            onClick={() => {
-                                                                                                const [project, scene] = (val.gfxpart2 || "").split("/");
-
-                                                                                                fetch("/api/timeline", {
-                                                                                                    method: "POST",
-                                                                                                    headers: { "Content-Type": "application/json" },
-                                                                                                    body: JSON.stringify({
-                                                                                                        project,
-                                                                                                        scene,
-                                                                                                        timeline: "Out",
-                                                                                                    }),
-                                                                                                });
-                                                                                            }}
-                                                                                        >
-                                                                                            Stop
-                                                                                        </button>
-                                                                                    </div>
-
+                                                                                                }),
+                                                                                            });
+                                                                                        }}
+                                                                                        style={{ marginRight: "10px" }}
+                                                                                    >
+                                                                                        Play
+                                                                                    </button>
                                                                                 </div>
-                                                                            </div>
+                                                                                <div>
+                                                                                    <button
+                                                                                        onClick={() => {
+                                                                                            const [project, scene] = (val.gfxpart2 || "").split("/");
 
+                                                                                            fetch("/api/timeline", {
+                                                                                                method: "POST",
+                                                                                                headers: { "Content-Type": "application/json" },
+                                                                                                body: JSON.stringify({
+                                                                                                    project,
+                                                                                                    scene,
+                                                                                                    timeline: "Out",
+                                                                                                }),
+                                                                                            });
+                                                                                        }}
+                                                                                    >
+                                                                                        Stop
+                                                                                    </button>
+                                                                                </div>
+
+                                                                            </div>
                                                                         </div>
 
-
                                                                     </div>
-                                                                )}
-                                                            </Draggable>
-                                                        ))
-                                                    ) : (
-                                                        <div>No Graphics</div>
-                                                    )}
-                                                    {provided.placeholder}
+
+
+                                                                </div>
+                                                            )}
+                                                        </Draggable>
+                                                    ))
+                                                ) : (
+                                                    <div>No Graphics</div>
+                                                )}
+                                                {provided.placeholder}
+                                            </div>
+                                        )}
+                                    </Droppable>
+                                </div>
+                                <div style={{ height: 800, width: 1000, overflow: 'auto', border: '1px solid red' }}>
+                                    <div>
+                                        {graphics && graphics[currentGraphics] && (() => {
+                                            const val = graphics[currentGraphics];
+
+                                            if (!val.gfxtemplatetext) return null;
+
+                                            let pageValue = {};
+
+                                            try {
+                                                const parsed = JSON.parse(val.gfxtemplatetext);
+                                                pageValue = parsed.pageValue || {};
+
+                                            } catch (e) {
+                                                console.error("Invalid JSON:", e);
+                                                return null;
+                                            }
+
+                                            return (
+                                                <div style={{ border: '1px solid #ccc', }}>
+                                                    <button onClick={updateGraphicsToDatabase}>
+                                                        Update Graphics
+                                                    </button>
+                                                    <table border="1" cellPadding="8" cellSpacing="0" style={{ borderCollapse: "collapse" }}>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Variable</th>
+                                                                <th>Value</th>
+                                                                <th>Type</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {Object.entries(savedExportValues).map(([key, value]) => {
+                                                                const val = value || {};
+
+                                                                const handleChange = (newVal) => {
+                                                                    setSavedExportValues((prev) => ({
+                                                                        ...prev,
+                                                                        [key]: {
+                                                                            ...prev[key],
+                                                                            value: newVal,
+                                                                        },
+                                                                    }));
+                                                                };
+
+                                                                let inputField;
+
+                                                                if (val.type === "String") {
+                                                                    inputField = (
+                                                                        <textarea
+                                                                            style={{ width: 680, height: 60, resize: "vertical" }}
+                                                                            value={val?.value || ""}
+                                                                            onChange={(e) => handleChange(e.target.value)}
+                                                                        />
+                                                                    );
+                                                                } else if (val.type === "Bool") {
+                                                                    inputField = (
+                                                                        <input
+                                                                            type="checkbox"
+                                                                            checked={val?.value === true || val?.value === "true"}
+                                                                            onChange={(e) => handleChange(e.target.checked)}
+                                                                        />
+                                                                    );
+                                                                } else if (val.type === "Texture") {
+                                                                    inputField = (
+                                                                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                            <input
+                                                                                style={{ width: 400 }}
+                                                                                value={val?.value || ""}
+                                                                                onChange={(e) => handleChange(e.target.value)}
+                                                                            />
+                                                                            <input
+                                                                                type="file"
+                                                                                onChange={(e) => {
+                                                                                    if (e.target.files?.[0]) {
+                                                                                        const fileName = e.target.files[0].name;
+                                                                                        handleChange(fileName);
+                                                                                    }
+                                                                                }}
+                                                                            />
+                                                                        </div>
+                                                                    );
+                                                                } else if (val.type === "ColorInt") {
+                                                                    let hex = "#000000";
+                                                                    if (val?.value !== undefined && val?.value !== "") {
+                                                                        let intVal = parseInt(val.value);
+                                                                        if (isNaN(intVal)) intVal = 0;
+                                                                        hex =
+                                                                            "#" +
+                                                                            (intVal >>> 0)
+                                                                                .toString(16)
+                                                                                .padStart(8, "0")
+                                                                                .slice(-6);
+                                                                    }
+
+                                                                    inputField = (
+                                                                        <input
+                                                                            type="color"
+                                                                            value={hex}
+                                                                            onChange={(e) => {
+                                                                                const hexVal = e.target.value;
+                                                                                const intVal = parseInt(hexVal.replace("#", ""), 16);
+                                                                                handleChange(intVal.toString());
+                                                                            }}
+                                                                        />
+                                                                    );
+                                                                } else if (val.type === "Number") {
+                                                                    inputField = (
+                                                                        <input
+                                                                            type="text"
+                                                                            style={{ width: 150 }}
+                                                                            value={val?.value ?? ""}
+                                                                            onChange={(e) => {
+                                                                                const entered = e.target.value;
+
+                                                                                if (entered === "" || entered === "-") {
+                                                                                    handleChange(entered);
+                                                                                    return;
+                                                                                }
+
+                                                                                const num = parseFloat(entered);
+                                                                                if (!isNaN(num)) {
+                                                                                    handleChange(num);
+                                                                                }
+                                                                            }}
+                                                                        />
+                                                                    );
+                                                                } else {
+                                                                    inputField = (
+                                                                        <input
+                                                                            style={{ width: 300 }}
+                                                                            value={
+                                                                                typeof val?.value === "object"
+                                                                                    ? JSON.stringify(val.value)
+                                                                                    : val?.value || ""
+                                                                            }
+                                                                            onChange={(e) => {
+                                                                                let inputVal = e.target.value;
+                                                                                try {
+                                                                                    const parsed = JSON.parse(inputVal);
+                                                                                    handleChange(parsed);
+                                                                                } catch {
+                                                                                    handleChange(inputVal);
+                                                                                }
+                                                                            }}
+                                                                        />
+                                                                    );
+                                                                }
+
+                                                                return (
+                                                                    <tr key={key}>
+                                                                        <td>{key}</td>
+                                                                        <td>{inputField}</td>
+                                                                        <td>{val?.type || ""}</td>
+                                                                    </tr>
+                                                                );
+                                                            })}
+                                                        </tbody>
+
+                                                    </table>
                                                 </div>
-                                            )}
-                                        </Droppable>
+
+                                            );
+                                        })()}
+
+
+
                                     </div>
-                                    <div style={{ height: 800, width: 1000, overflow: 'auto', border: '1px solid red' }}>
-                                        <div>
-                                            {graphics && graphics[currentGraphics] && (() => {
-                                                const val = graphics[currentGraphics];
 
-                                                if (!val.gfxtemplatetext) return null;
+                                </div>
 
-                                                let pageValue = {};
+                            </div>
+                        </TabPanel>
+                        <TabPanel>
+                            <div style={{ border: '1px solid red' }}>
+                                <div>
+                                    <div style={{ display: 'flex' }}>
+                                        <div style={{ border: '1px solid red', width: 250, }}>
+                                            <button onClick={fullstructure}>Get Full Structure</button>
 
-                                                try {
-                                                    const parsed = JSON.parse(val.gfxtemplatetext);
-                                                    pageValue = parsed.pageValue || {};
+                                            <h2>Project:</h2>
+                                            <select
+                                                style={{ width: 240, padding: '6px 12px', marginBottom: '12px' }}
+                                                value={selectedProject || ""}
+                                                onChange={(e) => {
+                                                    setSelectedProject(e.target.value)
+                                                    setSelectedScene(null)
+                                                    setExports([])
+                                                    setExportValues({})
+                                                    setanimations([])
+                                                    // setThumbnail(null)
+                                                }}
+                                            >
+                                                <option value="" disabled>Select</option>
+                                                {data.map((project) => (
+                                                    <option key={project.name} value={project.name}>{project.name}</option>
+                                                ))}
+                                            </select>
 
-                                                } catch (e) {
-                                                    console.error("Invalid JSON:", e);
-                                                    return null;
-                                                }
+                                            {selectedProject && (
+                                                <>
+                                                    <h2>Scene:</h2>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Search scenes..."
+                                                        value={searchQuery}
+                                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                                        style={{
+                                                            width: 200,
+                                                            padding: '8px',
+                                                            marginBottom: '12px',
+                                                            fontSize: '16px',
+                                                            borderRadius: '4px',
+                                                            border: '1px solid #ccc'
+                                                        }}
+                                                    />
+                                                    <div style={{ maxHeight: 700, overflow: 'scroll' }}>
+                                                        {data
+                                                            .find((p) => p.name === selectedProject)?.scenes
+                                                            .filter(scene =>
+                                                                scene.name.toLowerCase().includes(searchQuery.toLowerCase())
+                                                            ).map(scene => (
+                                                                <div
+                                                                    key={scene.name}
+                                                                    onClick={async () => {
+                                                                        setSelectedScene(scene.name)
 
-                                                return (
-                                                    <div style={{ border: '1px solid #ccc', }}>
-                                                        <button onClick={updateGraphicsToDatabase}>
-                                                            Update Graphics
-                                                        </button>
-                                                        <table border="1" cellPadding="8" cellSpacing="0" style={{ borderCollapse: "collapse" }}>
+                                                                        const res = await fetch("/api/exports", {
+                                                                            method: "POST",
+                                                                            headers: { "Content-Type": "application/json" },
+                                                                            body: JSON.stringify({ project: selectedProject, scene: scene.name })
+                                                                        })
+
+                                                                        const data = await res.json()
+
+                                                                        setExports(data.exports || [])
+                                                                        console.log(data)
+                                                                        setanimations(data.animations || [])
+                                                                        // setThumbnail(data.thumbnail || null)
+
+                                                                        const initialValues = {};
+
+                                                                        data.exports.forEach((exp) => {
+                                                                            initialValues[exp.name] = {
+                                                                                value: exp.value,
+                                                                                type: exp.type
+                                                                            };
+                                                                        });
+
+                                                                        setExportValues(initialValues);
+
+                                                                    }}
+                                                                    style={{
+                                                                        padding: '6px 12px',
+                                                                        marginBottom: '6px',
+                                                                        backgroundColor: selectedScene === scene.name ? 'grey' : '#eee',
+                                                                        color: selectedScene === scene.name ? 'white' : '#000',
+                                                                        cursor: 'pointer',
+                                                                        borderRadius: '4px',
+                                                                        userSelect: 'none',
+                                                                        fontSize: '20px',
+                                                                    }}
+                                                                >
+                                                                    {scene.name}
+                                                                    <img src={scene.thumbnail}></img>
+                                                                </div>
+                                                            ))}
+                                                    </div>
+
+                                                </>
+                                            )}
+                                        </div>
+                                        <div style={{ border: '1px solid red', width: 850 }}>
+                                            <div>
+                                                <h3>Variables</h3>
+                                                <button onClick={addNew}>Attach selected template to selected slug</button>
+                                                {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+
+                                                {exports.length > 0 && (
+                                                    <div style={{ height: 850, overflow: 'auto' }}>
+                                                        <table border="1" cellPadding="8" cellSpacing="0">
                                                             <thead>
                                                                 <tr>
                                                                     <th>Variable</th>
@@ -967,14 +1281,14 @@ const Nrcs2 = () => {
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                {Object.entries(savedExportValues).map(([key, value]) => {
-                                                                    const val = value || {};
+                                                                {exports.map((exp) => {
+                                                                    const val = exportValues[exp.name] || {};
 
                                                                     const handleChange = (newVal) => {
-                                                                        setSavedExportValues((prev) => ({
+                                                                        setExportValues((prev) => ({
                                                                             ...prev,
-                                                                            [key]: {
-                                                                                ...prev[key],
+                                                                            [exp.name]: {
+                                                                                ...prev[exp.name],
                                                                                 value: newVal,
                                                                             },
                                                                         }));
@@ -982,15 +1296,15 @@ const Nrcs2 = () => {
 
                                                                     let inputField;
 
-                                                                    if (val.type === "String") {
+                                                                    if (exp.type === "String") {
                                                                         inputField = (
                                                                             <textarea
-                                                                                style={{ width: 680, height: 60, resize: "vertical" }}
+                                                                                style={{ width: 640, height: 60, resize: "vertical" }}
                                                                                 value={val?.value || ""}
                                                                                 onChange={(e) => handleChange(e.target.value)}
                                                                             />
                                                                         );
-                                                                    } else if (val.type === "Bool") {
+                                                                    } else if (exp.type === "Bool") {
                                                                         inputField = (
                                                                             <input
                                                                                 type="checkbox"
@@ -998,9 +1312,15 @@ const Nrcs2 = () => {
                                                                                 onChange={(e) => handleChange(e.target.checked)}
                                                                             />
                                                                         );
-                                                                    } else if (val.type === "Texture") {
+                                                                    } else if (exp.type === "Texture") {
                                                                         inputField = (
-                                                                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                                                            <div
+                                                                                style={{
+                                                                                    display: "flex",
+                                                                                    alignItems: "center",
+                                                                                    gap: "8px",
+                                                                                }}
+                                                                            >
                                                                                 <input
                                                                                     style={{ width: 400 }}
                                                                                     value={val?.value || ""}
@@ -1017,7 +1337,7 @@ const Nrcs2 = () => {
                                                                                 />
                                                                             </div>
                                                                         );
-                                                                    } else if (val.type === "ColorInt") {
+                                                                    } else if (exp.type === "ColorInt") {
                                                                         let hex = "#000000";
                                                                         if (val?.value !== undefined && val?.value !== "") {
                                                                             let intVal = parseInt(val.value);
@@ -1041,7 +1361,7 @@ const Nrcs2 = () => {
                                                                                 }}
                                                                             />
                                                                         );
-                                                                    } else if (val.type === "Number") {
+                                                                    } else if (exp.type === "Number") {
                                                                         inputField = (
                                                                             <input
                                                                                 type="text"
@@ -1085,10 +1405,10 @@ const Nrcs2 = () => {
                                                                     }
 
                                                                     return (
-                                                                        <tr key={key}>
-                                                                            <td>{key}</td>
+                                                                        <tr key={exp.name}>
+                                                                            <td>{exp.name}</td>
                                                                             <td>{inputField}</td>
-                                                                            <td>{val?.type || ""}</td>
+                                                                            <td>{exp.type}</td>
                                                                         </tr>
                                                                     );
                                                                 })}
@@ -1096,431 +1416,168 @@ const Nrcs2 = () => {
 
                                                         </table>
                                                     </div>
-
-                                                );
-                                            })()}
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </TabPanel>
-                            <TabPanel>
-                                <div style={{ border: '1px solid red' }}>
-                                    <div>
-                                        <div style={{ display: 'flex' }}>
-                                            <div style={{ border: '1px solid red', width: 250, }}>
-                                                <button onClick={fullstructure}>Get Full Structure</button>
-
-                                                <h2>Project:</h2>
-                                                <select
-                                                    style={{ width: 240, padding: '6px 12px', marginBottom: '12px' }}
-                                                    value={selectedProject || ""}
-                                                    onChange={(e) => {
-                                                        setSelectedProject(e.target.value)
-                                                        setSelectedScene(null)
-                                                        setExports([])
-                                                        setExportValues({})
-                                                        setanimations([])
-                                                        // setThumbnail(null)
-                                                    }}
-                                                >
-                                                    <option value="" disabled>Select</option>
-                                                    {data.map((project) => (
-                                                        <option key={project.name} value={project.name}>{project.name}</option>
-                                                    ))}
-                                                </select>
-
-                                                {selectedProject && (
-                                                    <>
-                                                        <h2>Scene:</h2>
-                                                        <input
-                                                            type="text"
-                                                            placeholder="Search scenes..."
-                                                            value={searchQuery}
-                                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                                            style={{
-                                                                width: 200,
-                                                                padding: '8px',
-                                                                marginBottom: '12px',
-                                                                fontSize: '16px',
-                                                                borderRadius: '4px',
-                                                                border: '1px solid #ccc'
-                                                            }}
-                                                        />
-                                                        <div style={{ maxHeight: 700, overflow: 'scroll' }}>
-                                                            {data
-                                                                .find((p) => p.name === selectedProject)?.scenes
-                                                                .filter(scene =>
-                                                                    scene.name.toLowerCase().includes(searchQuery.toLowerCase())
-                                                                ).map(scene => (
-                                                                    <div
-                                                                        key={scene.name}
-                                                                        onClick={async () => {
-                                                                            setSelectedScene(scene.name)
-
-                                                                            const res = await fetch("/api/exports", {
-                                                                                method: "POST",
-                                                                                headers: { "Content-Type": "application/json" },
-                                                                                body: JSON.stringify({ project: selectedProject, scene: scene.name })
-                                                                            })
-
-                                                                            const data = await res.json()
-
-                                                                            setExports(data.exports || [])
-                                                                            console.log(data)
-                                                                            setanimations(data.animations || [])
-                                                                            // setThumbnail(data.thumbnail || null)
-
-                                                                            const initialValues = {};
-
-                                                                            data.exports.forEach((exp) => {
-                                                                                initialValues[exp.name] = {
-                                                                                    value: exp.value,
-                                                                                    type: exp.type
-                                                                                };
-                                                                            });
-
-                                                                            setExportValues(initialValues);
-
-                                                                        }}
-                                                                        style={{
-                                                                            padding: '6px 12px',
-                                                                            marginBottom: '6px',
-                                                                            backgroundColor: selectedScene === scene.name ? 'grey' : '#eee',
-                                                                            color: selectedScene === scene.name ? 'white' : '#000',
-                                                                            cursor: 'pointer',
-                                                                            borderRadius: '4px',
-                                                                            userSelect: 'none',
-                                                                            fontSize: '20px',
-                                                                        }}
-                                                                    >
-                                                                        {scene.name}
-                                                                        <img src={scene.thumbnail}></img>
-                                                                    </div>
-                                                                ))}
-                                                        </div>
-
-                                                    </>
                                                 )}
                                             </div>
-                                            <div style={{ border: '1px solid red', width: 850 }}>
+                                        </div>
+
+
+
+                                        <div style={{ border: '1px solid red', width: 300 }}>
+
+                                            <h2>Actions</h2>
+                                            {selectedScene && (
                                                 <div>
-                                                    <h3>Variables</h3>
-                                                    <button onClick={addNew}>Attach selected template to selected slug</button>
-                                                    {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
 
-                                                    {exports.length > 0 && (
-                                                        <div style={{ height: 850, overflow: 'auto' }}>
-                                                            <table border="1" cellPadding="8" cellSpacing="0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Variable</th>
-                                                                        <th>Value</th>
-                                                                        <th>Type</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    {exports.map((exp) => {
-                                                                        const val = exportValues[exp.name] || {};
-
-                                                                        const handleChange = (newVal) => {
-                                                                            setExportValues((prev) => ({
-                                                                                ...prev,
-                                                                                [exp.name]: {
-                                                                                    ...prev[exp.name],
-                                                                                    value: newVal,
-                                                                                },
-                                                                            }));
-                                                                        };
-
-                                                                        let inputField;
-
-                                                                        if (exp.type === "String") {
-                                                                            inputField = (
-                                                                                <textarea
-                                                                                    style={{ width: 640, height: 60, resize: "vertical" }}
-                                                                                    value={val?.value || ""}
-                                                                                    onChange={(e) => handleChange(e.target.value)}
-                                                                                />
-                                                                            );
-                                                                        } else if (exp.type === "Bool") {
-                                                                            inputField = (
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    checked={val?.value === true || val?.value === "true"}
-                                                                                    onChange={(e) => handleChange(e.target.checked)}
-                                                                                />
-                                                                            );
-                                                                        } else if (exp.type === "Texture") {
-                                                                            inputField = (
-                                                                                <div
-                                                                                    style={{
-                                                                                        display: "flex",
-                                                                                        alignItems: "center",
-                                                                                        gap: "8px",
-                                                                                    }}
-                                                                                >
-                                                                                    <input
-                                                                                        style={{ width: 400 }}
-                                                                                        value={val?.value || ""}
-                                                                                        onChange={(e) => handleChange(e.target.value)}
-                                                                                    />
-                                                                                    <input
-                                                                                        type="file"
-                                                                                        onChange={(e) => {
-                                                                                            if (e.target.files?.[0]) {
-                                                                                                const fileName = e.target.files[0].name;
-                                                                                                handleChange(fileName);
-                                                                                            }
-                                                                                        }}
-                                                                                    />
-                                                                                </div>
-                                                                            );
-                                                                        } else if (exp.type === "ColorInt") {
-                                                                            let hex = "#000000";
-                                                                            if (val?.value !== undefined && val?.value !== "") {
-                                                                                let intVal = parseInt(val.value);
-                                                                                if (isNaN(intVal)) intVal = 0;
-                                                                                hex =
-                                                                                    "#" +
-                                                                                    (intVal >>> 0)
-                                                                                        .toString(16)
-                                                                                        .padStart(8, "0")
-                                                                                        .slice(-6);
-                                                                            }
-
-                                                                            inputField = (
-                                                                                <input
-                                                                                    type="color"
-                                                                                    value={hex}
-                                                                                    onChange={(e) => {
-                                                                                        const hexVal = e.target.value;
-                                                                                        const intVal = parseInt(hexVal.replace("#", ""), 16);
-                                                                                        handleChange(intVal.toString());
-                                                                                    }}
-                                                                                />
-                                                                            );
-                                                                        } else if (exp.type === "Number") {
-                                                                            inputField = (
-                                                                                <input
-                                                                                    type="text"
-                                                                                    style={{ width: 150 }}
-                                                                                    value={val?.value ?? ""}
-                                                                                    onChange={(e) => {
-                                                                                        const entered = e.target.value;
-
-                                                                                        if (entered === "" || entered === "-") {
-                                                                                            handleChange(entered);
-                                                                                            return;
-                                                                                        }
-
-                                                                                        const num = parseFloat(entered);
-                                                                                        if (!isNaN(num)) {
-                                                                                            handleChange(num);
-                                                                                        }
-                                                                                    }}
-                                                                                />
-                                                                            );
-                                                                        } else {
-                                                                            inputField = (
-                                                                                <input
-                                                                                    style={{ width: 300 }}
-                                                                                    value={
-                                                                                        typeof val?.value === "object"
-                                                                                            ? JSON.stringify(val.value)
-                                                                                            : val?.value || ""
-                                                                                    }
-                                                                                    onChange={(e) => {
-                                                                                        let inputVal = e.target.value;
-                                                                                        try {
-                                                                                            const parsed = JSON.parse(inputVal);
-                                                                                            handleChange(parsed);
-                                                                                        } catch {
-                                                                                            handleChange(inputVal);
-                                                                                        }
-                                                                                    }}
-                                                                                />
-                                                                            );
-                                                                        }
-
-                                                                        return (
-                                                                            <tr key={exp.name}>
-                                                                                <td>{exp.name}</td>
-                                                                                <td>{inputField}</td>
-                                                                                <td>{exp.type}</td>
-                                                                            </tr>
-                                                                        );
-                                                                    })}
-                                                                </tbody>
-
-                                                            </table>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-
-
-
-                                            <div style={{ border: '1px solid red', width: 300 }}>
-
-                                                <h2>Actions</h2>
-                                                {selectedScene && (
                                                     <div>
+                                                        <button
+                                                            onClick={async () => {
+                                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value: value.value }))
+                                                                const res = await fetch("/api/setExports", {
+                                                                    method: "POST",
+                                                                    headers: { "Content-Type": "application/json" },
+                                                                    body: JSON.stringify({ project: selectedProject, scene: selectedScene, updates })
+                                                                })
+                                                                const result = await res.json()
+                                                                console.log("Export update:", result)
+                                                            }}
+                                                        >
+                                                            Update values
+                                                        </button>
+                                                    </div>
 
+                                                    <button
+                                                        onClick={() => {
+                                                            const sceneId = `${selectedProject}/${selectedScene}`
+                                                            setListloadedscenes((prev) => prev.filter((item) => item !== sceneId))
+                                                            fetch("/api/timeline", {
+                                                                method: "POST",
+                                                                headers: { "Content-Type": "application/json" },
+                                                                body: JSON.stringify({ project: selectedProject, scene: selectedScene, timeline: "Out" })
+                                                            })
+                                                        }}
+                                                    >
+                                                        ⏹ Out
+                                                    </button>
+
+                                                    <div>
+                                                        <button
+                                                            onClick={() => {
+                                                                fetch("/api/unloadAllScenes", {
+                                                                    method: "POST",
+                                                                    headers: { "Content-Type": "application/json" },
+                                                                })
+                                                                    .then((res) => res.json())
+                                                                    .then(() => setListloadedscenes([]))
+                                                            }}
+                                                        >
+                                                            🧹 Unload All Scenes
+                                                        </button>
+                                                    </div>
+
+                                                    <div>
+                                                        <h3>Animation</h3>
+                                                        <table border="1" cellPadding="6" cellSpacing="0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Animation</th>
+                                                                    <th>Play</th>
+                                                                    <th>with new Values</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {animations.map((animation, i) => (
+                                                                    <tr key={i}>
+                                                                        <td>{i + 1}</td>
+                                                                        <td>{animation}</td>
+                                                                        <td>
+                                                                            <button
+                                                                                onClick={() =>
+                                                                                    fetch("/api/timeline", {
+                                                                                        method: "POST",
+                                                                                        headers: { "Content-Type": "application/json" },
+                                                                                        body: JSON.stringify({ project: selectedProject, scene: selectedScene, timeline: animation })
+                                                                                    })
+                                                                                        .then((res) => res.json())
+                                                                                        .then(() => {
+                                                                                            const sceneId = `${selectedProject}/${selectedScene}`
+                                                                                            // if (!listloadedscenes.includes(sceneId)) {
+                                                                                            setListloadedscenes([sceneId])
+                                                                                            // }
+                                                                                        })
+                                                                                }
+                                                                            >
+                                                                                ▶️
+                                                                            </button>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button
+                                                                                onClick={() =>
+                                                                                    fetch("/api/playwithexportedvalues", {
+                                                                                        method: "POST",
+                                                                                        headers: { "Content-Type": "application/json" },
+                                                                                        body: JSON.stringify({
+                                                                                            project: selectedProject,
+                                                                                            scene: selectedScene,
+                                                                                            timeline: animation,
+                                                                                            exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value: value.value }))
+                                                                                        })
+                                                                                    })
+                                                                                        .then((res) => res.json())
+                                                                                        .then(() => {
+                                                                                            const sceneId = `${selectedProject}/${selectedScene}`
+                                                                                            if (!listloadedscenes.includes(sceneId)) {
+                                                                                                setListloadedscenes((prev) => [...prev, sceneId])
+                                                                                            }
+                                                                                        })
+                                                                                }
+                                                                            >
+                                                                                ▶️
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+                                                    <div style={{ border: '1px solid black' }}>
+                                                        <div>
+                                                            <h3>Command</h3>
+                                                            <textarea
+                                                                style={{ width: 280, height: 100 }}
+                                                                type="text"
+                                                                value={command}
+                                                                onChange={(e) => setCommand(e.target.value)}
+                                                                placeholder="Enter command here"
+                                                            />
+                                                        </div>
                                                         <div>
                                                             <button
                                                                 onClick={async () => {
-                                                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value: value.value }))
-                                                                    const res = await fetch("/api/setExports", {
+                                                                    const res = await fetch("/api/sendCommand", {
                                                                         method: "POST",
                                                                         headers: { "Content-Type": "application/json" },
-                                                                        body: JSON.stringify({ project: selectedProject, scene: selectedScene, updates })
+                                                                        body: JSON.stringify({ command })
                                                                     })
                                                                     const result = await res.json()
-                                                                    console.log("Export update:", result)
+                                                                    setCommandResponse(JSON.stringify(result))
                                                                 }}
                                                             >
-                                                                Update values
+                                                                Send Command
                                                             </button>
                                                         </div>
+                                                        <h3>Response</h3>
 
-                                                        <button
-                                                            onClick={() => {
-                                                                const sceneId = `${selectedProject}/${selectedScene}`
-                                                                setListloadedscenes((prev) => prev.filter((item) => item !== sceneId))
-                                                                fetch("/api/timeline", {
-                                                                    method: "POST",
-                                                                    headers: { "Content-Type": "application/json" },
-                                                                    body: JSON.stringify({ project: selectedProject, scene: selectedScene, timeline: "Out" })
-                                                                })
-                                                            }}
-                                                        >
-                                                            ⏹ Out
-                                                        </button>
-
-                                                        <div>
-                                                            <button
-                                                                onClick={() => {
-                                                                    fetch("/api/unloadAllScenes", {
-                                                                        method: "POST",
-                                                                        headers: { "Content-Type": "application/json" },
-                                                                    })
-                                                                        .then((res) => res.json())
-                                                                        .then(() => setListloadedscenes([]))
-                                                                }}
-                                                            >
-                                                                🧹 Unload All Scenes
-                                                            </button>
-                                                        </div>
-
-                                                        <div>
-                                                            <h3>Animation</h3>
-                                                            <table border="1" cellPadding="6" cellSpacing="0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Animation</th>
-                                                                        <th>Play</th>
-                                                                        <th>with new Values</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    {animations.map((animation, i) => (
-                                                                        <tr key={i}>
-                                                                            <td>{i + 1}</td>
-                                                                            <td>{animation}</td>
-                                                                            <td>
-                                                                                <button
-                                                                                    onClick={() =>
-                                                                                        fetch("/api/timeline", {
-                                                                                            method: "POST",
-                                                                                            headers: { "Content-Type": "application/json" },
-                                                                                            body: JSON.stringify({ project: selectedProject, scene: selectedScene, timeline: animation })
-                                                                                        })
-                                                                                            .then((res) => res.json())
-                                                                                            .then(() => {
-                                                                                                const sceneId = `${selectedProject}/${selectedScene}`
-                                                                                                // if (!listloadedscenes.includes(sceneId)) {
-                                                                                                setListloadedscenes([sceneId])
-                                                                                                // }
-                                                                                            })
-                                                                                    }
-                                                                                >
-                                                                                    ▶️
-                                                                                </button>
-                                                                            </td>
-                                                                            <td>
-                                                                                <button
-                                                                                    onClick={() =>
-                                                                                        fetch("/api/playwithexportedvalues", {
-                                                                                            method: "POST",
-                                                                                            headers: { "Content-Type": "application/json" },
-                                                                                            body: JSON.stringify({
-                                                                                                project: selectedProject,
-                                                                                                scene: selectedScene,
-                                                                                                timeline: animation,
-                                                                                                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value: value.value }))
-                                                                                            })
-                                                                                        })
-                                                                                            .then((res) => res.json())
-                                                                                            .then(() => {
-                                                                                                const sceneId = `${selectedProject}/${selectedScene}`
-                                                                                                if (!listloadedscenes.includes(sceneId)) {
-                                                                                                    setListloadedscenes((prev) => [...prev, sceneId])
-                                                                                                }
-                                                                                            })
-                                                                                    }
-                                                                                >
-                                                                                    ▶️
-                                                                                </button>
-                                                                            </td>
-                                                                        </tr>
-                                                                    ))}
-                                                                </tbody>
-                                                            </table>
-
-                                                        </div>
-
-                                                        <div style={{ border: '1px solid black' }}>
-                                                            <div>
-                                                                <h3>Command</h3>
-                                                                <textarea
-                                                                    style={{ width: 280, height: 100 }}
-                                                                    type="text"
-                                                                    value={command}
-                                                                    onChange={(e) => setCommand(e.target.value)}
-                                                                    placeholder="Enter command here"
-                                                                />
-                                                            </div>
-                                                            <div>
-                                                                <button
-                                                                    onClick={async () => {
-                                                                        const res = await fetch("/api/sendCommand", {
-                                                                            method: "POST",
-                                                                            headers: { "Content-Type": "application/json" },
-                                                                            body: JSON.stringify({ command })
-                                                                        })
-                                                                        const result = await res.json()
-                                                                        setCommandResponse(JSON.stringify(result))
-                                                                    }}
-                                                                >
-                                                                    Send Command
-                                                                </button>
-                                                            </div>
-                                                            <h3>Response</h3>
-
-                                                            <label>{commandResponse}</label>
-                                                        </div>
-
-
+                                                        <label>{commandResponse}</label>
                                                     </div>
-                                                )}
-                                            </div>
-                                            {/* <div style={{ border: '1px solid red', width: 400 }}>
+
+
+                                                </div>
+                                            )}
+                                        </div>
+                                        {/* <div style={{ border: '1px solid red', width: 400 }}>
                                     <h2>Loaded Scenes: {listloadedscenes.length}</h2>
                                     <table border="1" cellPadding="8" cellSpacing="0">
                                         <thead>
@@ -1557,33 +1614,30 @@ const Nrcs2 = () => {
                                     </table>
 
                                 </div> */}
-                                        </div>
-
-
                                     </div>
+
+
                                 </div>
-                            </TabPanel>
+                            </div>
+                        </TabPanel>
 
-                            <TabPanel>
-                                <div style={{ minHeight: 157, border: '1px solid red' }}>
-                                    <Oneliner slugs={slugs} currentStoryNumber={currentSlug} />
-                                </div>
-                                <div>
-                                    <Script
-                                        ScriptID={ScriptID}
-                                        title={selectedRunOrderTitle}
-                                        currentSlugSlugName={currentSlugSlugName}
-                                    />
-                                </div>
-                            </TabPanel>
-                        </Tabs>
-                    </div>
-
+                        <TabPanel>
+                            <div style={{ minHeight: 157, border: '1px solid red' }}>
+                                <Oneliner slugs={slugs} currentStoryNumber={currentSlug} />
+                            </div>
+                            <div>
+                                <Script
+                                    ScriptID={ScriptID}
+                                    title={selectedRunOrderTitle}
+                                    currentSlugSlugName={currentSlugSlugName}
+                                />
+                            </div>
+                        </TabPanel>
 
 
 
 
-
+                    </Tabs>
                 </div>
             </div>
         </DragDropContext >
