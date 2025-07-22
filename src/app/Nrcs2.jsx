@@ -889,11 +889,11 @@ const Nrcs2 = () => {
                                                                 >
                                                                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                                                         <span>{i + 1}</span>
-                                                                        {!copyGridSelected && <>
-                                                                            <span {...provided.dragHandleProps}>
-                                                                                <VscMove />
-                                                                            </span>
 
+                                                                        <span {...provided.dragHandleProps}>
+                                                                            {!copyGridSelected && <VscMove />}
+                                                                        </span>
+                                                                        {!copyGridSelected && <>
                                                                             <button
                                                                                 style={{ cursor: "pointer" }}
                                                                                 onClick={(e) => {
