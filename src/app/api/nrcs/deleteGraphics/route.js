@@ -3,6 +3,7 @@ import mysql from 'mysql2/promise';
 import { config } from '../../../lib/db.js';
 
 export async function POST(req) {
+    let connection;
     try {
         const body = await req.json();
         const { GraphicsID } = body;
@@ -14,7 +15,7 @@ export async function POST(req) {
             );
         }
 
-        const connection = await mysql.createConnection(config);
+        connection = await mysql.createConnection(config);
 
         await connection.execute(
             `DELETE FROM graphics2 WHERE GraphicsID = ?`,
@@ -30,5 +31,9 @@ export async function POST(req) {
             { error: 'An error occurred while deleting the graphic' },
             { status: 500 }
         );
+    } finally {
+        if (connection) {
+            await connection.end(); // ✅ Ensures connection is closed
+        }
     }
 }

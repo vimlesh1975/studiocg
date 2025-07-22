@@ -363,6 +363,57 @@ const Nrcs2 = () => {
         }
     };
 
+    const copy = async () => {
+        const GraphicsID = getFormattedDatetimeNumber(); // Generate GraphicsID once
+        // const newGraphics = [
+        //     ...graphics,
+        //     {
+        //         GraphicsID,
+        //         Graphicstext1: JSON.stringify({ pageValue: exportValues }),
+        //         GraphicsOrder: graphics.length + 1,
+        //         ScriptID,
+        //         GraphicsTemplate: pageName,
+        //         gfxpart2: `${selectedProject}/${selectedScene}`,
+        //         gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
+        //     },
+        // ];
+        // setGraphics(newGraphics);
+
+        await updateCGEntry();
+
+        const aa = slugs[currentSlug].MediaInsert;
+        var bb;
+        if (aa === null) {
+            bb = 0;
+        }
+        else {
+            bb = aa.split("CG")[0];
+        }
+
+        try {
+            await fetch(addressmysql() + "/insertGraphics", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    GraphicsID,
+                    // Graphicstext1: JSON.stringify({ pageValue: exportValues }),
+                    Graphicstext1: JSON.stringify({ pageValue: savedExportValues }),
+                    GraphicsOrder: parseInt(bb) + 1,
+                    ScriptID: slugs[currentSlug].ScriptID,
+                    GraphicsTemplate: pageName,
+                    // gfxpart2: `${selectedProject}/${selectedScene}`,
+                    gfxpart2: graphics[currentGraphics].gfxpart2,
+                    gfxpart3: graphics[currentGraphics].gfxpart3,
+                }),
+            });
+        } catch (error) {
+            console.error('Error saving content:', error);
+        }
+    };
+
+
     const addNew = async () => {
         const GraphicsID = getFormattedDatetimeNumber(); // Generate GraphicsID once
         const newGraphics = [
@@ -434,7 +485,9 @@ const Nrcs2 = () => {
                 return;
             }
             else if (slugs[currentSlug].MediaInsert.includes("CG")) {
-                cgValue = `${graphics.length + 1} CG`;
+                const aa = slugs[currentSlug].MediaInsert;
+                const bb = aa.split(" ")[0];
+                cgValue = `${parseInt(bb) + 1} CG`;
             }
             else {
                 return;
@@ -801,6 +854,7 @@ const Nrcs2 = () => {
                                     ))}
                             </select>
                             {slugs2?.length} slugs
+                            <button onClick={copy}>Copy</button>
                         </div>
                         <div style={{ height: 350, overflow: "auto", border: '1px solid red' }}>
                             {slugs2 &&

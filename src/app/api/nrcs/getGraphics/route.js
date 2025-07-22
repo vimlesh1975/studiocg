@@ -3,6 +3,7 @@ import mysql from 'mysql2/promise';
 import { config, newdatabase } from '../../../lib/db.js';
 
 export async function GET(req) {
+  let connection;
   try {
     const { searchParams } = new URL(req.url);
     const ScriptID = searchParams.get('ScriptID');
@@ -30,7 +31,7 @@ export async function GET(req) {
         ORDER BY GraphicsOrder
       `;
 
-    const connection = await mysql.createConnection(config);
+    connection = await mysql.createConnection(config);
     const [rows] = await connection.execute(query, [ScriptID]);
 
     return NextResponse.json({ items: rows });
@@ -40,5 +41,9 @@ export async function GET(req) {
       { error: 'Error fetching graphics' },
       { status: 500 }
     );
+  } finally {
+    if (connection) {
+      await connection.end();
+    }
   }
 }
