@@ -38,11 +38,14 @@ const Nrcs2 = () => {
     const [graphicsID, setGraphicsID] = useState("");
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
+    const [copyGridSelected, setCopyGridSelected] = useState(false);
+
+
+
     const [stopOnNext, setStopOnNext] = useState(false);
     const [live, setLive] = useState(false);
 
     const [loading, setLoading] = useState(false);  // Initialize loading state to true
-    const [loading2, setLoading2] = useState(false);  // Initialize loading state to true
     const [isLoading, setIsLoading] = useState(false);
 
     const [flashMessage, setFlashMessage] = useState("");
@@ -262,7 +265,6 @@ const Nrcs2 = () => {
 
                 const data = await res.json();
                 setGraphics(data.items);
-                console.log(data.items)
 
             } catch (error) {
                 if (error.name !== "AbortError") {
@@ -279,39 +281,39 @@ const Nrcs2 = () => {
         return () => controller.abort(); // Cleanup on component unmount or re-run
     }, [ScriptID]);
 
-    useEffect(() => {
-        if (!ScriptID2) {
-            setGraphics([]); // Clear graphics when ScriptID is falsy
-            return;
-        }
+    // useEffect(() => {
+    //     if (!ScriptID2) {
+    //         setGraphics([]); // Clear graphics when ScriptID is falsy
+    //         return;
+    //     }
 
-        const controller = new AbortController();
-        const signal = controller.signal;
+    //     const controller = new AbortController();
+    //     const signal = controller.signal;
 
-        async function fetchData() {
-            try {
-                setLoading2(true);
-                setGraphics2([]); // Clear graphics before fetching new data
-                const res = await fetch(addressmysql() + `/getGraphics?ScriptID=${ScriptID2}`, { signal });
-                if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-                const data = await res.json();
-                setGraphics2(data);
-            } catch (error) {
-                if (error.name !== "AbortError") {
-                    console.error("Error fetching graphics:", error);
-                    setGraphics2([]); // Ensure graphics is empty on error
-                }
-            } finally {
-                setLoading2(false);
-            }
-        }
+    //     async function fetchData() {
+    //         try {
+    //             setLoading2(true);
+    //             setGraphics2([]); // Clear graphics before fetching new data
+    //             const res = await fetch(addressmysql() + `/getGraphics?ScriptID=${ScriptID2}`, { signal });
+    //             if (!res.ok) {
+    //                 throw new Error(`HTTP error! Status: ${res.status}`);
+    //             }
+    //             const data = await res.json();
+    //             setGraphics2(data);
+    //         } catch (error) {
+    //             if (error.name !== "AbortError") {
+    //                 console.error("Error fetching graphics:", error);
+    //                 setGraphics2([]); // Ensure graphics is empty on error
+    //             }
+    //         } finally {
+    //             setLoading2(false);
+    //         }
+    //     }
 
-        fetchData();
+    //     fetchData();
 
-        return () => controller.abort(); // Cleanup on component unmount or re-run
-    }, [ScriptID2]);
+    //     return () => controller.abort(); // Cleanup on component unmount or re-run
+    // }, [ScriptID2]);
 
 
     const handleSelectionChange = (e) => {
@@ -750,6 +752,7 @@ const Nrcs2 = () => {
                                         setScriptID(val.ScriptID);
                                         setCurrentSlug(i);
                                         setCurrentSlugSlugName(val.SlugName);
+                                        setCopyGridSelected(false);
                                     }}
                                     key={i} style={{
                                         display: 'flex', color: currentSlug === i ? "white" : "black",
@@ -804,9 +807,10 @@ const Nrcs2 = () => {
                                 slugs2?.map((val, i) => (<div
                                     title={val.ScriptID}
                                     onClick={() => {
+                                        setCopyGridSelected(true);
                                         setScriptID(val.ScriptID);
                                         setCurrentSlug2(i);
-                                        // setCurrentSlugSlugName2(val.SlugName);
+                                        // setCurrentSlugSlugName(val.SlugName);
                                     }}
                                     key={i} style={{
                                         display: 'flex', color: currentSlug2 === i ? "white" : "black",
@@ -878,29 +882,28 @@ const Nrcs2 = () => {
                                                                     onClick={async () => {
                                                                         setGraphicsID(val.GraphicsID);
                                                                         setCurrentGraphics(i);
-                                                                        setCurrentGraphics2(-1);
+                                                                        // setCurrentGraphics2(-1);
                                                                         setPageName(val.GraphicsTemplate + "_copy");
-                                                                        console.log(graphics[i]);
-                                                                        getAllKeyValue();
+                                                                        // getAllKeyValue();
                                                                     }}
                                                                 >
                                                                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                                                         <span>{i + 1}</span>
+                                                                        {!copyGridSelected && <>
+                                                                            <span {...provided.dragHandleProps}>
+                                                                                <VscMove />
+                                                                            </span>
 
-                                                                        <span {...provided.dragHandleProps}>
-                                                                            <VscMove />
-                                                                        </span>
-
-                                                                        <button
-                                                                            style={{ cursor: "pointer" }}
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                deleteGraphic(val.GraphicsID);
-                                                                            }}
-                                                                        >
-                                                                            <VscTrash />
-                                                                        </button>
-
+                                                                            <button
+                                                                                style={{ cursor: "pointer" }}
+                                                                                onClick={(e) => {
+                                                                                    e.stopPropagation();
+                                                                                    deleteGraphic(val.GraphicsID);
+                                                                                }}
+                                                                            >
+                                                                                <VscTrash />
+                                                                            </button>
+                                                                        </>}
                                                                         <input
                                                                             style={{ width: 340 }}
                                                                             type="text"
