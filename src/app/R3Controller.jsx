@@ -102,6 +102,11 @@ export default function R3Controller() {
                                     <div
                                         key={scene.name}
                                         onClick={async () => {
+                                            setExports([]);
+                                            setExportValues({});
+                                            setanimations([])
+
+
                                             setSelectedScene(scene.name)
 
                                             const res = await fetch("/api/exports", {

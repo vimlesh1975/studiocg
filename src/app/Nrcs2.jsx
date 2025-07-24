@@ -856,7 +856,7 @@ const Nrcs2 = () => {
                             {slugs2?.length} slugs
                             <button onClick={copy}>Copy</button>
                         </div>
-                        <div style={{ height: 350, overflow: "auto", border: '1px solid red' }}>
+                        <div style={{ height: 380, overflow: "auto", border: '1px solid red' }}>
                             {slugs2 &&
                                 slugs2?.map((val, i) => (<div
                                     title={val.ScriptID}
