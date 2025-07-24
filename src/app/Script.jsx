@@ -13,7 +13,7 @@ export default function Home({ ScriptID, title, currentSlugSlugName }) {
                 const res = await fetch(`${addressmysql()}/getContent?ScriptID=${ScriptID}&NewsId=${title}`);
                 try {
                     const data = await res.json();
-                    setContent(data.Script);
+                    setContent(data.Script ?? '');
                 } catch (error) {
                     setContent('');
                 }
