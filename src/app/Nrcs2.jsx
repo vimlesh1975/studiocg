@@ -387,7 +387,7 @@ const Nrcs2 = () => {
             bb = 0;
         }
         else {
-            bb = aa.split("CG")[0];
+            bb = aa.split(" ")[0];
         }
 
         try {
