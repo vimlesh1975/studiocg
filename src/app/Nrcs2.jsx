@@ -504,7 +504,7 @@ const Nrcs2 = () => {
                 },
                 body: JSON.stringify({
                     cgValue,
-                    ScriptID,
+                    ScriptID: slugs[currentSlug].ScriptID,
                     NewsId: selectedRunOrderTitle,
                     selectedDate
                 }),

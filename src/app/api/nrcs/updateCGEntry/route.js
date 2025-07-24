@@ -10,6 +10,7 @@ export async function POST(req) {
         // console.log(body)
 
         const { cgValue, ScriptID, NewsId, selectedDate } = body;
+        console.log(cgValue, ScriptID, NewsId, selectedDate)
 
         // Emit data to frontend via websocket (if you’re using a socket client, wire it here)
         // e.g. socket.emit('updateCGEntry', { cgValue, ScriptID, NewsId, selectedDate });
