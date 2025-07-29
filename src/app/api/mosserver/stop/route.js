@@ -1,5 +1,5 @@
 // /api/mosserver/stop.js
-import { stopMosServer } from '../../../mosServer.js';
+import { stopMosServer } from '../../../lib/mosServer';
 
 export async function GET(req) {
     stopMosServer();
