@@ -2,14 +2,13 @@ import net from 'net';
 import { toUTF16BE, fromUTF16BE, compressed } from './common.js';
 import { MongoClient } from 'mongodb';
 
-let serverInstances = []; // For all ports
-
+const serverInstances = []; // Stores server instances for all ports
 const PORTS = [11540, 11541, 11542];
 const HOST = '0.0.0.0';
 
 export function startMosServer() {
     if (serverInstances.length > 0) {
-        console.log('MOS Servers already running.');
+        console.log('⚠️ MOS Servers already running.');
         return;
     }
 
@@ -34,7 +33,6 @@ export function startMosServer() {
 
                 } else if (xml.includes('<roReq>')) {
                     console.log('<roReq> received');
-
                     try {
                         const res = await fetch('http://localhost:3000/api/tcp/allWtVisiononroReq', {
                             method: 'POST',
@@ -50,7 +48,6 @@ export function startMosServer() {
 
                         await new Promise((resolve) => setTimeout(resolve, 5000));
 
-                        // Update MongoDB
                         const mongoUri = 'mongodb://localhost:27017';
                         const client = new MongoClient(mongoUri);
                         await client.connect();
@@ -60,6 +57,7 @@ export function startMosServer() {
                             { $set: { Color: null } }
                         );
                         await client.close();
+
                     } catch (error) {
                         console.error('❌ Error handling <roReq>:', error);
                     }
@@ -79,4 +77,19 @@ export function startMosServer() {
 
         serverInstances.push(server);
     }
+}
+
+export function stopMosServer() {
+    if (serverInstances.length === 0) {
+        console.log('ℹ️ No MOS servers to stop.');
+        return;
+    }
+
+    for (const server of serverInstances) {
+        server.close(() => {
+            console.log('🛑 MOS TCP Server closed.');
+        });
+    }
+
+    serverInstances.length = 0; // Clear all instances
 }

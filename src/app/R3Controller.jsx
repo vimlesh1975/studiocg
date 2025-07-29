@@ -1,6 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import WtVisionWebRtcViewer from './components/WtVisionWebRtcViewer'
+
+WtVisionWebRtcViewer
 
 
 
@@ -506,8 +509,11 @@ export default function R3Controller() {
                         ))}
                     </tbody>
                 </table>
-
+                <div  >
+                    <WtVisionWebRtcViewer />
+                </div>
             </div>
+
         </div>
 
 
