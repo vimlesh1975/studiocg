@@ -12,7 +12,7 @@ import R3Controller from './R3Controller'
 import Mongodb from './Mongodb'
 import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
-import Ticker from './Ticker'
+import Scroll from './components/Scroll'
 
 
 
@@ -37,7 +37,7 @@ export default function Page() {
         <Tab> MosApi</Tab>
         <Tab> Npmmosclient</Tab>
         <Tab> MosServer</Tab>
-        <Tab> Ticker</Tab>
+        <Tab> Scroll</Tab>
 
 
       </TabList>
@@ -69,7 +69,7 @@ export default function Page() {
         < MosServer />
       </TabPanel>
       <TabPanel>
-        < Ticker />
+        < Scroll />
       </TabPanel>
     </Tabs>
 
