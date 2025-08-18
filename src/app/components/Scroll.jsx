@@ -195,7 +195,7 @@ const Scroll = () => {
     const playticker = () => {
 
         const exportValues = {
-            vSpeed: "0.02",
+            vSpeed: `"${horizontalSpeed}"`,
             vStart: true,
             vStackCount: "1",
             // vStackSize: 1,
@@ -223,6 +223,14 @@ const Scroll = () => {
         })
     }
 
+    const onStopTicker = async () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_ticker', timeline: "Out" })
+        })
+    }
+
     return (
         <div>
             <div style={{ display: 'flex1' }}>
@@ -243,14 +251,15 @@ const Scroll = () => {
                     </button>
                     S:
                     <input
-                        style={{ width: "40px" }}
+                        style={{ width: "60px" }}
                         onChange={(e) => onhorizontalSpeedChange(e)}
                         type="number"
-                        min="0"
+                        min="-5"
                         max="5"
                         step="0.01"
                         value={horizontalSpeed}
                     />
+                    <button onClick={onStopTicker}> Stop Ticker</button>
 
                 </div>
                 <table border='0'>
