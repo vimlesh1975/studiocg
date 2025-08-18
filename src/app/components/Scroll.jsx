@@ -194,9 +194,9 @@ const Scroll = () => {
     const playticker = () => {
 
         const exportValues = {
-            vSpeed: 10.01,
+            vSpeed: "0.02",
             vStart: true,
-            vStackCount: 1,
+            vStackCount: "1",
             // vStackSize: 1,
             vReset: true,
             tText: '',
