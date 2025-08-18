@@ -9,6 +9,7 @@ import { generateUniqueId, createRect, shadowOptions, options, generalFileName, 
 // const aa = 'It seems as if the boat is in the air the water is so clean and transparent. All three Pahalgam attack terrorists killed in Operation Mahadev Amit Shah tells Parliament. Umngot to Chambal Indias 5 cleanest rivers and where they are located. Home Minister Amit Shah on Tuesday, July 29 confirmed that. Mahadev on July 28 were Pahalgam terrorist attack';
 
 const Scroll = () => {
+    const [horizontalSpeed, setHorizontalSpeed] = useState(0.02);
     const [ltr, setLtr] = useState(false);
 
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
@@ -213,6 +214,15 @@ const Scroll = () => {
             })
         })
     }
+    const onhorizontalSpeedChange = async (e) => {
+        setHorizontalSpeed(e.target.value);
+        const res = await fetch("/api/sendCommand", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ command: `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "vSpeed" SetValue "${e.target.value}"` })
+        })
+    }
+
     return (
         <div>
             <div style={{ display: 'flex1' }}>
@@ -226,13 +236,22 @@ const Scroll = () => {
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify({ command })
                                 })
-
                             }
-
                         }}
                     >
                         Send Command
                     </button>
+                    S:
+                    <input
+                        style={{ width: "40px" }}
+                        onChange={(e) => onhorizontalSpeedChange(e)}
+                        type="number"
+                        min="0"
+                        max="5"
+                        step="0.01"
+                        value={horizontalSpeed}
+                    />
+
                 </div>
                 <table border='0'>
                     <tbody >
