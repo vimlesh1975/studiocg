@@ -132,6 +132,7 @@ const Scroll = () => {
                 project: '25IN_ChannelPackaging_351.450',
                 scene: 'vimlesh_ticker',
                 timeline: 'In',
+                slot: "1",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
@@ -171,7 +172,7 @@ const Scroll = () => {
                 project: '25IN_ChannelPackaging_351.450',
                 scene: 'Breaking_LT',
                 timeline: 'In',
-                slot: "1",
+                slot: "2",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
@@ -199,7 +200,7 @@ const Scroll = () => {
                 project: '25IN_ChannelPackaging_351.450',
                 scene: 'Headlines',
                 timeline: 'In',
-                slot: "2",
+                slot: "3",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
@@ -209,6 +210,35 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'Headlines', timeline: "Out" })
+        })
+    }
+
+    const playHeadlinesBand = () => {
+        const exportValues = {
+            tText01: `${playerList1[0].data1}`,
+            tText02: `${playerList1[1].data1}`,
+            tText03: `${playerList1[2].data1}`,
+            tText04: `${playerList1[3].data1}`,
+            tText05: `${playerList1[4].data1}`,
+            tText06: `${playerList1[5].data1}`,
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'HeadlinesBand',
+                timeline: 'In',
+                slot: "4",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+    }
+    const stopHeadlinesBand = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'HeadlinesBand', timeline: "Out" })
         })
     }
 
@@ -261,6 +291,8 @@ const Scroll = () => {
                     <button onClick={playHeadlines}> Play Headlines</button>
                     <button onClick={stopHeadlines}> Stop Headlines</button>
 
+                    <button onClick={playHeadlinesBand}> Play Headlines Band</button>
+                    <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
 
                 </div>
                 <table border='0'>
