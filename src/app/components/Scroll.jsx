@@ -90,88 +90,7 @@ const Scroll = () => {
         // setNewplayerList1(updatedcanvasList);
     };
 
-    const setAsScrollText = () => {
 
-        var aa = '';
-        var left1 = 0;
-        var arr;
-        if (ltr) {
-            arr = [...playerList1].slice().reverse();
-        }
-        else {
-            arr = [...playerList1]
-        }
-
-        arr.forEach(element => {
-            const id = generateUniqueId({ type: "id" });
-            if (element.use1 === true) {
-                aa = ` ${delemeter} ` + element.data1;
-                const text = new fabric.IText(aa, {
-                    id: id,
-                    class: id,
-                    left: left1,
-                    ...scrollTextProperties, shadow: { ...shadowOptions, blur: 0 },
-                });
-                canvas.add(text);
-                canvas.setActiveObject(text);
-                canvas.renderAll();
-                left1 += canvas.getActiveObjects()[0].width;
-            };
-
-        });
-
-        canvas.requestRenderAll();
-    }
-
-    const setAsScrollText2 = () => {
-        var left1 = 0;
-
-        var arr;
-        if (ltr) {
-            arr = [...playerList1].slice().reverse();
-        }
-        else {
-            arr = [...playerList1]
-        }
-
-        arr.forEach((element, i) => {
-            if (element.use1 === true) {
-                fabric.FabricImage.fromURL(element.delemeterLogo).then(myImg => {
-                    if (myImg == null) {
-                        alert("Error!");
-                    } else {
-                        myImg.scaleToHeight(45);
-                        canvas.add(myImg);
-                        canvas.setActiveObject(myImg);
-                        const id = generateUniqueId({ type: "id" });
-
-                        myImg.set({
-                            id: id,
-                            class: id,
-                            left: left1,
-                            top: scrollTextProperties.top,
-                            crossOrigin: 'anonymous'
-                        })
-                        canvas.renderAll();
-                        left1 += 25 + canvas.getActiveObjects()[0].width * canvas.getActiveObjects()[0].scaleX;
-                        const id2 = generateUniqueId({ type: "id" });
-
-                        const text = new fabric.IText(element.data1, {
-                            id: id2,
-                            class: id2,
-                            left: left1,
-                            ...scrollTextProperties, shadow: { ...shadowOptions, blur: 0 },
-                        });
-                        canvas.add(text);
-                        canvas.setActiveObject(text);
-                        canvas.renderAll();
-                        left1 += 25 + canvas.getActiveObjects()[0].width;
-                    }
-                });
-            };
-        });
-        canvas.requestRenderAll();
-    }
 
     const addStrip = () => {
         createRect(canvas)
@@ -201,7 +120,7 @@ const Scroll = () => {
             // vStackSize: 1,
             vReset: true,
             tText: '',
-            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'0', 'tText': '${aa}'}]}`
+            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'0.02', 'tText': '${playerList1[0].data1}' }] }`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -214,6 +133,8 @@ const Scroll = () => {
             })
         })
     }
+
+
     const onhorizontalSpeedChange = async (e) => {
         setHorizontalSpeed(e.target.value);
         const res = await fetch("/api/sendCommand", {
@@ -238,13 +159,26 @@ const Scroll = () => {
                     <button onClick={playticker}>Play</button>
                     <button
                         onClick={async () => {
-                            for (let i = 0; i < 5; i++) {
-                                const res = await fetch("/api/sendCommand", {
+                            // for (let i = 0; i < 5; i++) {
+                            //     const res = await fetch("/api/sendCommand", {
+                            //         method: "POST",
+                            //         headers: { "Content-Type": "application/json" },
+                            //         body: JSON.stringify({ command })
+                            //     })
+                            // }
+                            var i = 1;
+                            setInterval(async () => {
+                                var aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0.02','tText':'${playerList1[i].data1}'}]}"`;
+                                await fetch("/api/sendCommand", {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({ command })
+                                    body: JSON.stringify({ command: aa })
                                 })
-                            }
+                                i++;
+                                if (i > playerList1.length - 1) {
+                                    i = 0
+                                }
+                            }, 1000);
                         }}
                     >
                         Send Command
