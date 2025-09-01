@@ -184,6 +184,33 @@ const Scroll = () => {
         })
     }
 
+    const playHeadlines = () => {
+        const exportValues = {
+            tText01: `${playerList1[0].data1}`,
+            tText02: `${playerList1[1].data1}`,
+            tText03: `${playerList1[2].data1}`,
+            tText04: `${playerList1[3].data1}`,
+            tText05: `${playerList1[4].data1}`,
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'Headlines',
+                timeline: 'In',
+                slot: "2",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+    }
+    const stopHeadlines = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'Headlines', timeline: "Out" })
+        })
+    }
 
     return (
         <div>
@@ -227,8 +254,13 @@ const Scroll = () => {
                         value={horizontalSpeed}
                     />
                     <button onClick={onStopTicker}> Stop Ticker</button>
+
                     <button onClick={playBreakingLt}> Play Breaking LT</button>
                     <button onClick={stopBreakingLt}> Stop Breaking LT</button>
+
+                    <button onClick={playHeadlines}> Play Headlines</button>
+                    <button onClick={stopHeadlines}> Stop Headlines</button>
+
 
                 </div>
                 <table border='0'>

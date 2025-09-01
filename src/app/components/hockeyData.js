@@ -98,4 +98,8 @@ export const iniBreakingNews = [
     { id: uuidv4(), data1: 'The accused lured the 57-year-old transporter.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'Have you heard? Pratik Gandhi was rejected.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'PM Narendra Modi sports saffron turban for celebrations', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'Modi, Putin hold bilateral meet in China', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'Match referee during Harbhajan-Sreesanth slapgate incident didnt expect video to be out', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'Trinamool Congress leader Sagarika Ghose also seemingly referred to Navarros statement.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'PM Modi suggested the creation of a Civilisational Dialogue Forum', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
 ]
