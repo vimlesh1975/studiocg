@@ -18,12 +18,13 @@ const Scroll = () => {
     const [delemeter, setDelemeter] = useState('⏺️')
     const [tickerRunning, setTickerRunning] = useState(false);
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
+    const [newsupdateRunning, setnewsupdateRunning] = useState(false);
 
     const bb = playerList1.map((val) => val.data1)
     const aa = bb.join(" ")
-    const command = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0','tText':'${aa}'}]}"`
     const indexRef = useRef(0);
     const indexRefbreakingsmallticker = useRef(0);
+    const indexRefnewsupdate = useRef(0);
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -273,6 +274,34 @@ const Scroll = () => {
 
     }
 
+    const playNewsUpdate = () => {
+        const exportValues = {
+            tTextA: `${playerList1[0].data1}`,
+            tTextB: `${playerList1[1].data1}`,
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'NewsUpdate',
+                timeline: 'In',
+                slot: "6",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+        setnewsupdateRunning(true);
+    }
+    const stopNewsUpdate = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'NewsUpdate', timeline: "Out" })
+        })
+        setnewsupdateRunning(false);
+
+    }
+
     return (
         <div>
             <div style={{ display: 'flex1' }}>
@@ -340,7 +369,7 @@ const Scroll = () => {
 
                                     const currentItem = playerList1[indexRefbreakingsmallticker.current];
                                     const exportValues = {
-                                        tTextA: `${currentItem.data1}`,
+                                        tTextA: `${currentItem?.data1}`,
                                     }
                                     const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                                     await fetch("/api/setExports", {
@@ -358,6 +387,43 @@ const Scroll = () => {
 
                     <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
+
+
+
+                    {
+                        newsupdateRunning && (
+                            <Timer
+                                interval={2000}
+                                callback={async () => {
+
+                                    await fetch("/api/timeline", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
+                                    })
+
+                                    const currentItem = playerList1[indexRefnewsupdate.current];
+                                    const exportValues = {
+                                        tTextA: `${currentItem?.data1}`,
+                                    }
+                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                    await fetch("/api/setExports", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", updates })
+                                    })
+
+                                    indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % playerList1.length;
+
+                                }}
+                            />
+                        )
+                    }
+
+                    <button onClick={playNewsUpdate}> Play NewsUpdate</button>
+                    <button onClick={stopNewsUpdate}> Stop NewsUpdate</button>
+
+
 
                 </div>
                 <table border='0'>
@@ -383,24 +449,7 @@ const Scroll = () => {
                     <table border='0'>
                         <tbody >
                             <tr>
-                                <td><button onClick={() => {
-                                    const selectedObject = canvas.getActiveObjects()[0];
-                                    if (selectedObject) {
-                                        setScrollTextProperties({
-                                            shadow: selectedObject.shadow,
-                                            top: selectedObject.top,
-                                            fill: selectedObject.fill,
-                                            fontFamily: selectedObject.fontFamily,
-                                            fontWeight: selectedObject.fontWeight,
-                                            fontSize: selectedObject.fontSize,
-                                            editable: true,
-                                            objectCaching: false,
-                                            textAlign: 'left',
-                                            stroke: selectedObject.stroke,
-                                            strokeWidth: selectedObject.strokeWidth,
-                                        })
-                                    }
-                                }}>Set text Properties as selected object</button></td>
+                                <td></td>
                                 <td></td>
                                 <td>Delemeter for scroll text</td>
                                 <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
@@ -436,13 +485,8 @@ const Scroll = () => {
                                 <td> <button onClick={() => {
                                     const updateddelemeterlogo = playerList1.map((val, i) => ({ ...val, delemeterLogo: playerList1[0].delemeterLogo }));
                                     setPlayerList1(updateddelemeterlogo);
-                                    // setNewplayerList1(updateddelemeterlogo)
-
-
                                 }}>Set all logo as first logo</button>
-                                    <button onClick={addStrip}>Add Strip with id scroll1_strip</button>
-                                    <button onClick={addStrip2}>Add Strip with id scroll2_strip</button>
-                                    <button onClick={deleteScroll}>Delete Scroll</button>
+
                                 </td>
                             </tr>
                         </tbody>
