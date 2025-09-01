@@ -18,6 +18,7 @@
         <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions DirectionSimple="X" Reset="True" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
           <NodeTransform PivotType="Absolute">
+            <Position Y="-2" />
             <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
           </NodeTransform>
           <Extensions />
@@ -52,6 +53,19 @@
             </ScrollItem>
           </Children>
         </Scroll>
+        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" DisplayColor="11119017">
+          <GeometryOptions />
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="21321313-a87f-4206-b918-600b7e66deeb" TextureLayerId="70ca7502-351a-4d3b-8699-52bd9a14b5fc" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <NodeTransform>
+            <Position Y="-1.93" />
+            <Scale X="7.760001" Y="0.2400001" />
+          </NodeTransform>
+          <Extensions />
+        </Quad>
       </Children>
     </SceneNode>
   </SceneLayer>
@@ -60,7 +74,7 @@
     <TextureTextFontStyle Id="8a7f1551-ca05-42eb-87dd-0f5352155af7" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <TextureTextFontStyle Id="e481c4a4-00b1-4300-9208-47d1cc21840a" Name="SceneTextureTextFontStyle2" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <TextureTextFontStyle Id="4ad5002a-b517-4dfd-9a54-26ec23f6fcd9" Name="SceneTextureTextFontStyle3" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
-    <BaseMaterial Name="Material1" FolderPath="" Id="21321313-a87f-4206-b918-600b7e66deeb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="b81919" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material1" FolderPath="" Id="21321313-a87f-4206-b918-600b7e66deeb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="1f0404" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
     <TextureLayer Name="Texture1" FolderPath="" Id="70ca7502-351a-4d3b-8699-52bd9a14b5fc" TextureBlending="Multiply">
       <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
     </TextureLayer>

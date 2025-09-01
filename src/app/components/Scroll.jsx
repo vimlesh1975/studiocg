@@ -202,7 +202,7 @@ const Scroll = () => {
                 project: '25IN_ChannelPackaging_351.450',
                 scene: 'Headlines',
                 timeline: 'In',
-                slot: "3",
+                slot: "0",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
@@ -335,7 +335,7 @@ const Scroll = () => {
                                     await fetch("/api/timeline", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In" })
+                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
                                     })
 
                                     const currentItem = playerList1[indexRefbreakingsmallticker.current];

@@ -3,7 +3,7 @@ import { getR3Client } from '../../lib/r3client.js'
 let lastScene = null;
 
 export async function POST(req) {
-    const { project, scene, timeline } = await req.json()
+    const { project, scene, timeline, slot = "0" } = await req.json()
     console.log(project, scene, timeline)
     const r3 = await getR3Client();
 
@@ -25,7 +25,7 @@ export async function POST(req) {
         await r3.sendCommand(`engine unloadscene "${project}/${scene}"`)
     }
     else {
-        await sceneObj.takeOnline("0") //must be string
+        await sceneObj.takeOnline(slot) //must be string
         await sceneObj.playTimeline(timeline)
 
     }
