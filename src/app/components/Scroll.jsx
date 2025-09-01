@@ -16,12 +16,14 @@ const Scroll = () => {
 
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [delemeter, setDelemeter] = useState('⏺️')
-    const [tickerRunning, setTickerRunning] = useState(false)
+    const [tickerRunning, setTickerRunning] = useState(false);
+    const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
 
     const bb = playerList1.map((val) => val.data1)
     const aa = bb.join(" ")
     const command = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0','tText':'${aa}'}]}"`
     const indexRef = useRef(0);
+    const indexRefbreakingsmallticker = useRef(0);
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -242,6 +244,35 @@ const Scroll = () => {
         })
     }
 
+
+    const playBreakingSmallTicker = () => {
+        const exportValues = {
+            tTextA: `${playerList1[0].data1}`,
+            tTextB: `${playerList1[1].data1}`,
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'BreakingSmall_Ticker',
+                timeline: 'In',
+                slot: "5",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+        setbreakingsmalltickerRunning(true);
+    }
+    const stopplayBreakingSmallTicker = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'BreakingSmall_Ticker', timeline: "Out" })
+        })
+        setbreakingsmalltickerRunning(false);
+
+    }
+
     return (
         <div>
             <div style={{ display: 'flex1' }}>
@@ -267,8 +298,8 @@ const Scroll = () => {
                                 }
 
                                 // update index safely
-                                indexRef.current =
-                                    (indexRef.current + 1) % playerList1.length;
+                                indexRef.current = (indexRef.current + 1) % playerList1.length;
+
                             }}
                         />
                     )}
@@ -293,6 +324,40 @@ const Scroll = () => {
 
                     <button onClick={playHeadlinesBand}> Play Headlines Band</button>
                     <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
+
+
+                    {
+                        breakingsmalltickerRunning && (
+                            <Timer
+                                interval={2000}
+                                callback={async () => {
+
+                                    await fetch("/api/timeline", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In" })
+                                    })
+
+                                    const currentItem = playerList1[indexRefbreakingsmallticker.current];
+                                    const exportValues = {
+                                        tTextA: `${currentItem.data1}`,
+                                    }
+                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                    await fetch("/api/setExports", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", updates })
+                                    })
+
+                                    indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % playerList1.length;
+
+                                }}
+                            />
+                        )
+                    }
+
+                    <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
+                    <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
 
                 </div>
                 <table border='0'>
