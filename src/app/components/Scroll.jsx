@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { iniBreakingNews } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
+import Timer from './Timer';
+
 // import { isEqual } from "lodash";
 import { generateUniqueId, createRect, shadowOptions, options, generalFileName, saveFile } from './common'
 
@@ -14,11 +16,12 @@ const Scroll = () => {
 
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [delemeter, setDelemeter] = useState('⏺️')
+    const [tickerRunning, setTickerRunning] = useState(false)
 
     const bb = playerList1.map((val) => val.data1)
     const aa = bb.join(" ")
     const command = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0','tText':'${aa}'}]}"`
-
+    const indexRef = useRef(0);
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -150,39 +153,69 @@ const Scroll = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_ticker', timeline: "Out" })
         })
+        setTickerRunning(false);
+
     }
+
+    const playBreakingLt = () => {
+        const exportValues = {
+            tText01: `${playerList1[0].data1}`,
+            tText02: `${playerList1[1].data1}`,
+            tText03: `${playerList1[2].data1}`,
+            tText04: `${playerList1[3].data1}`,
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'Breaking_LT',
+                timeline: 'In',
+                slot: "1",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+    }
+    const stopBreakingLt = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'Breaking_LT', timeline: "Out" })
+        })
+    }
+
 
     return (
         <div>
             <div style={{ display: 'flex1' }}>
                 <div>
-                    <button onClick={playticker}>Play</button>
-                    <button
-                        onClick={async () => {
-                            // for (let i = 0; i < 5; i++) {
-                            //     const res = await fetch("/api/sendCommand", {
-                            //         method: "POST",
-                            //         headers: { "Content-Type": "application/json" },
-                            //         body: JSON.stringify({ command })
-                            //     })
-                            // }
-                            var i = 1;
-                            setInterval(async () => {
-                                var aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0.02','tText':'${playerList1[i].data1}'}]}"`;
-                                await fetch("/api/sendCommand", {
-                                    method: "POST",
-                                    headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify({ command: aa })
-                                })
-                                i++;
-                                if (i > playerList1.length - 1) {
-                                    i = 0
+                    <button onClick={() => {
+                        playticker();
+                        setTickerRunning(true);
+                    }}>Play</button>
+                    {tickerRunning && (
+                        <Timer
+                            interval={1000}
+                            callback={async () => {
+                                const currentItem = playerList1[indexRef.current];
+
+                                if (currentItem) {
+                                    const aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0.02','tText':'${currentItem.data1}'}]}"`;
+
+                                    await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: aa }),
+                                    });
                                 }
-                            }, 1000);
-                        }}
-                    >
-                        Send Command
-                    </button>
+
+                                // update index safely
+                                indexRef.current =
+                                    (indexRef.current + 1) % playerList1.length;
+                            }}
+                        />
+                    )}
+
                     S:
                     <input
                         style={{ width: "60px" }}
@@ -194,6 +227,8 @@ const Scroll = () => {
                         value={horizontalSpeed}
                     />
                     <button onClick={onStopTicker}> Stop Ticker</button>
+                    <button onClick={playBreakingLt}> Play Breaking LT</button>
+                    <button onClick={stopBreakingLt}> Stop Breaking LT</button>
 
                 </div>
                 <table border='0'>
@@ -369,6 +404,7 @@ const Scroll = () => {
                     </DragDropContext>
                 </div>
             </div>
+
 
         </div>
     )

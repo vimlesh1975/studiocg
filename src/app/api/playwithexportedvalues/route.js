@@ -1,6 +1,6 @@
 import { getR3Client } from '../../lib/r3client.js'
 export async function POST(req) {
-    const { project, scene, timeline, exportedvalues } = await req.json()
+    const { project, scene, timeline, exportedvalues, slot = "0" } = await req.json()
     console.log(project, scene, timeline)
 
     const r3 = await getR3Client();
@@ -15,7 +15,7 @@ export async function POST(req) {
         for (const { name, value } of exportedvalues) {
             await sceneObj.setExport(name, value)
         }
-        await sceneObj.takeOnline("0")
+        await sceneObj.takeOnline(slot);
         await sceneObj.playTimeline("In")
 
 
