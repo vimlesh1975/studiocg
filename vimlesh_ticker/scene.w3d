@@ -18,7 +18,8 @@
         <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions DirectionSimple="X" Reset="True" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
           <NodeTransform PivotType="Absolute">
-            <Position Y="-2" />
+            <!-- <Position Y="-2" /> -->
+            <Position Y="-1.87" />
             <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
           </NodeTransform>
           <Extensions />
@@ -61,7 +62,8 @@
             </FaceMappingList>
           </Primitive>
           <NodeTransform>
-            <Position Y="-1.93" />
+            <!-- <Position Y="-1.93" /> -->
+            <Position Y="-1.8" />
             <Scale X="7.760001" Y="0.2400001" />
           </NodeTransform>
           <Extensions />
