@@ -12,11 +12,13 @@ import R3Controller from './R3Controller'
 import Mongodb from './Mongodb'
 import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
-import Scroll from './components/Scroll'
+// import Scroll from './components/Scroll'
 
+import dynamic from "next/dynamic";
 
-
-
+const Scroll = dynamic(() => import("./components/Scroll"), {
+  ssr: false,
+});
 
 
 export default function Page() {

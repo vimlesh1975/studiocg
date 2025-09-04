@@ -11,7 +11,7 @@ import { MongoClient } from 'mongodb';
 export async function GET() {
 
 
-  const mongoUri = "mongodb://localhost:27017";
+  const mongoUri = process.env.MONGOURI;// "mongodb://localhost:27017";
   const MongoClient1 = new MongoClient(mongoUri);
   await MongoClient1.connect();
 
