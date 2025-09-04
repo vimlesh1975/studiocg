@@ -24,7 +24,7 @@ const Scroll = () => {
 
     const bb = playerList1.map((val) => val.data1)
     const aa = bb.join(" ")
-    const indexRef = useRef(0);
+    const indexRefTicker = useRef(0);
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
 
@@ -316,7 +316,7 @@ const Scroll = () => {
                         <Timer
                             interval={1000}
                             callback={async () => {
-                                const currentItem = playerList1[indexRef.current];
+                                const currentItem = playerList1[indexRefTicker.current];
 
                                 if (currentItem) {
                                     const aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0.02','tText':'${currentItem.data1}'}]}"`;
@@ -329,7 +329,7 @@ const Scroll = () => {
                                 }
 
                                 // update index safely
-                                indexRef.current = (indexRef.current + 1) % playerList1.length;
+                                indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
 
                             }}
                         />
