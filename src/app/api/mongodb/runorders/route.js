@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { MongoClient } from 'mongodb';
 
-const uri = 'mongodb://localhost:27017';
+const uri = process.env.MONGOURI;;
 const dbName = 'slidecg';
 
 export async function GET() {

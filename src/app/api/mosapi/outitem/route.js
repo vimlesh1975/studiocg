@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(req) {
     const body = await req.json();
     console.log("🔗 Request Body:", body);
-    const url = `http://localhost:9900/api/graphics/mos/out/${body.itemId}`;
+    const url = `http://${process.env.R3_HOST}:9900/api/graphics/mos/out/${body.itemId}`;
 
     try {
         const token = 'your-valid-auth-token'; // replace with actual token

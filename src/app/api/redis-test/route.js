@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from 'redis';
 
 export async function GET() {
-    const client = createClient({ url: 'redis://127.0.0.1:6379' });
+    const client = createClient({ url: process.env.REDDISURI });
 
     client.on('error', (err) => console.error('Redis Client Error', err));
 
