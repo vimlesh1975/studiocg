@@ -359,6 +359,7 @@ const Scroll = () => {
                     <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
 
 
+
                     {
                         breakingsmalltickerRunning && (
                             <Timer
@@ -427,7 +428,16 @@ const Scroll = () => {
                     <button onClick={playNewsUpdate}> Play NewsUpdate</button>
                     <button onClick={stopNewsUpdate}> Stop NewsUpdate</button>
 
-
+                    <button
+                        onClick={() => {
+                            fetch("/api/unloadAllScenes", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                            })
+                        }}
+                    >
+                        🧹 Unload All Scenes
+                    </button>
 
                 </div>
                 <table border='0'>
