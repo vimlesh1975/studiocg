@@ -120,7 +120,7 @@ const Scroll = () => {
     }
 
     const playticker = () => {
-
+        indexRefTicker.current = 0;
         const exportValues = {
             vSpeed: `"${horizontalSpeed}"`,
             vStart: true,
@@ -249,6 +249,7 @@ const Scroll = () => {
 
 
     const playBreakingSmallTicker = () => {
+        indexRefbreakingsmallticker.current = 0;
         const exportValues = {
             tTextA: `${playerList1[0].data1}`,
             tTextB: `${playerList1[1].data1}`,
@@ -277,6 +278,7 @@ const Scroll = () => {
     }
 
     const playNewsUpdate = () => {
+        indexRefnewsupdate.current = 0;
         const exportValues = {
             tTextA: `${playerList1[0].data1}`,
             tTextB: `${playerList1[1].data1}`,
@@ -360,7 +362,7 @@ const Scroll = () => {
                     {
                         breakingsmalltickerRunning && (
                             <Timer
-                                interval={2000}
+                                interval={3000}
                                 callback={async () => {
 
                                     await fetch("/api/timeline", {
@@ -395,7 +397,7 @@ const Scroll = () => {
                     {
                         newsupdateRunning && (
                             <Timer
-                                interval={2000}
+                                interval={3000}
                                 callback={async () => {
 
                                     await fetch("/api/timeline", {
