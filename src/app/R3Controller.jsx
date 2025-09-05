@@ -21,6 +21,7 @@ export default function R3Controller() {
     const [commandResponse, setCommandResponse] = useState(``)
     const [listloadedscenes, setListloadedscenes] = useState([])
     const [searchQuery, setSearchQuery] = useState('');
+    const [yPosition, setYPosition] = useState(0);
 
 
 
@@ -509,6 +510,17 @@ export default function R3Controller() {
                         ))}
                     </tbody>
                 </table>
+                <div>
+                    set Y Position <input type="Number" step={0.1} value={yPosition} onChange={async (e) => {
+                        setYPosition(e.target.value);
+                        const res = await fetch("/api/sendCommand", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ command: `scene "${selectedProject}/${selectedScene}" nodes set "RootNode" "Transform.Position" "0,${e.target.value},0"` })
+                        })
+
+                    }} />
+                </div>
                 <div  >
                     {/* <WtVisionWebRtcViewer /> */}
                 </div>
