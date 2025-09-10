@@ -324,17 +324,6 @@ const Scroll = () => {
                     />
                     <button onClick={onStopTicker}> Stop Ticker</button>
 
-                    <button onClick={playBreakingLt}> Play Breaking LT</button>
-                    <button onClick={stopBreakingLt}> Stop Breaking LT</button>
-
-                    <button onClick={playHeadlines}> Play Headlines</button>
-                    <button onClick={stopHeadlines}> Stop Headlines</button>
-
-                    <button onClick={playHeadlinesBand}> Play Headlines Band</button>
-                    <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
-
-
-
                     {
                         breakingsmalltickerRunning && (
                             <Timer
@@ -367,6 +356,19 @@ const Scroll = () => {
 
                     <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
+
+
+
+                    <button onClick={playBreakingLt}> Play Breaking LT</button>
+                    <button onClick={stopBreakingLt}> Stop Breaking LT</button>
+
+                    <button onClick={playHeadlines}> Play Headlines</button>
+                    <button onClick={stopHeadlines}> Stop Headlines</button>
+
+                    <button onClick={playHeadlinesBand}> Play Headlines Band</button>
+                    <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
+
+
 
 
 
