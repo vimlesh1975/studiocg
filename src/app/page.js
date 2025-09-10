@@ -14,6 +14,8 @@ import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
 // import Scroll from './components/Scroll'
 
+const aa1 = 0;
+
 import dynamic from "next/dynamic";
 
 const Scroll = dynamic(() => import("./components/Scroll"), {

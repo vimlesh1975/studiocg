@@ -7,9 +7,9 @@ import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
 import Timer from './Timer';
 
-// import { isEqual } from "lodash";
-import { generateUniqueId, createRect, shadowOptions, options, generalFileName, saveFile } from './common'
-// const aa = 'It seems as if the boat is in the air the water is so clean and transparent. All three Pahalgam attack terrorists killed in Operation Mahadev Amit Shah tells Parliament. Umngot to Chambal Indias 5 cleanest rivers and where they are located. Home Minister Amit Shah on Tuesday, July 29 confirmed that. Mahadev on July 28 were Pahalgam terrorist attack';
+import { generalFileName, saveFile } from './common'
+const vTrailingSpace = 0.1;
+
 
 const Scroll = () => {
 
@@ -33,7 +33,6 @@ const Scroll = () => {
         if (result.destination != null) {
             aa.splice(result.destination?.index, 0, aa.splice(result.source?.index, 1)[0])
             setPlayerList1(aa);
-            // setNewplayerList1(aa)
         }
     }
 
@@ -44,13 +43,11 @@ const Scroll = () => {
         const aa = [...playerList1]
         aa.splice(parseInt(e.target.getAttribute('key1')), 1);
         setPlayerList1(aa);
-        // setNewplayerList1(aa)
     }
     const addPage = e => {
         const aa = [...playerList1]
         aa.splice(parseInt(e.target.getAttribute('key1')) + 1, 0, { id: uuidv4(), data1: '', use1: false });
         setPlayerList1(aa);
-        // setNewplayerList1(aa)
 
     }
 
@@ -99,26 +96,6 @@ const Scroll = () => {
     };
 
 
-
-    const addStrip = () => {
-        createRect(canvas)
-        canvas.getActiveObjects()[0].set({ id: 'scroll1_strip' })
-    }
-    const addStrip2 = () => {
-        createRect(canvas)
-        canvas.getActiveObjects()[0].set({ id: 'scroll2_strip' })
-    }
-    const deleteScroll = () => {
-        const aa = canvas.getObjects();
-        aa.forEach((element) => {
-            if ((element.type === 'image') || (element.type === 'i-text')) {
-                canvas.remove(element);
-            }
-        });
-        canvas.discardActiveObject();
-        canvas.requestRenderAll();
-    }
-
     const playticker = () => {
         indexRefTicker.current = 0;
         const exportValues = {
@@ -128,7 +105,7 @@ const Scroll = () => {
             // vStackSize: 1,
             vReset: true,
             tText: '',
-            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'0.02', 'tText': '${playerList1[0].data1}' }] }`,
+            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1}' }] }`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -316,12 +293,12 @@ const Scroll = () => {
                     }}>Play</button>
                     {tickerRunning && (
                         <Timer
-                            interval={1000}
+                            interval={2000}
                             callback={async () => {
                                 const currentItem = playerList1[indexRefTicker.current];
 
                                 if (currentItem) {
-                                    const aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'0.02','tText':'${currentItem.data1}'}]}"`;
+                                    const aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
 
                                     await fetch("/api/sendCommand", {
                                         method: "POST",

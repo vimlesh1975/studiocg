@@ -1,17 +1,17 @@
 {
-    "extends": [
-        "next/core-web-vitals"
-    ],
-    "rules": {
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "no-unused-vars": [
-            "warn",
-            {
-                "vars": "all",
-                "args": "after-used",
-                "ignoreRestSiblings": true
+    "extends": "next/core-web-vitals",
+    "overrides": [
+        {
+            "files": [
+                "*.js",
+                "*.jsx",
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                // Example: force unused vars to show as errors
+                "no-unused-vars": "warn"
             }
-        ]
-    }
+        }
+    ]
 }
