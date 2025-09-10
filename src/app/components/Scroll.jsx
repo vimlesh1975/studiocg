@@ -13,7 +13,7 @@ const vTrailingSpace = 0.1;
 
 const Scroll = () => {
 
-    const [horizontalSpeed, setHorizontalSpeed] = useState(0.02);
+    const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [ltr, setLtr] = useState(false);
 
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
@@ -22,7 +22,7 @@ const Scroll = () => {
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
 
-    const indexRefTicker = useRef(0);
+    const indexRefTicker = useRef(1);
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
 
@@ -94,9 +94,9 @@ const Scroll = () => {
 
 
     const playticker = () => {
-        indexRefTicker.current = 0;
+        indexRefTicker.current = 1;
         const exportValues = {
-            vSpeed: `"${horizontalSpeed}"`,
+            vSpeed: `${horizontalSpeed}`,
             vStart: true,
             vStackCount: "1",
             // vStackSize: 1,
@@ -292,6 +292,7 @@ const Scroll = () => {
                         <Timer
                             interval={2000}
                             callback={async () => {
+                                console.log(indexRefTicker.current)
                                 const currentItem = playerList1[indexRefTicker.current];
 
                                 if (currentItem) {
