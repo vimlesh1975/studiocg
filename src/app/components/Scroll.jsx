@@ -290,9 +290,9 @@ const Scroll = () => {
                     }}>Play</button>
                     {tickerRunning && (
                         <Timer
-                            interval={2000}
+                            interval={3000}
                             callback={async () => {
-                                console.log(indexRefTicker.current)
+                                // console.log(indexRefTicker.current)
                                 const currentItem = playerList1[indexRefTicker.current];
 
                                 if (currentItem) {
