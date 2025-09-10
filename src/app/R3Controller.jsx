@@ -155,8 +155,8 @@ export default function R3Controller() {
 
                 <div>
                     <h3>Variables</h3>
-                    {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
-
+                    Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+                    {`  Scene= ${selectedProject}/${selectedScene}`}
                     {exports.length > 0 && (
                         <div style={{ height: 850, overflow: 'auto' }}>
 

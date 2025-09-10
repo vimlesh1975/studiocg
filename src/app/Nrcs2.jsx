@@ -1324,8 +1324,11 @@ const Nrcs2 = () => {
                                         <div style={{ border: '1px solid red', width: 850 }}>
                                             <div>
                                                 <h3>Variables</h3>
-                                                <button onClick={addNew}>Attach selected template to selected slug</button>
-                                                {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+                                                <button onClick={addNew}>Attach selected template to selected slug</button><br />
+                                                {/* {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2} */}
+
+                                                Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+                                                {`  Scene= ${selectedProject}/${selectedScene}`}
 
                                                 {exports.length > 0 && (
                                                     <div style={{ height: 850, overflow: 'auto' }}>
