@@ -854,7 +854,7 @@ const Nrcs2 = () => {
                                     ))}
                             </select>
                             {slugs2?.length} slugs
-                            <button onClick={copy}>Copy</button>
+                            <button onClick={copy}>Copy to above selected slug</button>
                         </div>
                         <div style={{ height: 380, overflow: "auto", border: '1px solid red' }}>
                             {slugs2 &&
