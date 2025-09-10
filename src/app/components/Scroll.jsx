@@ -22,7 +22,6 @@ const Scroll = () => {
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
 
-    const bb = playerList1.map((val) => val.data1)
     const indexRefTicker = useRef(0);
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
