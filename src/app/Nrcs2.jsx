@@ -34,7 +34,6 @@ const Nrcs2 = () => {
     const [graphics, setGraphics] = useState([]);
     const [graphics2, setGraphics2] = useState([]);
     const [currentGraphics, setCurrentGraphics] = useState(0);
-    const [currentGraphics2, setCurrentGraphics2] = useState(0);
     const [graphicsID, setGraphicsID] = useState("");
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
@@ -46,9 +45,9 @@ const Nrcs2 = () => {
     const [live, setLive] = useState(false);
 
     const [loading, setLoading] = useState(false);  // Initialize loading state to true
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    const [flashMessage, setFlashMessage] = useState("");
+    // const [flashMessage, setFlashMessage] = useState("");
     const [selectedDate, setSelectedDate] = useState(() => {
         const today = new Date();
         const yyyy = today.getFullYear();
@@ -1709,8 +1708,8 @@ const Nrcs2 = () => {
                 setStopOnNext={setStopOnNext}
             />
         </div>
-        {isLoading && <Spinner />}
-        {flashMessage && <FlashMessage message={flashMessage} />}
+        {/* {isLoading && <Spinner />} */}
+        {/* {flashMessage && <FlashMessage message={flashMessage} />} */}
 
     </div >);
 };
