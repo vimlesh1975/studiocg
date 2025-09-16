@@ -425,7 +425,7 @@ const Nrcs2 = () => {
                 GraphicsTemplate: pageName,
                 gfxpart2: `${selectedProject}/${selectedScene}`,
                 // gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
-                gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
+                gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key1 + "," + allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
 
             },
         ];
@@ -447,7 +447,8 @@ const Nrcs2 = () => {
                     GraphicsTemplate: pageName,
                     gfxpart2: `${selectedProject}/${selectedScene}`,
                     // gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
-                    gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
+                    // gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
+                    gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key1 + "," + allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
 
                 }),
             });

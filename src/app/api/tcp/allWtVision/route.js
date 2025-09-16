@@ -51,7 +51,7 @@ export async function POST(req) {
     console.log("✅ Rows fetched:", rows.length);
 
     // Mongo
-    const mongoUri = "mongodb://localhost:27017";
+    const mongoUri = process.env.MONGOURI //"mongodb://localhost:27017";
     MongoClient1 = new MongoClient(mongoUri);
     await MongoClient1.connect();
 
@@ -83,7 +83,8 @@ export async function POST(req) {
           const itemID = `item_${storyID}_${j + 1}`;
 
 
-          const objID = `${process.env.PROJECT_NAME},${graphic.gfxpart3}`;
+          // const objID = `${process.env.PROJECT_NAME},${graphic.gfxpart3}`;
+          const objID = `${graphic.gfxpart3}`;
           const graphicID = objID;
           const mosID = 'SAMVAD';
           const itemType = 'GraphicPage';
