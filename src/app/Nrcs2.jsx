@@ -424,7 +424,9 @@ const Nrcs2 = () => {
                 ScriptID,
                 GraphicsTemplate: pageName,
                 gfxpart2: `${selectedProject}/${selectedScene}`,
-                gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
+                // gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
+                gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
+
             },
         ];
         setGraphics(newGraphics);
@@ -444,7 +446,9 @@ const Nrcs2 = () => {
                     ScriptID,
                     GraphicsTemplate: pageName,
                     gfxpart2: `${selectedProject}/${selectedScene}`,
-                    gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
+                    // gfxpart3: allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2,
+                    gfxpart3: allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2,
+
                 }),
             });
         } catch (error) {
@@ -1326,7 +1330,9 @@ const Nrcs2 = () => {
                                                 <button onClick={addNew}>Attach selected template to selected slug</button><br />
                                                 {/* {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2} */}
 
-                                                Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+                                                {/* Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2} */}
+                                                Graphics ID=  {allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2}
+
                                                 {`  Scene= ${selectedProject}/${selectedScene}`}
 
                                                 {exports.length > 0 && (

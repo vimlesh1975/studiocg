@@ -32,6 +32,7 @@ export default function R3Controller() {
             .then((data) => {
                 setData(data.projectData);
                 setAllDocs(data.allDocs || []);
+                // console.log(data.allDocs)
                 setSelectedProject(data.projectData[0]?.name || null)
             })
             .catch((err) => console.error("Failed to fetch structure", err)
@@ -155,7 +156,8 @@ export default function R3Controller() {
 
                 <div>
                     <h3>Variables</h3>
-                    Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2}
+                    {/* Graphics ID=  {allDocs?.find(doc => doc.SceneFullName === `${selectedProject}/${selectedScene}`)?._id?.Key2} */}
+                    Graphics ID=  {allDocs?.find(doc => doc.SceneFullName.split('/')[1] === `${selectedScene}`)?._id?.Key2}
                     {`  Scene= ${selectedProject}/${selectedScene}`}
                     {exports.length > 0 && (
                         <div style={{ height: 850, overflow: 'auto' }}>
