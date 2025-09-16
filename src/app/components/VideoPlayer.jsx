@@ -35,10 +35,10 @@ const VideoPlayer = () => {
 
     return (
         <div>
+            <h3>Open only from c:/casparcg/_media</h3>
             <input type="file" onChange={handleFileChange} />
             {file && <button onClick={playFile}>Play file</button>}
             <button onClick={stopFile}>Stop file</button>
-            {file?.name}
         </div>
     )
 }
