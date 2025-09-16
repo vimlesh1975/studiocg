@@ -12,6 +12,7 @@ import R3Controller from './R3Controller'
 import Mongodb from './Mongodb'
 import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
+import VideoPlayer from './components/VideoPlayer';
 // import Scroll from './components/Scroll'
 
 const aa1 = 0;
@@ -33,6 +34,7 @@ export default function Page() {
       forceRenderTabPanel={true}
     >
       <TabList>
+        <Tab> Video Player</Tab>
         <Tab> Scroll</Tab>
         <Tab> NRCS</Tab>
         <Tab> Mongodb</Tab>
@@ -45,6 +47,9 @@ export default function Page() {
 
 
       </TabList>
+      <TabPanel>
+        < VideoPlayer />
+      </TabPanel>
       <TabPanel>
         < Scroll />
       </TabPanel>
