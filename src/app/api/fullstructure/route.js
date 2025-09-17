@@ -20,6 +20,35 @@ export async function GET() {
   const allDocs = await collection.find().toArray();
   // console.log(allDocs)
 
+  var allDocs2 = []
+
+  const adminDb = MongoClient1.db().admin();
+  const { databases } = await adminDb.listDatabases();
+
+  const results = [];
+
+  for (const dbInfo of databases) {
+    const dbName = dbInfo.name;
+    const db = MongoClient1.db(dbName);
+    const collections = await db.listCollections().toArray();
+    if (collections.some(c => c.name === "GraphicTemplates")) {
+      results.push(dbName);
+    }
+  }
+
+  for (const result of results) {
+    const db = MongoClient1.db(result);
+    const collection = db.collection('Graphics');
+    const aa = await collection.find().toArray();
+    allDocs2.push(...aa)
+  }
+
+  const sceneNames = allDocs2
+    .filter(doc => doc.SceneFullName && doc.SceneFullName.includes('25IN'))
+    .map(doc => doc.SceneFullName);
+
+  console.log(sceneNames)
+
 
 
   const r3 = await getR3Client()
@@ -62,5 +91,7 @@ export async function GET() {
     })
   }
 
-  return NextResponse.json({ projectData, allDocs })
+  // console.log(allDocs2)
+  // return NextResponse.json({ projectData, allDocs })
+  return NextResponse.json({ projectData, allDocs: allDocs2 })
 }
