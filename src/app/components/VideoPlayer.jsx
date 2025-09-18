@@ -40,7 +40,7 @@ const VideoPlayer = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'testhtml', timeline: "Out" })
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'testhtml2', timeline: "Out" })
         })
     }
 
@@ -53,7 +53,7 @@ const VideoPlayer = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 project: '25IN_ChannelPackaging_351.450',
-                scene: 'testhtml',
+                scene: 'testhtml2',
                 timeline: 'In',
                 slot: "-1",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
