@@ -18,11 +18,12 @@
         <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions DirectionSimple="X" Reset="True" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
           <NodeTransform PivotType="Absolute">
-            <!-- <Position Y="-2" /> -->
-            <Position Y="-1.87" />
+            <Position Y="-2" />
             <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
           </NodeTransform>
-          <Extensions />
+          <Extensions>
+            <Script Id="4d3911ac-be39-4659-920b-3778c8398171" Name="Script Scroll1" />
+          </Extensions>
           <Children>
             <ScrollItem Id="3e8ee707-7a27-46a4-b69e-df059ffe2170" Name="Group1" SpeedScale="1" DisplayColor="11119017">
               <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
@@ -35,9 +36,12 @@
               <Children>
                 <ScrollItem Id="f2c30067-c31e-41e6-9038-2f8e2807c615" Name="TextureText3D1" SpeedScale="1" DisplayColor="11119017">
                   <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
+                  <NodeTransform PivotType="Absolute">
+                    <Scale X="1.31" Y="1.31" Lock="XtoY" />
+                  </NodeTransform>
                   <InnerParts>
                     <TextureText Id="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" Name="f2c30067-c31e-41e6-9038-2f8e2807c615" SpeedScale="1" DisplayColor="11119017">
-                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8a7f1551-ca05-42eb-87dd-0f5352155af7" HasTextBox="False" IsNewGeometry="True" Text="My name is vimlesh Kumar" TextQuality="1" />
+                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8a7f1551-ca05-42eb-87dd-0f5352155af7" HasTextBox="False" IsNewGeometry="True" Text="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" TextQuality="1" />
                       <Primitive>
                         <FaceMappingList>
                           <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
@@ -54,7 +58,7 @@
             </ScrollItem>
           </Children>
         </Scroll>
-        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" DisplayColor="11119017">
+        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions />
           <Primitive>
             <FaceMappingList>
@@ -62,8 +66,7 @@
             </FaceMappingList>
           </Primitive>
           <NodeTransform>
-            <!-- <Position Y="-1.93" /> -->
-            <Position Y="-1.8" />
+            <Position Y="-1.93" />
             <Scale X="7.760001" Y="0.2400001" />
           </NodeTransform>
           <Extensions />
@@ -73,9 +76,7 @@
   </SceneLayer>
   <DataContextSceneLocator />
   <Resources>
-    <TextureTextFontStyle Id="8a7f1551-ca05-42eb-87dd-0f5352155af7" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
-    <TextureTextFontStyle Id="e481c4a4-00b1-4300-9208-47d1cc21840a" Name="SceneTextureTextFontStyle2" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
-    <TextureTextFontStyle Id="4ad5002a-b517-4dfd-9a54-26ec23f6fcd9" Name="SceneTextureTextFontStyle3" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <TextureTextFontStyle Id="8a7f1551-ca05-42eb-87dd-0f5352155af7" Name="SceneTextureTextFontStyle1" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <BaseMaterial Name="Material1" FolderPath="" Id="21321313-a87f-4206-b918-600b7e66deeb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="1f0404" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
     <TextureLayer Name="Texture1" FolderPath="" Id="70ca7502-351a-4d3b-8699-52bd9a14b5fc" TextureBlending="Multiply">
       <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
@@ -86,7 +87,7 @@
       <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="ParseText" Type="String" Value="" Enable="True" Id="67525caa-848e-4352-ba78-f1905fe96bdf" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="tText">
-      <ExportProperty ControllableId="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" PropertyName="Text" Type="String" Value="My name is vimlesh Kumar" Enable="True" Id="e4495866-cfc6-440a-ad14-cf9505fee51d" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" PropertyName="Text" Type="String" Value="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" Enable="True" Id="e4495866-cfc6-440a-ad14-cf9505fee51d" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="vLeadingSpace">
       <ExportProperty ControllableId="3e8ee707-7a27-46a4-b69e-df059ffe2170" PropertyName="LeadingSpace" Type="Float" Value="0" Enable="True" Id="7c872628-a363-46c0-9c6b-3a4f6df81d35" UpdateMode="Instantly" />
