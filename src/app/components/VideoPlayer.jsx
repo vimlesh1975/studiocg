@@ -46,7 +46,7 @@ const VideoPlayer = () => {
 
     const playFilehtml = async () => {
         const exportValues = {
-            url: htmlurl,
+            url1: htmlurl,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
