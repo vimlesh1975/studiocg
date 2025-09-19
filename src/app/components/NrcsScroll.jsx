@@ -17,6 +17,7 @@ const NrcsScroll = () => {
 
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
+    const [twolinerRunning, setTwolinerRunning] = useState(false);
 
 
 
@@ -34,11 +35,13 @@ const NrcsScroll = () => {
     const [scrollData, setScrollData] = useState([]);
     const [breakingdata, setBreakingdata] = useState([]);
     const [newsUpdataeData, setnewsUpdataeData] = useState([]);
+    const [twolinerData, setTwolinerData] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)
     const indexRefTicker = useRef(1);
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
+    const indextwoliner = useRef(0);
 
 
 
@@ -111,6 +114,61 @@ const NrcsScroll = () => {
             body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'NewsUpdate', timeline: "Out" })
         })
         setnewsupdateRunning(false);
+
+    }
+
+    const playTwoliner = async () => {
+
+        let scripts = [];
+
+        try {
+            const res = await fetch(addressmysql() + "/getScrollData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bulletinname: "Two Liner", bulletindate: selectedDate
+                }),
+            });
+            const result = await res.json()
+            scripts = result.data.map(row => row.Script);
+            if (scripts != []) {
+                setTwolinerRunning(true);
+                setTwolinerData(scripts);
+                indextwoliner.current = 1;
+                const exportValues = {
+                    text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
+                    text2: `${scripts[0]}`,
+                }
+                fetch("/api/playwithexportedvalues", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        project: '25IN_ChannelPackaging_351.450',
+                        scene: 'vimlesh_twoliner1',
+                        timeline: 'In',
+                        slot: "8",
+                        exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                    })
+                })
+
+
+            }
+
+        } catch (error) {
+            // console.error('Error saving content:', error);
+        }
+
+
+    }
+    const stopTwoliner = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_twoliner1', timeline: "Out" })
+        })
+        setTwolinerRunning(false);
 
     }
 
@@ -533,7 +591,7 @@ const NrcsScroll = () => {
                                 <button onClick={stopNewsUpdate}>Stop</button>
                             </td>
                         </tr>
-                        {/* <tr>
+                        <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}> Two Liner
                                 Header:
                                 <br />
@@ -558,10 +616,42 @@ const NrcsScroll = () => {
                                     News Update
                                 </label></td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                <button>Play</button>
-                                <button>Stop</button>
+
+                                {
+                                    twolinerRunning && (
+                                        <Timer
+                                            interval={3000}
+                                            callback={async () => {
+
+                                                await fetch("/api/timeline", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", timeline: "Text01_In", slot: "6" })
+                                                })
+
+                                                const currentItem = twolinerData[indextwoliner.current];
+                                                const exportValues = {
+                                                    text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
+                                                    text2: `${currentItem}`,
+                                                }
+                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                                await fetch("/api/setExports", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", updates })
+                                                })
+
+                                                indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
+
+                                            }}
+                                        />
+                                    )
+                                }
+
+                                <button onClick={playTwoliner}>Play</button>
+                                <button onClick={stopTwoliner}>Stop</button>
                             </td>
-                        </tr> */}
+                        </tr>
 
                     </tbody>
                 </table >

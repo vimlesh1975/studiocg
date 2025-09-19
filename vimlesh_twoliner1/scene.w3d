@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="28f24ba8-1c7d-4d5d-bfe9-fab54de00a4f" Name="vimlesh_twoliner1" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="ece15fb0-9f89-4009-a0ae-2b8f70ae62ea" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="f3ce7346-5e84-4944-9fdf-58ce94f31335" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="d6d3e11a-5eb7-4e25-bf7b-f3d933bd68ca" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="2f0f5c43-0e9c-44c2-9905-cea88173a1b8" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="09391fc1-0f62-42ed-9c21-da46b950bc76" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="ffffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+        </DirectionalLight>
+        <Group Id="b706c536-4a62-49ec-a18c-7ddd375a46bd" Name="Group2" DisplayColor="11119017">
+          <GeometryOptions />
+          <NodeTransform PivotType="Absolute">
+            <Position Y="0.18" />
+          </NodeTransform>
+          <Extensions />
+          <Children>
+            <Quad Id="ba400418-fd6b-4190-8dea-b52d46e8f9fa" Name="Quad1" DisplayColor="11119017">
+              <GeometryOptions />
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="188ab6dd-be7f-4ff0-8182-5ae377dd467c" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position Y="-1.236736" />
+                <Scale X="7.39" Y="0.52" />
+              </NodeTransform>
+              <Extensions />
+            </Quad>
+            <Quad Id="6fe21a4a-61a0-4a6d-9b9a-476a952dbbb3" Name="Quad2" DisplayColor="11119017">
+              <GeometryOptions />
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="f2ba379e-d5f7-491c-a51f-efc7db144ab7" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position Y="-0.841" />
+                <Scale X="7.39" Y="0.28" />
+              </NodeTransform>
+              <Extensions />
+            </Quad>
+            <TextureText Id="543c5f15-124d-46ec-b06e-35e91452d44b" Name="headertext" IsExpanded="False" DisplayColor="11119017">
+              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="df8d344d-b066-409d-83a3-9af74a0adcbc" HasTextBox="True" IsNewGeometry="True" Text="Breaking News" TextQuality="1">
+                <TextBoxSize Y="0.2" />
+              </GeometryOptions>
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                  <NamedBaseFaceMapping SurfaceName="Front" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                  <NamedBaseFaceMapping SurfaceName="Border" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                  <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Pivot Y="-0.2895724" />
+                <Position X="-2.589717" Y="-0.967" Z="-0.1" />
+                <Scale X="1.89" Y="1.89" Lock="XtoY" />
+              </NodeTransform>
+              <Extensions />
+            </TextureText>
+            <TextureText Id="ebb48737-3e83-4305-9b76-309b462385a7" Name="twolinertext" IsExpanded="False" DisplayColor="11119017">
+              <GeometryOptions AlignmentX="Left" AlignmentY="Top" ConstrainMethod="None" FontStyle="df8d344d-b066-409d-83a3-9af74a0adcbc" HasTextBox="True" IsNewGeometry="True" Text="अनिल कपूर ने अपने करियर में कई बेहतरीन फिल्मों में काम किया है। करियर में अनिल ने भाभी श्रीदेवी के साथ कई फिल्मों में काम किया है जिनमें से कुछ हिट को तुछ फ्लॉप भी हुई हैं।" TextQuality="1">
+                <TextBoxSize X="4.63" Y="0.32" />
+              </GeometryOptions>
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                  <NamedBaseFaceMapping SurfaceName="Front" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                  <NamedBaseFaceMapping SurfaceName="Border" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                  <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position X="-3.528806" Y="-1.05" Z="-0.1" />
+                <Scale X="1.5" Y="1.5" Lock="XtoY" />
+              </NodeTransform>
+              <Extensions />
+            </TextureText>
+          </Children>
+        </Group>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <BaseMaterial Name="Material1" FolderPath="" Id="188ab6dd-be7f-4ff0-8182-5ae377dd467c" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="a3a3a3" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material2" FolderPath="" Id="f2ba379e-d5f7-491c-a51f-efc7db144ab7" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="7ffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="df8d344d-b066-409d-83a3-9af74a0adcbc" Name="SceneTextureTextFontStyle1" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Bold" UseKerningPairs="True" WordWrap="True" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material3" FolderPath="" Id="caaffe32-5a1c-4b9e-a045-6cf27e5fb633" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="70707" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+  </Resources>
+  <ExportManagerProperties>
+    <ExportList Name="text1">
+      <ExportProperty ControllableId="543c5f15-124d-46ec-b06e-35e91452d44b" PropertyName="Text" Type="String" Value="Breaking News" Enable="True" Id="5e12d602-478d-41fd-b966-341097c4818d" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="text2">
+      <ExportProperty ControllableId="ebb48737-3e83-4305-9b76-309b462385a7" PropertyName="Text" Type="String" Value="अनिल कपूर ने अपने करियर में कई बेहतरीन फिल्मों में काम किया है। करियर में अनिल ने भाभी श्रीदेवी के साथ कई फिल्मों में काम किया है जिनमें से कुछ हिट को तुछ फ्लॉप भी हुई हैं।" Enable="True" Id="117b76cc-4fc7-4d76-abf9-92f9c2da4f7c" UpdateMode="Instantly" />
+    </ExportList>
+  </ExportManagerProperties>
+  <Timelines SelectedTimelineId="cfe47f7c-3fc7-4e9a-a86e-93f32a23140d" Format="HD1080i50">
+    <Timeline Name="In" Id="cfe47f7c-3fc7-4e9a-a86e-93f32a23140d" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
+    <Timeline Name="Out" Id="f4d29469-8c0c-4153-acb4-3d828ab39496" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
+    <TimelineListener />
+  </Timelines>
+  <ExportManager />
+  <LinksManager />
+  <Variables />
+</Scene>
