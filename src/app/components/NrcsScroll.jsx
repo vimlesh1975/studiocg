@@ -10,6 +10,12 @@ import Script from "../Script";
 const vTrailingSpace = 0.1;
 
 const NrcsScroll = () => {
+    const [yPositionscroll, setyPositionscroll] = useState(0.00);
+    const [yPositiondate, setyPositiondate] = useState(0.00);
+    const [yPositionnewsupdate, setyPositionnewsupdate] = useState(0.00);
+    const [yPositionbreakingNews, setyPositionbreakingNews] = useState(0.00);
+    const [yPositionTwoliner, setyPositionTwoliner] = useState(0.00);
+
     const [slugs, setSlugs] = useState([]);
     const [currentSlug, setCurrentSlug] = useState(-1);
     const [ScriptID, setScriptID] = useState("");
@@ -458,6 +464,15 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
                                 <button onClick={playClock}>Play</button>
                                 <button onClick={stopClock}>Stop</button>
+                                set Y Position <input type="Number" step={0.01} value={yPositiondate} onChange={async (e) => {
+                                    setyPositiondate(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_clock1'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
                             </td>
                         </tr>
                         <tr>
