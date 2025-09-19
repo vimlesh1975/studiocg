@@ -15,6 +15,9 @@ const NrcsScroll = () => {
     const [ScriptID, setScriptID] = useState("");
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
+    const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
+
+
 
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedDate, setSelectedDate] = useState(() => {
@@ -28,9 +31,86 @@ const NrcsScroll = () => {
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [tickerRunning, setTickerRunning] = useState(false);
     const [scrollData, setScrollData] = useState([]);
+    const [breakingdata, setBreakingdata] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)
     const indexRefTicker = useRef(1);
+    const indexRefbreakingsmallticker = useRef(0);
+    const indexRefnewsupdate = useRef(0);
+
+    const playBreakingSmallTicker = async () => {
+
+        let scripts = [];
+
+        try {
+            const res = await fetch(addressmysql() + "/getScrollData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bulletinname: "Breaking News", bulletindate: selectedDate
+                }),
+            });
+            const result = await res.json()
+            scripts = result.data.map(row => row.Script);
+            console.log(scripts)
+            if (scripts != []) {
+                setbreakingsmalltickerRunning(true);
+                setBreakingdata(scripts);
+                indexRefbreakingsmallticker.current = 1;
+                const exportValues = {
+                    tTextA: `${scripts[0].data1}`,
+                    tTextB: `${scripts[1].data1}`,
+                }
+                fetch("/api/playwithexportedvalues", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        project: '25IN_ChannelPackaging_351.450',
+                        scene: 'BreakingSmall_Ticker',
+                        timeline: 'In',
+                        slot: "5",
+                        exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                    })
+                })
+
+
+            }
+
+        } catch (error) {
+            // console.error('Error saving content:', error);
+        }
+
+
+        // indexRefbreakingsmallticker.current = 0;
+        // const exportValues = {
+        //     tTextA: `${playerList1[0].data1}`,
+        //     tTextB: `${playerList1[1].data1}`,
+        // }
+        // fetch("/api/playwithexportedvalues", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({
+        //         project: '25IN_ChannelPackaging_351.450',
+        //         scene: 'BreakingSmall_Ticker',
+        //         timeline: 'In',
+        //         slot: "5",
+        //         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+        //     })
+        // })
+        // setbreakingsmalltickerRunning(true);
+    }
+    const stopplayBreakingSmallTicker = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'BreakingSmall_Ticker', timeline: "Out" })
+        })
+        setbreakingsmalltickerRunning(false);
+
+    }
+
 
     const handleSelectionChange = (e) => {
         setSelectedRunOrderTitle(e.target.value);
@@ -295,8 +375,37 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Lower Third
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                <button>Play</button>
-                                <button>Stop</button>
+                                {
+                                    breakingsmalltickerRunning && (
+                                        <Timer
+                                            interval={3000}
+                                            callback={async () => {
+
+                                                await fetch("/api/timeline", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
+                                                })
+
+                                                const currentItem = breakingdata[indexRefbreakingsmallticker.current];
+                                                const exportValues = {
+                                                    tTextA: `${currentItem}`,
+                                                }
+                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                                await fetch("/api/setExports", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", updates })
+                                                })
+
+                                                indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % breakingdata.length;
+
+                                            }}
+                                        />
+                                    )
+                                }
+                                <button onClick={playBreakingSmallTicker}>Play</button>
+                                <button onClick={stopplayBreakingSmallTicker}> Stop</button>
                             </td>
                         </tr>
 
@@ -304,6 +413,7 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
+
                                 <button>Play</button>
                                 <button>Stop</button>
                             </td>
