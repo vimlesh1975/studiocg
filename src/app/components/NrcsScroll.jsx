@@ -221,6 +221,25 @@ const NrcsScroll = () => {
         setNrcsBreakingText(value)
     };
 
+    const playClock = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'vimlesh_clock1',
+                timeline: 'In',
+                slot: "7",
+            })
+        })
+    }
+    const stopClock = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_clock1', timeline: "Out" })
+        })
+    }
     const playticker = async () => {
         let scripts = [];
 
@@ -379,8 +398,8 @@ const NrcsScroll = () => {
                         <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Date and Time</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                <button>Play</button>
-                                <button>Stop</button>
+                                <button onClick={playClock}>Play</button>
+                                <button onClick={stopClock}>Stop</button>
                             </td>
                         </tr>
                         <tr>

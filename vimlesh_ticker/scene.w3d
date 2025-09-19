@@ -15,10 +15,43 @@
           </GeometryOptions>
           <Extensions />
         </DirectionalLight>
-        <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" DisplayColor="11119017">
-          <GeometryOptions DirectionSimple="X" Reset="True" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
+        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions />
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="21321313-a87f-4206-b918-600b7e66deeb" TextureLayerId="70ca7502-351a-4d3b-8699-52bd9a14b5fc" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <NodeTransform>
+            <Position Y="-1.93" />
+            <Scale X="7.760001" Y="0.2400001" />
+          </NodeTransform>
+          <Extensions />
+        </Quad>
+        <Group Id="bfd9fcdf-4e72-4e23-901d-d59349967eeb" Name="Group1" DisplayColor="11119017">
+          <GeometryOptions />
+          <Extensions />
+          <Children>
+            <Quad Id="398c0694-575a-4408-9f59-3ebc9c9e6f65" Name="mask" DisplayColor="11119017" IsMask="True">
+              <GeometryOptions />
+              <MaskProperties DisableBinaryAlpha="False" HasSampleCount="False" IsColoredMask="False" IsInvertedMask="True" />
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position Y="-2.16" />
+                <Scale X="7" />
+              </NodeTransform>
+              <Extensions />
+            </Quad>
+          </Children>
+        </Group>
+        <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" MaskId="398c0694-575a-4408-9f59-3ebc9c9e6f65;" DisplayColor="11119017">
+          <GeometryOptions DirectionSimple="X" Reset="False" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
           <NodeTransform PivotType="Absolute">
-            <Position Y="-2" />
+            <Position Y="-2" Z="-0.01" />
             <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
           </NodeTransform>
           <Extensions>
@@ -37,7 +70,7 @@
                 <ScrollItem Id="f2c30067-c31e-41e6-9038-2f8e2807c615" Name="TextureText3D1" SpeedScale="1" DisplayColor="11119017">
                   <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
                   <NodeTransform PivotType="Absolute">
-                    <Scale X="1.31" Y="1.31" Lock="XtoY" />
+                    <Scale Lock="XtoY" />
                   </NodeTransform>
                   <InnerParts>
                     <TextureText Id="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" Name="f2c30067-c31e-41e6-9038-2f8e2807c615" SpeedScale="1" DisplayColor="11119017">
@@ -58,19 +91,6 @@
             </ScrollItem>
           </Children>
         </Scroll>
-        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
-          <GeometryOptions />
-          <Primitive>
-            <FaceMappingList>
-              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="21321313-a87f-4206-b918-600b7e66deeb" TextureLayerId="70ca7502-351a-4d3b-8699-52bd9a14b5fc" BaseMaterialInherited="False" TextureInherited="False" />
-            </FaceMappingList>
-          </Primitive>
-          <NodeTransform>
-            <Position Y="-1.93" />
-            <Scale X="7.760001" Y="0.2400001" />
-          </NodeTransform>
-          <Extensions />
-        </Quad>
       </Children>
     </SceneNode>
   </SceneLayer>
@@ -88,12 +108,14 @@
     </ExportList>
     <ExportList Name="tText">
       <ExportProperty ControllableId="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" PropertyName="Text" Type="String" Value="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" Enable="True" Id="e4495866-cfc6-440a-ad14-cf9505fee51d" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="cc2fbd50-f291-4686-b789-75de54f4e087" PropertyName="Text" Type="String" Value="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" Enable="True" Id="60af417e-6f08-41cc-bcc3-0f86f481d04c" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="vLeadingSpace">
       <ExportProperty ControllableId="3e8ee707-7a27-46a4-b69e-df059ffe2170" PropertyName="LeadingSpace" Type="Float" Value="0" Enable="True" Id="7c872628-a363-46c0-9c6b-3a4f6df81d35" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="ccd077c6-4d06-43ac-ace6-7ea33fb944d8" PropertyName="LeadingSpace" Type="Float" Value="0" Enable="True" Id="65d2deb3-9180-4545-a334-faec0aafa7ca" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="vReset">
-      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Reset" Type="Bool" Value="True" Enable="True" Id="7d6980ea-3f32-4651-b60e-1cf0009dd533" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Reset" Type="Bool" Value="False" Enable="True" Id="7d6980ea-3f32-4651-b60e-1cf0009dd533" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="vSpeed">
       <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Speed" Type="Float" Value="0.01" Enable="True" Id="af786cc1-2af0-49e3-ac64-a63035689571" UpdateMode="Instantly" />
@@ -109,6 +131,7 @@
     </ExportList>
     <ExportList Name="vTrailingSpace">
       <ExportProperty ControllableId="3e8ee707-7a27-46a4-b69e-df059ffe2170" PropertyName="TrailingSpace" Type="Float" Value="0" Enable="True" Id="5d09b67f-b25a-466f-a44e-b2368bd1636e" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="ccd077c6-4d06-43ac-ace6-7ea33fb944d8" PropertyName="TrailingSpace" Type="Float" Value="0" Enable="True" Id="9c3c5ae7-f04c-46c7-a5d8-c197df1ccbd5" UpdateMode="Instantly" />
     </ExportList>
   </ExportManagerProperties>
   <Timelines SelectedTimelineId="6c49cdff-215a-47e6-8d93-d30f790ae0fc" Format="HD1080i50">
