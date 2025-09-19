@@ -514,7 +514,7 @@ const NrcsScroll = () => {
                                 <button onClick={stopNewsUpdate}>Stop</button>
                             </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}> Two Liner
                                 Header:
                                 <br />
@@ -542,7 +542,7 @@ const NrcsScroll = () => {
                                 <button>Play</button>
                                 <button>Stop</button>
                             </td>
-                        </tr>
+                        </tr> */}
 
                     </tbody>
                 </table >
