@@ -16,6 +16,7 @@ const NrcsScroll = () => {
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
+    const [newsupdateRunning, setnewsupdateRunning] = useState(false);
 
 
 
@@ -32,11 +33,86 @@ const NrcsScroll = () => {
     const [tickerRunning, setTickerRunning] = useState(false);
     const [scrollData, setScrollData] = useState([]);
     const [breakingdata, setBreakingdata] = useState([]);
+    const [newsUpdataeData, setnewsUpdataeData] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)
     const indexRefTicker = useRef(1);
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
+
+
+
+    const playNewsUpdate = async () => {
+
+        let scripts = [];
+
+        try {
+            const res = await fetch(addressmysql() + "/getScrollData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bulletinname: "News Update", bulletindate: selectedDate
+                }),
+            });
+            const result = await res.json()
+            scripts = result.data.map(row => row.Script);
+            console.log(scripts)
+            if (scripts != []) {
+                setnewsupdateRunning(true);
+                setnewsUpdataeData(scripts);
+                indexRefnewsupdate.current = 1;
+                const exportValues = {
+                    tTextA: `${scripts[0]}`,
+                    tTextB: `${scripts[1]}`,
+                }
+                fetch("/api/playwithexportedvalues", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        project: '25IN_ChannelPackaging_351.450',
+                        scene: 'NewsUpdate',
+                        timeline: 'In',
+                        slot: "6",
+                        exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                    })
+                })
+
+
+            }
+
+        } catch (error) {
+            // console.error('Error saving content:', error);
+        }
+
+        // indexRefnewsupdate.current = 0;
+        // const exportValues = {
+        //     tTextA: `${playerList1[0].data1}`,
+        //     tTextB: `${playerList1[1].data1}`,
+        // }
+        // fetch("/api/playwithexportedvalues", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({
+        //         project: '25IN_ChannelPackaging_351.450',
+        //         scene: 'NewsUpdate',
+        //         timeline: 'In',
+        //         slot: "6",
+        //         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+        //     })
+        // })
+        // setnewsupdateRunning(true);
+    }
+    const stopNewsUpdate = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'NewsUpdate', timeline: "Out" })
+        })
+        setnewsupdateRunning(false);
+
+    }
 
     const playBreakingSmallTicker = async () => {
 
@@ -82,24 +158,6 @@ const NrcsScroll = () => {
             // console.error('Error saving content:', error);
         }
 
-
-        // indexRefbreakingsmallticker.current = 0;
-        // const exportValues = {
-        //     tTextA: `${playerList1[0].data1}`,
-        //     tTextB: `${playerList1[1].data1}`,
-        // }
-        // fetch("/api/playwithexportedvalues", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-        //         project: '25IN_ChannelPackaging_351.450',
-        //         scene: 'BreakingSmall_Ticker',
-        //         timeline: 'In',
-        //         slot: "5",
-        //         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-        //     })
-        // })
-        // setbreakingsmalltickerRunning(true);
     }
     const stopplayBreakingSmallTicker = () => {
         fetch("/api/timeline", {
@@ -409,7 +467,7 @@ const NrcsScroll = () => {
                             </td>
                         </tr>
 
-                        <tr>
+                        {/* <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
@@ -417,12 +475,43 @@ const NrcsScroll = () => {
                                 <button>Play</button>
                                 <button>Stop</button>
                             </td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>News Update</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                <button>Play</button>
-                                <button>Stop</button>
+
+                                {
+                                    newsupdateRunning && (
+                                        <Timer
+                                            interval={3000}
+                                            callback={async () => {
+
+                                                await fetch("/api/timeline", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
+                                                })
+
+                                                const currentItem = newsUpdataeData[indexRefnewsupdate.current];
+                                                const exportValues = {
+                                                    tTextA: `${currentItem}`,
+                                                }
+                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                                await fetch("/api/setExports", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", updates })
+                                                })
+
+                                                indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % newsUpdataeData.length;
+
+                                            }}
+                                        />
+                                    )
+                                }
+
+                                <button onClick={playNewsUpdate}>Play</button>
+                                <button onClick={stopNewsUpdate}>Stop</button>
                             </td>
                         </tr>
                         <tr>
