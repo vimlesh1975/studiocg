@@ -13,6 +13,9 @@ import Mongodb from './Mongodb'
 import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
 import VideoPlayer from './components/VideoPlayer';
+import NrcsScroll from './components/NrcsScroll';
+
+
 // import Scroll from './components/Scroll'
 
 const aa1 = 0;
@@ -34,6 +37,7 @@ export default function Page() {
       forceRenderTabPanel={true}
     >
       <TabList>
+        <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
         <Tab> Scroll</Tab>
         <Tab> NRCS</Tab>
@@ -47,6 +51,9 @@ export default function Page() {
 
 
       </TabList>
+      <TabPanel>
+        < NrcsScroll />
+      </TabPanel>
       <TabPanel>
         < VideoPlayer />
       </TabPanel>

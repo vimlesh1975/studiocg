@@ -15,10 +15,6 @@ import Oneliner from "./Oneliner";
 import debounce from "lodash.debounce";
 import Timer from "./Timer";
 
-import Spinner from "./spinner/Spinner";
-import FlashMessage from "./FlashMessage";
-
-
 const Nrcs2 = () => {
     const [allDocs, setAllDocs] = useState([])
     const [pageName, setPageName] = useState("new Graphics");
