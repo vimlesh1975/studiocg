@@ -184,7 +184,7 @@ const NrcsScroll = () => {
                 setTwolinerData(scripts);
                 indextwoliner.current = 1;
                 const exportValues = {
-                    url1: `${NrcsBreakingText ? "http://localhost:3000/yellow_breaking_news.gif" : "http://localhost:3000/yellow_news_update.gif"}`,
+                    url1: `${NrcsBreakingText ? "http://localhost:5000/yellow_breaking_news.gif" : "http://localhost:5000/yellow_news_update.gif"}`,
                     // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
                     text2: `${scripts[0]}`,
                 }
@@ -752,7 +752,7 @@ const NrcsScroll = () => {
 
                                                 const currentItem = twolinerData[indextwoliner.current];
                                                 const exportValues = {
-                                                    url1: `${NrcsBreakingText ? "http://localhost:3000/yellow_breaking_news.gif" : "http://localhost:3000/yellow_news_update.gif"}`,
+                                                    url1: `${NrcsBreakingText ? "http://localhost:5000/yellow_breaking_news.gif" : "http://localhost:5000/yellow_news_update.gif"}`,
                                                     // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
                                                     text2: `${currentItem}`,
                                                 }
