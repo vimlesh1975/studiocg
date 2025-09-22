@@ -38,8 +38,10 @@ const NrcsScroll = () => {
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("0600 Hrs");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [tickerRunning, setTickerRunning] = useState(false);
+    const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
     const [scrollData, setScrollData] = useState([]);
     const [breakingdata, setBreakingdata] = useState([]);
+    const [fullpagebreakingdata, setfullpagebreakingdata] = useState([]);
     const [newsUpdataeData, setnewsUpdataeData] = useState([]);
     const [twolinerData, setTwolinerData] = useState([]);
 
@@ -48,8 +50,61 @@ const NrcsScroll = () => {
     const indexRefbreakingsmallticker = useRef(0);
     const indexRefnewsupdate = useRef(0);
     const indextwoliner = useRef(0);
+    const indexFullPageBreakingNews = useRef(0);
 
 
+
+    const playFullPageBreakingNews = async () => {
+
+        let scripts = [];
+
+        try {
+            const res = await fetch(addressmysql() + "/getScrollData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bulletinname: "Breaking News", bulletindate: selectedDate
+                }),
+            });
+            const result = await res.json()
+            scripts = result.data.map(row => row.Script);
+            console.log(scripts)
+            if (scripts != []) {
+                setfullpagebreakingnewsrunning(true);
+                setfullpagebreakingdata(scripts);
+                indexFullPageBreakingNews.current = 1;
+                const exportValues = {
+                    text2: `${scripts[0]}`,
+                }
+                fetch("/api/playwithexportedvalues", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        project: '25IN_ChannelPackaging_351.450',
+                        scene: 'vimlesh_fullpage_breaking_news1',
+                        timeline: 'In',
+                        slot: "9",
+                        exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                    })
+                })
+
+
+            }
+
+        } catch (error) {
+        }
+    }
+    const stopFullPageBreakingNews = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_fullpage_breaking_news1', timeline: "Out" })
+        })
+        setfullpagebreakingnewsrunning(false);
+
+    }
 
     const playNewsUpdate = async () => {
 
@@ -560,15 +615,41 @@ const NrcsScroll = () => {
                             </td>
                         </tr>
 
-                        {/* <tr>
+                        <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
+                                {fullpagebreakingnewsrunning && (
+                                    <Timer
+                                        interval={3000}
+                                        callback={async () => {
 
-                                <button>Play</button>
-                                <button>Stop</button>
+                                            await fetch("/api/timeline", {
+                                                method: "POST",
+                                                headers: { "Content-Type": "application/json" },
+                                                body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_fullpage_breaking_news1", timeline: "textin", slot: "9" })
+                                            })
+
+                                            const currentItem = fullpagebreakingdata[indexFullPageBreakingNews.current];
+                                            const exportValues = {
+                                                text2: `${currentItem}`,
+                                            }
+                                            const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                            await fetch("/api/setExports", {
+                                                method: "POST",
+                                                headers: { "Content-Type": "application/json" },
+                                                body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_fullpage_breaking_news1", updates })
+                                            })
+
+                                            indexFullPageBreakingNews.current = (indexFullPageBreakingNews.current + 1) % fullpagebreakingdata.length;
+
+                                        }}
+                                    />
+                                )}
+                                <button onClick={playFullPageBreakingNews}>Play</button>
+                                <button onClick={stopFullPageBreakingNews}>Stop</button>
                             </td>
-                        </tr> */}
+                        </tr>
                         <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>News Update</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
@@ -635,35 +716,8 @@ const NrcsScroll = () => {
 
                                 {
                                     twolinerRunning && (
-                                        // <Timer
-                                        //     interval={3000}
-                                        //     callback={async () => {
-
-                                        //         await fetch("/api/timeline", {
-                                        //             method: "POST",
-                                        //             headers: { "Content-Type": "application/json" },
-                                        //             body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", timeline: "Text01_In", slot: "6" })
-                                        //         })
-
-                                        //         const currentItem = twolinerData[indextwoliner.current];
-                                        //         const exportValues = {
-                                        //             text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
-                                        //             text2: `${currentItem}`,
-                                        //         }
-                                        //         const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                        //         await fetch("/api/setExports", {
-                                        //             method: "POST",
-                                        //             headers: { "Content-Type": "application/json" },
-                                        //             body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", updates })
-                                        //         })
-
-                                        //         indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
-
-                                        //     }}
-                                        // />
-
                                         <Timer
-                                            interval={3000}
+                                            interval={6000}
                                             callback={async () => {
 
                                                 await fetch("/api/timeline", {
