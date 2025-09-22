@@ -15,6 +15,7 @@ const NrcsScroll = () => {
     const [yPositionnewsupdate, setyPositionnewsupdate] = useState(0.00);
     const [yPositionbreakingNews, setyPositionbreakingNews] = useState(0.00);
     const [yPositionTwoliner, setyPositionTwoliner] = useState(0.00);
+    const [yPositionfullpagebr, setyPositionfullpagebr] = useState(0.00);
 
     const [slugs, setSlugs] = useState([]);
     const [currentSlug, setCurrentSlug] = useState(-1);
@@ -35,7 +36,7 @@ const NrcsScroll = () => {
         const dd = String(today.getDate()).padStart(2, '0');
         return `${yyyy}-${mm}-${dd}`;
     });
-    const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("0600 Hrs");
+    const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [tickerRunning, setTickerRunning] = useState(false);
     const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
@@ -507,7 +508,7 @@ const NrcsScroll = () => {
                 />
             </div>
             <div style={{ height: 450, }}>
-                <table style={{ borderCollapse: 'collapse', width: 400 }}>
+                <table style={{ borderCollapse: 'collapse', width: 500 }}>
                     <thead>
                         <tr>
                             <th style={{ border: '1px solid black', padding: '8px', textAlign: 'left' }}>Feature</th>
@@ -520,7 +521,7 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
                                 <button onClick={playClock}>Play</button>
                                 <button onClick={stopClock}>Stop</button>
-                                set Y Position <input type="Number" step={0.01} value={yPositiondate} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositiondate} onChange={async (e) => {
                                     setyPositiondate(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -574,6 +575,17 @@ const NrcsScroll = () => {
                                     />
                                 )}
                                 <button onClick={onStopTicker}>Stop</button>
+                                <br />
+                                set Y Position <input style={{ width: 40 }} type="Number" step={0.01} value={yPositionscroll} onChange={async (e) => {
+                                    setyPositionscroll(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
+
                             </td>
                         </tr>
 
@@ -612,6 +624,15 @@ const NrcsScroll = () => {
                                 }
                                 <button onClick={playBreakingSmallTicker}>Play</button>
                                 <button onClick={stopplayBreakingSmallTicker}> Stop</button>
+                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
+                                    setyPositionbreakingNews(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'BreakingSmall_Ticker'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
                             </td>
                         </tr>
 
@@ -648,6 +669,15 @@ const NrcsScroll = () => {
                                 )}
                                 <button onClick={playFullPageBreakingNews}>Play</button>
                                 <button onClick={stopFullPageBreakingNews}>Stop</button>
+                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionfullpagebr} onChange={async (e) => {
+                                    setyPositionfullpagebr(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_fullpage_breaking_news1'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
                             </td>
                         </tr>
                         <tr>
@@ -686,6 +716,16 @@ const NrcsScroll = () => {
 
                                 <button onClick={playNewsUpdate}>Play</button>
                                 <button onClick={stopNewsUpdate}>Stop</button>
+
+                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionnewsupdate} onChange={async (e) => {
+                                    setyPositionnewsupdate(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'NewsUpdate'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
                             </td>
                         </tr>
                         <tr>
@@ -748,6 +788,16 @@ const NrcsScroll = () => {
 
                                 <button onClick={playTwoliner}>Play</button>
                                 <button onClick={stopTwoliner}>Stop</button>
+
+                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
+                                    setyPositionTwoliner(e.target.value);
+                                    const res = await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_twoliner2'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
+                                    })
+
+                                }} />
                             </td>
                         </tr>
 
