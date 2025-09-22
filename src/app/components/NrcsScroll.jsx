@@ -151,23 +151,7 @@ const NrcsScroll = () => {
             // console.error('Error saving content:', error);
         }
 
-        // indexRefnewsupdate.current = 0;
-        // const exportValues = {
-        //     tTextA: `${playerList1[0].data1}`,
-        //     tTextB: `${playerList1[1].data1}`,
-        // }
-        // fetch("/api/playwithexportedvalues", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-        //         project: '25IN_ChannelPackaging_351.450',
-        //         scene: 'NewsUpdate',
-        //         timeline: 'In',
-        //         slot: "6",
-        //         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-        //     })
-        // })
-        // setnewsupdateRunning(true);
+
     }
     const stopNewsUpdate = () => {
         fetch("/api/timeline", {
@@ -763,7 +747,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner2", timeline: "textin", slot: "6" })
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner2", timeline: "textin", slot: "8" })
                                                 })
 
                                                 const currentItem = twolinerData[indextwoliner.current];
