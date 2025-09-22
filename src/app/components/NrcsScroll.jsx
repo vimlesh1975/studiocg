@@ -144,7 +144,8 @@ const NrcsScroll = () => {
                 setTwolinerData(scripts);
                 indextwoliner.current = 1;
                 const exportValues = {
-                    text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
+                    url1: `${NrcsBreakingText ? "http://localhost:3000/yellow_breaking_news.gif" : "http://localhost:3000/yellow_news_update.gif"}`,
+                    // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
                     text2: `${scripts[0]}`,
                 }
                 fetch("/api/playwithexportedvalues", {
@@ -152,7 +153,7 @@ const NrcsScroll = () => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         project: '25IN_ChannelPackaging_351.450',
-                        scene: 'vimlesh_twoliner1',
+                        scene: 'vimlesh_twoliner2',
                         timeline: 'In',
                         slot: "8",
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
@@ -172,7 +173,7 @@ const NrcsScroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_twoliner1', timeline: "Out" })
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_twoliner2', timeline: "Out" })
         })
         setTwolinerRunning(false);
 
@@ -634,6 +635,33 @@ const NrcsScroll = () => {
 
                                 {
                                     twolinerRunning && (
+                                        // <Timer
+                                        //     interval={3000}
+                                        //     callback={async () => {
+
+                                        //         await fetch("/api/timeline", {
+                                        //             method: "POST",
+                                        //             headers: { "Content-Type": "application/json" },
+                                        //             body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", timeline: "Text01_In", slot: "6" })
+                                        //         })
+
+                                        //         const currentItem = twolinerData[indextwoliner.current];
+                                        //         const exportValues = {
+                                        //             text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
+                                        //             text2: `${currentItem}`,
+                                        //         }
+                                        //         const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                        //         await fetch("/api/setExports", {
+                                        //             method: "POST",
+                                        //             headers: { "Content-Type": "application/json" },
+                                        //             body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", updates })
+                                        //         })
+
+                                        //         indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
+
+                                        //     }}
+                                        // />
+
                                         <Timer
                                             interval={3000}
                                             callback={async () => {
@@ -641,19 +669,20 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", timeline: "Text01_In", slot: "6" })
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner2", timeline: "textin", slot: "6" })
                                                 })
 
                                                 const currentItem = twolinerData[indextwoliner.current];
                                                 const exportValues = {
-                                                    text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
+                                                    url1: `${NrcsBreakingText ? "http://localhost:3000/yellow_breaking_news.gif" : "http://localhost:3000/yellow_news_update.gif"}`,
+                                                    // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
                                                     text2: `${currentItem}`,
                                                 }
                                                 const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                                                 await fetch("/api/setExports", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner1", updates })
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_twoliner2", updates })
                                                 })
 
                                                 indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
