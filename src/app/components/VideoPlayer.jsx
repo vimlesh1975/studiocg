@@ -64,6 +64,24 @@ const VideoPlayer = () => {
         })
     }
 
+    const playTeleprompter = async () => {
+        const exportValues = {
+            url1: 'http://localhost:3000/CasparcgOutput',
+        }
+        fetch("/api/playwithexportedvalues", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                project: '25IN_ChannelPackaging_351.450',
+                scene: 'testhtml2',
+                timeline: 'In',
+                slot: "-1",
+                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+            })
+        })
+    }
+
+
 
     const stopStream = () => {
         fetch("/api/timeline", {
@@ -110,6 +128,7 @@ const VideoPlayer = () => {
             <input style={{ width: 800 }} type="text" value={htmlurl} onChange={handleFileChangetext} />
             <button onClick={playFilehtml}>Play file</button>
             <button onClick={stopFilehtml}>Stop file</button>
+            <button onClick={playTeleprompter}>Teleprompter output</button>
         </div>
 
         <div style={{ border: '1px solid red', padding: 10, margin: 10 }}>

@@ -505,7 +505,7 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
                                 <button onClick={playClock}>Play</button>
                                 <button onClick={stopClock}>Stop</button>
-                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositiondate} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
                                     setyPositiondate(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -525,7 +525,7 @@ const NrcsScroll = () => {
                                     type="number"
                                     min="-5"
                                     max="5"
-                                    step="0.01"
+                                    step="0.001"
                                     value={horizontalSpeed}
                                 />
                             </td>
@@ -562,13 +562,23 @@ const NrcsScroll = () => {
                                 <br />
                                 set Y Position <input style={{ width: 40 }} type="Number" step={0.01} value={yPositionscroll} onChange={async (e) => {
                                     setyPositionscroll(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
+                                    await fetch("/api/sendCommand", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
                                     })
 
                                 }} />
+                                <button onClick={async () => {
+                                    setyPositionscroll(0);
+                                    await fetch("/api/sendCommand", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "0"` })
+                                    })
+
+
+                                }}>Set 0</button>
 
                             </td>
                         </tr>
@@ -608,7 +618,7 @@ const NrcsScroll = () => {
                                 }
                                 <button onClick={playBreakingSmallTicker}>Play</button>
                                 <button onClick={stopplayBreakingSmallTicker}> Stop</button>
-                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
                                     setyPositionbreakingNews(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -653,7 +663,7 @@ const NrcsScroll = () => {
                                 )}
                                 <button onClick={playFullPageBreakingNews}>Play</button>
                                 <button onClick={stopFullPageBreakingNews}>Stop</button>
-                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionfullpagebr} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionfullpagebr} onChange={async (e) => {
                                     setyPositionfullpagebr(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -701,7 +711,7 @@ const NrcsScroll = () => {
                                 <button onClick={playNewsUpdate}>Play</button>
                                 <button onClick={stopNewsUpdate}>Stop</button>
 
-                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionnewsupdate} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionnewsupdate} onChange={async (e) => {
                                     setyPositionnewsupdate(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -773,7 +783,7 @@ const NrcsScroll = () => {
                                 <button onClick={playTwoliner}>Play</button>
                                 <button onClick={stopTwoliner}>Stop</button>
 
-                                <br /> set Y Position <input type="Number" style={{ width: 40 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
+                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
                                     setyPositionTwoliner(e.target.value);
                                     const res = await fetch("/api/sendCommand", {
                                         method: "POST",
