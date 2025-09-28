@@ -290,7 +290,7 @@ const Scroll = () => {
                     }}>Play</button>
                     {tickerRunning && (
                         <Timer
-                            interval={3000}
+                            interval={5000}
                             callback={async () => {
                                 // console.log(indexRefTicker.current)
                                 const currentItem = playerList1[indexRefTicker.current];
@@ -327,7 +327,7 @@ const Scroll = () => {
                     {
                         breakingsmalltickerRunning && (
                             <Timer
-                                interval={3000}
+                                interval={5000}
                                 callback={async () => {
 
                                     await fetch("/api/timeline", {
@@ -375,7 +375,7 @@ const Scroll = () => {
                     {
                         newsupdateRunning && (
                             <Timer
-                                interval={3000}
+                                interval={5000}
                                 callback={async () => {
 
                                     await fetch("/api/timeline", {

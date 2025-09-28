@@ -23,6 +23,9 @@ const NrcsScroll = () => {
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
+    const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
+    const [fullpagebreakingnewsrunningwithinput, setfullpagebreakingnewsrunningwithinput] = useState(false);
+
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
     const [twolinerRunning, setTwolinerRunning] = useState(false);
 
@@ -39,7 +42,6 @@ const NrcsScroll = () => {
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [tickerRunning, setTickerRunning] = useState(false);
-    const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
     const [scrollData, setScrollData] = useState([]);
     const [breakingdata, setBreakingdata] = useState([]);
     const [fullpagebreakingdata, setfullpagebreakingdata] = useState([]);
@@ -52,13 +54,55 @@ const NrcsScroll = () => {
     const indexRefnewsupdate = useRef(0);
     const indextwoliner = useRef(0);
     const indexFullPageBreakingNews = useRef(0);
+    const indexFullPageBreakingNewswithinput = useRef(0);
 
-
+    const playFullPageBreakingNewswithinput = async () => {
+        let scripts = [];
+        try {
+            const res = await fetch(addressmysql() + "/getScrollData", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bulletinname: "Breaking News", bulletindate: selectedDate
+                }),
+            });
+            const result = await res.json()
+            scripts = result.data.map(row => row.Script);
+            if (scripts != []) {
+                setfullpagebreakingnewsrunningwithinput(true);
+                setfullpagebreakingdata(scripts);
+                indexFullPageBreakingNews.current = 1;
+                const exportValues = {
+                    text1: `${scripts[0]}`,
+                }
+                fetch("/api/playwithexportedvalues", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        project: '25IN_ChannelPackaging_351.450',
+                        scene: 'vimlesh_bn1',
+                        timeline: 'In',
+                        slot: "10",
+                        exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                    })
+                })
+            }
+        } catch (error) {
+        }
+    }
+    const stopFullPageBreakingNewswithinput = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_bn1', timeline: "Out" })
+        })
+        setfullpagebreakingnewsrunningwithinput(false);
+    }
 
     const playFullPageBreakingNews = async () => {
-
         let scripts = [];
-
         try {
             const res = await fetch(addressmysql() + "/getScrollData", {
                 method: "POST",
@@ -537,7 +581,7 @@ const NrcsScroll = () => {
                                 }}>Play</button>
                                 {tickerRunning && (
                                     <Timer
-                                        interval={3000}
+                                        interval={5000}
                                         callback={async () => {
                                             // console.log(indexRefTicker.current)
                                             const currentItem = scrollData[indexRefTicker.current];
@@ -590,7 +634,7 @@ const NrcsScroll = () => {
                                 {
                                     breakingsmalltickerRunning && (
                                         <Timer
-                                            interval={3000}
+                                            interval={5000}
                                             callback={async () => {
 
                                                 await fetch("/api/timeline", {
@@ -636,7 +680,7 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
                                 {fullpagebreakingnewsrunning && (
                                     <Timer
-                                        interval={3000}
+                                        interval={5000}
                                         callback={async () => {
 
                                             await fetch("/api/timeline", {
@@ -675,13 +719,49 @@ const NrcsScroll = () => {
                             </td>
                         </tr>
                         <tr>
+                            <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
+                                Breaking News with input</td>
+                            <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
+                                {fullpagebreakingnewsrunningwithinput && (
+                                    <Timer
+                                        interval={5000}
+                                        callback={async () => {
+
+                                            await fetch("/api/timeline", {
+                                                method: "POST",
+                                                headers: { "Content-Type": "application/json" },
+                                                body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_bn1", timeline: "textin", slot: "10" })
+                                            })
+
+                                            const currentItem = fullpagebreakingdata[indexFullPageBreakingNewswithinput.current];
+                                            const exportValues = {
+                                                text2: `${currentItem}`,
+                                            }
+                                            const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+                                            await fetch("/api/setExports", {
+                                                method: "POST",
+                                                headers: { "Content-Type": "application/json" },
+                                                body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "vimlesh_bn1", updates })
+                                            })
+
+                                            indexFullPageBreakingNewswithinput.current = (indexFullPageBreakingNewswithinput.current + 1) % fullpagebreakingdata.length;
+
+                                        }}
+                                    />
+                                )}
+                                <button onClick={playFullPageBreakingNewswithinput}>Play</button>
+                                <button onClick={stopFullPageBreakingNewswithinput}>Stop</button>
+                            </td>
+                        </tr>
+
+                        <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>News Update</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
 
                                 {
                                     newsupdateRunning && (
                                         <Timer
-                                            interval={3000}
+                                            interval={5000}
                                             callback={async () => {
 
                                                 await fetch("/api/timeline", {
@@ -751,7 +831,7 @@ const NrcsScroll = () => {
                                 {
                                     twolinerRunning && (
                                         <Timer
-                                            interval={6000}
+                                            interval={9000}
                                             callback={async () => {
 
                                                 await fetch("/api/timeline", {
