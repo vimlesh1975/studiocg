@@ -735,7 +735,7 @@ const NrcsScroll = () => {
 
                                             const currentItem = fullpagebreakingdata[indexFullPageBreakingNewswithinput.current];
                                             const exportValues = {
-                                                text2: `${currentItem}`,
+                                                text1: `${currentItem}`,
                                             }
                                             const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                                             await fetch("/api/setExports", {
