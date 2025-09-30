@@ -109,7 +109,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'vimlesh_ticker',
                 timeline: 'In',
                 slot: "1",
@@ -124,7 +124,7 @@ const Scroll = () => {
         const res = await fetch("/api/sendCommand", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "vSpeed" SetValue "${e.target.value}"` })
+            body: JSON.stringify({ command: `SCENE "ddnrcs/vimlesh_ticker" Export "vSpeed" SetValue "${e.target.value}"` })
         })
     }
 
@@ -132,7 +132,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_ticker', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'vimlesh_ticker', timeline: "Out" })
         })
         setTickerRunning(false);
 
@@ -149,7 +149,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'Breaking_LT',
                 timeline: 'In',
                 slot: "2",
@@ -161,7 +161,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'Breaking_LT', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'Breaking_LT', timeline: "Out" })
         })
     }
 
@@ -177,7 +177,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'Headlines',
                 timeline: 'In',
                 slot: "0",
@@ -189,7 +189,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'Headlines', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'Headlines', timeline: "Out" })
         })
     }
 
@@ -206,7 +206,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'HeadlinesBand',
                 timeline: 'In',
                 slot: "4",
@@ -218,7 +218,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'HeadlinesBand', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'HeadlinesBand', timeline: "Out" })
         })
     }
 
@@ -233,7 +233,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'BreakingSmall_Ticker',
                 timeline: 'In',
                 slot: "5",
@@ -246,7 +246,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'BreakingSmall_Ticker', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'BreakingSmall_Ticker', timeline: "Out" })
         })
         setbreakingsmalltickerRunning(false);
 
@@ -262,7 +262,7 @@ const Scroll = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'NewsUpdate',
                 timeline: 'In',
                 slot: "6",
@@ -275,7 +275,7 @@ const Scroll = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'NewsUpdate', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'NewsUpdate', timeline: "Out" })
         })
         setnewsupdateRunning(false);
 
@@ -297,7 +297,7 @@ const Scroll = () => {
                                 const currentItem = playerList1[indexRefTicker.current];
 
                                 if (currentItem) {
-                                    const aa = `SCENE "25IN_ChannelPackaging_351.450/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
+                                    const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
 
                                     await fetch("/api/sendCommand", {
                                         method: "POST",
@@ -334,7 +334,7 @@ const Scroll = () => {
                                     await fetch("/api/timeline", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
                                     })
 
                                     const currentItem = playerList1[indexRefbreakingsmallticker.current];
@@ -345,7 +345,7 @@ const Scroll = () => {
                                     await fetch("/api/setExports", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", updates })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", updates })
                                     })
 
                                     indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % playerList1.length;
@@ -382,7 +382,7 @@ const Scroll = () => {
                                     await fetch("/api/timeline", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
                                     })
 
                                     const currentItem = playerList1[indexRefnewsupdate.current];
@@ -393,7 +393,7 @@ const Scroll = () => {
                                     await fetch("/api/setExports", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", updates })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", updates })
                                     })
 
                                     indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % playerList1.length;

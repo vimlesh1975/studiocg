@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="00c28952-3976-4f1a-b1d2-88cfdc7b5064" Name="vimlesh_ticker" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="e55a9bcf-ef7b-4c47-912e-20d6745ef73d" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="8faa489e-04ba-4869-8b6a-cd0ebac15f10" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="08c0a83d-e032-44ea-a963-6ea7316adb0d" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="57b42655-060a-4f50-a255-fd42b70e954f" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="91ef0171-e98b-49ea-b83e-fd0f4bb46377" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="ffffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+        </DirectionalLight>
+        <Quad Id="652a4987-745d-4093-a48d-8cb689389d3b" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions />
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="21321313-a87f-4206-b918-600b7e66deeb" TextureLayerId="70ca7502-351a-4d3b-8699-52bd9a14b5fc" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <NodeTransform>
+            <Position Y="-1.93" />
+            <Scale X="7.760001" Y="0.2400001" />
+          </NodeTransform>
+          <Extensions />
+        </Quad>
+        <Group Id="bfd9fcdf-4e72-4e23-901d-d59349967eeb" Name="Group1" DisplayColor="11119017">
+          <GeometryOptions />
+          <Extensions />
+          <Children>
+            <Quad Id="398c0694-575a-4408-9f59-3ebc9c9e6f65" Name="mask" DisplayColor="11119017" IsMask="True">
+              <GeometryOptions />
+              <MaskProperties DisableBinaryAlpha="False" HasSampleCount="False" IsColoredMask="False" IsInvertedMask="True" />
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position Y="-2.16" />
+                <Scale X="7" />
+              </NodeTransform>
+              <Extensions />
+            </Quad>
+          </Children>
+        </Group>
+        <Scroll Id="7f16fa9c-a09b-49fb-af41-5dfe9809b109" Name="Scroll1" SpeedScale="1" MaskId="398c0694-575a-4408-9f59-3ebc9c9e6f65;" DisplayColor="11119017">
+          <GeometryOptions DirectionSimple="X" Reset="False" Speed="0.01" StackCount="3" StackSize="5" Start="False" />
+          <NodeTransform PivotType="Absolute">
+            <Position Y="-2" Z="-0.01" />
+            <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
+          </NodeTransform>
+          <Extensions>
+            <Script Id="4d3911ac-be39-4659-920b-3778c8398171" Name="Script Scroll1" />
+          </Extensions>
+          <Children>
+            <ScrollItem Id="3e8ee707-7a27-46a4-b69e-df059ffe2170" Name="Group1" SpeedScale="1" DisplayColor="11119017">
+              <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
+              <InnerParts>
+                <Group Id="ac25d96d-608d-4abb-934f-157d0bdf58af" Name="3e8ee707-7a27-46a4-b69e-df059ffe2170" SpeedScale="1" DisplayColor="11119017">
+                  <GeometryOptions />
+                  <Extensions />
+                </Group>
+              </InnerParts>
+              <Children>
+                <ScrollItem Id="f2c30067-c31e-41e6-9038-2f8e2807c615" Name="TextureText3D1" SpeedScale="1" DisplayColor="11119017">
+                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
+                  <NodeTransform PivotType="Absolute">
+                    <Scale Lock="XtoY" />
+                  </NodeTransform>
+                  <InnerParts>
+                    <TextureText Id="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" Name="f2c30067-c31e-41e6-9038-2f8e2807c615" SpeedScale="1" DisplayColor="11119017">
+                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8a7f1551-ca05-42eb-87dd-0f5352155af7" HasTextBox="False" IsNewGeometry="True" Text="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" TextQuality="1" />
+                      <Primitive>
+                        <FaceMappingList>
+                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                        </FaceMappingList>
+                      </Primitive>
+                      <Extensions />
+                    </TextureText>
+                  </InnerParts>
+                </ScrollItem>
+              </Children>
+            </ScrollItem>
+          </Children>
+        </Scroll>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <TextureTextFontStyle Id="8a7f1551-ca05-42eb-87dd-0f5352155af7" Name="SceneTextureTextFontStyle1" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material1" FolderPath="" Id="21321313-a87f-4206-b918-600b7e66deeb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="1f0404" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureLayer Name="Texture1" FolderPath="" Id="70ca7502-351a-4d3b-8699-52bd9a14b5fc" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+  </Resources>
+  <ExportManagerProperties>
+    <ExportList Name="tScroll">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="ParseText" Type="String" Value="" Enable="True" Id="67525caa-848e-4352-ba78-f1905fe96bdf" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="tText">
+      <ExportProperty ControllableId="743cbaf1-380f-42e2-87da-2d38fd5eb2a7" PropertyName="Text" Type="String" Value="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" Enable="True" Id="e4495866-cfc6-440a-ad14-cf9505fee51d" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="cc2fbd50-f291-4686-b789-75de54f4e087" PropertyName="Text" Type="String" Value="मुख्यमंत्री योगी आदित्यनाथ ने दी मुलायम सिंह को जन्मदिन की बधाई" Enable="True" Id="60af417e-6f08-41cc-bcc3-0f86f481d04c" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vLeadingSpace">
+      <ExportProperty ControllableId="3e8ee707-7a27-46a4-b69e-df059ffe2170" PropertyName="LeadingSpace" Type="Float" Value="0" Enable="True" Id="7c872628-a363-46c0-9c6b-3a4f6df81d35" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="ccd077c6-4d06-43ac-ace6-7ea33fb944d8" PropertyName="LeadingSpace" Type="Float" Value="0" Enable="True" Id="65d2deb3-9180-4545-a334-faec0aafa7ca" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vReset">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Reset" Type="Bool" Value="False" Enable="True" Id="7d6980ea-3f32-4651-b60e-1cf0009dd533" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vSpeed">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Speed" Type="Float" Value="0.01" Enable="True" Id="af786cc1-2af0-49e3-ac64-a63035689571" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vStackCount">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="StackCount" Type="Int" Value="3" Enable="True" Id="c3059e36-e430-4e13-99bf-44eab2183f6f" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vStackSize">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="StackSize" Type="Float" Value="5" Enable="True" Id="e9aa8b14-1a92-48aa-8eab-5407890ee323" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vStart">
+      <ExportProperty ControllableId="7f16fa9c-a09b-49fb-af41-5dfe9809b109" PropertyName="Start" Type="Bool" Value="False" Enable="True" Id="8e72e7b1-04e8-42b4-9821-05743c26be0c" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="vTrailingSpace">
+      <ExportProperty ControllableId="3e8ee707-7a27-46a4-b69e-df059ffe2170" PropertyName="TrailingSpace" Type="Float" Value="0" Enable="True" Id="5d09b67f-b25a-466f-a44e-b2368bd1636e" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="ccd077c6-4d06-43ac-ace6-7ea33fb944d8" PropertyName="TrailingSpace" Type="Float" Value="0" Enable="True" Id="9c3c5ae7-f04c-46c7-a5d8-c197df1ccbd5" UpdateMode="Instantly" />
+    </ExportList>
+  </ExportManagerProperties>
+  <Timelines SelectedTimelineId="6c49cdff-215a-47e6-8d93-d30f790ae0fc" Format="HD1080i50">
+    <Timeline Name="In" Id="6c49cdff-215a-47e6-8d93-d30f790ae0fc" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
+    <Timeline Name="Out" Id="9f6607d3-8318-4124-95a4-d9d4b570dfe6" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
+    <TimelineListener />
+  </Timelines>
+  <ExportManager />
+  <LinksManager />
+  <Variables />
+</Scene>
