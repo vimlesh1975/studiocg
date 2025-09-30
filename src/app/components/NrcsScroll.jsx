@@ -70,7 +70,6 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setfullpagebreakingnewsrunningwithinput(true);
                 setfullpagebreakingdata(scripts);
                 indexFullPageBreakingNews.current = 1;
                 const exportValues = {
@@ -87,6 +86,9 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
+                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
+                setfullpagebreakingnewsrunningwithinput(true);
+
             }
         } catch (error) {
         }
@@ -114,9 +116,7 @@ const NrcsScroll = () => {
             });
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
-            console.log(scripts)
             if (scripts != []) {
-                setfullpagebreakingnewsrunning(true);
                 setfullpagebreakingdata(scripts);
                 indexFullPageBreakingNews.current = 1;
                 const exportValues = {
@@ -133,8 +133,8 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
-
-
+                await new Promise(r => setTimeout(r, 2000)); // 100ms delay
+                setfullpagebreakingnewsrunning(true);
             }
 
         } catch (error) {
@@ -151,9 +151,7 @@ const NrcsScroll = () => {
     }
 
     const playNewsUpdate = async () => {
-
         let scripts = [];
-
         try {
             const res = await fetch(addressmysql() + "/getScrollData", {
                 method: "POST",
@@ -166,9 +164,7 @@ const NrcsScroll = () => {
             });
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
-            console.log(scripts)
             if (scripts != []) {
-                setnewsupdateRunning(true);
                 setnewsUpdataeData(scripts);
                 indexRefnewsupdate.current = 1;
                 const exportValues = {
@@ -186,8 +182,8 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
-
-
+                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
+                setnewsupdateRunning(true);
             }
 
         } catch (error) {
@@ -207,9 +203,7 @@ const NrcsScroll = () => {
     }
 
     const playTwoliner = async () => {
-
         let scripts = [];
-
         try {
             const res = await fetch(addressmysql() + "/getScrollData", {
                 method: "POST",
@@ -223,7 +217,6 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setTwolinerRunning(true);
                 setTwolinerData(scripts);
                 indextwoliner.current = 1;
                 const exportValues = {
@@ -241,16 +234,14 @@ const NrcsScroll = () => {
                         slot: "8",
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
-                })
-
-
+                });
+                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
+                setTwolinerRunning(true);
             }
 
         } catch (error) {
             // console.error('Error saving content:', error);
         }
-
-
     }
     const stopTwoliner = () => {
         fetch("/api/timeline", {
@@ -259,13 +250,10 @@ const NrcsScroll = () => {
             body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_twoliner2', timeline: "Out" })
         })
         setTwolinerRunning(false);
-
     }
 
     const playBreakingSmallTicker = async () => {
-
         let scripts = [];
-
         try {
             const res = await fetch(addressmysql() + "/getScrollData", {
                 method: "POST",
@@ -278,14 +266,11 @@ const NrcsScroll = () => {
             });
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
-            console.log(scripts)
             if (scripts != []) {
-                setbreakingsmalltickerRunning(true);
                 setBreakingdata(scripts);
                 indexRefbreakingsmallticker.current = 1;
                 const exportValues = {
-                    tTextA: `${scripts[0].data1}`,
-                    tTextB: `${scripts[1].data1}`,
+                    tTextA: `${scripts[0]}`,
                 }
                 fetch("/api/playwithexportedvalues", {
                     method: "POST",
@@ -298,14 +283,11 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
-
-
+                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
+                setbreakingsmalltickerRunning(true);
             }
-
         } catch (error) {
-            // console.error('Error saving content:', error);
         }
-
     }
     const stopplayBreakingSmallTicker = () => {
         fetch("/api/timeline", {
@@ -314,13 +296,10 @@ const NrcsScroll = () => {
             body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'BreakingSmall_Ticker', timeline: "Out" })
         })
         setbreakingsmalltickerRunning(false);
-
     }
-
 
     const handleSelectionChange = (e) => {
         setSelectedRunOrderTitle(e.target.value);
-
     };
 
     const handleDateChange = (event) => {
@@ -334,7 +313,6 @@ const NrcsScroll = () => {
             const data = await res.json();
             setRunOrderTitles(data.data);
         } catch (error) {
-            // console.error('Error fetching RunOrderTitles:', error);
         }
     }
 
@@ -353,12 +331,8 @@ const NrcsScroll = () => {
             const data = await res.json();
             setSlugs(data.data);
         } catch (error) {
-            // console.error('Error fetching data:', error);
         }
     }, [selectedRunOrderTitle, selectedDate]);
-
-
-
 
     useEffect(() => {
         fetchRO();
@@ -390,7 +364,6 @@ const NrcsScroll = () => {
     }
     const playticker = async () => {
         let scripts = [];
-
         try {
             const res = await fetch(addressmysql() + "/getScrollData", {
                 method: "POST",
@@ -428,16 +401,9 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
-
-
             }
-
         } catch (error) {
-            // console.error('Error saving content:', error);
         }
-
-
-
     }
     const onhorizontalSpeedChange = async (e) => {
         setHorizontalSpeed(e.target.value);
@@ -650,23 +616,11 @@ const NrcsScroll = () => {
                                             interval={5000}
                                             callback={async () => {
 
-                                                if (indexRefbreakingsmallticker.current === 0) {
-                                                    await fetch("/api/timeline", {
-                                                        method: "POST",
-                                                        headers: { "Content-Type": "application/json" },
-                                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "In", slot: "5" })
-                                                    })
-
-                                                }
-                                                else {
-                                                    await fetch("/api/timeline", {
-                                                        method: "POST",
-                                                        headers: { "Content-Type": "application/json" },
-                                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
-                                                    })
-                                                }
-
-
+                                                await fetch("/api/timeline", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
+                                                })
                                                 const currentItem = breakingdata[indexRefbreakingsmallticker.current];
                                                 const exportValues = {
                                                     tTextA: `${currentItem}`,
@@ -792,7 +746,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
+                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
                                                 })
 
                                                 const currentItem = newsUpdataeData[indexRefnewsupdate.current];
