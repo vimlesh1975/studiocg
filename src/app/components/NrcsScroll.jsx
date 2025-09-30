@@ -168,7 +168,6 @@ const NrcsScroll = () => {
                 indexRefnewsupdate.current = 1;
                 const exportValues = {
                     tTextA: `${scripts[0]}`,
-                    tTextB: `${scripts[1]}`,
                 }
                 fetch("/api/playwithexportedvalues", {
                     method: "POST",
@@ -765,7 +764,6 @@ const NrcsScroll = () => {
                                         <Timer
                                             interval={5000}
                                             callback={async () => {
-
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },

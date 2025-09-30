@@ -223,11 +223,10 @@ const Scroll = () => {
     }
 
 
-    const playBreakingSmallTicker = () => {
-        indexRefbreakingsmallticker.current = 0;
+    const playBreakingSmallTicker = async () => {
+        indexRefbreakingsmallticker.current = 1;
         const exportValues = {
             tTextA: `${playerList1[0].data1}`,
-            tTextB: `${playerList1[1].data1}`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -239,7 +238,8 @@ const Scroll = () => {
                 slot: "5",
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
-        })
+        });
+        await new Promise(r => setTimeout(r, 3000)); // 100ms delay
         setbreakingsmalltickerRunning(true);
     }
     const stopplayBreakingSmallTicker = () => {
@@ -252,11 +252,10 @@ const Scroll = () => {
 
     }
 
-    const playNewsUpdate = () => {
-        indexRefnewsupdate.current = 0;
+    const playNewsUpdate = async () => {
+        indexRefnewsupdate.current = 1;
         const exportValues = {
             tTextA: `${playerList1[0].data1}`,
-            tTextB: `${playerList1[1].data1}`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -269,6 +268,7 @@ const Scroll = () => {
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
+        await new Promise(r => setTimeout(r, 3000)); // 100ms delay
         setnewsupdateRunning(true);
     }
     const stopNewsUpdate = () => {
@@ -334,7 +334,7 @@ const Scroll = () => {
                                     await fetch("/api/timeline", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
                                     })
 
                                     const currentItem = playerList1[indexRefbreakingsmallticker.current];
@@ -358,31 +358,15 @@ const Scroll = () => {
                     <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
 
-
-
-                    <button onClick={playBreakingLt}> Play Breaking LT</button>
-                    <button onClick={stopBreakingLt}> Stop Breaking LT</button>
-
-                    <button onClick={playHeadlines}> Play Headlines</button>
-                    <button onClick={stopHeadlines}> Stop Headlines</button>
-
-                    <button onClick={playHeadlinesBand}> Play Headlines Band</button>
-                    <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
-
-
-
-
-
                     {
                         newsupdateRunning && (
                             <Timer
                                 interval={5000}
                                 callback={async () => {
-
                                     await fetch("/api/timeline", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", timeline: "Text01_In", slot: "6" })
+                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
                                     })
 
                                     const currentItem = playerList1[indexRefnewsupdate.current];
@@ -405,6 +389,17 @@ const Scroll = () => {
 
                     <button onClick={playNewsUpdate}> Play NewsUpdate</button>
                     <button onClick={stopNewsUpdate}> Stop NewsUpdate</button>
+
+
+                    <button onClick={playBreakingLt}> Play Breaking LT</button>
+                    <button onClick={stopBreakingLt}> Stop Breaking LT</button>
+
+                    <button onClick={playHeadlines}> Play Headlines</button>
+                    <button onClick={stopHeadlines}> Stop Headlines</button>
+
+                    <button onClick={playHeadlinesBand}> Play Headlines Band</button>
+                    <button onClick={stopHeadlinesBand}> Stop Headlines Band</button>
+
 
                     <button style={{ backgroundColor: 'darkred', color: 'white' }} onClick={() => {
                         fetch("/api/unloadAllScenes", {
