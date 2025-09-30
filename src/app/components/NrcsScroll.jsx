@@ -590,7 +590,7 @@ const NrcsScroll = () => {
                                 }}>Play</button>
                                 {tickerRunning && (
                                     <Timer
-                                        interval={5000}
+                                        interval={2000}
                                         callback={async () => {
                                             // console.log(indexRefTicker.current)
                                             const currentItem = scrollData[indexRefTicker.current];

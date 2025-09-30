@@ -24,10 +24,13 @@ export async function POST(req) {
         await sceneObj.takeOffline()
         await r3.sendCommand(`engine unloadscene "${project}/${scene}"`)
     }
-    else {
+    else if (timeline === "In") {
         await sceneObj.takeOnline(slot) //must be string
         await sceneObj.playTimeline(timeline)
 
+    }
+    else {
+        await sceneObj.playTimeline(timeline)
     }
     return new Response(JSON.stringify({ status: `Played timeline ${timeline}` }))
 }
