@@ -15,7 +15,6 @@ const NrcsScroll = () => {
     const [yPositionnewsupdate, setyPositionnewsupdate] = useState(0.00);
     const [yPositionbreakingNews, setyPositionbreakingNews] = useState(0.00);
     const [yPositionTwoliner, setyPositionTwoliner] = useState(0.00);
-    const [yPositionfullpagebr, setyPositionfullpagebr] = useState(0.00);
 
     const [slugs, setSlugs] = useState([]);
     const [currentSlug, setCurrentSlug] = useState(-1);
@@ -182,8 +181,15 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
+                await fetch("/api/sendCommand", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'NewsUpdate'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionnewsupdate}"` })
+                })
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setnewsupdateRunning(true);
+
+
             }
 
         } catch (error) {
@@ -235,8 +241,15 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 });
+                await fetch("/api/sendCommand", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_twoliner2'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionTwoliner}"` })
+                })
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setTwolinerRunning(true);
+
+
             }
 
         } catch (error) {
@@ -283,8 +296,15 @@ const NrcsScroll = () => {
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
                 })
+                await fetch("/api/sendCommand", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'BreakingSmall_Ticker'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionbreakingNews}"` })
+                })
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setbreakingsmalltickerRunning(true);
+
+
             }
         } catch (error) {
         }
@@ -343,8 +363,8 @@ const NrcsScroll = () => {
         setNrcsBreakingText(value)
     };
 
-    const playClock = () => {
-        fetch("/api/timeline", {
+    const playClock = async () => {
+        await fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -353,6 +373,12 @@ const NrcsScroll = () => {
                 timeline: 'In',
                 slot: "7",
             })
+        })
+
+        await fetch("/api/sendCommand", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_clock1'}" nodes set "RootNode" "Transform.Position.Y" "${yPositiondate}"` })
         })
     }
     const stopClock = () => {
@@ -400,6 +426,11 @@ const NrcsScroll = () => {
                         slot: "1",
                         exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                     })
+                });
+                await fetch("/api/sendCommand", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionscroll}"` })
                 })
             }
         } catch (error) {
@@ -530,7 +561,7 @@ const NrcsScroll = () => {
                                 <button onClick={stopClock}>Stop</button>
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
                                     setyPositiondate(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
+                                    await fetch("/api/sendCommand", {
                                         method: "POST",
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_clock1'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
@@ -654,7 +685,7 @@ const NrcsScroll = () => {
                         </tr>
 
                         <tr>
-                            <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
+                            <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Page
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
                                 {fullpagebreakingnewsrunning && (
@@ -686,15 +717,7 @@ const NrcsScroll = () => {
                                 )}
                                 <button onClick={playFullPageBreakingNews}>Play</button>
                                 <button onClick={stopFullPageBreakingNews}>Stop</button>
-                                <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionfullpagebr} onChange={async (e) => {
-                                    setyPositionfullpagebr(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${'25IN_ChannelPackaging_351.450'}/${'vimlesh_fullpage_breaking_news1'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
 
-                                }} />
                             </td>
                         </tr>
                         <tr>
