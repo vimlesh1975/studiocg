@@ -25,7 +25,7 @@ const NrcsScroll = () => {
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
     const [fullpagebreakingnewsrunningwithinput, setfullpagebreakingnewsrunningwithinput] = useState(false);
-
+    const [tickerRunning, setTickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
     const [twolinerRunning, setTwolinerRunning] = useState(false);
 
@@ -41,7 +41,6 @@ const NrcsScroll = () => {
     });
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
-    const [tickerRunning, setTickerRunning] = useState(false);
     const [scrollData, setScrollData] = useState([]);
     const [breakingdata, setBreakingdata] = useState([]);
     const [fullpagebreakingdata, setfullpagebreakingdata] = useState([]);
@@ -467,6 +466,20 @@ const NrcsScroll = () => {
             <h1>
                 Nrcs Scroll
             </h1>
+            <button style={{ backgroundColor: 'darkred', color: 'white' }} onClick={() => {
+                fetch("/api/unloadAllScenes", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                });
+                setbreakingsmalltickerRunning(false);
+                setfullpagebreakingnewsrunning(false);
+                setfullpagebreakingnewsrunningwithinput(false);
+                setnewsupdateRunning(false);
+                setTwolinerRunning(false);
+                setTickerRunning(false);
+            }}
+            >
+                🧹 Unload All Scenes</button>
         </div>
 
 
@@ -637,16 +650,28 @@ const NrcsScroll = () => {
                                             interval={5000}
                                             callback={async () => {
 
-                                                await fetch("/api/timeline", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
-                                                })
+                                                if (indexRefbreakingsmallticker.current === 0) {
+                                                    await fetch("/api/timeline", {
+                                                        method: "POST",
+                                                        headers: { "Content-Type": "application/json" },
+                                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "In", slot: "5" })
+                                                    })
+
+                                                }
+                                                else {
+                                                    await fetch("/api/timeline", {
+                                                        method: "POST",
+                                                        headers: { "Content-Type": "application/json" },
+                                                        body: JSON.stringify({ project: "25IN_ChannelPackaging_351.450", scene: "BreakingSmall_Ticker", timeline: "Text01_In", slot: "5" })
+                                                    })
+                                                }
+
 
                                                 const currentItem = breakingdata[indexRefbreakingsmallticker.current];
                                                 const exportValues = {
                                                     tTextA: `${currentItem}`,
                                                 }
+
                                                 const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
                                                 await fetch("/api/setExports", {
                                                     method: "POST",
