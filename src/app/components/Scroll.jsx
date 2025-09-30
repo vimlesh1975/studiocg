@@ -18,6 +18,7 @@ const Scroll = () => {
 
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [delemeter, setDelemeter] = useState('⏺️')
+
     const [tickerRunning, setTickerRunning] = useState(false);
     const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
@@ -405,16 +406,17 @@ const Scroll = () => {
                     <button onClick={playNewsUpdate}> Play NewsUpdate</button>
                     <button onClick={stopNewsUpdate}> Stop NewsUpdate</button>
 
-                    <button
-                        onClick={() => {
-                            fetch("/api/unloadAllScenes", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                            })
-                        }}
+                    <button style={{ backgroundColor: 'darkred', color: 'white' }} onClick={() => {
+                        fetch("/api/unloadAllScenes", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                        });
+                        setbreakingsmalltickerRunning(false);
+                        setnewsupdateRunning(false);
+                        setTickerRunning(false);
+                    }}
                     >
-                        🧹 Unload All Scenes
-                    </button>
+                        🧹 Unload All Scenes</button>
 
                 </div>
                 <table border='0'>
