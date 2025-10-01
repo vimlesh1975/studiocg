@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="a796906a-bf0f-4531-b2e4-5665283fc07e" Name="vimlesh_video" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="1a013b67-a78f-4214-9cfc-aabec89806aa" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="3eaad87a-b6ad-4e67-a4d4-ccf1907ec912" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="00e21d45-4de5-40cf-af33-0a79416d67d7" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="bd40a2e6-f67f-45a2-8a16-a842bb78ea02" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="9e1ec07a-329d-4dc7-9252-412ee258b720" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="ffffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+        </DirectionalLight>
+        <Quad Id="37727604-e684-4862-916e-4f0846c00f7e" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <Size X="7.363797" Y="4.142136" />
+          </GeometryOptions>
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="25ef24dc-06ce-4d52-89a0-e5f762243c4a" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <Extensions />
+        </Quad>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <TextureTextFontStyle Id="3d16b1be-163a-4d9c-bde8-187944065fff" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <ImageSequence Name="express_loop.mp4" FolderPath="" Id="13095b83-efb9-4669-802b-e260104afd90" AudioGain="100" Deinterlace="False" StringPropConstructor="express_loop.mp4" IsInterlaced="True" ThumbnailFrame="0" UseMemory="False" />
+    <TextureLayer Name="Texture1" FolderPath="" Id="25ef24dc-06ce-4d52-89a0-e5f762243c4a" TextureBlending="Multiply">
+      <TextureMappingOption Texture="13095b83-efb9-4669-802b-e260104afd90" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="False" WrappingMethod="1" />
+    </TextureLayer>
+  </Resources>
+  <ExportManagerProperties>
+    <ExportList Name="video">
+      <ExportProperty ControllableId="25ef24dc-06ce-4d52-89a0-e5f762243c4a" PropertyName="TextureMappingOption.Texture" Type="Texture" Value="express_loop.mp4" Enable="True" Id="4e1963d5-9f07-4d3c-b511-345802436dc1" UpdateMode="Instantly" />
+    </ExportList>
+  </ExportManagerProperties>
+  <Timelines SelectedTimelineId="0f0c046b-84c6-4dd6-bb00-93a43d022e3b" Format="HD1080i50">
+    <Timeline Name="In" Id="0f0c046b-84c6-4dd6-bb00-93a43d022e3b" IsListening="False" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <ImageSequenceAnimationController IncrementValue="1" StartFrame="0" EndFrame="600" AnimatedProperty="Animation" ControllableId="25ef24dc-06ce-4d52-89a0-e5f762243c4a" />
+    </Timeline>
+    <Timeline Name="Out" Id="45292bdc-55c0-40d5-a37c-c79673cd67ab" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
+    <TimelineListener />
+  </Timelines>
+  <ExportManager />
+  <LinksManager />
+  <Variables />
+</Scene>

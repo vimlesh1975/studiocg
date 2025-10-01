@@ -1,0 +1,1245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="9c207e7c-4036-4624-bc68-336c6a0961a0" Name="Breaking_LT" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="90d0aae0-e5b4-4674-b12b-3fcf4aec480a" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="6e957034-5d41-448f-8669-a292d542f3b9" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="59bca860-27d5-44a7-8099-8492581d5697" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="412a04d6-7df7-4816-8f5c-6cd896ba09f0" Name="DirectionalLight1" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="f73b022c-2c28-4acf-a4eb-7b7a77463653" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+        </DirectionalLight>
+        <Group Id="68ba2f2e-4147-445d-965b-033038c9ca48" Name="MainGrp" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions />
+          <NodeTransform PivotType="Absolute">
+            <Position X="3.68" Y="2.07" />
+          </NodeTransform>
+          <Extensions />
+          <Children>
+            <Group Id="c0f66c1b-67ae-4f6a-9551-7c654bc4ad8c" Name="Group_PivotPoint" SpeedScale="1" DisplayColor="11119017">
+              <GeometryOptions />
+              <NodeTransform PivotType="Absolute">
+                <Pivot X="3.68" Y="2.07" />
+              </NodeTransform>
+              <Extensions />
+              <Children>
+                <Group Id="1b240db6-0638-453e-99ba-9c2d1601d449" Name="DesignGfx" SpeedScale="1" DisplayColor="11119017">
+                  <GeometryOptions />
+                  <Extensions />
+                  <Children>
+                    <Group Id="11bdea24-3654-4ef5-95ed-311198264499" Name="All1" SpeedScale="1" DisplayColor="11119017">
+                      <GeometryOptions />
+                      <NodeTransform PivotType="Absolute">
+                        <Position Y="-0.96" />
+                      </NodeTransform>
+                      <Extensions />
+                      <Children>
+                        <Quad Id="5b636777-866b-4a46-a4be-74f1e282e479" Name="BaseMask01" SpeedScale="1" DisplayColor="11119017" IsMask="True">
+                          <GeometryOptions AlignmentY="Top">
+                            <Size X="6.829999" Y="0.48" />
+                          </GeometryOptions>
+                          <MaskProperties DisableBinaryAlpha="False" HasSampleCount="False" IsColoredMask="False" IsInvertedMask="True" />
+                          <Primitive>
+                            <FaceMappingList>
+                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="26408159-1961-4889-9a02-9e835c1f37de" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                            </FaceMappingList>
+                          </Primitive>
+                          <Extensions />
+                        </Quad>
+                        <Quad Id="7d0d5082-7e28-41fe-a636-8b4e0bc421d0" Name="BaseMask02" SpeedScale="1" DisplayColor="11119017" IsMask="True">
+                          <GeometryOptions AlignmentX="Left" AlignmentY="Top">
+                            <Size X="2.159999" Y="0.48" />
+                          </GeometryOptions>
+                          <MaskProperties DisableBinaryAlpha="False" HasSampleCount="True" IsColoredMask="False" IsInvertedMask="True" />
+                          <Primitive>
+                            <FaceMappingList>
+                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="26408159-1961-4889-9a02-9e835c1f37de" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                            </FaceMappingList>
+                          </Primitive>
+                          <NodeTransform>
+                            <Position X="-3.43" Y="0.48" />
+                          </NodeTransform>
+                          <Extensions />
+                        </Quad>
+                        <Group Id="7e7c479a-306e-4f03-b49b-7e6cf40de92b" Name="In_Gfx1" SpeedScale="1" DisplayColor="11119017">
+                          <GeometryOptions />
+                          <Extensions />
+                          <Children>
+                            <Group Id="26b8dff8-6d0a-4634-9099-5ffbd4d1e140" Name="BasicPrimitive1" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                              <GeometryOptions />
+                              <Extensions />
+                              <Children>
+                                <Quad Id="b56b10a9-39ad-42f3-b318-46402a97ddac" Name="Base01_Yellow1" SpeedScale="1" DisplayColor="11119017">
+                                  <GeometryOptions AlignmentY="Top">
+                                    <Size X="6.83" Y="0.5" />
+                                  </GeometryOptions>
+                                  <Primitive>
+                                    <FaceMappingList>
+                                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="8d4dcc0d-e73e-4ffe-ad8c-a51c3afa1c77" BaseMaterialInherited="False" TextureInherited="False" />
+                                    </FaceMappingList>
+                                  </Primitive>
+                                  <Extensions />
+                                </Quad>
+                                <Quad Id="7e307458-dce1-46f6-b3c9-c8b22cbf7ddb" Name="Base02_Red1" SpeedScale="1" DisplayColor="11119017">
+                                  <GeometryOptions AlignmentY="Top">
+                                    <Size X="6.829999" Y="0.48" />
+                                  </GeometryOptions>
+                                  <Primitive>
+                                    <FaceMappingList>
+                                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="5e36c59b-c5b2-4891-8a27-75ff064bd777" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                                    </FaceMappingList>
+                                  </Primitive>
+                                  <NodeTransform>
+                                    <Position Z="-0.001" />
+                                  </NodeTransform>
+                                  <Extensions />
+                                </Quad>
+                                <Quad Id="f5d551a5-7611-4e2e-8fea-9014d6e95c3e" Name="Base03_Blue1" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                                  <GeometryOptions AlignmentY="Top">
+                                    <Size X="6.829999" Y="0.48" />
+                                  </GeometryOptions>
+                                  <Primitive>
+                                    <FaceMappingList>
+                                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="26408159-1961-4889-9a02-9e835c1f37de" TextureLayerId="2a8b99d8-d855-4bc8-a142-4eabc7f9b421" BaseMaterialInherited="False" TextureInherited="False" />
+                                    </FaceMappingList>
+                                  </Primitive>
+                                  <NodeTransform>
+                                    <Position Z="-0.002" />
+                                  </NodeTransform>
+                                  <Extensions />
+                                  <Children>
+                                    <Quad Id="9dddb1e6-cff7-4fd3-965d-81b771defcd5" Name="Base03_Blue2" Alpha="0.55" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentY="Top">
+                                        <Size X="6.829999" Y="0.48" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="07c0b13d-0f3d-4058-956d-e6ef3a7d2b9f" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position Z="-0.001" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </Quad>
+                                  </Children>
+                                </Quad>
+                              </Children>
+                            </Group>
+                            <Group Id="93cf8af2-8649-45ea-b75d-071a68cd7ed3" Name="Transition_Out" Alpha="0" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                              <GeometryOptions />
+                              <NodeTransform PivotType="Absolute">
+                                <Position Y="0.18" />
+                                <Scale X="1.7" Y="1.7" />
+                              </NodeTransform>
+                              <Extensions />
+                              <Children>
+                                <Group Id="686ed96e-eb21-4828-ab4f-938a95945cc1" Name="TransitionGrp" SpeedScale="1" MaskId="5b636777-866b-4a46-a4be-74f1e282e479;" DisplayColor="11119017">
+                                  <GeometryOptions />
+                                  <NodeTransform PivotType="Absolute">
+                                    <Position Y="-0.28" Z="-0.005" />
+                                    <Scale X="1.22" Y="1.22" />
+                                  </NodeTransform>
+                                  <Extensions />
+                                  <Children>
+                                    <TextureText Id="89be1f3f-e2f0-4a46-b3d4-9870384de9ba" Name="TextureText3D3" Alpha="0" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9e67e861-962f-4e94-8e94-92c3fd46e6d2" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="2" />
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position Z="-0.002" />
+                                        <Scale X="7.21" Y="7.21" Z="7.21" Lock="XtoYtoZ" />
+                                        <Skew X="12" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                    <TextureText Id="bc38e2ce-f72f-417c-be57-89d6737b7a8b" Name="TextureText3D4" Alpha="0" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9e67e861-962f-4e94-8e94-92c3fd46e6d2" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="2" />
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position Z="-0.003" />
+                                        <Scale X="7.21" Y="7.21" Z="7.21" Lock="XtoYtoZ" />
+                                        <Skew X="12" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                    <Group Id="9719ecd3-ac4d-4bda-a72f-a127446ff9e7" Name="BasicPrimitive2" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                                      <GeometryOptions />
+                                      <NodeTransform PivotType="Absolute">
+                                        <Position Z="-0.005" />
+                                        <Scale X="1.15" Y="1.15" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                      <Children>
+                                        <TextureText Id="ffa0f40c-cf19-48fa-98a9-bb223f0b1a90" Name="TextureText3D1" Alpha="0.64" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9b431250-6cf0-4520-8baf-804afe33927d" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="2" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="507da19f-1f89-4ad1-b8da-ebbb744aa4bb" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="False" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="False" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="72923cf1-8b84-46b6-a501-5e380b45fb3b" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="0.05" Y="-0.04" />
+                                            <Scale X="3.5" Y="3.5" Z="3.5" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                        <TextureText Id="f80071b6-a380-49ba-a6a4-51ea4bf80064" Name="TextureText3D5" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9b431250-6cf0-4520-8baf-804afe33927d" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="2" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="3686c676-318b-46ce-91d1-e3f9361b6d4a" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="3686c676-318b-46ce-91d1-e3f9361b6d4a" BaseMaterialInherited="False" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="3277ef14-8805-4eab-8797-af5d39442805" TextureLayerId="3686c676-318b-46ce-91d1-e3f9361b6d4a" BaseMaterialInherited="False" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="3686c676-318b-46ce-91d1-e3f9361b6d4a" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="0.05" Y="-0.04" />
+                                            <Scale X="3.5" Y="3.5" Z="3.5" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                        <TextureText Id="fe2c88bd-0971-43ae-97fd-2adbc2210a5c" Name="TextureText3D2" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9e67e861-962f-4e94-8e94-92c3fd46e6d2" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="3" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="9215fa0b-14d5-43bd-9ca7-1efd611cde5c" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="True" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="9215fa0b-14d5-43bd-9ca7-1efd611cde5c" BaseMaterialInherited="True" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="9215fa0b-14d5-43bd-9ca7-1efd611cde5c" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position Z="-0.003" />
+                                            <Scale X="3.5" Y="3.5" Z="3.5" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                        <Quad Id="68a101da-84ee-4777-917b-c9d945da0af6" Name="Quad1" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                          <GeometryOptions />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="ff0b672c-2feb-45c3-ad04-b00af8ac0f63" TextureLayerId="2fc2c498-e2d2-4b2f-bc18-35bbf66baaf3" BaseMaterialInherited="False" TextureInherited="False" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-0.71" Y="-0.07" Z="-0.005" />
+                                            <Scale X="0.94" Y="0.94" Z="0.94" Lock="XtoYtoZ" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </Quad>
+                                      </Children>
+                                    </Group>
+                                  </Children>
+                                </Group>
+                              </Children>
+                            </Group>
+                            <Group Id="a1008279-7c57-4457-83d5-6303a5dc92b9" Name="DataAll" SpeedScale="1" DisplayColor="11119017">
+                              <GeometryOptions />
+                              <NodeTransform PivotType="Absolute">
+                                <Position Z="-0.02" />
+                              </NodeTransform>
+                              <Extensions />
+                              <Children>
+                                <Group Id="be2172cd-10f7-4251-9fa0-2c7fee76926b" Name="StoryHeadGrp" SpeedScale="1" DisplayColor="11119017">
+                                  <GeometryOptions />
+                                  <NodeTransform PivotType="Absolute">
+                                    <Position X="-0.41" Y="-0.17" />
+                                  </NodeTransform>
+                                  <Extensions />
+                                  <Children>
+                                    <Quad Id="262803ee-d015-484a-88cf-9939a3eb4654" Name="Quad4" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentX="Left">
+                                        <Size X="1.79" Y="0.47" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="f0376b6e-6b43-4665-ae1c-e0e6a6e95a28" TextureLayerId="b01ae180-c36c-4902-9b05-ed759231ef85" BaseMaterialInherited="False" TextureInherited="False" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position X="-3" Y="-0.07" Z="0.001" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </Quad>
+                                    <Quad Id="51ac4fdc-ee30-4807-a217-4854b50761d6" Name="Quad2" Alpha="0" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                      <GeometryOptions AlignmentX="Left">
+                                        <Size X="5.8" Y="0.47" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c3280a61-1e14-4afa-8107-24e4f198645a" TextureLayerId="f03454f6-9767-474d-a8be-5ad261a80987" BaseMaterialInherited="False" TextureInherited="False" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position X="-1.89" Y="-0.07" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </Quad>
+                                    <Quad Id="bb3268aa-2932-41f4-a984-027af44154eb" Name="RedBase_Mask" SpeedScale="1" IsExpanded="False" DisplayColor="11119017" IsMask="True">
+                                      <GeometryOptions>
+                                        <Size Y="0.47" />
+                                      </GeometryOptions>
+                                      <MaskProperties DisableBinaryAlpha="False" HasSampleCount="True" IsColoredMask="True" IsInvertedMask="True" />
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c3280a61-1e14-4afa-8107-24e4f198645a" TextureLayerId="1e53ddb5-31f0-4659-a147-c5a850e96dba" BaseMaterialInherited="False" TextureInherited="False" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position X="-2.39" Y="-0.07" Z="-0.001" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                      <Children>
+                                        <Quad Id="cafb2090-58c2-4131-b138-1bd9e944d710" Name="Flare_01" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions>
+                                            <Size X="0.3843713" Y="0.1" />
+                                          </GeometryOptions>
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="bfab969d-a119-4370-9ef0-fb51bbb83a1c" TextureLayerId="fa37bb5c-2eb7-4c8d-bf83-78cb0ef3a44f" BaseMaterialInherited="False" TextureInherited="False" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-0.09" Z="-0.003" />
+                                            <Rotation Z="90" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </Quad>
+                                        <Quad Id="e65c9042-e18b-42bf-ac35-bd24836fb298" Name="Flare_02" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions>
+                                            <Size X="0.206364" Y="0.1" />
+                                          </GeometryOptions>
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="bfab969d-a119-4370-9ef0-fb51bbb83a1c" TextureLayerId="fa37bb5c-2eb7-4c8d-bf83-78cb0ef3a44f" BaseMaterialInherited="False" TextureInherited="False" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-0.09" Z="-0.004" />
+                                            <Rotation Z="90" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </Quad>
+                                        <Quad Id="8b562a95-5a90-43f7-a8b6-e9db111c157c" Name="Flare_03" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions>
+                                            <Size X="0.206364" Y="0.1" />
+                                          </GeometryOptions>
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="bfab969d-a119-4370-9ef0-fb51bbb83a1c" TextureLayerId="fa37bb5c-2eb7-4c8d-bf83-78cb0ef3a44f" BaseMaterialInherited="False" TextureInherited="False" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-0.09" Z="-0.004" />
+                                            <Rotation Z="90" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </Quad>
+                                        <Quad Id="efe5251a-2f53-42ee-a032-debadaee8bf9" Name="Flare_04" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions>
+                                            <Size X="0.3843713" Y="0.1" />
+                                          </GeometryOptions>
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="bfab969d-a119-4370-9ef0-fb51bbb83a1c" TextureLayerId="fa37bb5c-2eb7-4c8d-bf83-78cb0ef3a44f" BaseMaterialInherited="False" TextureInherited="False" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-0.09" Z="-0.005" />
+                                            <Rotation Z="90" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </Quad>
+                                      </Children>
+                                    </Quad>
+                                    <Group Id="94e73b66-47a6-435f-a448-200c7474d970" Name="TextGrp" SpeedScale="1" MaskId="bb3268aa-2932-41f4-a984-027af44154eb;" DisplayColor="11119017">
+                                      <GeometryOptions />
+                                      <NodeTransform PivotType="Absolute">
+                                        <Position Y="0.02" Z="-0.005" />
+                                        <Rotation Z="0.522155" />
+                                        <Scale X="1.005694" Y="1.005694" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                      <Children>
+                                        <TextureText Id="a48be030-10ad-4aa9-bc0e-932fab541a41" Name="Breaking" Alpha="0.375" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="3" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="9c126798-734d-4c91-836f-1898826f788f" BaseMaterialInherited="True" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-2.197708" Y="0.02" Z="-0.003" />
+                                            <Scale X="1.57" Y="1.57" Z="1.57" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                        <TextureText Id="e2a3f789-d888-4e28-8107-90ab8ff742c9" Name="News" Alpha="0.375" SpeedScale="1" DisplayColor="11119017">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9e67e861-962f-4e94-8e94-92c3fd46e6d2" HasTextBox="False" IsNewGeometry="True" Text="NEWS" TextQuality="3" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="9c126798-734d-4c91-836f-1898826f788f" BaseMaterialInherited="True" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-2.598798" Y="-0.2" Z="-0.003" />
+                                            <Scale X="2.8" Y="2.8" Z="2.8" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                      </Children>
+                                    </Group>
+                                    <Group Id="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0" Name="TextGrp1" Alpha="0.4" SpeedScale="1" IsExpanded="False" MaskId="bb3268aa-2932-41f4-a984-027af44154eb;" DisplayColor="11119017">
+                                      <GeometryOptions />
+                                      <NodeTransform PivotType="Absolute">
+                                        <Position Z="-0.008" />
+                                        <Rotation Z="0.7038379" />
+                                        <Scale X="1.000717" Y="1.000717" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                      <Children>
+                                        <TextureText Id="1311a941-858f-4de3-9928-9ebd5a8f22bd" Name="Breaking1" Alpha="0.375" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="False" IsNewGeometry="True" Text="BREAKING" TextQuality="3" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="9c126798-734d-4c91-836f-1898826f788f" BaseMaterialInherited="True" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="f7e53785-da68-41b9-bd23-513bed612867" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-2.197708" Y="0.02" Z="-0.003" />
+                                            <Scale X="1.57" Y="1.57" Z="1.57" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                        <TextureText Id="1e389d5a-7da9-4df5-9cdd-a7c28bc08314" Name="News1" Alpha="0.375" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="9e67e861-962f-4e94-8e94-92c3fd46e6d2" HasTextBox="False" IsNewGeometry="True" Text="NEWS" TextQuality="3" />
+                                          <Primitive>
+                                            <FaceMappingList>
+                                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="False" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Front" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="9c126798-734d-4c91-836f-1898826f788f" BaseMaterialInherited="True" TextureInherited="False" />
+                                              <NamedBaseFaceMapping SurfaceName="Border" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                              <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="e75ccd35-372e-49e7-905c-8473897e8756" BaseMaterialInherited="True" TextureInherited="True" />
+                                            </FaceMappingList>
+                                          </Primitive>
+                                          <NodeTransform>
+                                            <Position X="-2.598798" Y="-0.2" Z="-0.003" />
+                                            <Scale X="2.8" Y="2.8" Z="2.8" Lock="XtoYtoZ" />
+                                            <Skew X="12" />
+                                          </NodeTransform>
+                                          <Extensions />
+                                        </TextureText>
+                                      </Children>
+                                    </Group>
+                                    <Quad Id="b7cad294-4b24-4bee-848c-c20f2ef0490d" Name="Quad3" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                                      <GeometryOptions />
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="34582c2e-7416-43b1-84e0-1c8fa212bf2e" TextureLayerId="ff9fdec1-9d91-4584-b532-c580ddd1d0ac" BaseMaterialInherited="False" TextureInherited="False" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position X="-2.659722" Y="-0.14" Z="-0.02" />
+                                        <Scale X="0.805" Y="0.805" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </Quad>
+                                  </Children>
+                                </Group>
+                                <Group Id="2eaef694-bc31-4a00-856a-08255bed9136" Name="BasicPrimitive3" SpeedScale="1" MaskId="5b636777-866b-4a46-a4be-74f1e282e479;" DisplayColor="11119017">
+                                  <GeometryOptions />
+                                  <NodeTransform PivotType="Absolute">
+                                    <Position X="0.59" Y="-0.29" Z="-0.03" />
+                                  </NodeTransform>
+                                  <Extensions />
+                                  <Children>
+                                    <TextureText Id="c4a5717a-5d5a-4791-9bdf-955ba4039d06" Name="tText01" Alpha="0" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="Width" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="True" IsNewGeometry="True" Text="इजरायल और फिलिस्तीन में संघर्ष जारी है" TextQuality="1">
+                                        <TextBoxSize X="2.36" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="2122759b-26ad-4f42-94cd-04e1a9e88c8a" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Scale X="2.23" Y="2.23" Z="2.23" Lock="XtoYtoZ" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                    <TextureText Id="b6d3c46f-cd05-4b08-a753-e8ff5bb2d499" Name="tText02" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="Width" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="True" IsNewGeometry="True" Text="हमास ने तेल अवीव पर किया हमला" TextQuality="1">
+                                        <TextBoxSize X="2.36" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="2122759b-26ad-4f42-94cd-04e1a9e88c8a" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Scale X="2.23" Y="2.23" Z="2.23" Lock="XtoYtoZ" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                    <TextureText Id="66febc40-aa1b-4bdf-9cf8-0a8adc09f1f9" Name="tText03" Alpha="0" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="Width" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="True" IsNewGeometry="True" Text=" अवीव पर हमला होने के बाद से हर जगह सुरक्षा बढ़ा दी" TextQuality="1">
+                                        <TextBoxSize X="2.36" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="2122759b-26ad-4f42-94cd-04e1a9e88c8a" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position Y="-0.45" />
+                                        <Scale X="2.23" Y="2.23" Z="2.23" Lock="XtoYtoZ" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                    <TextureText Id="954b320d-2aa8-4c15-957a-06df818533c9" Name="tText04" Alpha="0" SpeedScale="1" DisplayColor="11119017">
+                                      <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="Width" FontStyle="e47af9c2-7f3e-4ba0-bf01-be578d621c38" HasTextBox="True" IsNewGeometry="True" Text="झड़पों से देश भर के कई क्षेत्र इससे प्रभावित हुए" TextQuality="1">
+                                        <TextBoxSize X="2.36" />
+                                      </GeometryOptions>
+                                      <Primitive>
+                                        <FaceMappingList>
+                                          <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="False" TextureInherited="False" />
+                                          <NamedBaseFaceMapping SurfaceName="Front" MaterialId="2122759b-26ad-4f42-94cd-04e1a9e88c8a" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                          <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="21ce9438-0056-462b-8d45-536a3ffd0d03" BaseMaterialInherited="True" TextureInherited="True" />
+                                        </FaceMappingList>
+                                      </Primitive>
+                                      <NodeTransform>
+                                        <Position Y="-0.45" />
+                                        <Scale X="2.23" Y="2.23" Z="2.23" Lock="XtoYtoZ" />
+                                      </NodeTransform>
+                                      <Extensions />
+                                    </TextureText>
+                                  </Children>
+                                </Group>
+                              </Children>
+                            </Group>
+                          </Children>
+                        </Group>
+                        <Group Id="f0ac2731-9737-4123-8206-9aa7324f7243" Name="Out1" SpeedScale="1" MaskId="5b636777-866b-4a46-a4be-74f1e282e479;" DisplayColor="11119017">
+                          <GeometryOptions />
+                          <NodeTransform PivotType="Absolute">
+                            <Position Y="0.01" Z="-0.06" />
+                          </NodeTransform>
+                          <Extensions />
+                          <Children>
+                            <Quad Id="102ce338-d4c0-4396-a700-92a5df8c6509" Name="Base01_Yellow2" SpeedScale="1" DisplayColor="11119017">
+                              <GeometryOptions AlignmentY="Top">
+                                <Size X="6.83" Y="0.5" />
+                              </GeometryOptions>
+                              <Primitive>
+                                <FaceMappingList>
+                                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                                </FaceMappingList>
+                              </Primitive>
+                              <NodeTransform>
+                                <Position Y="-0.53" />
+                              </NodeTransform>
+                              <Extensions />
+                            </Quad>
+                            <Quad Id="361d8031-207c-4dd5-af8a-e5b5151fd05f" Name="Base01_Red1" SpeedScale="1" DisplayColor="11119017">
+                              <GeometryOptions AlignmentY="Top">
+                                <Size X="6.83" Y="0.5" />
+                              </GeometryOptions>
+                              <Primitive>
+                                <FaceMappingList>
+                                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="5e36c59b-c5b2-4891-8a27-75ff064bd777" TextureLayerId="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" BaseMaterialInherited="False" TextureInherited="False" />
+                                </FaceMappingList>
+                              </Primitive>
+                              <NodeTransform>
+                                <Position Y="-0.53" Z="-0.001" />
+                              </NodeTransform>
+                              <Extensions />
+                            </Quad>
+                          </Children>
+                        </Group>
+                        <Quad Id="a58b5370-1528-4b5e-abfe-a458d7720a63" Name="Flare01" Alpha="0" SpeedScale="1" DisplayColor="11119017" Blend="Add">
+                          <GeometryOptions>
+                            <Size X="3.744567" Y="1.245069" />
+                          </GeometryOptions>
+                          <Primitive>
+                            <FaceMappingList>
+                              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="26408159-1961-4889-9a02-9e835c1f37de" TextureLayerId="053a993c-f0d2-4fe0-8dd2-996c6c983ff8" BaseMaterialInherited="False" TextureInherited="False" />
+                            </FaceMappingList>
+                          </Primitive>
+                          <NodeTransform>
+                            <Position X="-1.94" Z="-0.006" />
+                          </NodeTransform>
+                          <Extensions />
+                        </Quad>
+                      </Children>
+                    </Group>
+                  </Children>
+                </Group>
+              </Children>
+            </Group>
+          </Children>
+        </Group>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <BaseMaterial Name="White" FolderPath="" Id="f7e53785-da68-41b9-bd23-513bed612867" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material4" FolderPath="" Id="3277ef14-8805-4eab-8797-af5d39442805" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ac9f9" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="DarkBlue1" FolderPath="" Id="6482898a-86ce-4d48-a3f2-8f90865a5ab2" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="1244" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="White1" FolderPath="" Id="26408159-1961-4889-9a02-9e835c1f37de" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="9e67e861-962f-4e94-8e94-92c3fd46e6d2" Name="TarunBOLD" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Bold" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Yellow2" FolderPath="" Id="c20de2d6-ae39-4c4a-b9ef-9f0bed3f660e" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffd900" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Red2" FolderPath="" Id="5e36c59b-c5b2-4891-8a27-75ff064bd777" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="d20303" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="DarkBlue2" FolderPath="" Id="07c0b13d-0f3d-4058-956d-e6ef3a7d2b9f" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="1244" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="e47af9c2-7f3e-4ba0-bf01-be578d621c38" Name="FontStyle2" FontName="Akshar Unicode" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0.1" />
+    <TextureTextFontStyle Id="3b2ffae6-dbda-4475-920e-1ba20e15838e" Name="FontStyle3" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material7" FolderPath="" Id="6906127d-21db-4251-8d43-1c2b92f6c021" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Blank" FolderPath="" Id="507da19f-1f89-4ad1-b8da-ebbb744aa4bb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="0" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="9b431250-6cf0-4520-8baf-804afe33927d" Name="TarunStroke" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0.04" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material8" FolderPath="" Id="ff0b672c-2feb-45c3-ad04-b00af8ac0f63" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material10" FolderPath="" Id="1836a59d-561d-4f01-aa8c-ac71cd9f234e" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material12" FolderPath="" Id="e6a098a4-eb51-449b-804a-4c5c1abcb2eb" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="874288ca-a050-43df-89db-554d6df7d6c1" Name="FontStyle5" FontName="4CTarunUni" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material1" FolderPath="" Id="f6e1313d-6569-4779-a354-d9c0ea67da56" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material2" FolderPath="" Id="55c86202-6a96-4047-8ea5-ec17d6573257" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material3" FolderPath="" Id="dba95ab8-0c2d-4e85-bad1-456202eaf1f4" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material5" FolderPath="" Id="663d412f-cf7b-4471-85fa-5bd4fe86f964" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material6" FolderPath="" Id="c3280a61-1e14-4afa-8107-24e4f198645a" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material9" FolderPath="" Id="27b17565-272c-46b1-bbdd-2946e6e8568c" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material11" FolderPath="" Id="bfab969d-a119-4370-9ef0-fb51bbb83a1c" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material13" FolderPath="" Id="34582c2e-7416-43b1-84e0-1c8fa212bf2e" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material14" FolderPath="" Id="2e9f6df6-ee9a-4b29-96da-fa692fa2bc59" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material15" FolderPath="" Id="ac2f2c00-b1e2-4202-be99-c29a2e189dd8" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material16" FolderPath="" Id="f0376b6e-6b43-4665-ae1c-e0e6a6e95a28" HasAmbient="False" HasEmissive="True" HasSpecular="False" HasDiffuse="False" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureTextFontStyle Id="239c6ef7-332b-4671-8d22-c89d2d4dca7c" Name="FontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material17" FolderPath="" Id="2122759b-26ad-4f42-94cd-04e1a9e88c8a" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureLayer Name="Texture8" FolderPath="" Id="b9458b0d-06cf-4b6c-ab88-21723ebb681a" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\RedGradient1(1).jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture16" FolderPath="" Id="2a8b99d8-d855-4bc8-a142-4eabc7f9b421" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\BG_BLUE2.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset X="0.008" Y="-0.43" />
+        <Scale X="12.29" Y="12.29" Z="12.29" Lock="XtoYtoZ" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="White_Texture1" FolderPath="" Id="32a0b753-18d0-4a93-8c5c-5bd2fc20a204" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\WhiteGradient1.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.2" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture23" FolderPath="" Id="053a993c-f0d2-4fe0-8dd2-996c6c983ff8" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\f6b_lightblue.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture7" FolderPath="" Id="72923cf1-8b84-46b6-a501-5e380b45fb3b" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\WhiteGradient1.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.37" />
+        <Scale Y="1.19" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture13" FolderPath="" Id="3686c676-318b-46ce-91d1-e3f9361b6d4a" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\Optical_flare_(32).png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.13" />
+        <Scale X="7.31" Y="7.31" Z="7.31" Lock="XtoYtoZ" />
+        <Rotation Z="90" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture14" FolderPath="" Id="2fc2c498-e2d2-4b2f-bc18-35bbf66baaf3" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\Optical_flare_(32).png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture17" FolderPath="" Id="08692c80-ad7d-48fb-ba2d-f18f04e491cd" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\YellowGradient.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="UniformToFill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Image01" FolderPath="" Id="fec8eb0a-7506-442f-8994-9b328241cffc" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\sbke40g_gujarat-rain-pti_625x300_14_September_21.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="UniformToFill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture21" FolderPath="" Id="1a1f816c-9946-4e19-9d6f-f4dbf99c95ea" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\YellowGradient.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Image02" FolderPath="" Id="dd5f9839-e1c8-493f-895c-463d3a43f5cb" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\sbke40g_gujarat-rain-pti_625x300_14_September_21.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="UniformToFill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture1" FolderPath="" Id="9ad996f9-ab4a-4ad7-8d7f-a1014c5ab4c2" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture2" FolderPath="" Id="23cf5a8d-059d-4a9a-bbe7-ee8b15ff3585" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture3" FolderPath="" Id="5aba8b08-8e79-4806-9ef9-fc7315052405" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture4" FolderPath="" Id="9215fa0b-14d5-43bd-9ca7-1efd611cde5c" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\RedGradient1(1).jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="1" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="True" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.11" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture5" FolderPath="" Id="30cad5ce-3631-48bc-93b5-5c26b167fcb4" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture9" FolderPath="" Id="e75ccd35-372e-49e7-905c-8473897e8756" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\RedGradient1(1).jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="1" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="True" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.11" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="White_Texture2" FolderPath="" Id="9c126798-734d-4c91-836f-1898826f788f" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\WhiteGradient1.jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset Y="-0.2" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture10" FolderPath="" Id="f03454f6-9767-474d-a8be-5ad261a80987" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\Lines.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Scale Y="3.59" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture11" FolderPath="" Id="8d4dcc0d-e73e-4ffe-ad8c-a51c3afa1c77" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture15" FolderPath="" Id="1e53ddb5-31f0-4659-a147-c5a850e96dba" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\RedGradient1(1).jpg" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture18" FolderPath="" Id="41e69661-83fd-4531-916f-777511ac5529" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture19" FolderPath="" Id="fa37bb5c-2eb7-4c8d-bf83-78cb0ef3a44f" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\f1o_rgba.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Scale X="1.78" Y="1.3" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture20" FolderPath="" Id="ff9fdec1-9d91-4584-b532-c580ddd1d0ac" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\f6b_lightblue.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture22" FolderPath="" Id="458c242a-14ae-4b4d-a7f7-0d24f3d4473d" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture25" FolderPath="" Id="b01ae180-c36c-4902-9b05-ed759231ef85" TextureBlending="Multiply">
+      <TextureMappingOption Texture="ProjectResource\dotflash.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1">
+        <Offset X="-0.11" />
+        <Scale X="0.8" Y="3.59" />
+      </TextureMappingOption>
+    </TextureLayer>
+    <TextureLayer Name="Texture26" FolderPath="" Id="21ce9438-0056-462b-8d45-536a3ffd0d03" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+  </Resources>
+  <ExportManagerProperties>
+    <ExportList Name="tText01">
+      <ExportProperty ControllableId="c4a5717a-5d5a-4791-9bdf-955ba4039d06" PropertyName="Text" Type="String" Value="इजरायल और फिलिस्तीन में संघर्ष जारी है" Enable="True" Id="451699de-a1c3-41a7-8b4f-8bd4e2b17bf0" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="tText02">
+      <ExportProperty ControllableId="b6d3c46f-cd05-4b08-a753-e8ff5bb2d499" PropertyName="Text" Type="String" Value="हमास ने तेल अवीव पर किया हमला" Enable="True" Id="b6ee3d89-607d-493a-b65d-11d79735f952" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="tText03">
+      <ExportProperty ControllableId="66febc40-aa1b-4bdf-9cf8-0a8adc09f1f9" PropertyName="Text" Type="String" Value=" अवीव पर हमला होने के बाद से हर जगह सुरक्षा बढ़ा दी" Enable="True" Id="5b388a7b-4786-4396-9375-d5f262d86c2c" UpdateMode="Instantly" />
+    </ExportList>
+    <ExportList Name="tText04">
+      <ExportProperty ControllableId="954b320d-2aa8-4c15-957a-06df818533c9" PropertyName="Text" Type="String" Value="झड़पों से देश भर के कई क्षेत्र इससे प्रभावित हुए" Enable="True" Id="342bdbfe-88db-4a73-b939-204b061e2aea" UpdateMode="Instantly" />
+    </ExportList>
+  </ExportManagerProperties>
+  <Timelines SelectedTimelineId="7c2f1192-6a2f-477d-bf74-e4bdb87f5da3" Format="HD1080i50">
+    <Timeline Name="In" Id="7c2f1192-6a2f-477d-bf74-e4bdb87f5da3" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="600" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Enabled" ControllableId="11bdea24-3654-4ef5-95ed-311198264499">
+        <KeyFrame FrameNumber="0" Id="2f38b9b4-ad7b-4900-a3bd-59fdc7dd65b8" Value="False" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="1" Id="1da58e45-69d0-4bcd-b334-b698e1c28dc7" Value="True" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="11bdea24-3654-4ef5-95ed-311198264499">
+        <KeyFrame FrameNumber="0" Id="a634fd4d-ecd1-4b8a-a151-8f5c17f22edd" Value="-0.96" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.YProp" ControllableId="b56b10a9-39ad-42f3-b318-46402a97ddac">
+        <KeyFrame FrameNumber="25" Id="86127668-76ad-400d-9579-775bea25ac25" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="602d43b0-6b5b-4bbd-9e56-f67391b7ee47" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.YProp" ControllableId="7e307458-dce1-46f6-b3c9-c8b22cbf7ddb">
+        <KeyFrame FrameNumber="30" Id="89e8f341-37be-4806-9e25-bebfe1ee39b6" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="5" Id="827ed78c-27a8-4ec5-b9c4-eabaa9baaaed" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.YProp" ControllableId="f5d551a5-7611-4e2e-8fea-9014d6e95c3e">
+        <KeyFrame FrameNumber="35" Id="6e0906a4-85e7-4cda-9255-596ddc53b1bc" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="10" Id="3ff8cd42-8650-4fcb-8248-d29d0477de4c" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7">
+        <KeyFrame FrameNumber="48" Id="a69aeee5-7ce6-4e30-bca0-e948cb6aaad5" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="46a2607e-2bd6-4f51-8011-fb33a0c2244e" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7">
+        <KeyFrame FrameNumber="48" Id="e1184fc5-6a27-4aa8-b92d-a09154d4aeeb" Value="1.15" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.176666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="9da40300-ba3c-41a5-b49e-89a7ed14446f" Value="0.2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.253333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="a48be030-10ad-4aa9-bc0e-932fab541a41">
+        <KeyFrame FrameNumber="97" Id="831c5202-b198-4ccd-b9b4-621c21112755" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="145" Id="0a1aecbe-ba53-4640-a2f2-ff7d860ff3ff" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="a48be030-10ad-4aa9-bc0e-932fab541a41">
+        <KeyFrame FrameNumber="97" Id="e3ff11dd-ad13-461e-a7dd-7875ce8993d4" Value="-1.85" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="145" Id="d1bbe867-9607-492e-9e0a-d557db9369cb" Value="-2.37" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="1311a941-858f-4de3-9928-9ebd5a8f22bd">
+        <KeyFrame FrameNumber="97" Id="479be53d-1474-41e8-bcf5-430bf1e59a68" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="145" Id="a319164b-8336-44a0-a205-993334c293ef" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="1311a941-858f-4de3-9928-9ebd5a8f22bd">
+        <KeyFrame FrameNumber="97" Id="b8a5cad6-071c-4a79-9980-bab531aa05e5" Value="-1.85" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="145" Id="86278397-11c9-4e2d-8371-9bce0c54111a" Value="-2.37" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="1b240db6-0638-453e-99ba-9c2d1601d449">
+        <KeyFrame FrameNumber="0" Id="9bb71b66-75b1-4c35-9d5e-0f04c1a886d4" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="1b240db6-0638-453e-99ba-9c2d1601d449">
+        <KeyFrame FrameNumber="0" Id="9858eff3-26d7-4c9a-8e88-e08be9b5e488" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="11" Id="69bfc3c4-8b08-4ac0-8bd1-394ab4aeac2f" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="23" Id="3c8be405-c4fe-4b1c-9c8b-413697880bd7" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="30" Id="2671be24-3d44-4bc6-baa5-07f7f18bce10" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="39" Id="6e487946-3f81-476c-8e2f-40bb5632f33c" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="11" Id="08d8176a-d696-41a8-ad09-d4a0453902db" Value="-3.41" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+        <KeyFrame FrameNumber="39" Id="22c56125-051f-4bb3-ad0d-692ed66f7c11" Value="-1.94" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="39" Id="c4e75cbe-67dd-43d5-a97f-64d6f0827209" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="11" Id="514d7125-162b-47c3-9298-4f03f617ad1a" Value="0.17" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Enabled" ControllableId="7e7c479a-306e-4f03-b49b-7e6cf40de92b">
+        <KeyFrame FrameNumber="0" Id="96c33212-3e77-4f5c-9c96-0ca1fa1af27c" Value="True" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="e2a3f789-d888-4e28-8107-90ab8ff742c9">
+        <KeyFrame FrameNumber="145" Id="383a35f8-9e31-46c7-aba9-8768052003f4" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="366d30ec-2c66-4498-bcd9-be62514bbf71" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="e2a3f789-d888-4e28-8107-90ab8ff742c9">
+        <KeyFrame FrameNumber="97" Id="f05d3527-46e4-4cfb-a345-adfad1683e84" Value="-3" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="145" Id="a0d8ab36-ad56-4894-95f4-2caa7938f4c6" Value="-2.4" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="1e389d5a-7da9-4df5-9cdd-a7c28bc08314">
+        <KeyFrame FrameNumber="145" Id="8e19476d-a5fb-43d2-b22b-61b5dd03a2c0" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="34488a09-ec60-4ae5-ab08-f30c0f911da0" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="1e389d5a-7da9-4df5-9cdd-a7c28bc08314">
+        <KeyFrame FrameNumber="97" Id="bd1cb165-28d0-460b-a327-fed1c0a9b69c" Value="-3" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="145" Id="73cf59be-cdc7-4324-96f7-6ea45022a6a6" Value="-2.4" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="68a101da-84ee-4777-917b-c9d945da0af6">
+        <KeyFrame FrameNumber="41" Id="097bd099-943f-4658-b9a0-8cb2d841c57a" Value="0.59" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.613333333333334" />
+        <KeyFrame FrameNumber="141" Id="242a71cf-ca8d-43e0-8206-5083f6a9b859" Value="-0.71" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.48" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="51ac4fdc-ee30-4807-a217-4854b50761d6">
+        <KeyFrame FrameNumber="93" Id="c465e820-800e-4af8-8e05-d67f90c97a5d" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="104" Id="b2696139-4d2a-4447-99a2-f92816dfeef8" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="125" Id="e01baf69-9207-4df9-9a79-6f8cc8963380" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="143" Id="7d9d7de2-493f-4679-990f-ab8184be13f8" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.YProp" ControllableId="51ac4fdc-ee30-4807-a217-4854b50761d6">
+        <KeyFrame FrameNumber="96" Id="ccfcd239-6b0e-4abe-9bcb-a6b999171023" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.506666666666667" />
+        <KeyFrame FrameNumber="143" Id="833c501b-6770-4168-8ce7-03076f3d5173" Value="0.47" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.313333333333333" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.YProp" ControllableId="bb3268aa-2932-41f4-a984-027af44154eb">
+        <KeyFrame FrameNumber="143" Id="485aaa2f-2e72-4410-bb4a-b2cb4d3ca96f" Value="0.47" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.313333333333333" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="96" Id="77370464-4255-4145-83fb-0998f43f4720" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.506666666666667" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="be2172cd-10f7-4251-9fa0-2c7fee76926b">
+        <KeyFrame FrameNumber="98" Id="5ba2484b-cd71-426e-81fe-a5d692adfec5" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="118" Id="b5ecf8b0-b9d2-4d8e-8441-3cad623c58e0" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="be2172cd-10f7-4251-9fa0-2c7fee76926b">
+        <KeyFrame FrameNumber="128" Id="44e67802-9cce-44c6-ab03-99c279caf06d" Value="-0.41" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.13" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="98" Id="42d9cf3a-8e28-47c7-900e-1b44fa28deb3" Value="2.23" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.363333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="TextureMappingOption.Offset.YProp" ControllableId="3686c676-318b-46ce-91d1-e3f9361b6d4a">
+        <KeyFrame FrameNumber="31" Id="7ab4af66-123e-43d1-aeac-4cbaa1aaf628" Value="0.13" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.6" />
+        <KeyFrame FrameNumber="96" Id="0d479b8e-ecdc-44f9-a870-f7ef909fb92a" Value="-0.13" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.443333333333333" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba">
+        <KeyFrame FrameNumber="40" Id="e70a2f1b-920d-4de7-9f2f-cea228af3b74" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="2abcf8b0-ea7b-4a31-8594-3be5044c28d8" Value="0.45" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="8" Id="5a8759dd-ef59-4cd9-9bbf-c9a1f0ff616c" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba">
+        <KeyFrame FrameNumber="8" Id="c2feb6d4-2120-4c83-a288-014660cbea83" Value="2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.276666666666667" RightControlPointY="0" />
+        <KeyFrame FrameNumber="40" Id="94fb92da-a3af-412f-aa9a-5a6be9e00af1" Value="7.21" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.15" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b">
+        <KeyFrame FrameNumber="48" Id="69f3e9ca-ec18-4554-8f60-91501a8ac7c6" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="29" Id="a567442e-5165-4600-9ee9-c5daad14c7be" Value="0.45" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="16" Id="50224571-41b8-46d4-bc22-84e60e95a1c5" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b">
+        <KeyFrame FrameNumber="16" Id="c6768849-21ae-4077-9ff9-d5ed7f48a405" Value="2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.276666666666667" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="c5bb1f26-be11-4054-82fa-82bc8e2723f7" Value="7.21" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.15" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="104" Id="dd6b6e3f-5b3b-430b-93bd-09d0a5f77aaf" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="89.55556" Id="8907000c-baf1-437c-8cf4-20f7a6de7206" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="104" Id="b3257241-3fc8-4b5b-8fd4-fe090fc06f63" Value="0.18" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.0666666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="89" Id="b24668d1-8a77-4a24-b73e-a262c010386f" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.33" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="89" Id="45040365-ba5e-4694-8513-8aa55768e73d" Value="1" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.33" RightControlPointY="0" />
+        <KeyFrame FrameNumber="104" Id="014bf00e-0c06-47a0-a923-ad106a30af66" Value="1.7" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.0666666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="686ed96e-eb21-4828-ab4f-938a95945cc1">
+        <KeyFrame FrameNumber="36" Id="611a4380-e1a4-4eed-af78-9701908ceec5" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="160" Id="07455071-52fd-46ef-84cc-029c4a3a45da" Value="1.22" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <ControlKeyFrame FrameNumber="96" Id="8ae3d2fe-bc99-4127-a194-9290c52d7b13" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="e42a63d0-a80b-4583-a4cf-4fbbf9a42519" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="ffe54d37-d385-4cba-848e-2bc83c2bebb6" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+    </Timeline>
+    <Timeline Name="LBand_In" Id="980f03a9-2a78-43b3-a172-b3435481c1f6" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="68ba2f2e-4147-445d-965b-033038c9ca48">
+        <KeyFrame FrameNumber="16" Id="b47e8b07-ec4f-4f13-b4b2-b249ad51a51c" Value="0.81" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="3acec281-c8c0-420d-aa83-09655bde2050" Value="1" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+    </Timeline>
+    <Timeline Name="LBand_Out" Id="362cb077-7efa-42db-90ba-3d8f929e6e33" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="68ba2f2e-4147-445d-965b-033038c9ca48">
+        <KeyFrame FrameNumber="16" Id="d8dde29a-c6f3-4aad-b573-bb74a2ac9c3c" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="5980fdf4-f202-438e-aec6-9aa6e2e186c7" Value="0.81" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+    </Timeline>
+    <Timeline Name="Out" Id="fde42744-4209-4a63-9212-ee90b711c94d" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="361d8031-207c-4dd5-af8a-e5b5151fd05f">
+        <KeyFrame FrameNumber="21" Id="35db2c67-07dc-4814-be4e-3d82da14f7f7" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+        <KeyFrame FrameNumber="35" Id="c17e40de-8c44-472b-a4e1-c8e329f4dce6" Value="-0.53" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.YProp" ControllableId="361d8031-207c-4dd5-af8a-e5b5151fd05f">
+        <KeyFrame FrameNumber="21" Id="535486b5-fea6-4e91-ab72-615722d16e40" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="2" Id="ae64418a-f45f-4d1a-89a9-7568679b3d95" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="102ce338-d4c0-4396-a700-92a5df8c6509">
+        <KeyFrame FrameNumber="26" Id="a7186db0-1cdf-41f6-ab9a-c9136655ef77" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+        <KeyFrame FrameNumber="41" Id="52d503b1-adf9-4910-8d1d-caef47f17615" Value="-0.53" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.YProp" ControllableId="102ce338-d4c0-4396-a700-92a5df8c6509">
+        <KeyFrame FrameNumber="26" Id="6ccdf1f5-8363-473f-a065-2602a2731dd4" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="7" Id="b1ed951d-4fd2-4e30-9864-1816ca64faa8" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Enabled" ControllableId="7e7c479a-306e-4f03-b49b-7e6cf40de92b">
+        <KeyFrame FrameNumber="23" Id="4f1d2ef1-1c59-43a4-b979-00db16452043" Value="True" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="28" Id="d4557577-6554-4a3e-ac0a-09f5a548edda" Value="False" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+    </Timeline>
+    <Timeline Name="StoryHead" Id="7b5ddcb3-cc70-479c-9bc2-fdefdba62d03" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7">
+        <KeyFrame FrameNumber="48" Id="1fff8ef3-0ad8-4413-a093-fdfd799b9e83" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="99b8ae62-c8e2-482a-90b1-ad8da153b791" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7">
+        <KeyFrame FrameNumber="48" Id="3f7d780f-e04d-4305-b31e-a72d32be6868" Value="1.15" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.176666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="a22dc83b-3698-41f1-a344-c0bb150056d4" Value="0.2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.253333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="11" Id="e3908d41-8cc6-4281-b99d-7846400bebef" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="23" Id="9a538c56-6a49-4860-8e7a-c13884c2e6fb" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="30" Id="10280ad2-eaa0-4b69-8c4d-cbcd9175cdce" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="39" Id="f6d38be1-476f-4926-b4de-6f34eceb78ba" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="11" Id="2aed0e5d-b231-4648-aba8-dbc835ac8e56" Value="-3.41" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+        <KeyFrame FrameNumber="39" Id="2c80a822-6b60-48a8-abf9-851bf03178de" Value="-1.94" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63">
+        <KeyFrame FrameNumber="39" Id="bfe9ffea-ee99-4826-8333-8ff2cf541a7a" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.256666666666666" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="11" Id="ce82b671-0671-41a9-ae0d-8a0f97a48393" Value="0.17" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.263333333333333" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="68a101da-84ee-4777-917b-c9d945da0af6">
+        <KeyFrame FrameNumber="41" Id="3ff71479-e380-4726-a252-f46efe417b5b" Value="0.59" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.613333333333334" />
+        <KeyFrame FrameNumber="141" Id="3052746b-4ca7-4003-84c9-10cf1b4d928f" Value="-0.71" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.48" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="TextureMappingOption.Offset.YProp" ControllableId="3686c676-318b-46ce-91d1-e3f9361b6d4a">
+        <KeyFrame FrameNumber="31" Id="eaa01a5c-c96f-4684-8da9-5afaf84ab0d2" Value="0.13" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.6" />
+        <KeyFrame FrameNumber="96" Id="f6742070-9687-480f-9c64-4bc4ca2ac212" Value="-0.13" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.443333333333333" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba">
+        <KeyFrame FrameNumber="40" Id="21a1fb32-7c41-4998-88ff-fdaf839bbc33" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21" Id="9974e48e-2add-47e0-a2e5-ccd7580eb561" Value="0.45" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="8" Id="6be5de90-7f81-43da-aa5e-d50781d498f3" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba">
+        <KeyFrame FrameNumber="8" Id="6fe66d90-4412-4cc1-a0f7-c41ab472e047" Value="2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.276666666666667" RightControlPointY="0" />
+        <KeyFrame FrameNumber="40" Id="618818cc-9610-46d4-afcd-73fc187ba22f" Value="7.21" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.15" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b">
+        <KeyFrame FrameNumber="48" Id="eabbdd9f-a44e-45bf-bef8-b4acd09fb873" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="29" Id="21b0afac-c750-4ac4-89f4-e58ceef2a4bd" Value="0.45" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="16" Id="5a687b8d-5e75-4a9f-a6d4-0ed639f36a62" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b">
+        <KeyFrame FrameNumber="16" Id="00d0c158-9aa4-432b-bef2-763d902fc7eb" Value="2" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.276666666666667" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="716c3de4-c5f7-4bf6-9f31-916913dea439" Value="7.21" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.15" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="104" Id="16f4097c-5b2f-4f27-a382-248f986e26ce" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="89.55556" Id="b0fa5e35-d4aa-4d68-8d8e-c522014ee9c7" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="104" Id="c2d88d06-4628-4129-aeb8-1301fee769b6" Value="0.18" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.0666666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="89" Id="bdf4720c-4fc3-4718-979b-3f33ed01a926" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.33" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3">
+        <KeyFrame FrameNumber="89" Id="feb4d5e3-d519-421a-80ae-5c474d1c151d" Value="1" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.33" RightControlPointY="0" />
+        <KeyFrame FrameNumber="104" Id="46f604bd-e868-437e-9878-e814ba9ae163" Value="1.7" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.0666666666666667" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="686ed96e-eb21-4828-ab4f-938a95945cc1">
+        <KeyFrame FrameNumber="36" Id="9ace70bf-7cb6-490b-955a-b502e4b4abbf" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="160" Id="7b89bdc1-3786-4fc7-89f3-65561e98f714" Value="1.22" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <ControlKeyFrame FrameNumber="96" Id="bc8fa280-dfa8-47f8-a513-36f4afe2f79e" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="98b0f719-9c2e-42ce-9666-c7e303237e7a" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="45d6dd16-14d9-424a-a841-62bdf8d71996" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+    </Timeline>
+    <Timeline Name="TextLoop" Id="5287e4c9-1d1f-47b2-ba95-08e7891a8794" IsListening="True" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="272" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="c4a5717a-5d5a-4791-9bdf-955ba4039d06">
+        <KeyFrame FrameNumber="25" Id="f36dfb67-9339-4800-b4bb-15d199d62371" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="2f28224d-e18d-4357-b35e-e23108db4934" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="35" Id="2df79572-6bd6-45c9-93da-65d461bd6a9a" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="c4a5717a-5d5a-4791-9bdf-955ba4039d06">
+        <KeyFrame FrameNumber="25" Id="51e4a43c-8825-4dee-a48f-e70a5cc17e39" Value="0" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.27" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="05b83f13-c591-44ac-b152-174f4bb9ff34" Value="-0.45" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.35" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="b6d3c46f-cd05-4b08-a753-e8ff5bb2d499">
+        <KeyFrame FrameNumber="55" Id="7068b88b-3937-49dc-8323-e79b4e6d54ec" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="30" Id="7e8d65aa-e7f0-4305-85b9-eb8a9b07b949" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="65" Id="c49cb9bc-a787-4521-944f-31a304e38c9a" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="b6d3c46f-cd05-4b08-a753-e8ff5bb2d499">
+        <KeyFrame FrameNumber="55" Id="3e7cc677-f103-4660-b4dd-d04d4e9c330d" Value="0" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.27" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="30" Id="75ba3a07-f921-4380-bc77-e6d08cbac769" Value="-0.45" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.35" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="66febc40-aa1b-4bdf-9cf8-0a8adc09f1f9">
+        <KeyFrame FrameNumber="176" Id="1104a895-4707-44fd-81cf-ae0d2d0fc602" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="151" Id="a9a0d6b3-6c8a-4006-8237-963eaa329b9f" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="186" Id="a438d40c-4a96-462d-a2f6-7d264bef0d72" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="66febc40-aa1b-4bdf-9cf8-0a8adc09f1f9">
+        <KeyFrame FrameNumber="176" Id="24566fee-366d-4c92-a629-4cb8f590cffd" Value="0" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.27" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="151" Id="2a178a2a-aa53-40a3-8e4a-dc6ef6202a81" Value="-0.45" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.35" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="954b320d-2aa8-4c15-957a-06df818533c9">
+        <KeyFrame FrameNumber="207" Id="4b55a93c-e8f9-4f53-8690-bbbed82f1443" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="182" Id="c352f356-7628-43f9-8f3f-3bff519fb280" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="217" Id="25aa190e-ffe3-45d1-9357-ed11a7881a54" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="954b320d-2aa8-4c15-957a-06df818533c9">
+        <KeyFrame FrameNumber="207" Id="e11c11c2-51b2-4588-88e8-737423b3e072" Value="0" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.27" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="182" Id="0f30b0c6-68bb-45d4-a951-7ab251deac2e" Value="-0.45" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.35" RightControlPointY="0" />
+      </KeyFrameAnimationController>
+      <ControlKeyFrame FrameNumber="25" Id="8f10bf7d-52ff-4f57-ad3c-86493c449bec" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="c9a0a79a-a1bf-44f9-9de0-0093612eb09b" ActionKeyframeName="PauseActionKeyframe" TriggerType="PauseControlKeyFrame" NumberOfPauseFrames="85" TriggerInfoId="295f0684-f52c-40b5-918a-5c6690398950" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="176" Id="f72963f6-a580-4cf1-b324-5de7fa0a232b" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="0981aedf-28dd-401c-bbeb-da21b690216e" ActionKeyframeName="PauseActionKeyframe" TriggerType="PauseControlKeyFrame" NumberOfPauseFrames="85" TriggerInfoId="8fe50a20-cc69-4bd6-b169-a54468b1b979" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="207" Id="e22f9196-0267-45e1-9b37-e02bb6ba91e9" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="a2751caa-b1e7-432e-b512-705291344355" ActionKeyframeName="PauseActionKeyframe" TriggerType="PauseControlKeyFrame" NumberOfPauseFrames="85" TriggerInfoId="c4a11ee4-5110-4d59-beaa-8e1d8330930f" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="55" Id="858405c5-01c5-462e-b6db-00ec0483d3f8" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="923ad318-0077-4087-b386-8b7807c7a761" ActionKeyframeName="PauseActionKeyframe" TriggerType="PauseControlKeyFrame" NumberOfPauseFrames="30" TriggerInfoId="aae38d6f-ef44-4518-9c86-8669c9bd5395" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="63" Id="062310fd-10b8-4d47-8e89-372c409a5ea4" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="b96d657b-d518-4944-a34e-441639b5b421" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="ffd4af1e-7b99-4d68-a297-f76799b860d3" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="5" />
+    </Timeline>
+    <Timeline Name="Timeline1" Id="396fff97-1d6d-41d0-813c-6ed3cb9b54e8" IsListening="True" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="a48be030-10ad-4aa9-bc0e-932fab541a41">
+        <KeyFrame FrameNumber="0" Id="c2c87036-2885-4d55-b10a-bab8ebc09010" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="48" Id="f5daa342-652c-4705-84d1-f48496987e3d" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="74" Id="8eb18aa8-81a4-498e-8d6b-8e9e824604eb" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="a75f205d-c9b0-4fc3-97ac-4a8591b05e10" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="a48be030-10ad-4aa9-bc0e-932fab541a41">
+        <KeyFrame FrameNumber="0" Id="d65a42bf-5ce6-4284-928d-1c445b783200" Value="-1.85" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="62f53b2a-b6dc-44bc-afe3-c9ccabbaa971" Value="-2.37" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="1311a941-858f-4de3-9928-9ebd5a8f22bd">
+        <KeyFrame FrameNumber="0" Id="e3c040bd-0f25-4d79-96f8-3443aae26de0" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="48" Id="97c91057-2369-42b1-a07c-faf0d20cb1fc" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="74" Id="831e298c-0f77-474d-9686-263651f217c3" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="296a398f-5e35-4fc0-bd7f-cff2bc7c1493" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="1311a941-858f-4de3-9928-9ebd5a8f22bd">
+        <KeyFrame FrameNumber="0" Id="589d6ebe-7e24-42ba-8dac-3a17fe097ddc" Value="-1.85" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="3474d788-c7cd-44f4-b9da-fce9989f01a8" Value="-2.37" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.XProp" ControllableId="cafb2090-58c2-4131-b138-1bd9e944d710">
+        <KeyFrame FrameNumber="36" Id="d06d54de-f1d2-45bc-ab97-a87f50f575dc" Value="0.49" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="10" Id="ef5ea1fe-19a7-486f-8248-5c2b16f79335" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="cafb2090-58c2-4131-b138-1bd9e944d710">
+        <KeyFrame FrameNumber="21" Id="fa384c87-bea9-471e-bc92-673e8821c803" Value="-0.09" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+        <KeyFrame FrameNumber="47" Id="b2f3a837-2665-4ed3-ab9e-e78264a09cd4" Value="-0.5" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.XProp" ControllableId="e65c9042-e18b-42bf-ac35-bd24836fb298">
+        <KeyFrame FrameNumber="40" Id="499db9f9-87fd-4e2c-a3b2-270853780a17" Value="0.34" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="14" Id="71b0062d-9325-407a-be08-b8407f157fab" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="e65c9042-e18b-42bf-ac35-bd24836fb298">
+        <KeyFrame FrameNumber="25" Id="dccfc684-83ac-4aee-8a0d-476113256a1c" Value="-0.09" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+        <KeyFrame FrameNumber="51" Id="f620bad1-45e2-4e5b-b8b1-25d6cdf51a25" Value="-0.55" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.XProp" ControllableId="8b562a95-5a90-43f7-a8b6-e9db111c157c">
+        <KeyFrame FrameNumber="40" Id="ce6882b9-b467-4aae-a16d-645d055ea535" Value="0.34" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="14" Id="402650f5-ea61-44b5-96d1-a83f07304b1f" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="8b562a95-5a90-43f7-a8b6-e9db111c157c">
+        <KeyFrame FrameNumber="25" Id="4e34a7d1-7568-4031-9fb9-d16ccee8d7ae" Value="-0.09" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+        <KeyFrame FrameNumber="51" Id="67c4130a-a022-42ff-9ef7-d97c75ff3e24" Value="0.55" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Size.XProp" ControllableId="efe5251a-2f53-42ee-a032-debadaee8bf9">
+        <KeyFrame FrameNumber="36" Id="1b00f8fd-4845-4dda-a82f-9e1439d9b839" Value="0.49" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="10" Id="661b7df4-9d09-4c5a-aae7-48f322b2e112" Value="0" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="efe5251a-2f53-42ee-a032-debadaee8bf9">
+        <KeyFrame FrameNumber="21" Id="c1eede95-0045-4088-bad1-f574b2c16d41" Value="-0.09" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.566666666666667" />
+        <KeyFrame FrameNumber="47" Id="8b369381-4c6a-4959-8302-c38f0e6dfab5" Value="0.5" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.289999999999999" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="e2a3f789-d888-4e28-8107-90ab8ff742c9">
+        <KeyFrame FrameNumber="48" Id="81ab70e5-5816-49ef-883c-8964de2fdec9" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="43d79203-8d29-4f00-af0e-7c399ed70bc4" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="72" Id="b1691f97-be57-4ed3-9df1-02a44bd250b4" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="ecac5afb-2ff9-4e3a-a51d-01f2e13f43c5" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="e2a3f789-d888-4e28-8107-90ab8ff742c9">
+        <KeyFrame FrameNumber="0" Id="7a2ec038-b60f-49ef-89d9-284a1d141a57" Value="-3" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="d2941e23-4959-4ff3-8627-181f0349a948" Value="-2.4" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="1e389d5a-7da9-4df5-9cdd-a7c28bc08314">
+        <KeyFrame FrameNumber="48" Id="9af39338-295c-474c-aadb-f176c6301399" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="0d23b9ec-c9fd-4c4c-abb4-a456219f2003" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="72" Id="d0e58454-295b-49b6-8cf0-b9dad0656494" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="97" Id="b10151fc-08a7-4b17-be01-87ca9a74a2f6" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="1e389d5a-7da9-4df5-9cdd-a7c28bc08314">
+        <KeyFrame FrameNumber="0" Id="6ec1509a-14cc-4c0e-86f9-bad37dbd6d54" Value="-3" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.23" RightControlPointY="0" />
+        <KeyFrame FrameNumber="48" Id="6a38c841-d22a-4872-ab0b-d7908596632d" Value="-2.4" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.183333333333334" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="b7cad294-4b24-4bee-848c-c20f2ef0490d">
+        <KeyFrame FrameNumber="35" Id="58a0075a-4450-475c-9346-164c15e35eeb" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="49" Id="0b81d73c-4f09-4fde-846c-832136330ad7" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="b7cad294-4b24-4bee-848c-c20f2ef0490d">
+        <KeyFrame FrameNumber="13" Id="d5d9a319-c81f-4cd4-a750-bbec49ff206d" Value="-2.75" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="49" Id="9a879478-7284-475a-9980-88fb005a1e3e" Value="-2.1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="b7cad294-4b24-4bee-848c-c20f2ef0490d">
+        <KeyFrame FrameNumber="10" Id="d877e2ca-e7dd-4dcf-a680-c767eb495fcd" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="26" Id="92677b38-12f2-4f18-9b59-a63044735984" Value="1.61" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0">
+        <KeyFrame FrameNumber="50" Id="1ca32edf-68c1-40aa-a8d1-eae0b688a170" Value="0.4" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="62" Id="76a3fc86-9e00-4835-999d-9c80dcb2eb9f" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Rotation.Z" ControllableId="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0">
+        <KeyFrame FrameNumber="9.819996" Id="83682a96-aa88-4d6d-89e0-f09a6f6a7132" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="13.83799" Id="337a2bfc-f54f-4588-b23b-5ab3b6fa41c1" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21.874" Id="71c1487c-bd9d-4c34-9a8b-273c59cb5d39" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="17.856" Id="bd936c1c-cda6-43d1-8eb2-e5231edf6fa0" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="25.89199" Id="504abd58-28aa-4b1f-83ee-48a332901bc4" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="41.96399" Id="e003fb86-d454-4423-ac8b-150d27a26b81" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="45.98199" Id="7aae5aad-93c3-4524-a827-53327a00791a" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="37.94599" Id="a88a88cd-1b01-4d9f-a22c-21f02ac8ae2c" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="29.91" Id="63a66b94-0aa5-4692-b826-536079444652" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="33.92799" Id="f706593e-d3be-4d3a-85fd-c053b4dba27e" Value="0.73" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="50" Id="4f597551-ec36-4feb-9d4f-001abf5f52bb" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0">
+        <KeyFrame FrameNumber="9.819996" Id="4cb97d85-90fd-4f35-8af0-763c24cbb38d" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="45.98199" Id="69519f7e-ddad-4c29-b95a-6fea2ed8cbec" Value="1.02" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="37.94599" Id="84ec5df3-d43a-47c8-8817-0f359e66286e" Value="1.02" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="33.92799" Id="7a9b6708-2499-4c08-8d2e-905f4503992c" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="17.856" Id="52c9d0ab-c470-49df-ac0e-92087b062511" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="13.83799" Id="e20c5d13-edec-4776-a842-f0d42e5a755b" Value="1.02" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="41.96399" Id="70d7f827-9f3b-4295-a982-fecce7f7ba64" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="25.89199" Id="7951e0fd-87ac-459e-a9a7-17e19ea63ce4" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="29.91" Id="d9a62c29-1d78-4682-bf94-9a4ed8fab18b" Value="1.02" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="21.874" Id="f598ae6d-41dd-4192-869d-641bb5d26601" Value="1.02" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="50" Id="cbfb115c-f022-4702-8733-4310de39f13f" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
+      <ControlKeyFrame FrameNumber="63" Id="a8942a89-905c-4b71-84f7-b459bc23a366" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="03582967-5ef3-4ec5-8881-4bc50abb6cf9" ActionKeyframeName="PauseActionKeyframe" TriggerType="PauseControlKeyFrame" NumberOfPauseFrames="120" TriggerInfoId="a02dc277-f04f-4c5a-af8f-2249516362d6" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+    </Timeline>
+    <TimelineListener>
+      <TriggerRule OwnerTimelineName="LBand_In" Action="Play" Id="58f34ff8-03e2-41d5-a27b-cbb876f75a2b" GotoFrameNumber="0" SceneId="c7de0a63-7720-4909-99f3-072aa53d56c6" TimelineName="Any Timeline" IndexControlKeyFrame="11" ControlKeyFrameType="Alert" />
+      <TriggerRule OwnerTimelineName="LBand_Out" Action="Play" Id="876fbb15-be5c-4a42-8455-4c0df45aadf7" GotoFrameNumber="0" SceneId="c7de0a63-7720-4909-99f3-072aa53d56c6" TimelineName="Any Timeline" IndexControlKeyFrame="-11" ControlKeyFrameType="Alert" />
+      <TriggerRule OwnerTimelineName="TextLoop" Action="GotoFrame" Id="fe65c983-87d4-4547-b4bf-97a3ce324b89" GotoFrameNumber="0" SceneId="" TimelineName="In" IndexControlKeyFrame="-1" ControlKeyFrameType="TimelineStart" />
+      <TriggerRule OwnerTimelineName="TextLoop" Action="Play" Id="7013eb48-3c30-4e9b-947f-1fb7edc62b62" GotoFrameNumber="0" SceneId="" TimelineName="In" IndexControlKeyFrame="-1" ControlKeyFrameType="Alert" />
+      <TriggerRule OwnerTimelineName="Timeline1" Action="Play" Id="746a66de-aad2-42c6-805c-8b2f29a0c8f7" GotoFrameNumber="0" SceneId="" TimelineName="In" IndexControlKeyFrame="-1" ControlKeyFrameType="TimelineStart" />
+      <TriggerRule OwnerTimelineName="StoryHead" Action="Play" Id="92df86b8-9c80-448b-9930-0a0cfcfa78e5" GotoFrameNumber="0" SceneId="" TimelineName="TextLoop" IndexControlKeyFrame="5" ControlKeyFrameType="Alert" />
+    </TimelineListener>
+  </Timelines>
+  <ExportManager />
+  <LinksManager>
+    <PropertyLink ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="0c543867-690b-4996-8b74-b5d1292792fc" Name="Absolute Link" ControllableId="9719ecd3-ac4d-4bda-a72f-a127446ff9e7" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="0b8df7ad-b6a4-40ae-bd7a-398832ec8d6c" Name="Absolute Link" ControllableId="a58b5370-1528-4b5e-abfe-a458d7720a63" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="68ba2f2e-4147-445d-965b-033038c9ca48" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="4d814ef4-31c9-4059-8ddb-7fc1020cc44b" Name="Absolute Link" ControllableId="68ba2f2e-4147-445d-965b-033038c9ca48" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="b7cad294-4b24-4bee-848c-c20f2ef0490d" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="3b139247-8662-416e-bd25-ae16a5a595a7" Name="Absolute Link" ControllableId="b7cad294-4b24-4bee-848c-c20f2ef0490d" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="94e73b66-47a6-435f-a448-200c7474d970" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="89f42439-6fbd-4bb8-a686-53b7d469f7a1" Name="Absolute Link" ControllableId="94e73b66-47a6-435f-a448-200c7474d970" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="88ac2926-5d3f-4581-a9b2-abb152f745e0" Name="Absolute Link" ControllableId="b1d1e7b4-ad03-417f-b75c-21d4ae5da5e0" Property="Transform.Scale.YProp" Alias="AbsoluteLink1" />
+    </PropertyLink>
+    <PropertyLink ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="0fe3e02f-391e-473b-b9b0-459165f791f6" Name="Absolute Link" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="f8545473-a204-46d7-a168-ecab35e22168" Name="Absolute Link" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b" Property="Transform.Scale.YProp" Alias="AbsoluteLink0" />
+    </PropertyLink>
+    <PropertyLink ControllableId="f80071b6-a380-49ba-a6a4-51ea4bf80064" Property="Text" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="894e335d-2216-4de2-aa02-d1ee661e377e" Name="Absolute Link" ControllableId="ffa0f40c-cf19-48fa-98a9-bb223f0b1a90" Property="Text" Alias="AbsoluteLink" />
+      <ILink Enable="True" Id="cd5f3b05-5c40-4114-9ce1-40dc33f49f51" Name="Absolute Link" ControllableId="fe2c88bd-0971-43ae-97fd-2adbc2210a5c" Property="Text" Alias="AbsoluteLink" />
+      <ILink Enable="True" Id="1770aba0-718c-4163-a656-00b627894e38" Name="Absolute Link" ControllableId="89be1f3f-e2f0-4a46-b3d4-9870384de9ba" Property="Text" Alias="AbsoluteLink" />
+      <ILink Enable="True" Id="a37aafae-50d0-4aa4-aa30-8205062d9434" Name="Absolute Link" ControllableId="bc38e2ce-f72f-417c-be57-89d6737b7a8b" Property="Text" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="e74fd8d4-46ed-468f-9cdf-521694979c53" Name="Absolute Link" ControllableId="93cf8af2-8649-45ea-b75d-071a68cd7ed3" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+    <PropertyLink ControllableId="686ed96e-eb21-4828-ab4f-938a95945cc1" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
+      <ILink Enable="True" Id="4b54c628-b777-4ff4-977c-c9d608d578b0" Name="Absolute Link" ControllableId="686ed96e-eb21-4828-ab4f-938a95945cc1" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
+    </PropertyLink>
+  </LinksManager>
+  <Variables />
+</Scene>

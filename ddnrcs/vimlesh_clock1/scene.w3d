@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="caec2f8e-5712-4cab-b382-39e040be004e" Name="vimlesh_clock1" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="4c0c95ad-5faf-4e6d-b069-3358d3851bfb" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="5f886d4d-2e86-48b6-9217-bfad830c97ac" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="0c80d337-2bbe-4917-ac8c-4c5287a8a996" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="b3366878-1f3d-442d-b19e-18735b18c8f9" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="7e2c5dad-144d-402d-b268-02a890f4d4f6" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="ffffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+          <Children>
+            <Group Id="93d376bc-2e6d-4027-ad8c-8fa27f0c31e1" Name="Group1" DisplayColor="11119017">
+              <GeometryOptions />
+              <NodeTransform PivotType="Absolute">
+                <Position X="0.36" Y="-0.38" />
+              </NodeTransform>
+              <Extensions />
+              <Children>
+                <Quad Id="5ad6b1dc-28fd-472b-af7b-f307aca75767" Name="Quad1" DisplayColor="11119017">
+                  <GeometryOptions />
+                  <Primitive>
+                    <FaceMappingList>
+                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="7b6a5860-d66b-4876-8901-e2af4d461a57" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                    </FaceMappingList>
+                  </Primitive>
+                  <NodeTransform>
+                    <Position X="2.878447" Y="-1.568994" />
+                    <Scale X="0.65" Y="0.29" />
+                  </NodeTransform>
+                  <Extensions />
+                </Quad>
+                <TextureText Id="6dc09e63-01e0-4c7b-b98c-87333e0a3a3e" Name="TextureText3D2" DisplayColor="11119017">
+                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="19-09-2025" TextQuality="1" />
+                  <Primitive>
+                    <FaceMappingList>
+                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                      <NamedBaseFaceMapping SurfaceName="Front" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                    </FaceMappingList>
+                  </Primitive>
+                  <NodeTransform>
+                    <Position X="2.728767" Y="-1.445409" Z="-0.26" />
+                    <Scale X="0.8" Y="0.8" Lock="XtoY" />
+                  </NodeTransform>
+                  <Extensions>
+                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="23:59:59" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="ShortDate" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="1f5b08b5-eae2-432a-a79c-428c74168d60" Name="Clock TextureText3D2" />
+                  </Extensions>
+                </TextureText>
+                <TextureText Id="044af520-fc61-4d5c-880b-adc05030be35" Name="TextureText3D1" DisplayColor="11119017">
+                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="11:27:19" TextQuality="1" />
+                  <Primitive>
+                    <FaceMappingList>
+                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                      <NamedBaseFaceMapping SurfaceName="Front" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                    </FaceMappingList>
+                  </Primitive>
+                  <NodeTransform>
+                    <Position X="2.728767" Y="-1.565382" Z="-0.26" />
+                    <Scale X="0.8" Y="0.8" Lock="XtoY" />
+                  </NodeTransform>
+                  <Extensions>
+                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="23:59:59" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="LongTime" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="3cc1cd92-6b01-4bea-b347-7ebe70064c03" Name="Clock TextureText3D1" />
+                  </Extensions>
+                </TextureText>
+              </Children>
+            </Group>
+          </Children>
+        </DirectionalLight>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <TextureTextFontStyle Id="8779a4ce-72d0-4934-b444-8c7b33eb173c" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <BaseMaterial Name="Material1" FolderPath="" Id="7b6a5860-d66b-4876-8901-e2af4d461a57" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="191919" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <TextureLayer Name="Texture1" FolderPath="" Id="6ae8132f-8f9f-44f4-a589-3b5ec93dbc03" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+  </Resources>
+  <ExportManagerProperties />
+  <Timelines SelectedTimelineId="6203ee21-e88d-474a-a188-80284042e8a7" Format="HD1080i50">
+    <Timeline Name="In" Id="6203ee21-e88d-474a-a188-80284042e8a7" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
+    <Timeline Name="Out" Id="26e3a2b0-84ea-4f15-a0c8-918ad55bb7e7" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
+    <TimelineListener />
+  </Timelines>
+  <ExportManager />
+  <LinksManager />
+  <Variables />
+</Scene>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Scene Id="d9973486-099d-431b-950e-f058f2e0c270" Name="testhtml2" Version="3.5.1.*" Is2DScene="False" IsChroma="False">
+  <SceneLayer Name="Default" Id="10e15ed1-30a4-4ed9-97e9-6ec6cfb3da95" BackgroundColor="-16777216" RenderOrder="1">
+    <CameraManager>
+      <Camera Id="36320b6e-cc09-4ca4-9bc3-e7714ec6f9e5" Name="Camera" TrackingCamera="Cam0">
+        <Extensions />
+      </Camera>
+    </CameraManager>
+    <SceneNode Id="7e9fe4d4-e746-4fc7-a6d5-a1250ed02ab6" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
+      <Extensions />
+      <Children>
+        <DirectionalLight Id="030ae0ce-e2b5-4250-a154-d6707389b745" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions>
+            <BaseMaterial Name="BaseMaterial" FolderPath="" Id="79c1d2c9-4d1e-4895-a1c2-482f2e7e9d46" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="ffffff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+          </GeometryOptions>
+          <Extensions />
+        </DirectionalLight>
+        <Quad Id="d054f98f-f985-4e5c-9369-9f734d5ba9c1" Name="Quad1" DisplayColor="11119017">
+          <GeometryOptions>
+            <Size X="7.363797" Y="4.142136" />
+          </GeometryOptions>
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="623261b3-775d-4013-a14e-afc6ca648f97" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <Extensions />
+        </Quad>
+      </Children>
+    </SceneNode>
+  </SceneLayer>
+  <DataContextSceneLocator />
+  <Resources>
+    <WebViewResource Name="WebViewResource" FolderPath="" Id="95c2feb8-3506-4052-9402-3237aa4be9f4" Width="1920" Height="1080" Zoom="0" URL="https://www.google.com/" ForceRefresh="False" ForceRefreshTime="10" />
+    <TextureLayer Name="Texture1" FolderPath="" Id="623261b3-775d-4013-a14e-afc6ca648f97" TextureBlending="Multiply">
+      <TextureMappingOption Texture="95c2feb8-3506-4052-9402-3237aa4be9f4" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+  </Resources>
+  <ExportManagerProperties>
+    <ExportList Name="url1">
+      <ExportProperty ControllableId="95c2feb8-3506-4052-9402-3237aa4be9f4" PropertyName="URL" Type="String" Value="https://www.google.com/" Enable="True" Id="380d9084-1f46-4def-8ad4-f61bf7542b8b" UpdateMode="Instantly" />
+    </ExportList>
+  </ExportManagerProperties>
+  <Timelines SelectedTimelineId="8eed522d-451c-46b6-82a8-361b89160608" Format="HD1080i50">
+    <Timeline Name="In" Id="8eed522d-451c-46b6-82a8-361b89160608" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
+    <Timeline Name="Out" Id="aff7598f-31b5-48ad-8875-861178120be5" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
+    <TimelineListener />
+  </Timelines>
+  <ExportManager />
+  <LinksManager />
+  <Variables />
+</Scene>
