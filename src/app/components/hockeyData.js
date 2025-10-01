@@ -94,11 +94,11 @@ export const iniTwoLiner = [
 // ]
 
 export const iniBreakingNews = [
-    { id: uuidv4(), data1: 'GST Reforms 2.0: Full list of over 40 stocks.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
-    { id: uuidv4(), data1: 'The accused lured the 57-year-old transporter.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
-    { id: uuidv4(), data1: 'Have you heard? Pratik Gandhi was rejected.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
-    { id: uuidv4(), data1: 'PM Narendra Modi sports saffron turban for celebrations', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
-    { id: uuidv4(), data1: 'Modi, Putin hold bilateral meet in China', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'आइए जानते हैं लिवर खराब होने के 5 सबसे बड़े कारण', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'tamil தமிழகத்தில் இன்று ஓரிரு இடங்களில் லேசானது முதல்', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'kannad ರ ಏಷ್ಯಾ ಕಪ್‌ನಲ್ಲಿ ಭಾರತದ ವಿರುದ್ಧದ ಸತತ ಮೂರು ಸೋಲುಗಳ ', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'telugu ఓ వైపు అభయారణ్యం, మరోవైపు పెద్ద పులుల ఘీంకారం', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
+    { id: uuidv4(), data1: 'डेली लाइफस्टाइल में हम कुछ काम ऐसे करते हैं जो लिवर की कार्यक्षमता को कम कर सकते हैं.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'Match referee during Harbhajan-Sreesanth slapgate incident didnt expect video to be out', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'Trinamool Congress leader Sagarika Ghose also seemingly referred to Navarros statement.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'PM Modi suggested the creation of a Civilisational Dialogue Forum', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
