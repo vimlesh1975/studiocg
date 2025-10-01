@@ -181,7 +181,6 @@ const NrcsScroll = () => {
             }
 
         } catch (error) {
-            // console.error('Error saving content:', error);
         }
 
 
@@ -209,7 +208,7 @@ const NrcsScroll = () => {
                 setTwolinerData(scripts);
                 indextwoliner.current = 1;
                 const exportValues = {
-                    url1: `${NrcsBreakingText ? "http://localhost:5000/yellow_breaking_news.gif" : "http://localhost:5000/yellow_news_update.gif"}`,
+                    url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update", window.location.origin).toString()}`,
                     text2: `${scripts[0]}`,
                 }
                 await playScene('vimlesh_twoliner2', "8", exportValues);
@@ -328,7 +327,6 @@ const NrcsScroll = () => {
             });
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
-            console.log(scripts)
             if (scripts != []) {
                 setTickerRunning(true);
                 setScrollData(scripts);
@@ -496,7 +494,6 @@ const NrcsScroll = () => {
                                     <Timer
                                         interval={2000}
                                         callback={async () => {
-                                            // console.log(indexRefTicker.current)
                                             const currentItem = scrollData[indexRefTicker.current];
 
                                             if (currentItem) {
@@ -550,9 +547,7 @@ const NrcsScroll = () => {
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ project, scene: "BreakingSmall_Ticker", updates })
                                                 })
-
                                                 indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % breakingdata.length;
-
                                             }}
                                         />
                                     )
@@ -574,13 +569,11 @@ const NrcsScroll = () => {
                                     <Timer
                                         interval={5000}
                                         callback={async () => {
-
                                             await fetch("/api/timeline", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
                                                 body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", timeline: "textin", slot: "9" })
                                             })
-
                                             const currentItem = fullpagebreakingdata[indexFullPageBreakingNews.current];
                                             const exportValues = {
                                                 text2: `${currentItem}`,
@@ -591,9 +584,7 @@ const NrcsScroll = () => {
                                                 headers: { "Content-Type": "application/json" },
                                                 body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", updates })
                                             })
-
                                             indexFullPageBreakingNews.current = (indexFullPageBreakingNews.current + 1) % fullpagebreakingdata.length;
-
                                         }}
                                     />
                                 )}
@@ -637,11 +628,9 @@ const NrcsScroll = () => {
                                 <button onClick={stopFullPageBreakingNewswithinput}>Stop</button>
                             </td>
                         </tr>
-
                         <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>News Update</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-
                                 {
                                     newsupdateRunning && (
                                         <Timer
@@ -663,9 +652,7 @@ const NrcsScroll = () => {
                                                     headers: { "Content-Type": "application/json" },
                                                     body: JSON.stringify({ project, scene: "NewsUpdate", updates })
                                                 })
-
                                                 indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % newsUpdataeData.length;
-
                                             }}
                                         />
                                     )
