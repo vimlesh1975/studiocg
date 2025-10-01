@@ -469,12 +469,7 @@ const NrcsScroll = () => {
                                 <button onClick={stopClock}>Stop</button>
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
                                     setyPositiondate(e.target.value);
-                                    await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'vimlesh_clock1'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
-
+                                    await setYPosition('vimlesh_clock1', e.target.value);
                                 }} />
                             </td>
                         </tr>
@@ -524,24 +519,8 @@ const NrcsScroll = () => {
                                 <br />
                                 set Y Position <input style={{ width: 40 }} type="Number" step={0.01} value={yPositionscroll} onChange={async (e) => {
                                     setyPositionscroll(e.target.value);
-                                    await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
-
+                                    await setYPosition('vimlesh_ticker', e.target.value);
                                 }} />
-                                <button onClick={async () => {
-                                    setyPositionscroll(0);
-                                    await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "0"` })
-                                    })
-
-
-                                }}>Set 0</button>
-
                             </td>
                         </tr>
 
@@ -558,7 +537,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
+                                                    body: JSON.stringify({ project, scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
                                                 })
                                                 const currentItem = breakingdata[indexRefbreakingsmallticker.current];
                                                 const exportValues = {
@@ -569,7 +548,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/setExports", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", updates })
+                                                    body: JSON.stringify({ project, scene: "BreakingSmall_Ticker", updates })
                                                 })
 
                                                 indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % breakingdata.length;
@@ -582,12 +561,7 @@ const NrcsScroll = () => {
                                 <button onClick={stopplayBreakingSmallTicker}> Stop</button>
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
                                     setyPositionbreakingNews(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'BreakingSmall_Ticker'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
-
+                                    await setYPosition('BreakingSmall_Ticker', e.target.value);
                                 }} />
                             </td>
                         </tr>
@@ -604,7 +578,7 @@ const NrcsScroll = () => {
                                             await fetch("/api/timeline", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_fullpage_breaking_news1", timeline: "textin", slot: "9" })
+                                                body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", timeline: "textin", slot: "9" })
                                             })
 
                                             const currentItem = fullpagebreakingdata[indexFullPageBreakingNews.current];
@@ -615,7 +589,7 @@ const NrcsScroll = () => {
                                             await fetch("/api/setExports", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_fullpage_breaking_news1", updates })
+                                                body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", updates })
                                             })
 
                                             indexFullPageBreakingNews.current = (indexFullPageBreakingNews.current + 1) % fullpagebreakingdata.length;
@@ -640,7 +614,7 @@ const NrcsScroll = () => {
                                             await fetch("/api/timeline", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_bn1", timeline: "textin", slot: "10" })
+                                                body: JSON.stringify({ project, scene: "vimlesh_bn1", timeline: "textin", slot: "10" })
                                             })
 
                                             const currentItem = fullpagebreakingdata[indexFullPageBreakingNewswithinput.current];
@@ -651,7 +625,7 @@ const NrcsScroll = () => {
                                             await fetch("/api/setExports", {
                                                 method: "POST",
                                                 headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_bn1", updates })
+                                                body: JSON.stringify({ project, scene: "vimlesh_bn1", updates })
                                             })
 
                                             indexFullPageBreakingNewswithinput.current = (indexFullPageBreakingNewswithinput.current + 1) % fullpagebreakingdata.length;
@@ -676,7 +650,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
+                                                    body: JSON.stringify({ project, scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
                                                 })
 
                                                 const currentItem = newsUpdataeData[indexRefnewsupdate.current];
@@ -687,7 +661,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/setExports", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", updates })
+                                                    body: JSON.stringify({ project, scene: "NewsUpdate", updates })
                                                 })
 
                                                 indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % newsUpdataeData.length;
@@ -702,12 +676,7 @@ const NrcsScroll = () => {
 
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionnewsupdate} onChange={async (e) => {
                                     setyPositionnewsupdate(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'NewsUpdate'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
-
+                                    await setYPosition('NewsUpdate', e.target.value);
                                 }} />
                             </td>
                         </tr>
@@ -746,7 +715,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/timeline", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_twoliner2", timeline: "textin", slot: "8" })
+                                                    body: JSON.stringify({ project, scene: "vimlesh_twoliner2", timeline: "textin", slot: "8" })
                                                 })
 
                                                 const currentItem = twolinerData[indextwoliner.current];
@@ -759,7 +728,7 @@ const NrcsScroll = () => {
                                                 await fetch("/api/setExports", {
                                                     method: "POST",
                                                     headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project: "ddnrcs", scene: "vimlesh_twoliner2", updates })
+                                                    body: JSON.stringify({ project, scene: "vimlesh_twoliner2", updates })
                                                 })
 
                                                 indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
@@ -774,11 +743,7 @@ const NrcsScroll = () => {
 
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
                                     setyPositionTwoliner(e.target.value);
-                                    const res = await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: `scene "${project}/${'vimlesh_twoliner2'}" nodes set "RootNode" "Transform.Position.Y" "${e.target.value}"` })
-                                    })
+                                    await setYPosition('vimlesh_twoliner2', e.target.value);
 
                                 }} />
                             </td>
