@@ -78,6 +78,15 @@ const NrcsScroll = () => {
         })
     }
 
+    const setYPosition = async (scene, yPosition) => {
+        await fetch("/api/sendCommand", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
+        })
+    }
+
+
     const playFullPageBreakingNewswithinput = async () => {
         let scripts = [];
         try {
@@ -165,11 +174,7 @@ const NrcsScroll = () => {
                     tTextA: `${scripts[0]}`,
                 }
                 await playScene('NewsUpdate', "6", exportValues);
-                await fetch("/api/sendCommand", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ command: `scene "${project}/${'NewsUpdate'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionnewsupdate}"` })
-                })
+                await setYPosition('NewsUpdate', yPositionnewsupdate);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setnewsupdateRunning(true);
 
@@ -205,19 +210,12 @@ const NrcsScroll = () => {
                 indextwoliner.current = 1;
                 const exportValues = {
                     url1: `${NrcsBreakingText ? "http://localhost:5000/yellow_breaking_news.gif" : "http://localhost:5000/yellow_news_update.gif"}`,
-                    // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
                     text2: `${scripts[0]}`,
                 }
                 await playScene('vimlesh_twoliner2', "8", exportValues);
-                await fetch("/api/sendCommand", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ command: `scene "${project}/${'vimlesh_twoliner2'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionTwoliner}"` })
-                })
+                await setYPosition('vimlesh_twoliner2', yPositionTwoliner);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setTwolinerRunning(true);
-
-
             }
 
         } catch (error) {
@@ -250,11 +248,7 @@ const NrcsScroll = () => {
                     tTextA: `${scripts[0]}`,
                 }
                 await playScene('BreakingSmall_Ticker', "5", exportValues);
-                await fetch("/api/sendCommand", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ command: `scene "${project}/${'BreakingSmall_Ticker'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionbreakingNews}"` })
-                })
+                await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setbreakingsmalltickerRunning(true);
 
@@ -315,11 +309,7 @@ const NrcsScroll = () => {
 
     const playClock = async () => {
         await playScene('vimlesh_clock1', "7", {});
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: `scene "${project}/${'vimlesh_clock1'}" nodes set "RootNode" "Transform.Position.Y" "${yPositiondate}"` })
-        })
+        await setYPosition('vimlesh_clock1', yPositiondate);
     }
     const stopClock = () => {
         stopScene('vimlesh_clock1');
@@ -353,11 +343,7 @@ const NrcsScroll = () => {
                     tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${scripts[0]}' }] }`,
                 }
                 await playScene('vimlesh_ticker', "1", exportValues);
-                await fetch("/api/sendCommand", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ command: `scene "${project}/${'vimlesh_ticker'}" nodes set "RootNode" "Transform.Position.Y" "${yPositionscroll}"` })
-                })
+                await setYPosition('vimlesh_ticker', yPositionscroll);
             }
         } catch (error) {
         }
