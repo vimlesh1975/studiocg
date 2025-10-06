@@ -14,6 +14,9 @@ import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
 import VideoPlayer from './components/VideoPlayer';
 import NrcsScroll from './components/NrcsScroll';
+import ScriptTest from './components/ScriptTest';
+
+
 
 
 // import Scroll from './components/Scroll'
@@ -37,6 +40,7 @@ export default function Page() {
       forceRenderTabPanel={true}
     >
       <TabList>
+        <Tab> ScriptTest</Tab>
         <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
         <Tab> Scroll</Tab>
@@ -51,6 +55,9 @@ export default function Page() {
 
 
       </TabList>
+      <TabPanel>
+        < ScriptTest />
+      </TabPanel>
       <TabPanel>
         < NrcsScroll />
       </TabPanel>
