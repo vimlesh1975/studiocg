@@ -6,6 +6,9 @@ import Timer from './Timer';
 import { addressmysql } from "../lib/common";
 import Script from "../Script";
 
+import { stopScene } from '../lib/common';
+
+
 const project = "ddnrcs";
 // const project = "25IN_ChannelPackaging_351.450";
 
@@ -58,13 +61,7 @@ const NrcsScroll = () => {
     const indexFullPageBreakingNews = useRef(0);
     const indexFullPageBreakingNewswithinput = useRef(0);
 
-    const stopScene = async (scene) => {
-        fetch("/api/timeline", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project, scene, timeline: "Out" })
-        })
-    }
+
 
     const playScene = async (scene, slot, exportValues) => {
         fetch("/api/playwithexportedvalues", {
@@ -118,7 +115,7 @@ const NrcsScroll = () => {
         }
     }
     const stopFullPageBreakingNewswithinput = () => {
-        stopScene('vimlesh_bn1');
+        stopScene({ project, scene: 'vimlesh_bn1' });
         setfullpagebreakingnewsrunningwithinput(false);
     }
 
@@ -151,7 +148,7 @@ const NrcsScroll = () => {
         }
     }
     const stopFullPageBreakingNews = () => {
-        stopScene('vimlesh_fullpage_breaking_news1');
+        stopScene({ project, scene: 'vimlesh_fullpage_breaking_news1' });
         setfullpagebreakingnewsrunning(false);
     }
 
@@ -188,7 +185,8 @@ const NrcsScroll = () => {
 
     }
     const stopNewsUpdate = () => {
-        stopScene('NewsUpdate');
+        stopScene({ project, scene: 'NewsUpdate' });
+
         setnewsupdateRunning(false);
     }
 
@@ -224,7 +222,8 @@ const NrcsScroll = () => {
         }
     }
     const stopTwoliner = () => {
-        stopScene('vimlesh_twoliner2');
+        stopScene({ project, scene: 'vimlesh_twoliner2' });
+
         setTwolinerRunning(false);
     }
 
@@ -259,7 +258,8 @@ const NrcsScroll = () => {
         }
     }
     const stopplayBreakingSmallTicker = () => {
-        stopScene('BreakingSmall_Ticker');
+        stopScene({ project, scene: 'BreakingSmall_Ticker' });
+
         setbreakingsmalltickerRunning(false);
     }
 
@@ -313,7 +313,7 @@ const NrcsScroll = () => {
         await setYPosition('vimlesh_clock1', yPositiondate);
     }
     const stopClock = () => {
-        stopScene('vimlesh_clock1');
+        stopScene({ project, scene: 'vimlesh_clock1' });
     }
     const playticker = async () => {
         let scripts = [];
@@ -358,7 +358,7 @@ const NrcsScroll = () => {
     }
 
     const onStopTicker = async () => {
-        stopScene('vimlesh_ticker');
+        stopScene({ project, scene: 'vimlesh_ticker' });
         setTickerRunning(false);
 
     }

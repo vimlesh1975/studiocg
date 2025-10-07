@@ -1,5 +1,5 @@
 import React from 'react'
-import { btoaUtf8, senSecommand } from '../lib/common';
+import { playwithtimer } from '../lib/common';
 
 
 const ScriptTest = () => {
@@ -11,41 +11,7 @@ const ScriptTest = () => {
 
 
 
-    const playwithtimer = async ({ project, scene, timeline, slot, exportValues, functionName, params }) => {
 
-        await fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project,
-                scene,
-                timeline,
-                slot,
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        })
-        await senSecommand({ command: `scene "${project}/${scene}" nodes create "texturetext" "SignalText"` })
-        await senSecommand({ command: `scene "${project}/${scene}" nodes add "SignalText" "RootNode"` })
-
-        const aa = {
-            functionName,
-            params
-        };
-
-        let parts = [`functionName:${aa.functionName}`];
-
-        for (const p of aa.params) {
-            for (const key in p) {
-                const val = Array.isArray(p[key]) ? p[key].join("|||") : p[key];
-                parts.push(`${key}:${val}`);
-            }
-        }
-
-        const flat = parts.join("~~~");
-        const encoded = btoaUtf8(flat);
-
-        await senSecommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })
-    }
 
     return (<>
 
