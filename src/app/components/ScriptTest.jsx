@@ -1,8 +1,5 @@
 import React from 'react'
-
-function btoaUtf8(str) {
-    return btoa(unescape(encodeURIComponent(str)));
-}
+import { btoaUtf8, senSecommand } from '../lib/common';
 
 
 const ScriptTest = () => {
@@ -12,49 +9,27 @@ const ScriptTest = () => {
     const [aa3, setaa3] = (React.useState('telugu ఓ వైపు అభయారణ్యం మరోవైపు పెద్ద పులుల ఘీంకారం'))
     const [aa4, setaa4] = (React.useState('kannad ರ ಏಷ್ಯಾ ಕಪ್‌ನಲ್ಲಿ ಭಾರತದ ವಿರುದ್ಧದ ಸತತ ಮೂರು ಸೋಲುಗಳ'))
 
-    const playscripttestfile = async () => {
-        console.log('object')
-        const exportValues = {
-            tTextA: ``,
-        }
+
+
+    const playwithtimer = async ({ project, scene, timeline, slot, exportValues, functionName, params }) => {
+
         await fetch("/api/playwithexportedvalues", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: "test",
-                scene: "BreakingSmall_Ticker",
-                timeline: 'In',
-                slot: "20",
+                project,
+                scene,
+                timeline,
+                slot,
                 exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
             })
         })
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: 'scene "test/BreakingSmall_Ticker" nodes create "texturetext" "SignalText"' }),
-        });
-
-
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: 'scene "test/BreakingSmall_Ticker" nodes add "SignalText" "RootNode"' }),
-        });
-
-        // const aa = {
-        //     functionName: "move",
-        //     params: [
-        //         { node_name: "Quad1" },
-        //         { position: [-1, 0, 0] }
-        //     ]
-        // };
+        await senSecommand({ command: `scene "${project}/${scene}" nodes create "texturetext" "SignalText"` })
+        await senSecommand({ command: `scene "${project}/${scene}" nodes add "SignalText" "RootNode"` })
 
         const aa = {
-            functionName: "play_text_sequence",
-            params: [
-                { interval_seconds: "2" },
-                { messages: [aa1, aa2, aa3, aa4] }
-            ]
+            functionName,
+            params
         };
 
         let parts = [`functionName:${aa.functionName}`];
@@ -69,13 +44,7 @@ const ScriptTest = () => {
         const flat = parts.join("~~~");
         const encoded = btoaUtf8(flat);
 
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                command: `scene "test/BreakingSmall_Ticker" nodes set "SignalText" "Text" "${encoded}"`
-            }),
-        });
+        await senSecommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })
     }
 
     return (<>
@@ -87,7 +56,15 @@ const ScriptTest = () => {
         <input type="text" value={aa3} onChange={(e) => setaa3(e.target.value)} />
         <input type="text" value={aa4} onChange={(e) => setaa4(e.target.value)} />
 
-        <button onClick={playscripttestfile}>Play file</button>
+        <button onClick={() =>
+            playwithtimer({
+                project: 'test', scene: "BreakingSmall_Ticker", timeline: "In", slot: "20", exportValues: { tTextA: `` }, functionName: "play_text_sequence",
+                params: [
+                    { interval_seconds: "2" },
+                    { messages: [aa1, aa2, aa3, aa4] }
+                ]
+            })
+        }>Play file</button>
 
         <button style={{ backgroundColor: 'darkred', color: 'white' }} onClick={() => {
             fetch("/api/unloadAllScenes", {

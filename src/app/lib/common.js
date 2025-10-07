@@ -1,6 +1,22 @@
 
 import Image from 'next/image';
 
+export function btoaUtf8(str) {
+  const utf8Bytes = new TextEncoder().encode(str);
+  let binary = "";
+  utf8Bytes.forEach(byte => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+export const senSecommand = async ({ command }) => {
+  await fetch("/api/sendCommand", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ command }),
+  });
+}
+
 export function toUTF16BE(str) {
   const utf16le = Buffer.from(str, 'utf16le'); // Node only supports utf16le
   const utf16be = Buffer.alloc(utf16le.length);
