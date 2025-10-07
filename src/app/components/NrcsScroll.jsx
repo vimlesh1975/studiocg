@@ -128,7 +128,6 @@ const NrcsScroll = () => {
                 const exportValues = {
                     tTextA: ``,
                 }
-                await playScene({ project, scene: 'NewsUpdate', slot: "6", exportValues });
                 const params = [
                     { interval_seconds: "2" },
                     { messages: scripts }

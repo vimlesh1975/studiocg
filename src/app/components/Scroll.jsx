@@ -6,26 +6,20 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
 import Timer from './Timer';
+import { playwithtimer } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
 const vTrailingSpace = 0.1;
-
+const project = "ddnrcs";
 
 const Scroll = () => {
 
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [ltr, setLtr] = useState(false);
-
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [delemeter, setDelemeter] = useState('⏺️')
-
     const [tickerRunning, setTickerRunning] = useState(false);
-    const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
-    const [newsupdateRunning, setnewsupdateRunning] = useState(false);
-
     const indexRefTicker = useRef(1);
-    const indexRefbreakingsmallticker = useRef(0);
-    const indexRefnewsupdate = useRef(0);
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -34,7 +28,6 @@ const Scroll = () => {
             setPlayerList1(aa);
         }
     }
-
     const deletePage = e => {
         if (playerList1.length === 1) {
             return
@@ -224,23 +217,13 @@ const Scroll = () => {
 
 
     const playBreakingSmallTicker = async () => {
-        indexRefbreakingsmallticker.current = 1;
-        const exportValues = {
-            tTextA: `${playerList1[0].data1}`,
-        }
-        fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project: 'ddnrcs',
-                scene: 'BreakingSmall_Ticker',
-                timeline: 'In',
-                slot: "5",
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        });
-        await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-        setbreakingsmalltickerRunning(true);
+        const scripts = playerList1.map(row => row.data1);
+        const exportValues = { tTextA: `` }
+        const params = [
+            { interval_seconds: "2" },
+            { messages: scripts }
+        ]
+        await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
     }
     const stopplayBreakingSmallTicker = () => {
         fetch("/api/timeline", {
@@ -253,23 +236,18 @@ const Scroll = () => {
     }
 
     const playNewsUpdate = async () => {
-        indexRefnewsupdate.current = 1;
         const exportValues = {
-            tTextA: `${playerList1[0].data1}`,
+            tTextA: ``,
         }
-        fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project: 'ddnrcs',
-                scene: 'NewsUpdate',
-                timeline: 'In',
-                slot: "6",
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        })
-        await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-        setnewsupdateRunning(true);
+
+        const scripts = playerList1.map(row => row.data1);
+
+        const params = [
+            { interval_seconds: "2" },
+            { messages: scripts }
+        ]
+        await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "6", exportValues, functionName: "play_text_sequence", params })
+        await setYPosition('NewsUpdate', yPositionnewsupdate);
     }
     const stopNewsUpdate = () => {
         fetch("/api/timeline", {
@@ -277,7 +255,6 @@ const Scroll = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: 'ddnrcs', scene: 'NewsUpdate', timeline: "Out" })
         })
-        setnewsupdateRunning(false);
 
     }
 
@@ -293,9 +270,7 @@ const Scroll = () => {
                         <Timer
                             interval={2000}
                             callback={async () => {
-                                // console.log(indexRefTicker.current)
                                 const currentItem = playerList1[indexRefTicker.current];
-
                                 if (currentItem) {
                                     const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
 
@@ -305,10 +280,7 @@ const Scroll = () => {
                                         body: JSON.stringify({ command: aa }),
                                     });
                                 }
-
-                                // update index safely
                                 indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
-
                             }}
                         />
                     )}
@@ -324,69 +296,8 @@ const Scroll = () => {
                         value={horizontalSpeed}
                     />
                     <button onClick={onStopTicker}> Stop Ticker</button>
-
-                    {
-                        breakingsmalltickerRunning && (
-                            <Timer
-                                interval={5000}
-                                callback={async () => {
-
-                                    await fetch("/api/timeline", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
-                                    })
-
-                                    const currentItem = playerList1[indexRefbreakingsmallticker.current];
-                                    const exportValues = {
-                                        tTextA: `${currentItem?.data1}`,
-                                    }
-                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                    await fetch("/api/setExports", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "BreakingSmall_Ticker", updates })
-                                    })
-
-                                    indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % playerList1.length;
-
-                                }}
-                            />
-                        )
-                    }
-
                     <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
-
-                    {
-                        newsupdateRunning && (
-                            <Timer
-                                interval={5000}
-                                callback={async () => {
-                                    await fetch("/api/timeline", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
-                                    })
-
-                                    const currentItem = playerList1[indexRefnewsupdate.current];
-                                    const exportValues = {
-                                        tTextA: `${currentItem?.data1}`,
-                                    }
-                                    const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                    await fetch("/api/setExports", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ project: "ddnrcs", scene: "NewsUpdate", updates })
-                                    })
-
-                                    indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % playerList1.length;
-
-                                }}
-                            />
-                        )
-                    }
-
                     <button onClick={playNewsUpdate}> Play NewsUpdate</button>
                     <button onClick={stopNewsUpdate}> Stop NewsUpdate</button>
 
@@ -406,8 +317,6 @@ const Scroll = () => {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                         });
-                        setbreakingsmalltickerRunning(false);
-                        setnewsupdateRunning(false);
                         setTickerRunning(false);
                     }}
                     >
@@ -530,21 +439,13 @@ const Scroll = () => {
                                                                     onChange={e => {
                                                                         const updatednewplayerList1 = [...playerList1]
                                                                         updatednewplayerList1[i] = { ...updatednewplayerList1[i], data1: e.target.value };
-                                                                        // setNewplayerList1(updatednewplayerList1)
                                                                         setPlayerList1(updatednewplayerList1)
-                                                                        // newplayerList1[i] = { ...newplayerList1[i], data1: e.target.value };
-                                                                        // setNewplayerList1([...newplayerList1])
                                                                     }}
                                                                 />
                                                                 </td>
                                                                 <td><input checked={val.use1} type='checkbox' onChange={(e) => {
-                                                                    // newplayerList1[i] = { ...newplayerList1[i], use1: e.target.checked };
-                                                                    // setNewplayerList1([...newplayerList1]);
-                                                                    // setPlayerList1([...newplayerList1]);
-
                                                                     const updatednewplayerList1 = [...playerList1]
                                                                     updatednewplayerList1[i] = { ...updatednewplayerList1[i], use1: e.target.checked };
-                                                                    // setNewplayerList1(updatednewplayerList1)
                                                                     setPlayerList1(updatednewplayerList1)
                                                                 }
                                                                 } /></td>
@@ -565,8 +466,6 @@ const Scroll = () => {
                     </DragDropContext>
                 </div>
             </div>
-
-
         </div>
     )
 }

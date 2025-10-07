@@ -1,7 +1,5 @@
 import { getR3Client } from '../../lib/r3client.js'
 
-let lastScene = null;
-
 export async function POST(req) {
     const { project, scene, timeline, slot = "0" } = await req.json()
     console.log(project, scene, timeline)
@@ -10,6 +8,14 @@ export async function POST(req) {
         const sceneObj = await r3.loadScene(project, scene)
         await sceneObj.takeOnline(slot) //must be string
         await sceneObj.playTimeline(timeline)
+    }
+    if (timeline === "Out") {
+        const sceneObj = await r3.loadScene(project, scene)
+        await sceneObj.playTimeline(timeline)
+        await new Promise(r => setTimeout(r, 3000)); // 100ms delay
+        await sceneObj.takeOffline() //must be string
+        r3.sendCommand(`engine unloadscene "${project}/${scene}"`)
+        // await sceneObj.unloadscene()//not working
     }
     else {
         const command = `SCENE "${project}/${scene}" ANIMATION "${timeline}" PLAY`;
