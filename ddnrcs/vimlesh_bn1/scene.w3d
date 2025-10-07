@@ -7,7 +7,9 @@
       </Camera>
     </CameraManager>
     <SceneNode Id="54936840-82fb-4410-b5bb-010068031073" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
-      <Extensions />
+        <Extensions>
+        <Script Id="myscript1" Name="Script RootNode" />
+      </Extensions>
       <Children>
         <DirectionalLight Id="701be85d-8ebb-442b-a50a-3d0138f60875" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions>

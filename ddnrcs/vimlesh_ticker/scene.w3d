@@ -7,7 +7,9 @@
       </Camera>
     </CameraManager>
     <SceneNode Id="08c0a83d-e032-44ea-a963-6ea7316adb0d" Name="RootNode" SpeedScale="1" DisplayColor="11119017">
-      <Extensions />
+          <Extensions>
+        <Script Id="myscript1" Name="Script RootNode" />
+      </Extensions>
       <Children>
         <DirectionalLight Id="57b42655-060a-4f50-a255-fd42b70e954f" Name="DirectionalLight" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions>
@@ -28,7 +30,7 @@
           </NodeTransform>
           <Extensions />
         </Quad>
-        <Group Id="bfd9fcdf-4e72-4e23-901d-d59349967eeb" Name="Group1" SpeedScale="1" DisplayColor="11119017">
+        <Group Id="bfd9fcdf-4e72-4e23-901d-d59349967eeb" Name="Group2" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions />
           <Extensions />
           <Children>
@@ -54,9 +56,6 @@
             <Position Y="-1.97" Z="-0.01" />
             <Scale X="1.5" Y="1.5" Z="1.5" Lock="XtoYtoZ" />
           </NodeTransform>
-          <Extensions>
-            <Script Id="4d3911ac-be39-4659-920b-3778c8398171" Name="Script Scroll1" />
-          </Extensions>
           <Children>
             <ScrollItem Id="3e8ee707-7a27-46a4-b69e-df059ffe2170" Name="Group1" SpeedScale="1" DisplayColor="11119017">
               <GeometryOptions AlignmentX="Center" AlignmentY="Center" AlignmentZ="Center" Direction="XPlus" LeadingSpace="0" TrailingSpace="0" Preserve="False" ResizeWithChildren="True" FlowChildren="True" ReferenceMaterial="False" ReferenceTextureLayer="False" />
