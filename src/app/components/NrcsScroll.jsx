@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Timer from './Timer';
 import { addressmysql } from "../lib/common";
 import Script from "../Script";
-import { stopScene, sendCommand } from '../lib/common';
+import { stopScene, sendCommand, playwithtimer, playScene } from '../lib/common';
 
 const project = "ddnrcs";
 // const project = "25IN_ChannelPackaging_351.450";
@@ -55,19 +55,7 @@ const NrcsScroll = () => {
     const indexFullPageBreakingNews = useRef(0);
     const indexFullPageBreakingNewswithinput = useRef(0);
 
-    const playScene = async (scene, slot, exportValues) => {
-        fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project,
-                scene,
-                timeline: 'In',
-                slot,
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        })
-    }
+
 
     const setYPosition = async (scene, yPosition) => {
         await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
@@ -93,7 +81,7 @@ const NrcsScroll = () => {
                 const exportValues = {
                     text1: `${scripts[0]}`,
                 }
-                await playScene('vimlesh_bn1', "10", exportValues);
+                await playScene({ project, scene: 'vimlesh_bn1', slot: "10", exportValues });
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setfullpagebreakingnewsrunningwithinput(true);
 
@@ -126,7 +114,8 @@ const NrcsScroll = () => {
                 const exportValues = {
                     text2: `${scripts[0]}`,
                 }
-                await playScene('vimlesh_fullpage_breaking_news1', "9", exportValues);
+                await playScene({ project, scene: 'vimlesh_fullpage_breaking_news1', slot: "9", exportValues });
+
                 await new Promise(r => setTimeout(r, 2000)); // 100ms delay
                 setfullpagebreakingnewsrunning(true);
             }
@@ -159,7 +148,8 @@ const NrcsScroll = () => {
                 const exportValues = {
                     tTextA: `${scripts[0]}`,
                 }
-                await playScene('NewsUpdate', "6", exportValues);
+                await playScene({ project, scene: 'NewsUpdate', slot: "6", exportValues });
+
                 await setYPosition('NewsUpdate', yPositionnewsupdate);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setnewsupdateRunning(true);
@@ -197,7 +187,8 @@ const NrcsScroll = () => {
                     url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update", window.location.origin).toString()}`,
                     text2: `${scripts[0]}`,
                 }
-                await playScene('vimlesh_twoliner2', "8", exportValues);
+                await playScene({ project, scene: 'vimlesh_twoliner2', slot: "8", exportValues });
+
                 await setYPosition('vimlesh_twoliner2', yPositionTwoliner);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setTwolinerRunning(true);
@@ -233,7 +224,8 @@ const NrcsScroll = () => {
                 const exportValues = {
                     tTextA: `${scripts[0]}`,
                 }
-                await playScene('BreakingSmall_Ticker', "5", exportValues);
+                await playScene({ project, scene: 'BreakingSmall_Ticker', slot: "5", exportValues });
+
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setbreakingsmalltickerRunning(true);
@@ -290,7 +282,9 @@ const NrcsScroll = () => {
     };
 
     const playClock = async () => {
-        await playScene('vimlesh_clock1', "7", {});
+        // await playScene('vimlesh_clock1', "7", {});
+        await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
+
         await setYPosition('vimlesh_clock1', yPositiondate);
     }
     const stopClock = () => {
@@ -323,7 +317,9 @@ const NrcsScroll = () => {
                     tText: '',
                     tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${scripts[0]}' }] }`,
                 }
-                await playScene('vimlesh_ticker', "1", exportValues);
+                // await playScene('vimlesh_ticker', "1", exportValues);
+                await playScene({ project, scene: 'vimlesh_ticker', slot: "1", exportValues });
+
                 await setYPosition('vimlesh_ticker', yPositionscroll);
             }
         } catch (error) {

@@ -59,6 +59,20 @@ export const playwithtimer = async ({ project, scene, timeline, slot, exportValu
   await sendCommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })
 }
 
+export const playScene = async ({ project, scene, slot, exportValues }) => {
+  fetch("/api/playwithexportedvalues", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      project,
+      scene,
+      timeline: 'In',
+      slot,
+      exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+    })
+  })
+}
+
 export function toUTF16BE(str) {
   const utf16le = Buffer.from(str, 'utf16le'); // Node only supports utf16le
   const utf16be = Buffer.alloc(utf16le.length);
