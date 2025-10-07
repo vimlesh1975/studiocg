@@ -24,7 +24,6 @@ export const stopScene = async ({ project, scene }) => {
   })
 }
 export const playwithtimer = async ({ project, scene, timeline, slot, exportValues, functionName, params }) => {
-
   await fetch("/api/playwithexportedvalues", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -220,15 +220,13 @@ const NrcsScroll = () => {
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
                 setBreakingdata(scripts);
-                indexRefbreakingsmallticker.current = 1;
-                const exportValues = {
-                    tTextA: `${scripts[0]}`,
-                }
-                await playScene({ project, scene: 'BreakingSmall_Ticker', slot: "5", exportValues });
-
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
-                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-                setbreakingsmalltickerRunning(true);
+                const exportValues = { tTextA: `` }
+                const params = [
+                    { interval_seconds: "2" },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
             }
         } catch (error) {
         }
@@ -282,7 +280,6 @@ const NrcsScroll = () => {
     };
 
     const playClock = async () => {
-        // await playScene('vimlesh_clock1', "7", {});
         await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
 
         await setYPosition('vimlesh_clock1', yPositiondate);
@@ -317,9 +314,7 @@ const NrcsScroll = () => {
                     tText: '',
                     tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${scripts[0]}' }] }`,
                 }
-                // await playScene('vimlesh_ticker', "1", exportValues);
                 await playScene({ project, scene: 'vimlesh_ticker', slot: "1", exportValues });
-
                 await setYPosition('vimlesh_ticker', yPositionscroll);
             }
         } catch (error) {
