@@ -7,7 +7,7 @@ function btoaUtf8(str) {
 
 const ScriptTest = () => {
 
-    const [aa1, setaa1] = (React.useState('आइए जानते हैं लिवर खराब होने के 5 सबसे बड़े कारण'))
+    const [aa1, setaa1] = (React.useState('आइए, जानते हैं लिवर खराब होने के 5 सबसे बड़े कारण'))
     const [aa2, setaa2] = (React.useState('tamil தமிழகத்தில் இன்று ஓரிரு இடங்களில் லேசானது முதல்'))
     const [aa3, setaa3] = (React.useState('telugu ఓ వైపు అభయారణ్యం మరోవైపు పెద్ద పులుల ఘీంకారం'))
     const [aa4, setaa4] = (React.useState('kannad ರ ಏಷ್ಯಾ ಕಪ್‌ನಲ್ಲಿ ಭಾರತದ ವಿರುದ್ಧದ ಸತತ ಮೂರು ಸೋಲುಗಳ'))
@@ -52,7 +52,7 @@ const ScriptTest = () => {
         const aa = {
             functionName: "play_text_sequence",
             params: [
-                { interval_seconds: "3" },
+                { interval_seconds: "2" },
                 { messages: [aa1, aa2, aa3, aa4] }
             ]
         };
@@ -61,12 +61,12 @@ const ScriptTest = () => {
 
         for (const p of aa.params) {
             for (const key in p) {
-                const val = Array.isArray(p[key]) ? p[key].join(",") : p[key];
+                const val = Array.isArray(p[key]) ? p[key].join("|||") : p[key];
                 parts.push(`${key}:${val}`);
             }
         }
 
-        const flat = parts.join("|");
+        const flat = parts.join("~~~");
         const encoded = btoaUtf8(flat);
 
         await fetch("/api/sendCommand", {
@@ -76,9 +76,6 @@ const ScriptTest = () => {
                 command: `scene "test/BreakingSmall_Ticker" nodes set "SignalText" "Text" "${encoded}"`
             }),
         });
-
-
-
     }
 
     return (<>
