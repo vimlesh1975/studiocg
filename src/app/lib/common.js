@@ -9,7 +9,7 @@ export function btoaUtf8(str) {
   });
   return btoa(binary);
 }
-export const senSecommand = async ({ command }) => {
+export const sendCommand = async ({ command }) => {
   await fetch("/api/sendCommand", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -36,8 +36,8 @@ export const playwithtimer = async ({ project, scene, timeline, slot, exportValu
       exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
     })
   })
-  await senSecommand({ command: `scene "${project}/${scene}" nodes create "texturetext" "SignalText"` })
-  await senSecommand({ command: `scene "${project}/${scene}" nodes add "SignalText" "RootNode"` })
+  await sendCommand({ command: `scene "${project}/${scene}" nodes create "texturetext" "SignalText"` })
+  await sendCommand({ command: `scene "${project}/${scene}" nodes add "SignalText" "RootNode"` })
 
   const aa = {
     functionName,
@@ -56,7 +56,7 @@ export const playwithtimer = async ({ project, scene, timeline, slot, exportValu
   const flat = parts.join("~~~");
   const encoded = btoaUtf8(flat);
 
-  await senSecommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })
+  await sendCommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })
 }
 
 export function toUTF16BE(str) {

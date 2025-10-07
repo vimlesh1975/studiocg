@@ -5,14 +5,10 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import Timer from './Timer';
 import { addressmysql } from "../lib/common";
 import Script from "../Script";
-
-import { stopScene } from '../lib/common';
-
+import { stopScene, sendCommand } from '../lib/common';
 
 const project = "ddnrcs";
 // const project = "25IN_ChannelPackaging_351.450";
-
-
 
 const vTrailingSpace = 0.1;
 
@@ -34,8 +30,6 @@ const NrcsScroll = () => {
     const [tickerRunning, setTickerRunning] = useState(false);
     const [newsupdateRunning, setnewsupdateRunning] = useState(false);
     const [twolinerRunning, setTwolinerRunning] = useState(false);
-
-
 
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedDate, setSelectedDate] = useState(() => {
@@ -61,8 +55,6 @@ const NrcsScroll = () => {
     const indexFullPageBreakingNews = useRef(0);
     const indexFullPageBreakingNewswithinput = useRef(0);
 
-
-
     const playScene = async (scene, slot, exportValues) => {
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -78,13 +70,8 @@ const NrcsScroll = () => {
     }
 
     const setYPosition = async (scene, yPosition) => {
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
-        })
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
     }
-
 
     const playFullPageBreakingNewswithinput = async () => {
         let scripts = [];
@@ -182,7 +169,6 @@ const NrcsScroll = () => {
         } catch (error) {
         }
 
-
     }
     const stopNewsUpdate = () => {
         stopScene({ project, scene: 'NewsUpdate' });
@@ -251,8 +237,6 @@ const NrcsScroll = () => {
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 await new Promise(r => setTimeout(r, 3000)); // 100ms delay
                 setbreakingsmalltickerRunning(true);
-
-
             }
         } catch (error) {
         }
@@ -271,7 +255,6 @@ const NrcsScroll = () => {
         const date = event.target.value;
         setSelectedDate(date)
     };
-
     async function fetchNewsID() {
         try {
             const res = await fetch(addressmysql() + "/getNewsIDforCG");
@@ -280,11 +263,9 @@ const NrcsScroll = () => {
         } catch (error) {
         }
     }
-
     useEffect(() => {
         fetchNewsID();
     }, []);
-
     const fetchRO = useCallback(async () => {
         if (selectedRunOrderTitle === "") {
             return;
@@ -350,17 +331,12 @@ const NrcsScroll = () => {
     }
     const onhorizontalSpeedChange = async (e) => {
         setHorizontalSpeed(e.target.value);
-        await fetch("/api/sendCommand", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ command: `SCENE "ddnrcs/vimlesh_ticker" Export "vSpeed" SetValue "${e.target.value}"` })
-        })
+        await sendCommand({ command: `SCENE "ddnrcs/vimlesh_ticker" Export "vSpeed" SetValue "${e.target.value}"` })
     }
 
     const onStopTicker = async () => {
         stopScene({ project, scene: 'vimlesh_ticker' });
         setTickerRunning(false);
-
     }
     useEffect(() => {
         fetchRO();
@@ -386,8 +362,6 @@ const NrcsScroll = () => {
             >
                 🧹 Unload All Scenes</button>
         </div>
-
-
         <div>
             <label htmlFor="date-selector">Select a date: </label>
             <input
@@ -396,7 +370,6 @@ const NrcsScroll = () => {
                 value={selectedDate}
                 onChange={handleDateChange}
             />
-
         </div>
         <div>
             Run Orders:
@@ -416,8 +389,6 @@ const NrcsScroll = () => {
             </select>
             {slugs?.length} slugs
         </div>
-
-
         <div style={{ display: 'flex' }}>
             <div style={{ height: 450, width: 400, overflow: "auto", border: '1px solid red' }}>
                 {slugs &&
@@ -499,18 +470,9 @@ const NrcsScroll = () => {
                                             const currentItem = scrollData[indexRefTicker.current];
 
                                             if (currentItem) {
-                                                const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem}'}]}"`;
-
-                                                await fetch("/api/sendCommand", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ command: aa }),
-                                                });
+                                                await sendCommand({ command: `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem}'}]}"` })
                                             }
-
-                                            // update index safely
                                             indexRefTicker.current = (indexRefTicker.current + 1) % scrollData.length;
-
                                         }}
                                     />
                                 )}
@@ -726,10 +688,8 @@ const NrcsScroll = () => {
                                         />
                                     )
                                 }
-
                                 <button onClick={playTwoliner}>Play</button>
                                 <button onClick={stopTwoliner}>Stop</button>
-
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
                                     setyPositionTwoliner(e.target.value);
                                     await setYPosition('vimlesh_twoliner2', e.target.value);
@@ -737,7 +697,6 @@ const NrcsScroll = () => {
                                 }} />
                             </td>
                         </tr>
-
                     </tbody>
                 </table >
             </div >
