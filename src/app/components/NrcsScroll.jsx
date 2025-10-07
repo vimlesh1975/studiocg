@@ -24,10 +24,7 @@ const NrcsScroll = () => {
     const [ScriptID, setScriptID] = useState("");
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
-    const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
-    const [fullpagebreakingnewsrunningwithinput, setfullpagebreakingnewsrunningwithinput] = useState(false);
     const [tickerRunning, setTickerRunning] = useState(false);
-    const [twolinerRunning, setTwolinerRunning] = useState(false);
 
     const [runOrderTitles, setRunOrderTitles] = useState([]);
     const [selectedDate, setSelectedDate] = useState(() => {
@@ -40,16 +37,9 @@ const NrcsScroll = () => {
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [scrollData, setScrollData] = useState([]);
-    const [fullpagebreakingdata, setfullpagebreakingdata] = useState([]);
-    const [twolinerData, setTwolinerData] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)
     const indexRefTicker = useRef(1);
-    const indextwoliner = useRef(0);
-    const indexFullPageBreakingNews = useRef(0);
-    const indexFullPageBreakingNewswithinput = useRef(0);
-
-
 
     const setYPosition = async (scene, yPosition) => {
         await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
@@ -73,14 +63,11 @@ const NrcsScroll = () => {
                 const exportValues = {
                     text1: ``,
                 }
-                await playScene({ project, scene: 'vimlesh_bn1', slot: "10", exportValues });
                 const params = [
                     { interval_seconds: "2" },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "vimlesh_bn1", timeline: "In", slot: "10", exportValues, functionName: "play_text_sequence", params })
-
-
             }
         } catch (error) {
         }
@@ -105,15 +92,14 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setfullpagebreakingdata(scripts);
-                indexFullPageBreakingNews.current = 1;
                 const exportValues = {
-                    text2: `${scripts[0]}`,
+                    text2: ``,
                 }
-                await playScene({ project, scene: 'vimlesh_fullpage_breaking_news1', slot: "9", exportValues });
-
-                await new Promise(r => setTimeout(r, 2000)); // 100ms delay
-                setfullpagebreakingnewsrunning(true);
+                const params = [
+                    { interval_seconds: "2" },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "vimlesh_fullpage_breaking_news1", timeline: "In", slot: "9", exportValues, functionName: "play_text_sequence", params })
             }
 
         } catch (error) {
@@ -139,7 +125,6 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                // setnewsUpdataeData(scripts);
                 const exportValues = {
                     tTextA: ``,
                 }
@@ -177,29 +162,24 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setTwolinerData(scripts);
-                indextwoliner.current = 1;
                 const exportValues = {
-                    url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update", window.location.origin).toString()}`,
-                    text2: `${scripts[0]}`,
+                    url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update.gif", window.location.origin).toString()}`,
+                    text2: ``,
                 }
-                await playScene({ project, scene: 'vimlesh_twoliner2', slot: "8", exportValues });
-
+                const params = [
+                    { interval_seconds: "2" },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "vimlesh_twoliner2", timeline: "In", slot: "8", exportValues, functionName: "play_text_sequence", params })
                 await setYPosition('vimlesh_twoliner2', yPositionTwoliner);
-                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-                setTwolinerRunning(true);
             }
-
         } catch (error) {
-            // console.error('Error saving content:', error);
         }
     }
     const stopTwoliner = () => {
         stopScene({ project, scene: 'vimlesh_twoliner2' });
-
         setTwolinerRunning(false);
     }
-
     const playBreakingSmallTicker = async () => {
         let scripts = [];
         try {
@@ -339,11 +319,11 @@ const NrcsScroll = () => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                 });
-                setbreakingsmalltickerRunning(false);
-                setfullpagebreakingnewsrunning(false);
-                setfullpagebreakingnewsrunningwithinput(false);
-                setnewsupdateRunning(false);
-                setTwolinerRunning(false);
+                // setbreakingsmalltickerRunning(false);
+                // setfullpagebreakingnewsrunning(false);
+                // setfullpagebreakingnewsrunningwithinput(false);
+                // setnewsupdateRunning(false);
+                // setTwolinerRunning(false);
                 setTickerRunning(false);
             }}
             >
@@ -490,29 +470,6 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Page
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                {fullpagebreakingnewsrunning && (
-                                    <Timer
-                                        interval={5000}
-                                        callback={async () => {
-                                            await fetch("/api/timeline", {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", timeline: "textin", slot: "9" })
-                                            })
-                                            const currentItem = fullpagebreakingdata[indexFullPageBreakingNews.current];
-                                            const exportValues = {
-                                                text2: `${currentItem}`,
-                                            }
-                                            const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                            await fetch("/api/setExports", {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project, scene: "vimlesh_fullpage_breaking_news1", updates })
-                                            })
-                                            indexFullPageBreakingNews.current = (indexFullPageBreakingNews.current + 1) % fullpagebreakingdata.length;
-                                        }}
-                                    />
-                                )}
                                 <button onClick={playFullPageBreakingNews}>Play</button>
                                 <button onClick={stopFullPageBreakingNews}>Stop</button>
 
@@ -522,33 +479,6 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>  Full Pag
                                 Breaking News with input</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                {fullpagebreakingnewsrunningwithinput && (
-                                    <Timer
-                                        interval={5000}
-                                        callback={async () => {
-
-                                            await fetch("/api/timeline", {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project, scene: "vimlesh_bn1", timeline: "textin", slot: "10" })
-                                            })
-
-                                            const currentItem = fullpagebreakingdata[indexFullPageBreakingNewswithinput.current];
-                                            const exportValues = {
-                                                text1: `${currentItem}`,
-                                            }
-                                            const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                            await fetch("/api/setExports", {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ project, scene: "vimlesh_bn1", updates })
-                                            })
-
-                                            indexFullPageBreakingNewswithinput.current = (indexFullPageBreakingNewswithinput.current + 1) % fullpagebreakingdata.length;
-
-                                        }}
-                                    />
-                                )}
                                 <button onClick={playFullPageBreakingNewswithinput}>Play</button>
                                 <button onClick={stopFullPageBreakingNewswithinput}>Stop</button>
                             </td>
@@ -590,38 +520,6 @@ const NrcsScroll = () => {
                                     News Update
                                 </label></td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-
-                                {
-                                    twolinerRunning && (
-                                        <Timer
-                                            interval={9000}
-                                            callback={async () => {
-
-                                                await fetch("/api/timeline", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "vimlesh_twoliner2", timeline: "textin", slot: "8" })
-                                                })
-
-                                                const currentItem = twolinerData[indextwoliner.current];
-                                                const exportValues = {
-                                                    url1: `${NrcsBreakingText ? "http://localhost:5000/yellow_breaking_news.gif" : "http://localhost:5000/yellow_news_update.gif"}`,
-                                                    // text1: `${NrcsBreakingText ? "Breaking News" : "News Update"}`,
-                                                    text2: `${currentItem}`,
-                                                }
-                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                                await fetch("/api/setExports", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "vimlesh_twoliner2", updates })
-                                                })
-
-                                                indextwoliner.current = (indextwoliner.current + 1) % twolinerData.length;
-
-                                            }}
-                                        />
-                                    )
-                                }
                                 <button onClick={playTwoliner}>Play</button>
                                 <button onClick={stopTwoliner}>Stop</button>
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionTwoliner} onChange={async (e) => {
