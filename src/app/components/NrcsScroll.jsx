@@ -24,11 +24,9 @@ const NrcsScroll = () => {
     const [ScriptID, setScriptID] = useState("");
     const [currentSlugSlugName, setCurrentSlugSlugName] = useState("");
 
-    const [breakingsmalltickerRunning, setbreakingsmalltickerRunning] = useState(false);
     const [fullpagebreakingnewsrunning, setfullpagebreakingnewsrunning] = useState(false);
     const [fullpagebreakingnewsrunningwithinput, setfullpagebreakingnewsrunningwithinput] = useState(false);
     const [tickerRunning, setTickerRunning] = useState(false);
-    const [newsupdateRunning, setnewsupdateRunning] = useState(false);
     const [twolinerRunning, setTwolinerRunning] = useState(false);
 
     const [runOrderTitles, setRunOrderTitles] = useState([]);
@@ -42,15 +40,11 @@ const NrcsScroll = () => {
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [scrollData, setScrollData] = useState([]);
-    const [breakingdata, setBreakingdata] = useState([]);
     const [fullpagebreakingdata, setfullpagebreakingdata] = useState([]);
-    const [newsUpdataeData, setnewsUpdataeData] = useState([]);
     const [twolinerData, setTwolinerData] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)
     const indexRefTicker = useRef(1);
-    const indexRefbreakingsmallticker = useRef(0);
-    const indexRefnewsupdate = useRef(0);
     const indextwoliner = useRef(0);
     const indexFullPageBreakingNews = useRef(0);
     const indexFullPageBreakingNewswithinput = useRef(0);
@@ -76,14 +70,16 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setfullpagebreakingdata(scripts);
-                indexFullPageBreakingNews.current = 1;
                 const exportValues = {
-                    text1: `${scripts[0]}`,
+                    text1: ``,
                 }
                 await playScene({ project, scene: 'vimlesh_bn1', slot: "10", exportValues });
-                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-                setfullpagebreakingnewsrunningwithinput(true);
+                const params = [
+                    { interval_seconds: "2" },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "vimlesh_bn1", timeline: "In", slot: "10", exportValues, functionName: "play_text_sequence", params })
+
 
             }
         } catch (error) {
@@ -143,17 +139,17 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setnewsUpdataeData(scripts);
-                indexRefnewsupdate.current = 1;
+                // setnewsUpdataeData(scripts);
                 const exportValues = {
-                    tTextA: `${scripts[0]}`,
+                    tTextA: ``,
                 }
                 await playScene({ project, scene: 'NewsUpdate', slot: "6", exportValues });
-
+                const params = [
+                    { interval_seconds: "2" },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "6", exportValues, functionName: "play_text_sequence", params })
                 await setYPosition('NewsUpdate', yPositionnewsupdate);
-                await new Promise(r => setTimeout(r, 3000)); // 100ms delay
-                setnewsupdateRunning(true);
-
             }
 
         } catch (error) {
@@ -480,33 +476,7 @@ const NrcsScroll = () => {
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Lower Third
                                 Breaking News</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                {
-                                    breakingsmalltickerRunning && (
-                                        <Timer
-                                            interval={5000}
-                                            callback={async () => {
 
-                                                await fetch("/api/timeline", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "BreakingSmall_Ticker", timeline: (indexRefbreakingsmallticker.current === 0) ? "In" : "Text01_In", slot: "5" })
-                                                })
-                                                const currentItem = breakingdata[indexRefbreakingsmallticker.current];
-                                                const exportValues = {
-                                                    tTextA: `${currentItem}`,
-                                                }
-
-                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                                await fetch("/api/setExports", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "BreakingSmall_Ticker", updates })
-                                                })
-                                                indexRefbreakingsmallticker.current = (indexRefbreakingsmallticker.current + 1) % breakingdata.length;
-                                            }}
-                                        />
-                                    )
-                                }
                                 <button onClick={playBreakingSmallTicker}>Play</button>
                                 <button onClick={stopplayBreakingSmallTicker}> Stop</button>
                                 <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
@@ -586,33 +556,6 @@ const NrcsScroll = () => {
                         <tr>
                             <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>News Update</td>
                             <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                {
-                                    newsupdateRunning && (
-                                        <Timer
-                                            interval={5000}
-                                            callback={async () => {
-                                                await fetch("/api/timeline", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "NewsUpdate", timeline: (indexRefnewsupdate.current === 0) ? "In" : "Text01_In", slot: "6" })
-                                                })
-
-                                                const currentItem = newsUpdataeData[indexRefnewsupdate.current];
-                                                const exportValues = {
-                                                    tTextA: `${currentItem}`,
-                                                }
-                                                const updates = Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-                                                await fetch("/api/setExports", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({ project, scene: "NewsUpdate", updates })
-                                                })
-                                                indexRefnewsupdate.current = (indexRefnewsupdate.current + 1) % newsUpdataeData.length;
-                                            }}
-                                        />
-                                    )
-                                }
-
                                 <button onClick={playNewsUpdate}>Play</button>
                                 <button onClick={stopNewsUpdate}>Stop</button>
 
