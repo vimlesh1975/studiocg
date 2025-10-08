@@ -12,6 +12,10 @@ const project = "ddnrcs";
 
 const vTrailingSpace = 0.1;
 
+const intervalGeneral = 7; //seconds
+const intervalTwoliner = 10; //seconds
+const intervalticker = 3; //seconds
+
 const NrcsScroll = () => {
     const [yPositionscroll, setyPositionscroll] = useState(0.00);
     const [yPositiondate, setyPositiondate] = useState(0.00);
@@ -64,7 +68,7 @@ const NrcsScroll = () => {
                     text1: ``,
                 }
                 const params = [
-                    { interval_seconds: "2" },
+                    { interval_seconds: intervalGeneral },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "vimlesh_bn1", timeline: "In", slot: "10", exportValues, functionName: "play_text_sequence", params })
@@ -96,7 +100,7 @@ const NrcsScroll = () => {
                     text2: ``,
                 }
                 const params = [
-                    { interval_seconds: "2" },
+                    { interval_seconds: intervalGeneral },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "vimlesh_fullpage_breaking_news1", timeline: "In", slot: "9", exportValues, functionName: "play_text_sequence", params })
@@ -129,7 +133,7 @@ const NrcsScroll = () => {
                     tTextA: ``,
                 }
                 const params = [
-                    { interval_seconds: "2" },
+                    { interval_seconds: intervalGeneral },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "6", exportValues, functionName: "play_text_sequence", params })
@@ -166,7 +170,7 @@ const NrcsScroll = () => {
                     text2: ``,
                 }
                 const params = [
-                    { interval_seconds: "2" },
+                    { interval_seconds: intervalTwoliner },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "vimlesh_twoliner2", timeline: "In", slot: "8", exportValues, functionName: "play_text_sequence", params })
@@ -194,11 +198,10 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setBreakingdata(scripts);
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 const exportValues = { tTextA: `` }
                 const params = [
-                    { interval_seconds: "2" },
+                    { interval_seconds: intervalGeneral },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })

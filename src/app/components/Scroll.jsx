@@ -9,8 +9,13 @@ import Timer from './Timer';
 import { playwithtimer } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
+
 const vTrailingSpace = 0.1;
 const project = "ddnrcs";
+
+const intervalGeneral = 2; //seconds
+const intervalTwoliner = 10; //seconds
+const intervalticker = 3; //seconds
 
 const Scroll = () => {
 
@@ -220,7 +225,7 @@ const Scroll = () => {
         const scripts = playerList1.map(row => row.data1);
         const exportValues = { tTextA: `` }
         const params = [
-            { interval_seconds: "2" },
+            { interval_seconds: intervalGeneral },
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
@@ -243,7 +248,7 @@ const Scroll = () => {
         const scripts = playerList1.map(row => row.data1);
 
         const params = [
-            { interval_seconds: "2" },
+            { interval_seconds: intervalGeneral },
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "6", exportValues, functionName: "play_text_sequence", params })
