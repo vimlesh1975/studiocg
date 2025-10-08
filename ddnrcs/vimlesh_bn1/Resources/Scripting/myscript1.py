@@ -44,7 +44,7 @@ state = {
     "index": 0,
     "is_running": False,
     "target_node": "bntext",  # fixed target text node
-    "fixed_extra_delay": 6.0           # fixed delay (in seconds) for first item
+    "fixed_extra_delay": 4.0           # fixed delay (in seconds) for first item
 }
 
 
@@ -116,7 +116,7 @@ def _update_sequence():
 
         # fixed delay after first item
         if state["index"] == 1:
-            state["last_time"] = current_time - (state["interval"] - state["fixed_extra_delay"])
+            state["last_time"] = current_time + state["fixed_extra_delay"]
 
 
 # -------------------------------

@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SceneDirtyObjects xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <FilesToAdd />
-  <FilesToRemove />
+  <FilesToRemove>
+    <string>C:\Users\Administrator\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker\Resources\Scripting\myscript1.py</string>
+  </FilesToRemove>
   <ScenePath>C:\Users\Administrator\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker</ScenePath>
 </SceneDirtyObjects>
