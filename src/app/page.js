@@ -40,7 +40,7 @@ export default function Page() {
       forceRenderTabPanel={true}
     >
       <TabList>
-        <Tab> ScriptTest</Tab>
+
         <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
         <Tab> Scroll</Tab>
@@ -52,12 +52,10 @@ export default function Page() {
         <Tab> MosApi</Tab>
         <Tab> Npmmosclient</Tab>
         <Tab> MosServer</Tab>
-
+        <Tab> ScriptTest</Tab>
 
       </TabList>
-      <TabPanel>
-        < ScriptTest />
-      </TabPanel>
+
       <TabPanel>
         < NrcsScroll />
       </TabPanel>
@@ -94,7 +92,9 @@ export default function Page() {
       <TabPanel>
         < MosServer />
       </TabPanel>
-
+      <TabPanel>
+        < ScriptTest />
+      </TabPanel>
     </Tabs>
 
 

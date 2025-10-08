@@ -78,7 +78,6 @@ const NrcsScroll = () => {
     }
     const stopFullPageBreakingNewswithinput = () => {
         stopScene({ project, scene: 'vimlesh_bn1' });
-        setfullpagebreakingnewsrunningwithinput(false);
     }
 
     const playFullPageBreakingNews = async () => {
@@ -111,7 +110,6 @@ const NrcsScroll = () => {
     }
     const stopFullPageBreakingNews = () => {
         stopScene({ project, scene: 'vimlesh_fullpage_breaking_news1' });
-        setfullpagebreakingnewsrunning(false);
     }
 
     const playNewsUpdate = async () => {
@@ -146,8 +144,6 @@ const NrcsScroll = () => {
     }
     const stopNewsUpdate = () => {
         stopScene({ project, scene: 'NewsUpdate' });
-
-        setnewsupdateRunning(false);
     }
 
     const playTwoliner = async () => {
@@ -181,7 +177,6 @@ const NrcsScroll = () => {
     }
     const stopTwoliner = () => {
         stopScene({ project, scene: 'vimlesh_twoliner2' });
-        setTwolinerRunning(false);
     }
     const playBreakingSmallTicker = async () => {
         let scripts = [];
@@ -211,8 +206,6 @@ const NrcsScroll = () => {
     }
     const stopplayBreakingSmallTicker = () => {
         stopScene({ project, scene: 'BreakingSmall_Ticker' });
-
-        setbreakingsmalltickerRunning(false);
     }
 
     const handleSelectionChange = (e) => {
@@ -321,11 +314,6 @@ const NrcsScroll = () => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                 });
-                // setbreakingsmalltickerRunning(false);
-                // setfullpagebreakingnewsrunning(false);
-                // setfullpagebreakingnewsrunningwithinput(false);
-                // setnewsupdateRunning(false);
-                // setTwolinerRunning(false);
                 setTickerRunning(false);
             }}
             >
