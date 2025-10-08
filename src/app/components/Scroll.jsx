@@ -13,7 +13,7 @@ import { generalFileName, saveFile } from './common'
 const vTrailingSpace = 0.1;
 const project = "ddnrcs";
 
-const intervalGeneral = 2; //seconds
+const intervalGeneral = 7; //seconds
 const intervalTwoliner = 10; //seconds
 const intervalticker = 3; //seconds
 
@@ -90,7 +90,6 @@ const Scroll = () => {
 
         setPlayerList1(updatedcanvasList);
     };
-
 
     const playticker = () => {
         indexRefTicker.current = 1;
@@ -236,8 +235,6 @@ const Scroll = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: 'ddnrcs', scene: 'BreakingSmall_Ticker', timeline: "Out" })
         })
-        setbreakingsmalltickerRunning(false);
-
     }
 
     const playNewsUpdate = async () => {
@@ -252,7 +249,6 @@ const Scroll = () => {
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "6", exportValues, functionName: "play_text_sequence", params })
-        await setYPosition('NewsUpdate', yPositionnewsupdate);
     }
     const stopNewsUpdate = () => {
         fetch("/api/timeline", {
