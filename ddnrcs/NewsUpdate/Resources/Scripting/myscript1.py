@@ -38,27 +38,20 @@ def move(node_name, position):
 #  Global state for text sequence
 # -------------------------------
 state = {
-    "sequence": [],
+    "groups": [],
     "interval": 0.0,
     "last_time": 0.0,
-    "index": 0,
+    "group_index": 0,
+    "item_index": 0,
     "is_running": False,
-    "target_node": "Breaking_tTextA1",  # fixed target text node
-    "fixed_extra_delay": 2.0           # fixed delay (in seconds) for first item
+    "target_node": "Breaking_tTextA1",
+    "fixed_extra_delay": 2.0
 }
 
 
 # -------------------------------
-#  Sequence control functions
-# -------------------------------
 def play_text_sequence(interval_seconds, messages):
-    """Start non-blocking text sequence on a fixed target node."""
-    if isinstance(messages, str):
-        messages = [m.strip() for m in messages.split(",") if m.strip()]
-
-    if isinstance(messages, list) and len(messages) == 1 and isinstance(messages[0], list):
-        messages = messages[0]
-
+    """Start non-blocking grouped text sequence."""
     if isinstance(interval_seconds, list):
         interval_seconds = interval_seconds[0]
     try:
@@ -66,17 +59,20 @@ def play_text_sequence(interval_seconds, messages):
     except Exception:
         interval = 1.0
 
-    if not isinstance(messages, list):
-        return
+    # ✅ keep nested groups
+    if isinstance(messages, list) and all(isinstance(m, list) for m in messages):
+        groups = messages
+    else:
+        groups = [messages]
 
     state.update({
-        "sequence": list(messages),
+        "groups": groups,
         "interval": interval,
-        "index": 0,
+        "group_index": 0,
+        "item_index": 0,
         "is_running": True,
         "last_time": 0.0
     })
-
 
 def stop_text_sequence():
     """Stop the running sequence."""
@@ -85,12 +81,19 @@ def stop_text_sequence():
 
 def _update_sequence():
     """Internal helper called each frame."""
-    if not state["is_running"] or not state["sequence"]:
+    if not state["is_running"] or not state["groups"]:
         return
 
-    current_time = RenderDevice.FieldCounter / 50.0  # 50fps for 1080i50
-
+    current_time = RenderDevice.FieldCounter / 50.0
     elapsed = current_time - state["last_time"] if state["last_time"] != 0 else state["interval"]
+
+    group = state["groups"][state["group_index"]]
+    if state["item_index"] >= len(group):
+        state["item_index"] = 0
+        state["group_index"] += 1
+        if state["group_index"] >= len(state["groups"]):
+            state["group_index"] = 0
+        group = state["groups"][state["group_index"]]
 
     if state["last_time"] == 0 or elapsed >= state["interval"]:
         node = Scene.GetSceneNodeByName(state["target_node"])
@@ -98,9 +101,8 @@ def _update_sequence():
             state["is_running"] = False
             return
 
-        text_value = state["sequence"][state["index"]]
-        anim_name = "In" if state["index"] == 0 else "Text01_In"
-
+        text_value = group[state["item_index"]]
+        anim_name = "In" if state["item_index"] == 0 else "Text01_In"
         cmd = 'scene "{}/{}" ANIMATION "{}" PLAY'.format(Scene.Project, Scene, anim_name)
         Parser.ExecuteCommand(cmd)
 
@@ -109,15 +111,13 @@ def _update_sequence():
         except Exception:
             node.Text.Value = text_value.encode("utf-8").decode("utf-8")
 
+        # update indexes
         state["last_time"] = current_time
-        state["index"] += 1
-        if state["index"] >= len(state["sequence"]):
-            state["index"] = 0
+        state["item_index"] += 1
 
-        # fixed delay after first item
-        if state["index"] == 1:
+        # ⏱️ Add extra delay for first message in each group
+        if state["item_index"] == 1:
             state["last_time"] = current_time + state["fixed_extra_delay"]
-
 
 # -------------------------------
 #  Frame Update Loop
@@ -134,8 +134,7 @@ def UpdateExtension():
         return
 
     decoded = simple_b64decode(cmd)
-
-    parts = decoded.split("~~~")
+    parts = decoded.split("###")
     data = {}
     for p in parts:
         if ":" in p:
@@ -150,10 +149,17 @@ def UpdateExtension():
         for k, v in data.items():
             if k == "functionName":
                 continue
-            if "|||" in v:
+
+            # Parse groups: "a|||b~~~x|||y" → [["a","b"], ["x","y"]]
+            if "~~~" in v:
+                groups = v.split("~~~")
+                kwargs[k] = [g.split("|||") for g in groups]
+            elif "|||" in v:
                 kwargs[k] = v.split("|||")
             else:
                 kwargs[k] = v
+
         func(**kwargs)
+
 
     node.Text.Value = ""

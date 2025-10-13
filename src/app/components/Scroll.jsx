@@ -13,7 +13,7 @@ import { generalFileName, saveFile } from './common'
 const vTrailingSpace = 0.1;
 const project = "ddnrcs";
 
-const intervalGeneral = 7; //seconds
+const intervalGeneral = 5; //seconds
 const intervalTwoliner = 10; //seconds
 const intervalticker = 3; //seconds
 
@@ -221,7 +221,7 @@ const Scroll = () => {
 
 
     const playBreakingSmallTicker = async () => {
-        const scripts = playerList1.map(row => row.data1);
+        const scripts = playerList1.map(row => row.data1.split("$$$$"));
         const exportValues = { tTextA: `` }
         const params = [
             { interval_seconds: intervalGeneral },
@@ -242,7 +242,7 @@ const Scroll = () => {
             tTextA: ``,
         }
 
-        const scripts = playerList1.map(row => row.data1);
+        const scripts = playerList1.map(row => row.data1.split("$$$$"));
 
         const params = [
             { interval_seconds: intervalGeneral },

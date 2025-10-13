@@ -100,6 +100,7 @@
     </Timeline>
     <Timeline Name="In" Id="f9b51ce2-95d6-43ec-9a9a-7cb63c2a3c75" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="0" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
     <Timeline Name="inputin" Id="a06d288d-a504-45f2-a4a9-3d6577a9e3f4" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+           
       <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="cfe91213-c739-4891-ab84-38f669a62d9c">
         <KeyFrame FrameNumber="54" Id="1baed173-97f0-4c18-923b-27777d896f86" Value="-1.43609" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
         <KeyFrame FrameNumber="0" Id="7ab751b3-a154-4acc-a319-33e939d160b5" Value="-7.676" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
@@ -107,6 +108,10 @@
     </Timeline>
     <Timeline Name="Out" Id="c97c6723-d703-42ba-99e3-d17384ba4d89" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
     <Timeline Name="textin" Id="9947fc66-f559-4ac0-a7d5-095572ebcc87" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+       <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="78b986c7-17c0-4928-803d-7e8681e93589">
+        <KeyFrame FrameNumber="30" Id="8558a385-9fcc-48ba-be12-392e3ac1c619" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+        <KeyFrame FrameNumber="0" Id="25027489-1dcd-4513-bd02-f3958f8987a1" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
+      </KeyFrameAnimationController>
       <KeyFrameAnimationController AnimatedProperty="Transform.Position.XProp" ControllableId="78b986c7-17c0-4928-803d-7e8681e93589">
         <KeyFrame FrameNumber="42" Id="18b59c4e-4e2a-43cf-a91a-c56c5508a082" Value="0.2849793" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
         <KeyFrame FrameNumber="0" Id="1cc13a8d-bb04-497e-9946-5b082351f86e" Value="4.915" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />

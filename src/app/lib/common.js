@@ -45,14 +45,27 @@ export const playwithtimer = async ({ project, scene, timeline, slot, exportValu
 
   let parts = [`functionName:${aa.functionName}`];
 
+  // for (const p of aa.params) {
+  //   for (const key in p) {
+  //     const val = Array.isArray(p[key]) ? p[key].join("|||") : p[key];
+  //     parts.push(`${key}:${val}`);
+  //   }
+  // }
+
+  // const flat = parts.join("~~~");
+
   for (const p of aa.params) {
     for (const key in p) {
-      const val = Array.isArray(p[key]) ? p[key].join("|||") : p[key];
+      const val = Array.isArray(p[key])
+        ? p[key].map(group =>
+          Array.isArray(group) ? group.join("|||") : group
+        ).join("~~~")    // groups separated by ~~~, items inside group separated by |||
+        : p[key];
       parts.push(`${key}:${val}`);
     }
   }
 
-  const flat = parts.join("~~~");
+  const flat = parts.join("###");   // use ### to separate top-level pairs safely
   const encoded = btoaUtf8(flat);
 
   await sendCommand({ command: `scene "${project}/${scene}" nodes set "SignalText" "Text" "${encoded}"` })

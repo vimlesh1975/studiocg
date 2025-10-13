@@ -12,8 +12,8 @@ const project = "ddnrcs";
 
 const vTrailingSpace = 0.1;
 
-const intervalGeneral = 7; //seconds
-const intervalTwoliner = 10; //seconds
+const intervalGeneral = 5; //seconds
+const intervalTwoliner = 6; //seconds
 const intervalticker = 3; //seconds
 
 const NrcsScroll = () => {
@@ -62,7 +62,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$"));
             if (scripts != []) {
                 const exportValues = {
                     text1: ``,
@@ -93,7 +93,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$"));
             if (scripts != []) {
                 const exportValues = {
                     text2: ``,
@@ -125,7 +125,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$"));
             if (scripts != []) {
                 const exportValues = {
                     tTextA: ``,
@@ -159,7 +159,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$"));
             if (scripts != []) {
                 const exportValues = {
                     url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update.gif", window.location.origin).toString()}`,
@@ -191,7 +191,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$"));
             if (scripts != []) {
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 const exportValues = { tTextA: `` }
