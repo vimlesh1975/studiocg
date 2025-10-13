@@ -88,6 +88,8 @@ def _update_sequence():
     elapsed = current_time - state["last_time"] if state["last_time"] != 0 else state["interval"]
 
     group = state["groups"][state["group_index"]]
+    if isinstance(group, str):
+        group = [group]  # ✅ Prevent single string from breaking into characters
     if state["item_index"] >= len(group):
         state["item_index"] = 0
         state["group_index"] += 1
