@@ -221,7 +221,7 @@ const Scroll = () => {
 
 
     const playBreakingSmallTicker = async () => {
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const exportValues = { tTextA: `` }
         const params = [
@@ -243,7 +243,7 @@ const Scroll = () => {
             tTextA: ``,
         }
 
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const params = [
             { interval_seconds: intervalGeneral },

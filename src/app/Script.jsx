@@ -54,7 +54,7 @@ export default function Home({ ScriptID, title, currentSlugSlugName }) {
     return (
         <div>
             <div style={{ backgroundColor: 'blue', color: 'white' }}>
-                {title + " " + currentSlugSlugName}
+                {title + "-> " + currentSlugSlugName}
             </div>
             <div>
                 <textarea

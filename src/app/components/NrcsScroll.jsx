@@ -62,7 +62,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
 
             if (scripts != []) {
@@ -95,7 +95,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
 
             if (scripts != []) {
@@ -129,7 +129,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
 
             if (scripts != []) {
@@ -165,7 +165,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
 
             if (scripts != []) {
@@ -199,8 +199,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
-
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
             if (scripts != []) {
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 const exportValues = { tTextA: `` }
