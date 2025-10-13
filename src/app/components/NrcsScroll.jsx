@@ -62,7 +62,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+
 
             if (scripts != []) {
                 const exportValues = {
@@ -94,7 +95,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+
 
             if (scripts != []) {
                 const exportValues = {
@@ -127,7 +129,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+
 
             if (scripts != []) {
                 const exportValues = {
@@ -162,7 +165,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
+
 
             if (scripts != []) {
                 const exportValues = {
@@ -195,7 +199,7 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.trim()));
 
             if (scripts != []) {
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
