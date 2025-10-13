@@ -62,7 +62,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$"));
+            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+
             if (scripts != []) {
                 const exportValues = {
                     text1: ``,
@@ -93,7 +94,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$"));
+            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+
             if (scripts != []) {
                 const exportValues = {
                     text2: ``,
@@ -125,7 +127,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$"));
+            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+
             if (scripts != []) {
                 const exportValues = {
                     tTextA: ``,
@@ -159,7 +162,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$"));
+            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+
             if (scripts != []) {
                 const exportValues = {
                     url1: `${NrcsBreakingText ? new URL("/yellow_breaking_news.gif", window.location.origin).toString() : new URL("/yellow_news_update.gif", window.location.origin).toString()}`,
@@ -191,7 +195,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script.split("$$$$"));
+            const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.trim()));
+
             if (scripts != []) {
                 await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
                 const exportValues = { tTextA: `` }
