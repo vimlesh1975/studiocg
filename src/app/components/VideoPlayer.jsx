@@ -24,7 +24,7 @@ const VideoPlayer = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'vimlesh_video',
                 timeline: 'In',
                 slot: "-1",
@@ -36,14 +36,14 @@ const VideoPlayer = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_video', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'vimlesh_video', timeline: "Out" })
         })
     }
     const stopFilehtml = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'testhtml2', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'testhtml2', timeline: "Out" })
         })
     }
 
@@ -55,7 +55,7 @@ const VideoPlayer = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'testhtml2',
                 timeline: 'In',
                 slot: "-1",
@@ -72,7 +72,7 @@ const VideoPlayer = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'testhtml2',
                 timeline: 'In',
                 slot: "-1",
@@ -87,7 +87,7 @@ const VideoPlayer = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ project: '25IN_ChannelPackaging_351.450', scene: 'vimlesh_stream_test1', timeline: "Out" })
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'vimlesh_stream_test1', timeline: "Out" })
         })
     }
 
@@ -99,7 +99,7 @@ const VideoPlayer = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                project: '25IN_ChannelPackaging_351.450',
+                project: 'ddnrcs',
                 scene: 'vimlesh_stream_test1',
                 timeline: 'In',
                 slot: "-1",
