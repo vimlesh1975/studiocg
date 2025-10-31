@@ -182,7 +182,7 @@ const ScrollBreakingNewsClock = () => {
                     <button onClick={() => {
                         playticker();
                         setTickerRunning(true);
-                    }}>Play</button>
+                    }}>Play Scroll</button>
                     {tickerRunning && (
                         <Timer
                             interval={2000}
@@ -202,7 +202,7 @@ const ScrollBreakingNewsClock = () => {
                         />
                     )}
 
-                    S:
+                    Speed:
                     <input
                         style={{ width: "60px" }}
                         onChange={(e) => onhorizontalSpeedChange(e)}
@@ -212,9 +212,9 @@ const ScrollBreakingNewsClock = () => {
                         step="0.01"
                         value={horizontalSpeed}
                     />
-                    <button onClick={onStopTicker}> Stop Ticker</button>
-                    <button onClick={playBreakingSmallTicker}> Play BreakingSmallTicker</button>
-                    <button onClick={stopplayBreakingSmallTicker}> Stop BreakingSmallTicker</button>
+                    <button onClick={onStopTicker}> Stop Scroll</button>
+                    <button onClick={playBreakingSmallTicker}> Play Breaking News</button>
+                    <button onClick={stopplayBreakingSmallTicker}> Stop Breaking News</button>
 
                 </div>
                 <div style={{ border: '1px solid red' }}>
