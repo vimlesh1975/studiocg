@@ -15,34 +15,34 @@
           </GeometryOptions>
           <Extensions />
           <Children>
-            <Group Id="93d376bc-2e6d-4027-ad8c-8fa27f0c31e1" Name="Group1" DisplayColor="11119017">
+            <Group Id="93d376bc-2e6d-4027-ad8c-8fa27f0c31e1" Name="Group1" SpeedScale="1" DisplayColor="11119017">
               <GeometryOptions />
               <NodeTransform PivotType="Absolute">
-                <Position X="0.36" Y="-0.38" />
+                <Position X="0.23" Y="-0.26" />
               </NodeTransform>
               <Extensions />
               <Children>
-                <Quad Id="5ad6b1dc-28fd-472b-af7b-f307aca75767" Name="Quad1" DisplayColor="11119017">
+                <Quad Id="5ad6b1dc-28fd-472b-af7b-f307aca75767" Name="Quad1" SpeedScale="1" DisplayColor="11119017">
                   <GeometryOptions />
                   <Primitive>
                     <FaceMappingList>
-                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="7b6a5860-d66b-4876-8901-e2af4d461a57" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="4aa1f5b1-28ac-4147-a63e-4ad330cc78bf" TextureLayerId="53e1a231-df6e-412e-bd7a-4f1e38c6ec3b" BaseMaterialInherited="False" TextureInherited="False" />
                     </FaceMappingList>
                   </Primitive>
                   <NodeTransform>
-                    <Position X="2.878447" Y="-1.568994" />
-                    <Scale X="0.65" Y="0.29" />
+                    <Position X="2.878447" Y="-1.803701" />
+                    <Scale X="0.65" Y="0.76" />
                   </NodeTransform>
                   <Extensions />
                 </Quad>
-                <TextureText Id="6dc09e63-01e0-4c7b-b98c-87333e0a3a3e" Name="TextureText3D2" DisplayColor="11119017">
-                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="19-09-2025" TextQuality="1" />
+                <TextureText Id="6dc09e63-01e0-4c7b-b98c-87333e0a3a3e" Name="TextureText3D2" SpeedScale="1" DisplayColor="11119017">
+                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="31-10-2025" TextQuality="1" />
                   <Primitive>
                     <FaceMappingList>
-                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
-                      <NamedBaseFaceMapping SurfaceName="Front" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
-                      <NamedBaseFaceMapping SurfaceName="Border" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
-                      <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="09f42f3c-b43a-4a4c-a9ac-9ebed9e594d0" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
+                      <NamedBaseFaceMapping SurfaceName="Front" MaterialId="09f42f3c-b43a-4a4c-a9ac-9ebed9e594d0" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Border" MaterialId="09f42f3c-b43a-4a4c-a9ac-9ebed9e594d0" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
+                      <NamedBaseFaceMapping SurfaceName="Shadow" MaterialId="09f42f3c-b43a-4a4c-a9ac-9ebed9e594d0" TextureLayerId="Standard" BaseMaterialInherited="True" TextureInherited="True" />
                     </FaceMappingList>
                   </Primitive>
                   <NodeTransform>
@@ -50,11 +50,11 @@
                     <Scale X="0.8" Y="0.8" Lock="XtoY" />
                   </NodeTransform>
                   <Extensions>
-                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="23:59:59" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="ShortDate" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="1f5b08b5-eae2-432a-a79c-428c74168d60" Name="Clock TextureText3D2" />
+                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="ShortDate" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="1f5b08b5-eae2-432a-a79c-428c74168d60" Name="Clock TextureText3D2" />
                   </Extensions>
                 </TextureText>
-                <TextureText Id="044af520-fc61-4d5c-880b-adc05030be35" Name="TextureText3D1" DisplayColor="11119017">
-                  <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="11:27:19" TextQuality="1" />
+                <TextureText Id="044af520-fc61-4d5c-880b-adc05030be35" Name="TextureText3D1" SpeedScale="1" DisplayColor="11119017">
+                  <GeometryOptions AlignmentX="Left" AlignmentY="Center" ConstrainMethod="None" FontStyle="8779a4ce-72d0-4934-b444-8c7b33eb173c" HasTextBox="False" IsNewGeometry="True" Text="13:02:10" TextQuality="1" />
                   <Primitive>
                     <FaceMappingList>
                       <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="Standard" BaseMaterialInherited="False" TextureInherited="False" />
@@ -64,11 +64,11 @@
                     </FaceMappingList>
                   </Primitive>
                   <NodeTransform>
-                    <Position X="2.728767" Y="-1.565382" Z="-0.26" />
+                    <Position X="2.469" Y="-1.575" Z="-0.26" />
                     <Scale X="0.8" Y="0.8" Lock="XtoY" />
                   </NodeTransform>
                   <Extensions>
-                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="23:59:59" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="LongTime" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="3cc1cd92-6b01-4bea-b347-7ebe70064c03" Name="Clock TextureText3D1" />
+                    <Clock ClockFormat="mm\:ss" StartDateTimeValue="" IsPaused="True" IsStopped="False" StartValue="00:00" StopValue="10:00" SystemTimeFormat="LongTime" TargetTimeType="To" TriggerUpdateEvent="False" TypeClock="Clock" Id="3cc1cd92-6b01-4bea-b347-7ebe70064c03" Name="Clock TextureText3D1" />
                   </Extensions>
                 </TextureText>
               </Children>
@@ -80,9 +80,14 @@
   </SceneLayer>
   <DataContextSceneLocator />
   <Resources>
-    <TextureTextFontStyle Id="8779a4ce-72d0-4934-b444-8c7b33eb173c" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <TextureTextFontStyle Id="8779a4ce-72d0-4934-b444-8c7b33eb173c" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0.07" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <BaseMaterial Name="Material1" FolderPath="" Id="7b6a5860-d66b-4876-8901-e2af4d461a57" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="191919" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material2" FolderPath="" Id="4aa1f5b1-28ac-4147-a63e-4ad330cc78bf" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="a01ff" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
+    <BaseMaterial Name="Material3" FolderPath="" Id="09f42f3c-b43a-4a4c-a9ac-9ebed9e594d0" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="ffffff" Diffuse="fdfd15" Emissive="ffffff" Specular="ffffff" Alpha="1" SpecularPower="50" Lock="False" />
     <TextureLayer Name="Texture1" FolderPath="" Id="6ae8132f-8f9f-44f4-a589-3b5ec93dbc03" TextureBlending="Multiply">
+      <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture2" FolderPath="" Id="53e1a231-df6e-412e-bd7a-4f1e38c6ec3b" TextureBlending="Multiply">
       <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
     </TextureLayer>
   </Resources>

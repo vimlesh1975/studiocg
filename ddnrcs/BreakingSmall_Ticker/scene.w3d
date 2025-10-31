@@ -85,7 +85,7 @@
                   <GeometryOptions />
                   <Extensions />
                   <Children>
-                    <Group Id="b817f5b2-71ee-4ca3-bc80-f16e50570e05" Name="BasicPrimitive2" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                    <Group Id="b817f5b2-71ee-4ca3-bc80-f16e50570e05" Name="BasicPrimitive2" SpeedScale="1" DisplayColor="11119017">
                       <GeometryOptions />
                       <NodeTransform PivotType="Absolute">
                         <Position Y="0.142" />
@@ -152,7 +152,7 @@
                           <Extensions />
                         </Quad>
                         <TextureText Id="35e34470-e1dc-4227-8907-e6b1c141ddd5" Name="BreakingText_05" SpeedScale="1" DisplayColor="11119017">
-                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" HasTextBox="False" IsNewGeometry="True" Text="BREAKING NEWS" TextQuality="2" />
+                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
                           <Primitive>
                             <FaceMappingList>
                               <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />
@@ -170,7 +170,7 @@
                         </TextureText>
                       </Children>
                     </Group>
-                    <Group Id="08780529-272a-4d50-a794-314d81ac0c8e" Name="ArrowsGrp" SpeedScale="1" IsExpanded="False" MaskId="9fd095e5-5053-4a2d-943a-1842db6d2a4c;" DisplayColor="11119017">
+                    <Group Id="08780529-272a-4d50-a794-314d81ac0c8e" Name="ArrowsGrp" SpeedScale="1" MaskId="9fd095e5-5053-4a2d-943a-1842db6d2a4c;" DisplayColor="11119017">
                       <GeometryOptions />
                       <NodeTransform PivotType="Absolute">
                         <Position Y="0.01" Z="-0.006" />
@@ -232,7 +232,7 @@
                           <GeometryOptions />
                           <Extensions />
                           <Children>
-                            <TextureText Id="45b1882f-5c4b-44fb-a7a4-8818b6434d8b" Name="Breaking_tTextA" SpeedScale="1" DisplayColor="11119017">
+                            <TextureText Id="45b1882f-5c4b-44fb-a7a4-8818b6434d8b" Name="Breaking_tTextA" Alpha="0" SpeedScale="1" DisplayColor="11119017">
                               <GeometryOptions AlignmentX="Left" AlignmentY="Center" ConstrainMethod="Width" FontStyle="71e13d78-c9a0-49ed-8da2-efc3d32585ed" HasTextBox="True" IsNewGeometry="True" Text="विश्व अर्थव्यवस्था पिछले दो वर्षों के दौरान बाधित रही है 1" TextQuality="1">
                                 <TextBoxSize X="3.9" Y="0.42" />
                               </GeometryOptions>
@@ -245,6 +245,7 @@
                                 </FaceMappingList>
                               </Primitive>
                               <NodeTransform>
+                                <Position Y="0.24" />
                                 <Scale X="1.43" Y="1.43" Z="1.43" Lock="XtoYtoZ" />
                               </NodeTransform>
                               <Extensions />
@@ -272,7 +273,7 @@
                     <Group Id="41f2992f-1084-4b1b-979d-5f63ed038431" Name="S_BreakingTransit_Grp" SpeedScale="1" MaskId="9fd095e5-5053-4a2d-943a-1842db6d2a4c;" DisplayColor="11119017">
                       <GeometryOptions />
                       <NodeTransform PivotType="Absolute">
-                        <Position X="0.224635" Z="-0.004" />
+                        <Position X="0.2160273" Z="-0.004" />
                       </NodeTransform>
                       <Extensions />
                       <Children>
@@ -284,7 +285,7 @@
                           <Extensions />
                           <Children>
                             <TextureText Id="4511f503-1682-435e-a9d2-d5679fc19df3" Name="BreakingText_01" Alpha="0.17" SpeedScale="1" DisplayColor="11119017" Blend="Add">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="BREAKING NEWS" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="1b853caa-bcce-400f-a70c-3b905794d824" BaseMaterialInherited="False" TextureInherited="False" />
@@ -301,7 +302,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="2dab2887-eb94-406d-89a3-88bbeac601fd" Name="BreakingText_02" SpeedScale="1" DisplayColor="11119017">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="BREAKING NEWS" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />
@@ -318,7 +319,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="2132086b-fd09-4530-87ad-afcdf60c0d5e" Name="BreakingText_03" SpeedScale="1" DisplayColor="11119017" Blend="Add">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="BREAKING NEWS" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="69ce40c2-9722-445d-b500-a16b64bd17b4" TextureLayerId="b1f75ec2-e307-4cce-b50f-256281364fc0" BaseMaterialInherited="False" TextureInherited="False" />
@@ -335,7 +336,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="d4194305-349e-4749-b493-b21245df40c8" Name="BreakingText_04" Alpha="0.63" SpeedScale="1" DisplayColor="11119017">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="73ad9e36-10a3-4607-b299-bbbfaed1a864" HasTextBox="False" IsNewGeometry="True" Text="BREAKING NEWS" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="73ad9e36-10a3-4607-b299-bbbfaed1a864" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />
@@ -378,7 +379,7 @@
                               </NodeTransform>
                               <Extensions />
                             </Quad>
-                            <Group Id="a44b994f-30fb-4fb5-b1ce-66813d7e4433" Name="BasicPrimitive4" SpeedScale="1" IsExpanded="False" DisplayColor="11119017">
+                            <Group Id="a44b994f-30fb-4fb5-b1ce-66813d7e4433" Name="BasicPrimitive4" SpeedScale="1" DisplayColor="11119017">
                               <GeometryOptions />
                               <NodeTransform PivotType="Absolute">
                                 <Position Z="-0.04" />
@@ -476,7 +477,7 @@
     <TextureTextFontStyle Id="c7dca767-c809-41cc-a2e4-37f0cdf7b099" Name="fontStyle_33c23549-c693-430f-b485-1ed45da9d51d" FontName="Arial" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <TextureTextFontStyle Id="dce5deb7-5d26-4b05-beb0-402aaabf7da8" Name="TextureTextFontStyle" FontName="Arial" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <TextureTextFontStyle Id="8e44d8f5-cb22-4022-8e3e-0c574c03c9c4" Name="fontStyle_b1ab83fc-ae44-4427-b1fd-09fe78e6b641" FontName="Arial" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
-    <TextureTextFontStyle Id="0eaf5099-698f-4222-8696-6e25a483714f" Name="TextureTextFontStyle" FontName="Arial" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <TextureTextFontStyle Id="0eaf5099-698f-4222-8696-6e25a483714f" Name="SceneTextureTextFontStyle1" FontName="Arial" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <Texture Name="Ticker.png" FolderPath="" Id="a2ef66ea-c0af-4874-b142-ab6bc8f5b405" Filename="Ticker.png" />
     <Texture Name="Ticker2.png" FolderPath="" Id="90dd0cf5-8db3-43f6-8267-3e75c5a6802c" Filename="Ticker2.png" />
     <BaseMaterial Name="Yellow1" FolderPath="" Id="7b9ecf07-f5a3-4c54-a0c2-4c6b6b81ddd4" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffd900" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
@@ -495,7 +496,7 @@
     <TextureTextFontStyle Id="d35f2977-c7ae-4a80-b1d0-be1d27dd0200" Name="FontStyle3" FontName="4CTarunUni" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <TextureTextFontStyle Id="ca923cbc-9d5c-4119-ba52-1c684a3f4a34" Name="FontStyle4" FontName="4CTarunUni" IsBaselineCentered="False" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="False" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <BaseMaterial Name="Material41" FolderPath="" Id="b5a6027a-4dab-45e5-b1a1-4d511831d87e" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
-    <TextureTextFontStyle Id="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" Name="FuturaCn" FontName="Futura BdCn BT" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Bold" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
+    <TextureTextFontStyle Id="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" Name="FuturaCn" FontName="Akshar Unicode" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Regular" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0.05" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <BaseMaterial Name="Material42" FolderPath="" Id="98dd01a9-9348-437b-95f5-25e8cd56bdb3" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
     <BaseMaterial Name="Material2" FolderPath="" Id="f364bf45-4df3-4ec5-b8ef-c0cda23eda57" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
     <BaseMaterial Name="Material1" FolderPath="" Id="b27b1208-6a4a-44b0-bf23-a6f805454803" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
@@ -936,8 +937,8 @@
         <KeyFrame FrameNumber="20" Id="eb770a39-9ce5-480d-aeb7-79e052ccd436" Value="-4.36" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.333333333333333" RightControlPointY="0" />
         <KeyFrame FrameNumber="167" Id="c06b2cea-659c-467d-bf9d-30406b5b858f" Value="0.23" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.68" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
       </KeyFrameAnimationController>
-      <ControlKeyFrame FrameNumber="0" Id="4658a830-5087-42cf-b750-449fa39917aa" StateName="" StateValue="" StateType="All" OnAirMarker="None" ActionKeyframeId="2775ceeb-4b9f-4c83-bae8-fa275c7a1202" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="23aba42f-ef00-4e28-af65-e2f9f70464d0" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="1" />
-      <ControlKeyFrame FrameNumber="109" Id="06115df8-4c92-4857-b317-271aa46c609a" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="301f4a14-6d9f-4b38-9632-1203ebefffe2" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="b1798281-90a3-4430-bd31-74b4f039ce76" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="3" />
+      <ControlKeyFrame FrameNumber="0" Id="723d1fe4-1290-4485-9a44-f88966df6bb2" StateName="" StateValue="" StateType="All" OnAirMarker="None" ActionKeyframeId="2775ceeb-4b9f-4c83-bae8-fa275c7a1202" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="23aba42f-ef00-4e28-af65-e2f9f70464d0" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="1" />
+      <ControlKeyFrame FrameNumber="109" Id="3fe58be7-94f5-438e-8485-f5a3796ad221" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="301f4a14-6d9f-4b38-9632-1203ebefffe2" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="b1798281-90a3-4430-bd31-74b4f039ce76" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="3" />
     </Timeline>
     <Timeline Name="Out" Id="40d18fbe-feef-4e87-9568-e5c2cfe3b90c" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-2" PreviewMarker="-2" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False">
       <KeyFrameAnimationController AnimatedProperty="Transform.Position.YProp" ControllableId="80246a31-86ea-4f18-a4f1-c66d0f1e34b4">
