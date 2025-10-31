@@ -16,6 +16,10 @@ import VideoPlayer from './components/VideoPlayer';
 import NrcsScroll from './components/NrcsScroll';
 import ScriptTest from './components/ScriptTest';
 
+import ScrollBreakingNewsClock from './components/ScrollBreakingNewsClock';
+
+
+
 
 
 
@@ -41,6 +45,7 @@ export default function Page() {
     >
       <TabList>
 
+        <Tab> Scroll BreakingNews and Clock</Tab>
         <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
         <Tab> Scroll</Tab>
@@ -56,6 +61,9 @@ export default function Page() {
 
       </TabList>
 
+      <TabPanel>
+        < ScrollBreakingNewsClock />
+      </TabPanel>
       <TabPanel>
         < NrcsScroll />
       </TabPanel>
