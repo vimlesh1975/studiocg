@@ -1,7 +1,19 @@
-R3_HOST=localhost
-R3_PATH=C:/Users/Administrator/Documents/R3.Space.Projects/projects
-MONGOURI=mongodb://localhost:27017
-REDDISURI=redis://127.0.0.1:6379
+# R3_HOST=localhost
+# MONGOURI=mongodb://localhost:27017
+# REDDISURI=redis://127.0.0.1:6379
+# MOS_IP=127.0.0.1
+# R3_PATH=C:/Users/Administrator/Documents/R3.Space.Projects/projects
+
+
+
+R3_HOST=192.168.15.56
+MONGOURI=mongodb://192.168.15.56:27017
+REDDISURI=redis://192.168.15.56:6379
+MOS_IP=192.168.15.56
+R3_PATH=C:/Users/wtvision/Documents/R3.Space.Projects/projects
+
+
+
 
 # R3_PORT=9009 #   this is for program 
 R3_PORT=9010 #   this is for preview
@@ -10,7 +22,6 @@ R3_PORT=9010 #   this is for preview
 # MOS_ID=SAMVAD
 MOS_ID=WTVISION.STUDIO.MOS
 MOS_DEVICE_ID=DDNRCS
-MOS_IP=127.0.0.1
 MOS_PORT=10540
 # MOS_PORT=10540
 PROJECT_NAME=DD_TESTING
