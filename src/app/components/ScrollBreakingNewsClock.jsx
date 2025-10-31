@@ -6,7 +6,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
 import Timer from './Timer';
-import { playwithtimer } from '../lib/common';
+import { playwithtimer, playScene } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
 
@@ -25,6 +25,17 @@ const ScrollBreakingNewsClock = () => {
     const [delemeter, setDelemeter] = useState('⏺️')
     const [tickerRunning, setTickerRunning] = useState(false);
     const indexRefTicker = useRef(1);
+
+    const [yPositiondate, setyPositiondate] = useState(0.00);
+
+    const playClock = async () => {
+        await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
+
+        await setYPosition('vimlesh_clock1', yPositiondate);
+    }
+    const stopClock = () => {
+        stopScene({ project, scene: 'vimlesh_clock1' });
+    }
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -253,6 +264,17 @@ const ScrollBreakingNewsClock = () => {
                                 }}>Set all logo as first logo</button>
 
                                 </td>
+
+                                <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Date and Time</td>
+                                <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
+                                    <button onClick={playClock}>Play</button>
+                                    <button onClick={stopClock}>Stop</button>
+                                    <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
+                                        setyPositiondate(e.target.value);
+                                        await setYPosition('vimlesh_clock1', e.target.value);
+                                    }} />
+                                </td>
+
                             </tr>
                         </tbody>
                     </table>
