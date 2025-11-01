@@ -22,7 +22,8 @@ const ScrollBreakingNewsClock = () => {
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [ltr, setLtr] = useState(false);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
-    const [delemeter, setDelemeter] = useState('⏺️')
+    // const [delemeter, setDelemeter] = useState('⏺️')
+    const [delemeter, setDelemeter] = useState('*')
     const [tickerRunning, setTickerRunning] = useState(false);
     const indexRefTicker = useRef(1);
 
@@ -111,7 +112,7 @@ const ScrollBreakingNewsClock = () => {
             // vStackSize: 1,
             vReset: true,
             tText: '',
-            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1}' }] }`,
+            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1 + ' ' + delemeter}' }] }`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",
@@ -189,7 +190,7 @@ const ScrollBreakingNewsClock = () => {
                             callback={async () => {
                                 const currentItem = playerList1[indexRefTicker.current];
                                 if (currentItem) {
-                                    const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
+                                    const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1 + ' ' + delemeter}'}]}"`;
 
                                     await fetch("/api/sendCommand", {
                                         method: "POST",
