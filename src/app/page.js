@@ -16,28 +16,16 @@ import VideoPlayer from './components/VideoPlayer';
 import NrcsScroll from './components/NrcsScroll';
 import ScriptTest from './components/ScriptTest';
 
-import ScrollBreakingNewsClock from './components/ScrollBreakingNewsClock';
-
-
-
-
-
-
-// import Scroll from './components/Scroll'
-
-const aa1 = 0;
-
 import dynamic from "next/dynamic";
-
 const Scroll = dynamic(() => import("./components/Scroll"), {
   ssr: false,
 });
-
+const ScrollBreakingNewsClock = dynamic(() => import("./components/ScrollBreakingNewsClock"), {
+  ssr: false, // ✅ disables SSR for this component
+});
 
 export default function Page() {
   const [aa, setA] = React.useState(0)
-
-  // if (!isClient || data.length === 0) return null
 
   return (<div>
     <Tabs

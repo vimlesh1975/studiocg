@@ -281,19 +281,18 @@ const NrcsScroll = () => {
             const result = await res.json()
             scripts = result.data.map(row => row.Script);
             if (scripts != []) {
-                setTickerRunning(true);
-                setScrollData(scripts);
-                indexRefTicker.current = 1;
                 const exportValues = {
                     vSpeed: `${horizontalSpeed}`,
                     vStart: true,
                     vStackCount: "1",
-                    // vStackSize: 1,
                     vReset: true,
                     tText: '',
-                    tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${scripts[0]}' }] }`,
                 }
-                await playScene({ project, scene: 'vimlesh_ticker', slot: "1", exportValues });
+                const params = [
+                    { interval_seconds: intervalGeneral },
+                    { messages: scripts }
+                ]
+                await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })
                 await setYPosition('vimlesh_ticker', yPositionscroll);
             }
         } catch (error) {

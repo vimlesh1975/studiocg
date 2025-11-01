@@ -1,21 +1,17 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { iniBreakingNews } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
-import Timer from './Timer';
 import { playwithtimer } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
 
-const vTrailingSpace = 0.1;
 const project = "ddnrcs";
 
 const intervalGeneral = 5; //seconds
-const intervalTwoliner = 10; //seconds
-const intervalticker = 3; //seconds
 
 const Scroll = () => {
 
@@ -23,9 +19,6 @@ const Scroll = () => {
     const [ltr, setLtr] = useState(false);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [delemeter, setDelemeter] = useState('⏺️')
-    const [tickerRunning, setTickerRunning] = useState(false);
-    const indexRefTicker = useRef(1);
-
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
         if (result.destination != null) {
@@ -91,30 +84,21 @@ const Scroll = () => {
         setPlayerList1(updatedcanvasList);
     };
 
-    const playticker = () => {
-        indexRefTicker.current = 1;
+    const playticker = async () => {
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + " " + delemeter));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
             vStackCount: "1",
-            // vStackSize: 1,
             vReset: true,
             tText: '',
-            tScroll: `{'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1}' }] }`,
         }
-        fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project: 'ddnrcs',
-                scene: 'vimlesh_ticker',
-                timeline: 'In',
-                slot: "1",
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        })
+        const params = [
+            { interval_seconds: intervalGeneral },
+            { messages: scripts }
+        ]
+        await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })
     }
-
 
     const onhorizontalSpeedChange = async (e) => {
         setHorizontalSpeed(e.target.value);
@@ -131,8 +115,6 @@ const Scroll = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: 'ddnrcs', scene: 'vimlesh_ticker', timeline: "Out" })
         })
-        setTickerRunning(false);
-
     }
 
     const playBreakingLt = () => {
@@ -221,7 +203,7 @@ const Scroll = () => {
 
 
     const playBreakingSmallTicker = async () => {
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const exportValues = { tTextA: `` }
         const params = [
@@ -243,7 +225,7 @@ const Scroll = () => {
             tTextA: ``,
         }
 
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const params = [
             { interval_seconds: intervalGeneral },
@@ -266,26 +248,7 @@ const Scroll = () => {
                 <div>
                     <button onClick={() => {
                         playticker();
-                        setTickerRunning(true);
                     }}>Play</button>
-                    {tickerRunning && (
-                        <Timer
-                            interval={2000}
-                            callback={async () => {
-                                const currentItem = playerList1[indexRefTicker.current];
-                                if (currentItem) {
-                                    const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1}'}]}"`;
-
-                                    await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: aa }),
-                                    });
-                                }
-                                indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
-                            }}
-                        />
-                    )}
 
                     S:
                     <input
@@ -319,7 +282,6 @@ const Scroll = () => {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                         });
-                        setTickerRunning(false);
                     }}
                     >
                         🧹 Unload All Scenes</button>

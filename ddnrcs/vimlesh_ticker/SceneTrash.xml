@@ -2,7 +2,7 @@
 <SceneDirtyObjects xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <FilesToAdd />
   <FilesToRemove>
-    <string>C:\Users\wtvision\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker\Resources\Scripting\myscript1.py</string>
+    <string>C:\Users\Administrator\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker\Resources\Scripting\myscript1.py</string>
   </FilesToRemove>
-  <ScenePath>C:\Users\wtvision\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker</ScenePath>
+  <ScenePath>C:\Users\Administrator\Documents\R3.Space.Projects\Projects\ddnrcs\vimlesh_ticker</ScenePath>
 </SceneDirtyObjects>

@@ -1,31 +1,21 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { iniBreakingNews, iniBreakingNews2 } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
-import Timer from './Timer';
 import { playwithtimer, playScene } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
-
-const vTrailingSpace = 0.1;
 const project = "ddnrcs";
-
 const intervalGeneral = 1; //seconds
-const intervalTwoliner = 10; //seconds
-const intervalticker = 3; //seconds
-
 const ScrollBreakingNewsClock = () => {
 
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [playerList2, setPlayerList2] = useState(iniBreakingNews2);
-    // const [delemeter, setDelemeter] = useState('⏺️')
     const [delemeter, setDelemeter] = useState('*')
-    const [tickerRunning, setTickerRunning] = useState(false);
-    const indexRefTicker = useRef(1);
 
     const [yPositiondate, setyPositiondate] = useState(0.00);
 
@@ -125,38 +115,14 @@ const ScrollBreakingNewsClock = () => {
         setPlayerList1(updatedcanvasList);
     };
 
-    // const playticker = () => {
-    //     indexRefTicker.current = 1;
-    //     const exportValues = {
-    //         vSpeed: `${horizontalSpeed}`,
-    //         vStart: true,
-    //         vStackCount: "1",
-    //         // vStackSize: 1,
-    //         vReset: true,
-    //         tText: '',
-    //         tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1 + ' ' + delemeter}' }] }`,
-    //     }
-    //     fetch("/api/playwithexportedvalues", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({
-    //             project: 'ddnrcs',
-    //             scene: 'vimlesh_ticker',
-    //             timeline: 'In',
-    //             slot: "1",
-    //             exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-    //         })
-    //     })
-    // }
-
     const playticker = async () => {
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + "    " + delemeter));
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + "    " + delemeter));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
             vStackCount: "1",
             vReset: true,
-            tText: 'vimlesh',
+            tText: '',
         }
         const params = [
             { interval_seconds: intervalGeneral },
@@ -181,13 +147,11 @@ const ScrollBreakingNewsClock = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: 'ddnrcs', scene: 'vimlesh_ticker', timeline: "Out" })
         })
-        setTickerRunning(false);
-
     }
 
 
     const playBreakingSmallTicker = async () => {
-        const scripts = playerList2.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const scripts = playerList2.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const exportValues = { tTextA: `` }
         const params = [
@@ -212,7 +176,6 @@ const ScrollBreakingNewsClock = () => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                 });
-                setTickerRunning(false);
             }}
             >
                 🧹 Unload All Scenes</button>
@@ -221,26 +184,7 @@ const ScrollBreakingNewsClock = () => {
                     <div>
                         <button onClick={() => {
                             playticker();
-                            // setTickerRunning(true);
                         }}>Play Scroll</button>
-                        {tickerRunning && (
-                            <Timer
-                                interval={2000}
-                                callback={async () => {
-                                    const currentItem = playerList1[indexRefTicker.current];
-                                    if (currentItem) {
-                                        const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1 + ' ' + delemeter}'}]}"`;
-
-                                        await fetch("/api/sendCommand", {
-                                            method: "POST",
-                                            headers: { "Content-Type": "application/json" },
-                                            body: JSON.stringify({ command: aa }),
-                                        });
-                                    }
-                                    indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
-                                }}
-                            />
-                        )}
 
                         Speed:
                         <input
@@ -271,15 +215,7 @@ const ScrollBreakingNewsClock = () => {
                                     /></td>
                                     <td>Delemeter for scroll text</td>
                                     <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
-                                    <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Date and Time</td>
-                                    <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                        <button onClick={playClock}>Play</button>
-                                        <button onClick={stopClock}>Stop</button>
-                                        <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
-                                            setyPositiondate(e.target.value);
-                                            await setYPosition('vimlesh_clock1', e.target.value);
-                                        }} />
-                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -344,6 +280,15 @@ const ScrollBreakingNewsClock = () => {
                                 )}
                             </Droppable>
                         </DragDropContext>
+                    </div>
+                    <div style={{ border: '3px solid black' }}>
+                        <h3>date and Time</h3>
+                        <button onClick={playClock}>Play</button>
+                        <button onClick={stopClock}>Stop</button>
+                        <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
+                            setyPositiondate(e.target.value);
+                            await setYPosition('vimlesh_clock1', e.target.value);
+                        }} />
                     </div>
                 </div>
             </div>
