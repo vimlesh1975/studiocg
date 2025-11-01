@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef } from 'react'
-import { iniBreakingNews } from './hockeyData'
+import { iniBreakingNews, iniBreakingNews2 } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
@@ -13,15 +13,15 @@ import { generalFileName, saveFile } from './common'
 const vTrailingSpace = 0.1;
 const project = "ddnrcs";
 
-const intervalGeneral = 5; //seconds
+const intervalGeneral = 1; //seconds
 const intervalTwoliner = 10; //seconds
 const intervalticker = 3; //seconds
 
 const ScrollBreakingNewsClock = () => {
 
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
-    const [ltr, setLtr] = useState(false);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
+    const [playerList2, setPlayerList2] = useState(iniBreakingNews2);
     // const [delemeter, setDelemeter] = useState('⏺️')
     const [delemeter, setDelemeter] = useState('*')
     const [tickerRunning, setTickerRunning] = useState(false);
@@ -45,6 +45,15 @@ const ScrollBreakingNewsClock = () => {
             setPlayerList1(aa);
         }
     }
+
+    const onDragEnd2 = (result) => {
+        const aa = [...playerList2]
+        if (result.destination != null) {
+            aa.splice(result.destination?.index, 0, aa.splice(result.source?.index, 1)[0])
+            setPlayerList2(aa);
+        }
+    }
+
     const deletePage = e => {
         if (playerList1.length === 1) {
             return
@@ -53,13 +62,26 @@ const ScrollBreakingNewsClock = () => {
         aa.splice(parseInt(e.target.getAttribute('key1')), 1);
         setPlayerList1(aa);
     }
+
+    const deletePage2 = e => {
+        if (playerList2.length === 1) {
+            return
+        }
+        const aa = [...playerList2]
+        aa.splice(parseInt(e.target.getAttribute('key1')), 1);
+        setPlayerList2(aa);
+    }
+
     const addPage = e => {
         const aa = [...playerList1]
         aa.splice(parseInt(e.target.getAttribute('key1')) + 1, 0, { id: uuidv4(), data1: '', use1: false });
         setPlayerList1(aa);
-
     }
-
+    const addPage2 = e => {
+        const aa = [...playerList2]
+        aa.splice(parseInt(e.target.getAttribute('key1')) + 1, 0, { id: uuidv4(), data1: '', use1: false });
+        setPlayerList2(aa);
+    }
     const scrollFileSaveAs = () => {
         var aa = ''
         playerList1.forEach(val => {
@@ -149,7 +171,7 @@ const ScrollBreakingNewsClock = () => {
 
 
     const playBreakingSmallTicker = async () => {
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const scripts = playerList2.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
         const exportValues = { tTextA: `` }
         const params = [
@@ -179,185 +201,206 @@ const ScrollBreakingNewsClock = () => {
             >
                 🧹 Unload All Scenes</button>
             <div style={{ display: 'flex1', border: '3px solid red' }}>
-                <div>
-                    <button onClick={() => {
-                        playticker();
-                        setTickerRunning(true);
-                    }}>Play Scroll</button>
-                    {tickerRunning && (
-                        <Timer
-                            interval={2000}
-                            callback={async () => {
-                                const currentItem = playerList1[indexRefTicker.current];
-                                if (currentItem) {
-                                    const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1 + ' ' + delemeter}'}]}"`;
+                <div >
+                    <div>
+                        <button onClick={() => {
+                            playticker();
+                            setTickerRunning(true);
+                        }}>Play Scroll</button>
+                        {tickerRunning && (
+                            <Timer
+                                interval={2000}
+                                callback={async () => {
+                                    const currentItem = playerList1[indexRefTicker.current];
+                                    if (currentItem) {
+                                        const aa = `SCENE "ddnrcs/vimlesh_ticker" Export "tScroll" SetValue "{'Group1':[{'vLeadingSpace':'0','vTrailingSpace':'${vTrailingSpace}','tText':'${currentItem.data1 + ' ' + delemeter}'}]}"`;
 
-                                    await fetch("/api/sendCommand", {
-                                        method: "POST",
-                                        headers: { "Content-Type": "application/json" },
-                                        body: JSON.stringify({ command: aa }),
-                                    });
-                                }
-                                indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
-                            }}
+                                        await fetch("/api/sendCommand", {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ command: aa }),
+                                        });
+                                    }
+                                    indexRefTicker.current = (indexRefTicker.current + 1) % playerList1.length;
+                                }}
+                            />
+                        )}
+
+                        Speed:
+                        <input
+                            style={{ width: "60px" }}
+                            onChange={(e) => onhorizontalSpeedChange(e)}
+                            type="number"
+                            min="-5"
+                            max="5"
+                            step="0.01"
+                            value={horizontalSpeed}
                         />
-                    )}
+                        <button onClick={onStopTicker}> Stop Scroll</button>
+                    </div>
+                    <div style={{ border: '1px solid red' }}>
+                        <table border='1px solid red'>
+                            <tbody >
+                                <tr>
+                                    <td><button onClick={scrollFileSaveAs}>Save</button></td>
+                                    <td><span>Open File:</span><input
+                                        type='file'
+                                        id='file'
+                                        className='input-file'
+                                        accept='.txt'
+                                        onChange={e => {
+                                            console.log(e.target.files[0])
+                                            handleFileChosen(e.target.files[0]);
+                                        }}
+                                    /></td>
+                                    <td>Delemeter for scroll text</td>
+                                    <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
+                                    <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Date and Time</td>
+                                    <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
+                                        <button onClick={playClock}>Play</button>
+                                        <button onClick={stopClock}>Stop</button>
+                                        <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
+                                            setyPositiondate(e.target.value);
+                                            await setYPosition('vimlesh_clock1', e.target.value);
+                                        }} />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style={{ display: 'flex', minwidth: 650, margin: 20 }}>
+                    <div style={{ backgroundColor: 'grey', height: 300, width: 800, overflow: 'auto' }}>
+                        <DragDropContext onDragEnd={onDragEnd1}>
+                            <Droppable droppableId="droppable-1" type="PERSON1">
+                                {(provided, snapshot) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        style={{ backgroundColor: snapshot.isDraggingOver ? 'yellow' : 'yellowgreen' }}
+                                        {...provided.droppableProps}
+                                    >
+                                        <table >
+                                            <tbody>
+                                                {playerList1.map((val, i) => {
+                                                    return (
+                                                        <Draggable draggableId={val.id} key={val.id} index={i}>
+                                                            {(provided, snapshot) => (
+                                                                <tr
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    style={{
+                                                                        ...provided.draggableProps.style,
+                                                                        backgroundColor: snapshot.isDragging ? 'red' : 'white',
+                                                                        boxShadow: snapshot.isDragging ? "0 0 .4rem #666" : "none",
+                                                                        // margin: '10px'
+                                                                    }}
+                                                                >
+                                                                    <td style={{ textAlign: 'center' }}>{i}</td>
+                                                                    <td {...provided.dragHandleProps}><VscMove /></td>
 
-                    Speed:
-                    <input
-                        style={{ width: "60px" }}
-                        onChange={(e) => onhorizontalSpeedChange(e)}
-                        type="number"
-                        min="-5"
-                        max="5"
-                        step="0.01"
-                        value={horizontalSpeed}
-                    />
-                    <button onClick={onStopTicker}> Stop Scroll</button>
+
+                                                                    <td style={{ minWidth: 300 }}><input style={{ border: 'none', minWidth: 620 }} type='text' value={val.data1}
+                                                                        onChange={e => {
+                                                                            const updatednewplayerList1 = [...playerList1]
+                                                                            updatednewplayerList1[i] = { ...updatednewplayerList1[i], data1: e.target.value };
+                                                                            setPlayerList1(updatednewplayerList1)
+                                                                        }}
+                                                                    />
+                                                                    </td>
+                                                                    <td><input checked={val.use1} type='checkbox' onChange={(e) => {
+                                                                        const updatednewplayerList1 = [...playerList1]
+                                                                        updatednewplayerList1[i] = { ...updatednewplayerList1[i], use1: e.target.checked };
+                                                                        setPlayerList1(updatednewplayerList1)
+                                                                    }
+                                                                    } /></td>
+                                                                    <td><button key1={i} onClick={(e) => deletePage(e)}>-</button></td>
+                                                                    <td><button key1={i} onClick={(e) => addPage(e)}>+</button></td>
+                                                                </tr>
+                                                            )
+                                                            }
+                                                        </Draggable>
+                                                    )
+                                                })}
+                                                {provided.placeholder}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
+                            </Droppable>
+                        </DragDropContext>
+                    </div>
+                </div>
+            </div>
+
+
+            <div style={{ border: '3px solid blue' }}>
+                <div>
                     <button onClick={playBreakingSmallTicker}> Play Breaking News</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop Breaking News</button>
-
                 </div>
-                <div style={{ border: '1px solid red' }}>
-
-                    <table border='1px solid red'>
-                        <tbody >
-                            <tr>
-                                <td><button onClick={scrollFileSaveAs}>Save</button></td>
-                                <td><span>Open File:</span><input
-                                    type='file'
-                                    id='file'
-                                    className='input-file'
-                                    accept='.txt'
-                                    onChange={e => {
-                                        console.log(e.target.files[0])
-                                        handleFileChosen(e.target.files[0]);
-                                    }}
-                                /></td>
-                                <td>Delemeter for scroll text</td>
-                                <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
-                                <td title='Check for Left to Right scroll'>
-                                    <span> LTR:</span>{" "}
-                                    <input
-                                        type="checkbox"
-                                        checked={ltr}
-                                        onChange={() => setLtr((val) => !val)}
-                                    />
-                                </td>
-                                <td>
-                                    <label>
-                                        <img src={playerList1[0]?.delemeterLogo} alt='' width='20' height='20' style={{ border: '1px solid red' }} />
-                                        <input type="file" onChange={e => {
-                                            var reader = new FileReader();
-                                            reader.onloadend = () => {
-                                                const aa = [...playerList1];
-                                                aa[0] = { ...aa[0], delemeterLogo: reader.result };
-                                                setPlayerList1(aa);
-                                                // setNewplayerList1(aa)
-                                            }
-                                            reader.readAsDataURL(e.target.files[0]);
-                                        }} style={{ display: 'none' }} />
-                                    </label>
-                                </td>
-                                <td> <button onClick={() => {
-                                    const updateddelemeterlogo = playerList1.map((val, i) => ({ ...val, delemeterLogo: playerList1[0].delemeterLogo }));
-                                    setPlayerList1(updateddelemeterlogo);
-                                }}>Set all logo as first logo</button>
-
-                                </td>
-
-                                <td style={{ border: '1px solid black', padding: '8px', fontWeight: 'bolder' }}>Date and Time</td>
-                                <td style={{ border: '1px solid black', padding: '8px', textAlign: 'center' }}>
-                                    <button onClick={playClock}>Play</button>
-                                    <button onClick={stopClock}>Stop</button>
-                                    <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
-                                        setyPositiondate(e.target.value);
-                                        await setYPosition('vimlesh_clock1', e.target.value);
-                                    }} />
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-            {/* <button style={{ display: (isEqual(newplayerList1, playerList1)) ? 'none' : 'inline', backgroundColor: 'red' }} onClick={updateplayerList1}>Update Data</button> */}
-            <div style={{ display: 'flex', minwidth: 650, margin: 20 }}>
-                <div style={{ backgroundColor: 'grey', height: 300, width: 800, overflow: 'auto' }}>
-                    <DragDropContext onDragEnd={onDragEnd1}>
-                        <Droppable droppableId="droppable-1" type="PERSON1">
-                            {(provided, snapshot) => (
-                                <div
-                                    ref={provided.innerRef}
-                                    style={{ backgroundColor: snapshot.isDraggingOver ? 'yellow' : 'yellowgreen' }}
-                                    {...provided.droppableProps}
-                                >
-                                    <table >
-                                        <tbody>
-                                            {playerList1.map((val, i) => {
-                                                return (
-                                                    <Draggable draggableId={val.id} key={val.id} index={i}>
-                                                        {(provided, snapshot) => (
-                                                            <tr
-                                                                ref={provided.innerRef}
-                                                                {...provided.draggableProps}
-                                                                style={{
-                                                                    ...provided.draggableProps.style,
-                                                                    backgroundColor: snapshot.isDragging ? 'red' : 'white',
-                                                                    boxShadow: snapshot.isDragging ? "0 0 .4rem #666" : "none",
-                                                                    // margin: '10px'
-                                                                }}
-                                                            >
-                                                                <td style={{ textAlign: 'center' }}>{i}</td>
-                                                                <td {...provided.dragHandleProps}><VscMove /></td>
-
-                                                                <td>
-                                                                    <label>
-                                                                        <img src={val.delemeterLogo} alt='' width='20' height='20' style={{ border: '1px solid red' }} />
-                                                                        <input type="file" onChange={e => {
-                                                                            var reader = new FileReader();
-                                                                            reader.onloadend = () => {
-                                                                                const aa = [...playerList1];
-                                                                                aa[i] = { ...aa[i], delemeterLogo: reader.result };
-                                                                                setPlayerList1(aa);
-                                                                                // setNewplayerList1(aa)
-                                                                            }
-                                                                            reader.readAsDataURL(e.target.files[0]);
-                                                                        }} style={{ display: 'none' }} />
-                                                                    </label>
-                                                                </td>
-                                                                <td style={{ minWidth: 300 }}><input style={{ border: 'none', minWidth: 620 }} type='text' value={val.data1}
-                                                                    onChange={e => {
-                                                                        const updatednewplayerList1 = [...playerList1]
-                                                                        updatednewplayerList1[i] = { ...updatednewplayerList1[i], data1: e.target.value };
-                                                                        setPlayerList1(updatednewplayerList1)
+                <div style={{ display: 'flex', minwidth: 1900, margin: 20 }}>
+                    <div style={{ backgroundColor: 'grey', height: 300, width: 1900, overflow: 'auto' }}>
+                        <DragDropContext onDragEnd={onDragEnd2}>
+                            <Droppable droppableId="droppable-2" type="PERSON2">
+                                {(provided, snapshot) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        style={{ backgroundColor: snapshot.isDraggingOver ? 'yellow' : 'yellowgreen' }}
+                                        {...provided.droppableProps}
+                                    >
+                                        <table >
+                                            <tbody>
+                                                {playerList2.map((val, i) => {
+                                                    return (
+                                                        <Draggable draggableId={val.id} key={val.id} index={i}>
+                                                            {(provided, snapshot) => (
+                                                                <tr
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    style={{
+                                                                        ...provided.draggableProps.style,
+                                                                        backgroundColor: snapshot.isDragging ? 'red' : 'white',
+                                                                        boxShadow: snapshot.isDragging ? "0 0 .4rem #666" : "none",
+                                                                        // margin: '10px'
                                                                     }}
-                                                                />
-                                                                </td>
-                                                                <td><input checked={val.use1} type='checkbox' onChange={(e) => {
-                                                                    const updatednewplayerList1 = [...playerList1]
-                                                                    updatednewplayerList1[i] = { ...updatednewplayerList1[i], use1: e.target.checked };
-                                                                    setPlayerList1(updatednewplayerList1)
-                                                                }
-                                                                } /></td>
-                                                                <td><button key1={i} onClick={(e) => deletePage(e)}>-</button></td>
-                                                                <td><button key1={i} onClick={(e) => addPage(e)}>+</button></td>
-                                                            </tr>
-                                                        )
-                                                        }
-                                                    </Draggable>
-                                                )
-                                            })}
-                                            {provided.placeholder}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            )}
-                        </Droppable>
-                    </DragDropContext>
+                                                                >
+                                                                    <td style={{ textAlign: 'center' }}>{i}</td>
+                                                                    <td {...provided.dragHandleProps}><VscMove /></td>
+
+                                                                    <td style={{ minWidth: 1700 }}><input style={{ border: 'none', minWidth: 1700 }} type='text' value={val.data1}
+                                                                        onChange={e => {
+                                                                            const updatednewplayerList1 = [...playerList2]
+                                                                            updatednewplayerList1[i] = { ...updatednewplayerList1[i], data1: e.target.value };
+                                                                            setPlayerList2(updatednewplayerList1)
+                                                                        }}
+                                                                    />
+                                                                    </td>
+                                                                    <td><input checked={val.use1} type='checkbox' onChange={(e) => {
+                                                                        const updatednewplayerList1 = [...playerList2]
+                                                                        updatednewplayerList1[i] = { ...updatednewplayerList1[i], use1: e.target.checked };
+                                                                        setPlayerList2(updatednewplayerList1)
+                                                                    }
+                                                                    } /></td>
+                                                                    <td><button key1={i} onClick={(e) => deletePage2(e)}>-</button></td>
+                                                                    <td><button key1={i} onClick={(e) => addPage2(e)}>+</button></td>
+                                                                </tr>
+                                                            )
+                                                            }
+                                                        </Draggable>
+                                                    )
+                                                })}
+                                                {provided.placeholder}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
+                            </Droppable>
+                        </DragDropContext>
+                    </div>
                 </div>
             </div>
+
+
         </div>
     )
 }

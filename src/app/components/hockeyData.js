@@ -103,3 +103,12 @@ export const iniBreakingNews = [
     { id: uuidv4(), data1: 'Trinamool Congress leader Sagarika Ghose also seemingly referred to Navarros statement.', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
     { id: uuidv4(), data1: 'PM Modi suggested the creation of a Civilisational Dialogue Forum', use1: true, delemeterLogo: `https://vimlesh1975.github.io/ReactCasparClient/doordarshan-logo.png` },
 ]
+
+export const iniBreakingNews2 = [
+    { id: uuidv4(), data1: 'आइए जानते हैं लिवर खराब होने के 5 सबसे बड़े कारण $$$$ Rule Change: LPG, आधार कार्ड से GST तक $$$$ आज से लागू हो रहे ये 7 बड़े नियम', use1: true, },
+    { id: uuidv4(), data1: ' राज्यात विधानसभेसाठी २० नोव्हेंबरला झालेल्या मतदानानंतर आता वेध लागले आहेत ते निवडणूक निकालाचे $$$$ नायजेरिया, ब्राझिल आणि गयाना या तीन देशांचा परदेश दौरा $$$$ यशस्वीरित्या आटोपून पंतप्रधान नरेंद्र मोदी मायदेशी रवाना.', use1: true, },
+    { id: uuidv4(), data1: 'एकाच टप्प्यात झालेल्या विधानसभा निवडणुकीची तसंच नांदेड $$$$ लहान पक्ष आणि अपक्षांच्या मदतीशिवाय नवं सरकार बनणार नाही $$$$ असा दावा प्रहार जनशक्ती पक्षाचे प्रमुख बच्चू कडू यांनी केला.', use1: true, },
+    { id: uuidv4(), data1: 'पोलीस कर्मचारी बंदोबस्तासाठी तैनात करण्यात आले आहेत $$$$ प्रधानमंत्री ने नई दिल्ली में तकनीकी सम्मेलन का उद्घाटन$$$$कुटुंबाभिमुख कार्यक्रम पाहता येतील, असं ओटीटी व्यासपीठ असावं', use1: true, },
+    { id: uuidv4(), data1: 'डेली लाइफस्टाइल में हम कुछ काम ऐसे करते हैं जो लिवर की कार्यक्षमता को कम कर सकते हैं.$$$$अशी अपेक्षा उपमुख्यमंत्री देवेंद्र फडणवीस यांनी व्यक्त केला.$$$$ भारत आणि ऑस्ट्रेलिया यांच्यातील ५ कसोटी सामन्यांच्या बॉर्डर गावस्कर चषक मालिकेला आजपासून सुरुवात झाली', use1: true, },
+
+]
