@@ -100,7 +100,7 @@ const Scroll = () => {
             // vStackSize: 1,
             vReset: true,
             tText: '',
-            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1}' }] }`,
+            tScroll: `{'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1}' }] }`,
         }
         fetch("/api/playwithexportedvalues", {
             method: "POST",

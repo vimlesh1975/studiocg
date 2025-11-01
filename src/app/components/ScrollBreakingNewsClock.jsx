@@ -125,28 +125,44 @@ const ScrollBreakingNewsClock = () => {
         setPlayerList1(updatedcanvasList);
     };
 
-    const playticker = () => {
-        indexRefTicker.current = 1;
+    // const playticker = () => {
+    //     indexRefTicker.current = 1;
+    //     const exportValues = {
+    //         vSpeed: `${horizontalSpeed}`,
+    //         vStart: true,
+    //         vStackCount: "1",
+    //         // vStackSize: 1,
+    //         vReset: true,
+    //         tText: '',
+    //         tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1 + ' ' + delemeter}' }] }`,
+    //     }
+    //     fetch("/api/playwithexportedvalues", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //             project: 'ddnrcs',
+    //             scene: 'vimlesh_ticker',
+    //             timeline: 'In',
+    //             slot: "1",
+    //             exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
+    //         })
+    //     })
+    // }
+
+    const playticker = async () => {
+        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
             vStackCount: "1",
-            // vStackSize: 1,
             vReset: true,
-            tText: '',
-            tScroll: `{ 'Group1': [{ 'vLeadingSpace':'0', 'vTrailingSpace':'${vTrailingSpace}', 'tText': '${playerList1[0].data1 + ' ' + delemeter}' }] }`,
+            tText: 'vimlesh',
         }
-        fetch("/api/playwithexportedvalues", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                project: 'ddnrcs',
-                scene: 'vimlesh_ticker',
-                timeline: 'In',
-                slot: "1",
-                exportedvalues: Object.entries(exportValues).map(([name, value]) => ({ name, value }))
-            })
-        })
+        const params = [
+            { interval_seconds: intervalGeneral },
+            { messages: scripts }
+        ]
+        await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })
     }
 
 
@@ -205,7 +221,7 @@ const ScrollBreakingNewsClock = () => {
                     <div>
                         <button onClick={() => {
                             playticker();
-                            setTickerRunning(true);
+                            // setTickerRunning(true);
                         }}>Play Scroll</button>
                         {tickerRunning && (
                             <Timer
