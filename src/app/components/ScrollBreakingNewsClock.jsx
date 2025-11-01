@@ -150,7 +150,7 @@ const ScrollBreakingNewsClock = () => {
     // }
 
     const playticker = async () => {
-        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const scripts = playerList1.map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + "    " + delemeter));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
