@@ -72,10 +72,12 @@ const ScrollBreakingNewsClock = () => {
         aa.splice(parseInt(e.target.getAttribute('key1')) + 1, 0, { id: uuidv4(), data1: '', use1: false });
         setPlayerList2(aa);
     }
+
+
     const scrollFileSaveAs = () => {
         var aa = ''
         playerList1.forEach(val => {
-            aa += JSON.stringify({ id: val.id, data1: val.data1, use1: val.use1, delemeterLogo: val.delemeterLogo }) + '\r\n'
+            aa += JSON.stringify({ id: val.id, data1: val.data1, use1: val.use1 }) + '\r\n'
         });
         const data = new Blob([aa], { type: 'text/plain' });
 
@@ -93,6 +95,29 @@ const ScrollBreakingNewsClock = () => {
         };
         saveFile(options, data)
     }
+    const scrollFileSaveAs2 = () => {
+        var aa = ''
+        playerList2.forEach(val => {
+            aa += JSON.stringify({ id: val.id, data1: val.data1, use1: val.use1 }) + '\r\n'
+        });
+        const data = new Blob([aa], { type: 'text/plain' });
+
+        const options = {
+            fileExtension: '.txt',
+            suggestedName: 'BreakingNews_' + generalFileName(),
+            types: [
+                {
+                    description: 'text Files',
+                    accept: {
+                        'text/plain': ['.txt'],
+                    },
+                },
+            ],
+        };
+        saveFile(options, data)
+    }
+
+
     let fileReader;
 
     const handleFileChosen = (file) => {
@@ -102,17 +127,35 @@ const ScrollBreakingNewsClock = () => {
             fileReader.readAsText(file);
         }
     }
-    const handleFileRead = async () => {
 
+    const handleFileChosen2 = (file) => {
+        if (file) {
+            fileReader = new FileReader();
+            fileReader.onloadend = handleFileRead2;
+            fileReader.readAsText(file);
+        }
+    }
+
+    const handleFileRead = async () => {
         const content = fileReader.result;
         const aa = content.split('\r\n');
         aa.splice(-1);
         const updatedcanvasList = aa.map(element => {
             const cc = JSON.parse(element);
-            return { id: cc.id, data1: cc.data1, use1: cc.use1, delemeterLogo: cc.delemeterLogo };
+            return { id: cc.id, data1: cc.data1, use1: cc.use1, };
         });
-
         setPlayerList1(updatedcanvasList);
+    };
+
+    const handleFileRead2 = async () => {
+        const content = fileReader.result;
+        const aa = content.split('\r\n');
+        aa.splice(-1);
+        const updatedcanvasList = aa.map(element => {
+            const cc = JSON.parse(element);
+            return { id: cc.id, data1: cc.data1, use1: cc.use1, };
+        });
+        setPlayerList2(updatedcanvasList);
     };
 
     const playticker = async () => {
@@ -299,8 +342,27 @@ const ScrollBreakingNewsClock = () => {
                     <button onClick={playBreakingSmallTicker}> Play Breaking News</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop Breaking News</button>
                 </div>
-                <div style={{ display: 'flex', minwidth: 1900, margin: 20 }}>
-                    <div style={{ backgroundColor: 'grey', height: 300, width: 1900, overflow: 'auto' }}>
+                <div style={{ minwidth: 1900, margin: 20 }}>
+                    <div style={{ border: '1px solid red' }}>
+                        <table border='1px solid red'>
+                            <tbody >
+                                <tr>
+                                    <td><button onClick={scrollFileSaveAs2}>Save</button></td>
+                                    <td><span>Open File:</span><input
+                                        type='file'
+                                        id='file'
+                                        className='input-file'
+                                        accept='.txt'
+                                        onChange={e => {
+                                            console.log(e.target.files[0])
+                                            handleFileChosen2(e.target.files[0]);
+                                        }}
+                                    /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style={{ backgroundColor: 'grey', height: 300, width: 1850, overflow: 'auto' }}>
                         <DragDropContext onDragEnd={onDragEnd2}>
                             <Droppable droppableId="droppable-2" type="PERSON2">
                                 {(provided, snapshot) => (
