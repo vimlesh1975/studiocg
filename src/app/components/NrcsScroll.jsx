@@ -14,7 +14,6 @@ const vTrailingSpace = 0.1;
 
 const intervalGeneral = 5; //seconds
 const intervalTwoliner = 6; //seconds
-const intervalticker = 3; //seconds
 
 const NrcsScroll = () => {
     const [yPositionscroll, setyPositionscroll] = useState(0.00);

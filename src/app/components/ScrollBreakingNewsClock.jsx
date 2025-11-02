@@ -5,7 +5,7 @@ import { iniBreakingNews, iniBreakingNews2 } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
-import { playwithtimer, playScene } from '../lib/common';
+import { playwithtimer, playScene, sendCommand } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
 const project = "ddnrcs";
@@ -18,6 +18,10 @@ const ScrollBreakingNewsClock = () => {
     const [delemeter, setDelemeter] = useState('*')
 
     const [yPositiondate, setyPositiondate] = useState(0.00);
+
+    const setYPosition = async (scene, yPosition) => {
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
+    }
 
     const playClock = async () => {
         await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
