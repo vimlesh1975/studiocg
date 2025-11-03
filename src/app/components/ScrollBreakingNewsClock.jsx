@@ -16,6 +16,9 @@ const ScrollBreakingNewsClock = () => {
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [playerList2, setPlayerList2] = useState(iniBreakingNews2);
     const [delemeter, setDelemeter] = useState('*')
+    const [tmrBraekingNews, setTmrBraekingNews] = useState(1000)
+    const [headingBraekingNews, setHeadingBreakingNews] = useState('Breaking News')
+
 
     const [yPositiondate, setyPositiondate] = useState(0.00);
 
@@ -202,7 +205,7 @@ const ScrollBreakingNewsClock = () => {
 
         const exportValues = { tTextA: `` }
         const params = [
-            { interval_seconds: intervalGeneral },
+            { interval_seconds: tmrBraekingNews / 1000 },
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
@@ -345,6 +348,8 @@ const ScrollBreakingNewsClock = () => {
                 <div>
                     <button onClick={playBreakingSmallTicker}> Play Breaking News</button>
                     <button onClick={stopplayBreakingSmallTicker}> Stop Breaking News</button>
+                    <label htmlFor="">Timer milli second</label> <input style={{ width: 40 }} type='text' value={tmrBraekingNews} onChange={e => setTmrBraekingNews(e.target.value)}></input>
+                    <label htmlFor="">Heading</label> <input style={{ width: 100 }} type='text' value={headingBraekingNews} onChange={e => setHeadingBreakingNews(e.target.value)}></input>
                 </div>
                 <div style={{ minwidth: 1900, margin: 20 }}>
                     <div style={{ border: '1px solid red' }}>
