@@ -24,7 +24,7 @@ const ScrollBreakingNewsClock = () => {
     const [yPositionLogo, setYPositionLogo] = useState(0.00);
     const [xScaleLogo, setXScaleLogo] = useState(1.00);
     const [yScaleLogo, setYScaleLogo] = useState(1.00);
-    const [logofile, setLogofile] = useState('');
+    const [logofile, setLogofile] = useState('c:/casparcg/_media/anchor.png');
 
 
     const setYPosition = async (scene, yPosition) => {
@@ -46,20 +46,18 @@ const ScrollBreakingNewsClock = () => {
 
     const playClock = async () => {
         await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
-
-        await setYPosition('vimlesh_clock1', yPositiondate);
     }
     const stopClock = () => {
         stopScene({ project, scene: 'vimlesh_clock1' });
     }
 
     const playLogo = async () => {
-        await playScene({ project, scene: 'Bug', slot: "8", exportValues: {} });
+        await playScene({ project, scene: 'Bug', slot: "8", exportValues: { lgBug: `"c:/casparcg/_media/${logofile}"` } });
         await setXPosition('Bug', xPositionLogo);
         await setYPosition('Bug', yPositionLogo);
         await setXScale('Bug', xScaleLogo);
         await setYScale('Bug', yScaleLogo);
-        sendCommand({ command: `scene "${project}/Bug" EXPORT "lgBug" SetValue "c:/casparcg/_media/${logofile}"` })
+        // sendCommand({ command: `scene "${project}/Bug" EXPORT "lgBug" SetValue "c:/casparcg/_media/${logofile}"` })
 
     }
     const stopLogo = () => {
