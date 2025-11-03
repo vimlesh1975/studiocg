@@ -203,12 +203,25 @@ const ScrollBreakingNewsClock = () => {
     const playBreakingSmallTicker = async () => {
         const scripts = playerList2.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
 
-        const exportValues = { tTextA: `` }
+        const exportValues = {
+            tTextA: ``,
+            BreakingText_01: `ठळक बातम्या`,
+            tTextA: ``,
+            tTextA: ``,
+            tTextA: ``,
+        }
         const params = [
             { interval_seconds: tmrBraekingNews / 1000 },
             { messages: scripts }
         ]
+
         await playwithtimer({ project, scene: "BreakingSmall_Ticker", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
+        sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_01" "SetText" "${headingBraekingNews}"` })
+        sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_02" "SetText" "${headingBraekingNews}"` })
+        sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_03" "SetText" "${headingBraekingNews}"` })
+        sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_04" "SetText" "${headingBraekingNews}"` })
+        sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_05" "SetText" "${headingBraekingNews}"` })
+
     }
     const stopplayBreakingSmallTicker = () => {
         fetch("/api/timeline", {
