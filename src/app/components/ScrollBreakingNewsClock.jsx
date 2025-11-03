@@ -52,7 +52,7 @@ const ScrollBreakingNewsClock = () => {
     }
 
     const playLogo = async () => {
-        await playScene({ project, scene: 'Bug', slot: "8", exportValues: { lgBug: `"c:/casparcg/_media/${logofile}"` } });
+        await playScene({ project, scene: 'Bug', slot: "8", exportValues: { lgBug: `c:/casparcg/_media/${logofile}` } });
         await setXPosition('Bug', xPositionLogo);
         await setYPosition('Bug', yPositionLogo);
         await setXScale('Bug', xScaleLogo);
