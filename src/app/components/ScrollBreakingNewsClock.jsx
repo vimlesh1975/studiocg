@@ -5,7 +5,7 @@ import { iniBreakingNews, iniBreakingNews2 } from './hockeyData'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { VscMove } from "react-icons/vsc";
 import { v4 as uuidv4 } from 'uuid';
-import { playwithtimer, playScene, sendCommand } from '../lib/common';
+import { playwithtimer, playScene, stopScene, sendCommand } from '../lib/common';
 
 import { generalFileName, saveFile } from './common'
 const project = "ddnrcs";
@@ -20,11 +20,29 @@ const ScrollBreakingNewsClock = () => {
     const [headingBraekingNews, setHeadingBreakingNews] = useState('Breaking News')
 
 
-    const [yPositiondate, setyPositiondate] = useState(0.00);
+    const [xPositionLogo, setXPositionLogo] = useState(0.00);
+    const [yPositionLogo, setYPositionLogo] = useState(0.00);
+    const [xScaleLogo, setXScaleLogo] = useState(1.00);
+    const [yScaleLogo, setYScaleLogo] = useState(1.00);
+    const [logofile, setLogofile] = useState('');
+
 
     const setYPosition = async (scene, yPosition) => {
         await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.Y" "${yPosition}"` })
     }
+
+    const setXPosition = async (scene, yPosition) => {
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Position.X" "${yPosition}"` })
+    }
+
+    const setXScale = async (scene, yPosition) => {
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Scale.X" "${yPosition}"` })
+    }
+
+    const setYScale = async (scene, yPosition) => {
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "RootNode" "Transform.Scale.Y" "${yPosition}"` })
+    }
+
 
     const playClock = async () => {
         await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
@@ -34,6 +52,20 @@ const ScrollBreakingNewsClock = () => {
     const stopClock = () => {
         stopScene({ project, scene: 'vimlesh_clock1' });
     }
+
+    const playLogo = async () => {
+        await playScene({ project, scene: 'Bug', slot: "8", exportValues: {} });
+        await setXPosition('Bug', xPositionLogo);
+        await setYPosition('Bug', yPositionLogo);
+        await setXScale('Bug', xScaleLogo);
+        await setYScale('Bug', yScaleLogo);
+        sendCommand({ command: `scene "${project}/Bug" EXPORT "lgBug" SetValue "c:/casparcg/_media/${logofile}"` })
+
+    }
+    const stopLogo = () => {
+        stopScene({ project, scene: 'Bug' });
+    }
+
 
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
@@ -142,6 +174,10 @@ const ScrollBreakingNewsClock = () => {
             fileReader.readAsText(file);
         }
     }
+    const handleFileChosenlogo = (file) => {
+        setLogofile(file.name)
+    }
+
 
     const handleFileRead = async () => {
         const content = fileReader.result;
@@ -205,10 +241,6 @@ const ScrollBreakingNewsClock = () => {
 
         const exportValues = {
             tTextA: ``,
-            BreakingText_01: `ठळक बातम्या`,
-            tTextA: ``,
-            tTextA: ``,
-            tTextA: ``,
         }
         const params = [
             { interval_seconds: tmrBraekingNews / 1000 },
@@ -223,11 +255,36 @@ const ScrollBreakingNewsClock = () => {
         sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_05" "SetText" "${headingBraekingNews}"` })
 
     }
+
+
+    const playNewsUpdate = async () => {
+        const scripts = playerList2.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
+        const exportValues = {
+            tTextA: ``,
+        }
+        const params = [
+            { interval_seconds: tmrBraekingNews / 1000 },
+            { messages: scripts }
+        ]
+        await playwithtimer({ project, scene: "NewsUpdate", timeline: "In", slot: "5", exportValues, functionName: "play_text_sequence", params })
+
+    }
+
+
+
     const stopplayBreakingSmallTicker = () => {
         fetch("/api/timeline", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: 'ddnrcs', scene: 'BreakingSmall_Ticker', timeline: "Out" })
+        })
+    }
+
+    const stopnewsUpdate = () => {
+        fetch("/api/timeline", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project: 'ddnrcs', scene: 'NewsUpdate', timeline: "Out" })
         })
     }
 
@@ -345,14 +402,50 @@ const ScrollBreakingNewsClock = () => {
                         </DragDropContext>
                     </div>
                     <div style={{ border: '3px solid black' }}>
-                        <h3>date and Time</h3>
-                        <button onClick={playClock}>Play</button>
-                        <button onClick={stopClock}>Stop</button>
-                        <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositiondate} onChange={async (e) => {
-                            setyPositiondate(e.target.value);
-                            await setYPosition('vimlesh_clock1', e.target.value);
-                        }} />
+                        <div>
+                            <h3>Date and Time</h3>
+                            <button onClick={playClock}>Play</button>
+                            <button onClick={stopClock}>Stop</button>
+
+                        </div>
+
+                        <div>
+                            <h3>Logo</h3>
+                            <span>Open File from c:/casparcg/_media:</span><br />
+                            <input
+                                type='file'
+                                id='file'
+                                className='input-file'
+                                // accept='.txt'
+                                onChange={e => {
+                                    handleFileChosenlogo(e.target.files[0]);
+                                }}
+                            />
+                            <br />
+                            <button onClick={playLogo}>Play</button>
+                            <button onClick={stopLogo}>Stop</button>
+                            <br /> set X Position <input type="Number" style={{ width: 60 }} step={0.01} value={xPositionLogo} onChange={async (e) => {
+                                setXPositionLogo(e.target.value);
+                                await setXPosition('Bug', e.target.value);
+                            }} />
+                            <br /> set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionLogo} onChange={async (e) => {
+                                setYPositionLogo(e.target.value);
+                                await setYPosition('Bug', e.target.value);
+                            }} />
+                            <br /> set X Scale <input type="Number" style={{ width: 60 }} step={0.01} value={xScaleLogo} onChange={async (e) => {
+                                setXScaleLogo(e.target.value);
+                                await setXScale('Bug', e.target.value);
+                            }} />
+
+                            <br /> set Y Scale <input type="Number" style={{ width: 60 }} step={0.01} value={yScaleLogo} onChange={async (e) => {
+                                setYScaleLogo(e.target.value);
+                                await setYScale('Bug', e.target.value);
+                            }} />
+
+                        </div>
+
                     </div>
+
                 </div>
             </div>
 
@@ -363,6 +456,8 @@ const ScrollBreakingNewsClock = () => {
                     <button onClick={stopplayBreakingSmallTicker}> Stop Breaking News</button>
                     <label htmlFor="">Timer milli second</label> <input style={{ width: 40 }} type='text' value={tmrBraekingNews} onChange={e => setTmrBraekingNews(e.target.value)}></input>
                     <label htmlFor="">Heading</label> <input style={{ width: 100 }} type='text' value={headingBraekingNews} onChange={e => setHeadingBreakingNews(e.target.value)}></input>
+                    <button onClick={playNewsUpdate}> Play News Update</button>
+                    <button onClick={stopnewsUpdate}> Stop News Update</button>
                 </div>
                 <div style={{ minwidth: 1900, margin: 20 }}>
                     <div style={{ border: '1px solid red' }}>
@@ -376,7 +471,6 @@ const ScrollBreakingNewsClock = () => {
                                         className='input-file'
                                         accept='.txt'
                                         onChange={e => {
-                                            console.log(e.target.files[0])
                                             handleFileChosen2(e.target.files[0]);
                                         }}
                                     /></td>
