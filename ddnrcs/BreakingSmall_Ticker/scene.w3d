@@ -163,7 +163,7 @@
                           </Primitive>
                           <NodeTransform>
                             <Position Y="-0.17" Z="-0.002" />
-                            <Scale X="1.24" Y="1.24" Z="1.24" Lock="XtoYtoZ" />
+                            <Scale X="1.1" Y="1.1" Z="1.1" Lock="XtoYtoZ" />
                             <Skew X="12.01" />
                           </NodeTransform>
                           <Extensions />
