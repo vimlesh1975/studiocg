@@ -15,7 +15,7 @@
           </GeometryOptions>
           <Extensions />
         </DirectionalLight>
-        <Quad Id="d22f95ce-e2de-4924-93bf-95f77637fff1" Name="Quad1" DisplayColor="11119017">
+        <Quad Id="d22f95ce-e2de-4924-93bf-95f77637fff1" Name="Quad1" Enable="False" DisplayColor="11119017">
           <GeometryOptions>
             <Size X="7.363797" Y="4.142136" />
           </GeometryOptions>
@@ -94,11 +94,11 @@
     <BaseMaterial Name="Material1" FolderPath="" Id="e8c0cdf0-92dc-4566-add4-dde947b7ed5d" HasAmbient="False" HasEmissive="True" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="ffffff" Emissive="ffffff" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
     <TextureTextFontStyle Id="9110e8d8-7c74-4264-be7e-2616745eb559" Name="FontStyle1" FontName="Futura BdCn BT" IsBaselineCentered="True" Kerning="0" KerningScale="1" LineSpacing="1" Monospace="False" MonospaceType="All" Type="Bold" UseKerningPairs="True" WordWrap="False" GlyphHeightOffset="0" HasStrike="False" HasUnderline="False" HorizontalDirection="LeftToRight" Outline="0" SmallCaps="0" VerticalDirection="TopToBottom" Weight="0" />
     <BaseMaterial Name="Material2" FolderPath="" Id="06f9ea5f-267b-4747-bb92-e8644b648736" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="25417d" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
-    <Texture Name="download.jpg" FolderPath="" Id="c393c41b-b202-4678-9f5d-fa93d9df238a" Filename="download.jpg" />
     <Texture Name="dd.png" FolderPath="" Id="bb8050db-4258-4488-9910-dcdcf24b5f38" Filename="dd.png" />
     <Texture Name="anchor.png" FolderPath="" Id="f5c4e866-d56f-46de-86e2-303b76c62a36" Filename="anchor.png" />
+    <ImageSequence Name="big_photo_bg.avi" FolderPath="" Id="e2f2c398-4d4f-40c2-99f3-628542f95c0f" AudioGain="0" Deinterlace="False" StringPropConstructor="big_photo_bg.avi" IsInterlaced="True" ThumbnailFrame="0" UseMemory="False" />
     <TextureLayer Name="Texture14" FolderPath="" Id="1d46202d-c963-499d-b543-fee94accab13" TextureBlending="Multiply">
-      <TextureMappingOption Texture="c393c41b-b202-4678-9f5d-fa93d9df238a" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1" />
+      <TextureMappingOption Texture="e2f2c398-4d4f-40c2-99f3-628542f95c0f" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="False" WrappingMethod="1" />
     </TextureLayer>
     <TextureLayer Name="Texture1" FolderPath="" Id="077548f9-8d1c-4462-83ef-089ae0a400e6" TextureBlending="Multiply">
       <TextureMappingOption ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
@@ -112,7 +112,7 @@
   </Resources>
   <ExportManagerProperties>
     <ExportList Name="lgBug">
-      <ExportProperty ControllableId="1d46202d-c963-499d-b543-fee94accab13" PropertyName="TextureMappingOption.Texture" Type="Texture" Value="download.jpg" Enable="True" Id="4864c69e-7481-4d6e-9ab6-7f45c36434d5" UpdateMode="Instantly" />
+      <ExportProperty ControllableId="1d46202d-c963-499d-b543-fee94accab13" PropertyName="TextureMappingOption.Texture" Type="Texture" Value="big_photo_bg.avi" Enable="True" Id="4864c69e-7481-4d6e-9ab6-7f45c36434d5" UpdateMode="Instantly" />
     </ExportList>
     <ExportList Name="vPosX">
       <ExportProperty ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" PropertyName="Transform.Position.XProp" Type="Float" Value="0" Enable="True" Id="6c8eae50-9310-400a-8fea-9c1aa80da797" UpdateMode="Instantly" />
@@ -125,7 +125,7 @@
     </ExportList>
   </ExportManagerProperties>
   <Timelines SelectedTimelineId="9d616878-ffd7-4455-b33a-acc67018c281" Format="HD1080i50">
-    <Timeline Name="In" Id="9d616878-ffd7-4455-b33a-acc67018c281" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
+    <Timeline Name="In" Id="9d616878-ffd7-4455-b33a-acc67018c281" IsListening="False" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
       <KeyFrameAnimationController AnimatedProperty="Enabled" ControllableId="e8f301fe-6439-416b-abee-d6cdc27a2a45">
         <KeyFrame FrameNumber="0" Id="33a6bf0b-609b-4ea7-9d0a-c5b74d971f03" Value="False" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
         <KeyFrame FrameNumber="1" Id="3405f928-2c30-400f-939c-3585e79fb9cd" Value="True" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
@@ -134,6 +134,7 @@
         <KeyFrame FrameNumber="0" Id="dda005dc-b996-4169-800d-a8efedbba37c" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
         <KeyFrame FrameNumber="15" Id="f7a0ea35-c9a3-4739-86f8-dd62e18dc1c1" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
       </KeyFrameAnimationController>
+      <ImageSequenceAnimationController IncrementValue="1" StartFrame="0" EndFrame="804" AnimatedProperty="Animation" ControllableId="1d46202d-c963-499d-b543-fee94accab13" />
       <ControlKeyFrame FrameNumber="25" Id="32bf5061-595d-4d4b-b153-77867f52a2bf" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="5bbc5c84-ce1b-4b44-a673-bd0b4788f777" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="85ca27c4-1c89-4188-9588-ab2a4783d0c8" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
     </Timeline>
     <Timeline Name="LBand_In" Id="fb093480-b143-42d0-be7a-35f1ec0b3b50" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
@@ -155,11 +156,7 @@
         <KeyFrame FrameNumber="0" Id="7a37da25-4371-4663-9daa-8c668ebe2a25" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
       </KeyFrameAnimationController>
     </Timeline>
-    <TimelineListener>
-      <TriggerRule OwnerTimelineName="LBand_In" Action="Play" Id="aa3aba6b-b6b7-417d-b4f6-23f7c115299d" GotoFrameNumber="0" SceneId="c7de0a63-7720-4909-99f3-072aa53d56c6" TimelineName="Any Timeline" IndexControlKeyFrame="11" ControlKeyFrameType="Alert" />
-      <TriggerRule OwnerTimelineName="LBand_Out" Action="Play" Id="12dd0745-99a2-4174-a1c6-dc09fcbbd09f" GotoFrameNumber="0" SceneId="c7de0a63-7720-4909-99f3-072aa53d56c6" TimelineName="Any Timeline" IndexControlKeyFrame="-11" ControlKeyFrameType="Alert" />
-      <TriggerRule OwnerTimelineName="Loop" Action="Play" Id="8d5db161-1711-4f98-accc-6030e297404d" GotoFrameNumber="0" SceneId="" TimelineName="In" IndexControlKeyFrame="-1" ControlKeyFrameType="TimelineStart" />
-    </TimelineListener>
+    <TimelineListener />
   </Timelines>
   <ExportManager />
   <LinksManager>
