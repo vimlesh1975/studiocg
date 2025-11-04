@@ -14,7 +14,6 @@ import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
 import VideoPlayer from './components/VideoPlayer';
 import NrcsScroll from './components/NrcsScroll';
-import ScriptTest from './components/ScriptTest';
 
 import dynamic from "next/dynamic";
 const Scroll = dynamic(() => import("./components/Scroll"), {
@@ -33,11 +32,11 @@ export default function Page() {
     >
       <TabList>
 
-        <Tab> Scroll BreakingNews and Clock</Tab>
+        <Tab> Scroll BreakingNews Clock</Tab>
         <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
-        <Tab> Scroll</Tab>
-        <Tab> NRCS</Tab>
+        <Tab> General Scroll and Other Templates Testing</Tab>
+        <Tab> NRCS linking of Templates and script to Samvad Teleprompter</Tab>
         <Tab> Mongodb</Tab>
         <Tab>R³ Scene Controller</Tab>
         <Tab> Raw Tcpmosclient</Tab>
@@ -45,7 +44,6 @@ export default function Page() {
         <Tab> MosApi</Tab>
         <Tab> Npmmosclient</Tab>
         <Tab> MosServer</Tab>
-        <Tab> ScriptTest</Tab>
 
       </TabList>
 
@@ -88,9 +86,7 @@ export default function Page() {
       <TabPanel>
         < MosServer />
       </TabPanel>
-      <TabPanel>
-        < ScriptTest />
-      </TabPanel>
+
     </Tabs>
 
 

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<GlobalPluginManager>
-  <Clock Name="Clock 4" Enabled="True" Type="DateTime" ID="9351d8ec-0bcb-4d86-8fac-4befcb1eca42">
-    <ClockTypeWorkerDateTime CustomFormat="hh\:mm\:ss\:fff" Format="ShortDatePlusShortTime" />
-  </Clock>
-</GlobalPluginManager>
