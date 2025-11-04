@@ -18,7 +18,6 @@ const Scroll = () => {
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [ltr, setLtr] = useState(false);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
-    const [delemeter, setDelemeter] = useState('⏺️')
     const onDragEnd1 = (result) => {
         const aa = [...playerList1]
         if (result.destination != null) {
@@ -44,7 +43,7 @@ const Scroll = () => {
     const scrollFileSaveAs = () => {
         var aa = ''
         playerList1.forEach(val => {
-            aa += JSON.stringify({ id: val.id, data1: val.data1, use1: val.use1, delemeterLogo: val.delemeterLogo }) + '\r\n'
+            aa += JSON.stringify({ id: val.id, data1: val.data1, use1: val.use1 }) + '\r\n'
         });
         const data = new Blob([aa], { type: 'text/plain' });
 
@@ -78,14 +77,14 @@ const Scroll = () => {
         aa.splice(-1);
         const updatedcanvasList = aa.map(element => {
             const cc = JSON.parse(element);
-            return { id: cc.id, data1: cc.data1, use1: cc.use1, delemeterLogo: cc.delemeterLogo };
+            return { id: cc.id, data1: cc.data1, use1: cc.use1 };
         });
 
         setPlayerList1(updatedcanvasList);
     };
 
     const playticker = async () => {
-        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + " " + delemeter));
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
@@ -290,7 +289,6 @@ const Scroll = () => {
                 <table border='0'>
                     <tbody >
                         <tr>
-
                             <td><button onClick={scrollFileSaveAs}>Save</button></td>
                             <td><span>Open File:</span><input
                                 type='file'
@@ -305,56 +303,7 @@ const Scroll = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div style={{ border: '1px solid red' }}>
-
-                    <table border='0'>
-                        <tbody >
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Delemeter for scroll text</td>
-                                <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
-                                <td title='Check for Left to Right scroll'>
-                                    <span> LTR:</span>{" "}
-                                    <input
-                                        type="checkbox"
-                                        checked={ltr}
-                                        onChange={() => setLtr((val) => !val)}
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table border='0'>
-                        <tbody >
-                            <tr>
-                                <td>
-                                    <label>
-                                        <img src={playerList1[0]?.delemeterLogo} alt='' width='20' height='20' style={{ border: '1px solid red' }} />
-                                        <input type="file" onChange={e => {
-                                            var reader = new FileReader();
-                                            reader.onloadend = () => {
-                                                const aa = [...playerList1];
-                                                aa[0] = { ...aa[0], delemeterLogo: reader.result };
-                                                setPlayerList1(aa);
-                                                // setNewplayerList1(aa)
-                                            }
-                                            reader.readAsDataURL(e.target.files[0]);
-                                        }} style={{ display: 'none' }} />
-                                    </label>
-                                </td>
-                                <td> <button onClick={() => {
-                                    const updateddelemeterlogo = playerList1.map((val, i) => ({ ...val, delemeterLogo: playerList1[0].delemeterLogo }));
-                                    setPlayerList1(updateddelemeterlogo);
-                                }}>Set all logo as first logo</button>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-            {/* <button style={{ display: (isEqual(newplayerList1, playerList1)) ? 'none' : 'inline', backgroundColor: 'red' }} onClick={updateplayerList1}>Update Data</button> */}
             <div style={{ display: 'flex', minwidth: 650, margin: 20 }}>
                 <div style={{ backgroundColor: 'grey', height: 700, width: 800, overflow: 'auto' }}>
                     <DragDropContext onDragEnd={onDragEnd1}>
@@ -384,21 +333,6 @@ const Scroll = () => {
                                                                 <td style={{ textAlign: 'center' }}>{i}</td>
                                                                 <td {...provided.dragHandleProps}><VscMove /></td>
 
-                                                                <td>
-                                                                    <label>
-                                                                        <img src={val.delemeterLogo} alt='' width='20' height='20' style={{ border: '1px solid red' }} />
-                                                                        <input type="file" onChange={e => {
-                                                                            var reader = new FileReader();
-                                                                            reader.onloadend = () => {
-                                                                                const aa = [...playerList1];
-                                                                                aa[i] = { ...aa[i], delemeterLogo: reader.result };
-                                                                                setPlayerList1(aa);
-                                                                                // setNewplayerList1(aa)
-                                                                            }
-                                                                            reader.readAsDataURL(e.target.files[0]);
-                                                                        }} style={{ display: 'none' }} />
-                                                                    </label>
-                                                                </td>
                                                                 <td style={{ minWidth: 300 }}><input style={{ border: 'none', minWidth: 620 }} type='text' value={val.data1}
                                                                     onChange={e => {
                                                                         const updatednewplayerList1 = [...playerList1]

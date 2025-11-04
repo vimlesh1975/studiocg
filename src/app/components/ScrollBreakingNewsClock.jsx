@@ -15,7 +15,6 @@ const ScrollBreakingNewsClock = () => {
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [playerList2, setPlayerList2] = useState(iniBreakingNews2);
-    const [delemeter, setDelemeter] = useState('*')
     const [tmrBraekingNews, setTmrBraekingNews] = useState(1000)
     const [headingBraekingNews, setHeadingBreakingNews] = useState('Breaking News')
 
@@ -200,7 +199,7 @@ const ScrollBreakingNewsClock = () => {
     };
 
     const playticker = async () => {
-        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim() + "    " + delemeter));
+        const scripts = playerList1.filter(row => row.use1).map(row => row.data1.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
         const exportValues = {
             vSpeed: `${horizontalSpeed}`,
             vStart: true,
@@ -331,9 +330,6 @@ const ScrollBreakingNewsClock = () => {
                                             handleFileChosen(e.target.files[0]);
                                         }}
                                     /></td>
-                                    <td>Delemeter for scroll text</td>
-                                    <td><input style={{ width: 40, textAlign: 'center' }} onChange={(e) => setDelemeter(e.target.value)} value={delemeter} /></td>
-
                                 </tr>
                             </tbody>
                         </table>
