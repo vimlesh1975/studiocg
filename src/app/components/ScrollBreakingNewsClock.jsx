@@ -12,7 +12,7 @@ const project = "ddnrcs";
 const intervalGeneral = 1; //seconds
 const ScrollBreakingNewsClock = () => {
 
-    const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
+    const [horizontalSpeed, setHorizontalSpeed] = useState(0.015);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const [playerList2, setPlayerList2] = useState(iniBreakingNews2);
     const [tmrBraekingNews, setTmrBraekingNews] = useState(1000)

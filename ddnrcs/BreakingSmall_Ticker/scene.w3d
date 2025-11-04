@@ -152,7 +152,7 @@
                           <Extensions />
                         </Quad>
                         <TextureText Id="35e34470-e1dc-4227-8907-e6b1c141ddd5" Name="BreakingText_05" SpeedScale="1" DisplayColor="11119017">
-                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
+                          <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="daf7d684-9a9d-4f84-b5f6-9fd0904b4669" HasTextBox="False" IsNewGeometry="True" Text="Breaking News" TextQuality="2" />
                           <Primitive>
                             <FaceMappingList>
                               <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />
@@ -285,7 +285,7 @@
                           <Extensions />
                           <Children>
                             <TextureText Id="4511f503-1682-435e-a9d2-d5679fc19df3" Name="BreakingText_01" Alpha="0.17" SpeedScale="1" DisplayColor="11119017" Blend="Add">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="Breaking News" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="1b853caa-bcce-400f-a70c-3b905794d824" BaseMaterialInherited="False" TextureInherited="False" />
@@ -302,7 +302,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="2dab2887-eb94-406d-89a3-88bbeac601fd" Name="BreakingText_02" SpeedScale="1" DisplayColor="11119017">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="Breaking News" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />
@@ -319,7 +319,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="2132086b-fd09-4530-87ad-afcdf60c0d5e" Name="BreakingText_03" SpeedScale="1" DisplayColor="11119017" Blend="Add">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="60b8d6e5-5b07-4604-a06b-51e7a392fe03" HasTextBox="False" IsNewGeometry="True" Text="Breaking News" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="69ce40c2-9722-445d-b500-a16b64bd17b4" TextureLayerId="b1f75ec2-e307-4cce-b50f-256281364fc0" BaseMaterialInherited="False" TextureInherited="False" />
@@ -336,7 +336,7 @@
                               <Extensions />
                             </TextureText>
                             <TextureText Id="d4194305-349e-4749-b493-b21245df40c8" Name="BreakingText_04" Alpha="0.63" SpeedScale="1" DisplayColor="11119017">
-                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="73ad9e36-10a3-4607-b299-bbbfaed1a864" HasTextBox="False" IsNewGeometry="True" Text="ठळक बातम्या" TextQuality="2" />
+                              <GeometryOptions AlignmentX="Center" AlignmentY="Center" ConstrainMethod="None" FontStyle="73ad9e36-10a3-4607-b299-bbbfaed1a864" HasTextBox="False" IsNewGeometry="True" Text="Breaking News" TextQuality="2" />
                               <Primitive>
                                 <FaceMappingList>
                                   <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="6b333889-5116-4021-9ac9-bbe0b76da6f2" BaseMaterialInherited="False" TextureInherited="False" />

@@ -38,7 +38,7 @@ const NrcsScroll = () => {
         return `${yyyy}-${mm}-${dd}`;
     });
     const [selectedRunOrderTitle, setSelectedRunOrderTitle] = useState("Breaking News");
-    const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
+    const [horizontalSpeed, setHorizontalSpeed] = useState(0.015);
     const [scrollData, setScrollData] = useState([]);
 
     const [NrcsBreakingText, setNrcsBreakingText] = useState(true)

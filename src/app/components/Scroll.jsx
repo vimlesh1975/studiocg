@@ -15,7 +15,7 @@ const intervalGeneral = 5; //seconds
 
 const Scroll = () => {
 
-    const [horizontalSpeed, setHorizontalSpeed] = useState(0.01);
+    const [horizontalSpeed, setHorizontalSpeed] = useState(0.015);
     const [ltr, setLtr] = useState(false);
     const [playerList1, setPlayerList1] = useState(iniBreakingNews);
     const onDragEnd1 = (result) => {
