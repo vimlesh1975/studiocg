@@ -15,6 +15,17 @@
           </GeometryOptions>
           <Extensions />
         </DirectionalLight>
+        <Quad Id="d22f95ce-e2de-4924-93bf-95f77637fff1" Name="Quad1" DisplayColor="11119017">
+          <GeometryOptions>
+            <Size X="7.363797" Y="4.142136" />
+          </GeometryOptions>
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="1c783e2e-974a-4998-bf0c-47db96659418" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <Extensions />
+        </Quad>
         <Group Id="6da1c6de-776f-4660-ac22-62aa70fff826" Name="MainGrp" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions />
           <NodeTransform PivotType="Absolute">
@@ -59,7 +70,8 @@
                                 </FaceMappingList>
                               </Primitive>
                               <NodeTransform>
-                                <Position X="0.02" Y="-0.01" Z="-0.002" />
+                                <Position X="-0.1888192" Y="-0.156" Z="-0.002000173" />
+                                <Scale X="1.19" Y="0.81" />
                               </NodeTransform>
                               <Extensions />
                             </Quad>
@@ -84,6 +96,7 @@
     <BaseMaterial Name="Material2" FolderPath="" Id="06f9ea5f-267b-4747-bb92-e8644b648736" HasAmbient="False" HasEmissive="False" HasSpecular="False" HasDiffuse="True" Ambient="0" Diffuse="25417d" Emissive="0" Specular="0" Alpha="1" SpecularPower="50" Lock="False" />
     <Texture Name="download.jpg" FolderPath="" Id="c393c41b-b202-4678-9f5d-fa93d9df238a" Filename="download.jpg" />
     <Texture Name="dd.png" FolderPath="" Id="bb8050db-4258-4488-9910-dcdcf24b5f38" Filename="dd.png" />
+    <Texture Name="anchor.png" FolderPath="" Id="f5c4e866-d56f-46de-86e2-303b76c62a36" Filename="anchor.png" />
     <TextureLayer Name="Texture14" FolderPath="" Id="1d46202d-c963-499d-b543-fee94accab13" TextureBlending="Multiply">
       <TextureMappingOption Texture="c393c41b-b202-4678-9f5d-fa93d9df238a" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Uniform" Type="2" UseMipMapping="True" WrappingMethod="1" />
     </TextureLayer>
@@ -92,6 +105,9 @@
     </TextureLayer>
     <TextureLayer Name="Texture2" FolderPath="" Id="3df7018d-1917-4b49-bde4-ef3a2dc94d69" TextureBlending="Multiply">
       <TextureMappingOption Texture="ProjectResource\f1o_rgba.png" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
+    </TextureLayer>
+    <TextureLayer Name="Texture3" FolderPath="" Id="1c783e2e-974a-4998-bf0c-47db96659418" TextureBlending="Multiply">
+      <TextureMappingOption Texture="f5c4e866-d56f-46de-86e2-303b76c62a36" ColorShaping="Shaped" KeyType="AlphaKey" PremultiplyColor="0" Reflectivity="0" ReleaseVideoOnFillTag="False" TextureAddressModeU="Clamp" TextureAddressModeV="Clamp" TextureFilteringMag="Anisotropic" TextureFilteringMin="Anisotropic" TextureFilteringMip="Anisotropic" IsEmissive="False" TextureStretchOption="Fill" Type="2" UseMipMapping="True" WrappingMethod="1" />
     </TextureLayer>
   </Resources>
   <ExportManagerProperties>
