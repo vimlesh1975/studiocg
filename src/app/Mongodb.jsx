@@ -67,7 +67,7 @@ export default function Mongodb() {
                     }}
                 >
                     <h3>Run Orders</h3>
-                    <button onClick={getRunOrders}>Get RunOrders</button>
+                    <button onClick={getRunOrders}>Get RunOrders</button> runOrders: {runOrders.length}
                     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                         {runOrders.map((ro, i) => (
                             <div
@@ -86,7 +86,7 @@ export default function Mongodb() {
                                     onClick={async (e) => {
                                         e.stopPropagation();
                                         try {
-                                            await fetch("/api/takeshow", {
+                                            await fetch("/api/mosapi/takeshow", {
                                                 method: "POST",
                                                 headers: {
                                                     "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export default function Mongodb() {
                     }}
                 >
                     <h3>Stories</h3>
-                    <button onClick={getStories}>Get Stories</button>
+                    <button onClick={getStories}>Get Stories</button>  Stories: {stories.length}
                     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                         {stories.map((story, i) => (
                             <div
@@ -147,7 +147,7 @@ export default function Mongodb() {
                     }}
                 >
                     <h3>Items</h3>
-                    <button onClick={getItems}>Get Items</button>
+                    <button onClick={getItems}>Get Items</button>  items: {items.length}
                     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                         {items.map((item, i) => (
                             <div
