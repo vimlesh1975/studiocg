@@ -24,6 +24,9 @@ const ScrollBreakingNewsClock = () => {
     const [xScaleLogo, setXScaleLogo] = useState(1.00);
     const [yScaleLogo, setYScaleLogo] = useState(1.00);
     const [logofile, setLogofile] = useState('c:/casparcg/_media/anchor.png');
+    const [stripColor, setSltripColor] = useState('#ffffff');
+    const [fontColor, setFontColor] = useState('#000000');
+    const [diskColor, setDiskColor] = useState('#0000ff');
 
 
     const setYPosition = async (scene, yPosition) => {
@@ -212,6 +215,11 @@ const ScrollBreakingNewsClock = () => {
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })
+        sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material1" "Diffuse" ${parseInt(stripColor.replace("#", ""), 16)}` })
+        sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material2" "Diffuse" ${parseInt(fontColor.replace("#", ""), 16)}` })
+        sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material3" "Diffuse" ${parseInt(diskColor.replace("#", ""), 16)}` })
+
+
     }
 
 
@@ -314,6 +322,38 @@ const ScrollBreakingNewsClock = () => {
                             value={horizontalSpeed}
                         />
                         <button onClick={onStopTicker}> Stop Scroll</button>
+
+                        Strip Color:   <input
+                            type="color"
+                            value={stripColor}
+                            onChange={(e) => {
+                                const hexVal = e.target.value;
+                                setSltripColor(e.target.value)
+                                const intVal = parseInt(hexVal.replace("#", ""), 16);
+                                sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material1" "Diffuse" ${intVal}` })
+                            }}
+                        />
+
+                        Font Color:   <input
+                            type="color"
+                            value={fontColor}
+                            onChange={(e) => {
+                                const hexVal = e.target.value;
+                                setFontColor(e.target.value)
+                                const intVal = parseInt(hexVal.replace("#", ""), 16);
+                                sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material2" "Diffuse" ${intVal}` })
+                            }}
+                        />
+                        Disk Color:   <input
+                            type="color"
+                            value={diskColor}
+                            onChange={(e) => {
+                                const hexVal = e.target.value;
+                                setDiskColor(e.target.value)
+                                const intVal = parseInt(hexVal.replace("#", ""), 16);
+                                sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material3" "Diffuse" ${intVal}` })
+                            }}
+                        />
                     </div>
                     <div style={{ border: '1px solid red' }}>
                         <table border='1px solid red'>
