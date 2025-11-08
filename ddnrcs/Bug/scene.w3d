@@ -15,7 +15,7 @@
           </GeometryOptions>
           <Extensions />
         </DirectionalLight>
-        <Quad Id="d22f95ce-e2de-4924-93bf-95f77637fff1" Name="Quad1" Enable="False" DisplayColor="11119017">
+        <Quad Id="d22f95ce-e2de-4924-93bf-95f77637fff1" Name="Quad1" Enable="False" SpeedScale="1" DisplayColor="11119017">
           <GeometryOptions>
             <Size X="7.363797" Y="4.142136" />
           </GeometryOptions>
@@ -26,65 +26,19 @@
           </Primitive>
           <Extensions />
         </Quad>
-        <Group Id="6da1c6de-776f-4660-ac22-62aa70fff826" Name="MainGrp" SpeedScale="1" DisplayColor="11119017">
-          <GeometryOptions />
-          <NodeTransform PivotType="Absolute">
-            <Position X="3.68" Y="2.07" />
+        <Quad Id="6de907c0-898c-486d-8fd6-ffa2941e84f9" Name="Quad4" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions AlignmentX="Left" AlignmentY="Top" />
+          <Primitive>
+            <FaceMappingList>
+              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="e8c0cdf0-92dc-4566-add4-dde947b7ed5d" TextureLayerId="1d46202d-c963-499d-b543-fee94accab13" BaseMaterialInherited="False" TextureInherited="False" />
+            </FaceMappingList>
+          </Primitive>
+          <NodeTransform>
+            <Position X="2.442569" Y="1.885729" Z="-0.002000332" />
+            <Scale X="0.86" Y="0.69" Z="0.9" />
           </NodeTransform>
           <Extensions />
-          <Children>
-            <Group Id="884e89ce-10ca-418f-9a1f-b7b5ebd8e46b" Name="Group_PivotPoint" SpeedScale="1" DisplayColor="11119017">
-              <GeometryOptions />
-              <NodeTransform PivotType="Absolute">
-                <Pivot X="3.68" Y="2.07" />
-              </NodeTransform>
-              <Extensions />
-              <Children>
-                <Group Id="fa3e3a75-ccb5-4bef-9dd1-4e5d22871252" Name="DesignGfx" SpeedScale="1" DisplayColor="11119017">
-                  <GeometryOptions />
-                  <NodeTransform PivotType="Absolute">
-                    <Position X="3.02" Y="1.65" />
-                    <Scale X="0.75" Y="0.75" Z="0.75" Lock="XtoYtoZ" />
-                  </NodeTransform>
-                  <Extensions />
-                  <Children>
-                    <Group Id="133ea19d-66fb-4bf5-b699-a4d528b919b7" Name="Position" SpeedScale="1" DisplayColor="11119017">
-                      <GeometryOptions />
-                      <NodeTransform PivotType="Absolute">
-                        <Scale Lock="XtoYtoZ" />
-                      </NodeTransform>
-                      <Extensions />
-                      <Children>
-                        <Group Id="e8f301fe-6439-416b-abee-d6cdc27a2a45" Name="All" SpeedScale="1" DisplayColor="11119017">
-                          <GeometryOptions />
-                          <NodeTransform PivotType="Absolute">
-                            <Scale Lock="XtoYtoZ" />
-                          </NodeTransform>
-                          <Extensions />
-                          <Children>
-                            <Quad Id="6de907c0-898c-486d-8fd6-ffa2941e84f9" Name="Quad4" SpeedScale="1" DisplayColor="11119017">
-                              <GeometryOptions />
-                              <Primitive>
-                                <FaceMappingList>
-                                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="e8c0cdf0-92dc-4566-add4-dde947b7ed5d" TextureLayerId="1d46202d-c963-499d-b543-fee94accab13" BaseMaterialInherited="False" TextureInherited="False" />
-                                </FaceMappingList>
-                              </Primitive>
-                              <NodeTransform>
-                                <Position X="-0.1888192" Y="-0.156" Z="-0.002000173" />
-                                <Scale X="1.19" Y="0.81" />
-                              </NodeTransform>
-                              <Extensions />
-                            </Quad>
-                          </Children>
-                        </Group>
-                      </Children>
-                    </Group>
-                  </Children>
-                </Group>
-              </Children>
-            </Group>
-          </Children>
-        </Group>
+        </Quad>
       </Children>
     </SceneNode>
   </SceneLayer>
@@ -114,58 +68,19 @@
     <ExportList Name="lgBug">
       <ExportProperty ControllableId="1d46202d-c963-499d-b543-fee94accab13" PropertyName="TextureMappingOption.Texture" Type="Texture" Value="big_photo_bg.avi" Enable="True" Id="4864c69e-7481-4d6e-9ab6-7f45c36434d5" UpdateMode="Instantly" />
     </ExportList>
-    <ExportList Name="vPosX">
-      <ExportProperty ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" PropertyName="Transform.Position.XProp" Type="Float" Value="0" Enable="True" Id="6c8eae50-9310-400a-8fea-9c1aa80da797" UpdateMode="Instantly" />
-    </ExportList>
-    <ExportList Name="vPosY">
-      <ExportProperty ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" PropertyName="Transform.Position.YProp" Type="Float" Value="0" Enable="True" Id="7b03c7d0-58ed-40db-8bb2-10e9a569b203" UpdateMode="Instantly" />
-    </ExportList>
-    <ExportList Name="vScale">
-      <ExportProperty ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" PropertyName="Transform.Scale.XProp" Type="Float" Value="1" Enable="True" Id="15e224bd-d15b-4bb5-8ed1-4d822ae2052f" UpdateMode="Instantly" />
-    </ExportList>
   </ExportManagerProperties>
   <Timelines SelectedTimelineId="9d616878-ffd7-4455-b33a-acc67018c281" Format="HD1080i50">
     <Timeline Name="In" Id="9d616878-ffd7-4455-b33a-acc67018c281" IsListening="False" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
-      <KeyFrameAnimationController AnimatedProperty="Enabled" ControllableId="e8f301fe-6439-416b-abee-d6cdc27a2a45">
-        <KeyFrame FrameNumber="0" Id="33a6bf0b-609b-4ea7-9d0a-c5b74d971f03" Value="False" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-        <KeyFrame FrameNumber="1" Id="3405f928-2c30-400f-939c-3585e79fb9cd" Value="True" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-      </KeyFrameAnimationController>
-      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="fa3e3a75-ccb5-4bef-9dd1-4e5d22871252">
-        <KeyFrame FrameNumber="0" Id="dda005dc-b996-4169-800d-a8efedbba37c" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-        <KeyFrame FrameNumber="15" Id="f7a0ea35-c9a3-4739-86f8-dd62e18dc1c1" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-      </KeyFrameAnimationController>
       <ImageSequenceAnimationController IncrementValue="1" StartFrame="0" EndFrame="804" AnimatedProperty="Animation" ControllableId="1d46202d-c963-499d-b543-fee94accab13" />
-      <ControlKeyFrame FrameNumber="25" Id="32bf5061-595d-4d4b-b153-77867f52a2bf" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="5bbc5c84-ce1b-4b44-a673-bd0b4788f777" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="85ca27c4-1c89-4188-9588-ab2a4783d0c8" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="25" Id="5cde94aa-ac1f-43eb-b04e-2c96c862ae0c" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="5bbc5c84-ce1b-4b44-a673-bd0b4788f777" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="85ca27c4-1c89-4188-9588-ab2a4783d0c8" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
     </Timeline>
-    <Timeline Name="LBand_In" Id="fb093480-b143-42d0-be7a-35f1ec0b3b50" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
-      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="6da1c6de-776f-4660-ac22-62aa70fff826">
-        <KeyFrame FrameNumber="16" Id="3d5eb470-c145-489f-90e8-1512a19497a8" Value="0.81" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
-        <KeyFrame FrameNumber="0" Id="0d80acf9-0ccd-4673-9d66-24ad43e8c4a0" Value="1" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.5" />
-      </KeyFrameAnimationController>
-    </Timeline>
-    <Timeline Name="LBand_Out" Id="3c33e32a-0f99-4eca-bcfe-89c9606646bb" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
-      <KeyFrameAnimationController AnimatedProperty="Transform.Scale.XProp" ControllableId="6da1c6de-776f-4660-ac22-62aa70fff826">
-        <KeyFrame FrameNumber="16" Id="544c1cbb-fdb8-4d46-a15d-8c58a2f35c30" Value="1" LeftType="CubicBezier" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="1" RightControlPointX="0.5" RightControlPointY="0.5" />
-        <KeyFrame FrameNumber="0" Id="d0195056-e2d0-4782-b13d-34a59b9d9651" Value="0.81" LeftType="Linear" RightType="CubicBezier" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0" RightControlPointY="0.5" />
-      </KeyFrameAnimationController>
-    </Timeline>
+    <Timeline Name="LBand_In" Id="fb093480-b143-42d0-be7a-35f1ec0b3b50" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
+    <Timeline Name="LBand_Out" Id="3c33e32a-0f99-4eca-bcfe-89c9606646bb" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
     <Timeline Name="Loop" Id="6d104521-c1c3-4822-b410-c42b795d06da" IsListening="True" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="450" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
-    <Timeline Name="Out" Id="798c8e6d-cdd5-4ae2-a5e8-813e4708d0b5" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False">
-      <KeyFrameAnimationController AnimatedProperty="Alpha" ControllableId="fa3e3a75-ccb5-4bef-9dd1-4e5d22871252">
-        <KeyFrame FrameNumber="10" Id="2939df5a-f05f-4e87-96bd-c600464a69af" Value="0" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-        <KeyFrame FrameNumber="0" Id="7a37da25-4371-4663-9daa-8c668ebe2a25" Value="1" LeftType="Linear" RightType="Linear" LeftControlPointX="0.5" LeftControlPointY="0.5" RightControlPointX="0.5" RightControlPointY="0.5" />
-      </KeyFrameAnimationController>
-    </Timeline>
+    <Timeline Name="Out" Id="798c8e6d-cdd5-4ae2-a5e8-813e4708d0b5" IsListening="False" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="True" UnloadSceneOnTimelineEnd="False" />
     <TimelineListener />
   </Timelines>
   <ExportManager />
-  <LinksManager>
-    <PropertyLink ControllableId="6da1c6de-776f-4660-ac22-62aa70fff826" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
-      <ILink Enable="True" Id="8c2d8dbd-1b04-45e9-85f2-3ad8a7e30e1d" Name="Absolute Link" ControllableId="6da1c6de-776f-4660-ac22-62aa70fff826" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
-    </PropertyLink>
-    <PropertyLink ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" Property="Transform.Scale.XProp" StringFormat="" UseStringFormatter="False">
-      <ILink Enable="True" Id="38b692cb-f1fb-4a6f-a5cc-88dac4fb80d0" Name="Absolute Link" ControllableId="133ea19d-66fb-4bf5-b699-a4d528b919b7" Property="Transform.Scale.YProp" Alias="AbsoluteLink" />
-    </PropertyLink>
-  </LinksManager>
+  <LinksManager />
   <Variables />
 </Scene>
