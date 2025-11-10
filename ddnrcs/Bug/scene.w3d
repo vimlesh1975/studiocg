@@ -26,19 +26,25 @@
           </Primitive>
           <Extensions />
         </Quad>
-        <Quad Id="fe34afce-8e33-4700-8791-9b513aee9117" Name="Quad4" DisplayColor="11119017">
-          <GeometryOptions AlignmentX="Left" AlignmentY="Top" />
-          <Primitive>
-            <FaceMappingList>
-              <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="fce10d8a-c10e-435d-9b1c-c24cc780f9ed" BaseMaterialInherited="False" TextureInherited="False" />
-            </FaceMappingList>
-          </Primitive>
-          <NodeTransform>
-            <Position X="2.405669" Y="1.849902" Z="-0.01999998" />
-            <Scale X="0.89" Y="0.63" />
-          </NodeTransform>
+        <Group Id="c31c12af-4169-43e7-8904-179ef714eff7" Name="Group1" SpeedScale="1" DisplayColor="11119017">
+          <GeometryOptions />
           <Extensions />
-        </Quad>
+          <Children>
+            <Quad Id="fe34afce-8e33-4700-8791-9b513aee9117" Name="Quad4" SpeedScale="1" DisplayColor="11119017">
+              <GeometryOptions AlignmentX="Left" AlignmentY="Top" />
+              <Primitive>
+                <FaceMappingList>
+                  <NamedBaseFaceMapping SurfaceName="All Faces" MaterialId="DE1A3E3C-AE85-4B7B-BA86-056463611630" TextureLayerId="fce10d8a-c10e-435d-9b1c-c24cc780f9ed" BaseMaterialInherited="False" TextureInherited="False" />
+                </FaceMappingList>
+              </Primitive>
+              <NodeTransform>
+                <Position X="2.405669" Y="1.849902" Z="-0.01999998" />
+                <Scale X="0.89" Y="0.63" />
+              </NodeTransform>
+              <Extensions />
+            </Quad>
+          </Children>
+        </Group>
       </Children>
     </SceneNode>
   </SceneLayer>
@@ -66,7 +72,7 @@
   <Timelines SelectedTimelineId="9d616878-ffd7-4455-b33a-acc67018c281" Format="HD1080i50">
     <Timeline Name="In" Id="9d616878-ffd7-4455-b33a-acc67018c281" IsListening="False" IsLoop="True" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False">
       <ImageSequenceAnimationController IncrementValue="1" StartFrame="0" EndFrame="804" AnimatedProperty="Animation" ControllableId="fce10d8a-c10e-435d-9b1c-c24cc780f9ed" />
-      <ControlKeyFrame FrameNumber="25" Id="83977e23-4704-4a36-a9f8-567ff6b85c41" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="5bbc5c84-ce1b-4b44-a673-bd0b4788f777" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="85ca27c4-1c89-4188-9588-ab2a4783d0c8" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
+      <ControlKeyFrame FrameNumber="25" Id="d374ce30-67d3-4380-aecf-625daa735bfc" StateName="" StateValue="" StateType="Reader" OnAirMarker="None" ActionKeyframeId="5bbc5c84-ce1b-4b44-a673-bd0b4788f777" ActionKeyframeName="AlertActionKeyframe" TriggerType="AlertControlKeyFrame" TriggerInfoId="85ca27c4-1c89-4188-9588-ab2a4783d0c8" TriggerInfoName="TriggerInfo" TriggerInfoCustomData="" IndexControlKeyFrame="-1" />
     </Timeline>
     <Timeline Name="LBand_In" Id="fb093480-b143-42d0-be7a-35f1ec0b3b50" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />
     <Timeline Name="LBand_Out" Id="3c33e32a-0f99-4eca-bcfe-89c9606646bb" IsListening="True" IsLoop="False" IsSynchronizedPlay="False" MaxFrames="200" DefaultMarker="-1" PreviewMarker="-1" TakeOfflineOnTimelineEnd="False" UnloadSceneOnTimelineEnd="False" />

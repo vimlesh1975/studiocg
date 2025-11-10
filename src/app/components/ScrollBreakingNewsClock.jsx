@@ -43,11 +43,11 @@ const ScrollBreakingNewsClock = () => {
     }
 
     const setXScale = async (scene, yPosition) => {
-        await sendCommand({ command: `scene "${project}/${scene}" nodes set "Quad4" "Transform.Scale.X" "${yPosition}"` })
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "Group1" "Transform.Scale.X" "${yPosition}"` })
     }
 
     const setYScale = async (scene, yPosition) => {
-        await sendCommand({ command: `scene "${project}/${scene}" nodes set "Quad4" "Transform.Scale.Y" "${yPosition}"` })
+        await sendCommand({ command: `scene "${project}/${scene}" nodes set "Group1" "Transform.Scale.Y" "${yPosition}"` })
     }
 
 
