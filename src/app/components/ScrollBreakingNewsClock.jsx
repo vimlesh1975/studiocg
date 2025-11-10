@@ -18,6 +18,9 @@ const ScrollBreakingNewsClock = () => {
     const [tmrBraekingNews, setTmrBraekingNews] = useState(1000)
     const [headingBraekingNews, setHeadingBreakingNews] = useState('Breaking News')
 
+    const [yPositionscroll, setyPositionscroll] = useState(0.00);
+    const [yPositionbreakingNews, setyPositionbreakingNews] = useState(0.00);
+
 
     const [xPositionLogo, setXPositionLogo] = useState(0.00);
     const [yPositionLogo, setYPositionLogo] = useState(0.00);
@@ -219,6 +222,7 @@ const ScrollBreakingNewsClock = () => {
         sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material2" "Diffuse" ${parseInt(fontColor.replace("#", ""), 16)}` })
         sendCommand({ command: `scene "${project}/vimlesh_ticker" resources set "Material3" "Diffuse" ${parseInt(diskColor.replace("#", ""), 16)}` })
 
+        await setYPosition('vimlesh_ticker', yPositionscroll);
 
     }
 
@@ -258,6 +262,8 @@ const ScrollBreakingNewsClock = () => {
         sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_03" "SetText" "${headingBraekingNews}"` })
         sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_04" "SetText" "${headingBraekingNews}"` })
         sendCommand({ command: `scene "${project}/BreakingSmall_Ticker" nodes action "BreakingText_05" "SetText" "${headingBraekingNews}"` })
+
+        await setYPosition('BreakingSmall_Ticker', yPositionbreakingNews);
 
     }
 
@@ -370,6 +376,10 @@ const ScrollBreakingNewsClock = () => {
                                             handleFileChosen(e.target.files[0]);
                                         }}
                                     /></td>
+                                    <td>set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionscroll} onChange={async (e) => {
+                                        setyPositionscroll(e.target.value);
+                                        await setYPosition('vimlesh_ticker', e.target.value);
+                                    }} /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -508,6 +518,11 @@ const ScrollBreakingNewsClock = () => {
                                             handleFileChosen2(e.target.files[0]);
                                         }}
                                     /></td>
+                                    <td>set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionbreakingNews} onChange={async (e) => {
+                                        setyPositionbreakingNews(e.target.value);
+                                        await setYPosition('BreakingSmall_Ticker', e.target.value);
+                                    }} /></td>
+
                                 </tr>
                             </tbody>
                         </table>
