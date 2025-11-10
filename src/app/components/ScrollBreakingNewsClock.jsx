@@ -21,6 +21,8 @@ const ScrollBreakingNewsClock = () => {
     const [yPositionscroll, setyPositionscroll] = useState(0.00);
     const [yPositionbreakingNews, setyPositionbreakingNews] = useState(0.00);
 
+    const [yPositionDate, setYPositionDate] = useState(0.00);
+
 
     const [xPositionLogo, setXPositionLogo] = useState(0.00);
     const [yPositionLogo, setYPositionLogo] = useState(0.00);
@@ -51,6 +53,8 @@ const ScrollBreakingNewsClock = () => {
 
     const playClock = async () => {
         await playScene({ project, scene: 'vimlesh_clock1', slot: "7", exportValues: {} });
+        await setYPosition('vimlesh_clock1', yPositionDate);
+
     }
     const stopClock = () => {
         stopScene({ project, scene: 'vimlesh_clock1' });
@@ -450,7 +454,10 @@ const ScrollBreakingNewsClock = () => {
                             <h3>Date and Time</h3>
                             <button onClick={playClock}>Play</button>
                             <button onClick={stopClock}>Stop</button>
-
+                            set Y Position <input type="Number" style={{ width: 60 }} step={0.01} value={yPositionDate} onChange={async (e) => {
+                                setYPositionDate(e.target.value);
+                                await setYPosition('vimlesh_clock1', e.target.value);
+                            }} />
                         </div>
 
                         <div>
