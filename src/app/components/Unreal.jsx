@@ -60,6 +60,49 @@ export default function Unreal() {
         }
     }
 
+    // set actor location
+    async function setActorLocation() {
+        setResult("Setting actor location...");
+        try {
+            const res = await fetch("/api/unreal/remote/object/set-actor-location", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    objectPath: "/Game/Main.Main:PersistentLevel.SkyLight_1", // actor
+                    x: 100,
+                    y: 200,
+                    z: 300
+                })
+            });
+            const json = await res.json();
+            setResult(JSON.stringify(json, null, 2));
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
+
+
+
+    // set component location
+    async function setComponentrelativeLocation() {
+        setResult("Setting component location...");
+        try {
+            const res = await fetch("/api/unreal/remote/object/set-component-relative-location", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    componentPath: "/Game/Main.Main:PersistentLevel.SkyLight_1.SkyLightComponent0",
+                    x: 10,
+                    y: 20,
+                    z: 30
+                })
+            });
+            const json = await res.json();
+            setResult(JSON.stringify(json, null, 2));
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
 
     return (
         <div
@@ -107,6 +150,8 @@ export default function Unreal() {
 
             <button onClick={aa}> get property</button>
             <button onClick={getLocation} style={{ marginLeft: 8 }}>Get Location</button>
+            <button onClick={setActorLocation}>Set Actor Location</button>
+            <button onClick={setComponentrelativeLocation} style={{ marginLeft: 8 }}>Set Component Location</button>
 
         </div>
     );
