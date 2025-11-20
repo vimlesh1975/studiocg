@@ -12,12 +12,34 @@ export default function Unreal() {
             // Hardcoded API route
             const res = await fetch("/api/unreal/remote/info");
 
+
+
             const json = await res.json();
             setResult(JSON.stringify(json, null, 2));
         } catch (err) {
             setResult("Error: " + err.message);
         }
     }
+    async function aa() {
+        setResult("Loading...");
+
+        try {
+            // Hardcoded API route
+            // const res = await fetch("/api/unreal/remote/object/property");
+
+            const objectPath = "/Game/Main.Main:PersistentLevel.SkyLight_1";
+
+            const res = await fetch(
+                `/api/unreal/remote/object/property?objectPath=${encodeURIComponent(objectPath)}`
+            );
+
+            const json = await res.json();
+            setResult(JSON.stringify(json, null, 2));
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
+
 
     return (
         <div
@@ -62,6 +84,8 @@ export default function Unreal() {
                     whiteSpace: "pre-wrap",
                 }}
             />
+
+            <button onClick={aa}> get property</button>
         </div>
     );
 }
