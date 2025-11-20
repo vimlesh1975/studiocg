@@ -39,6 +39,26 @@ export default function Unreal() {
             setResult("Error: " + err.message);
         }
     }
+    // inside your Unreal component (app/remote/page.jsx or wherever)
+    async function getLocation() {
+        setResult("Loading location...");
+        try {
+            // if you want to pass a custom path, add ?objectPath=...; else API uses default
+            const res = await fetch("/api/unreal/remote/object/call-location");
+            const json = await res.json();
+            if (json.ok) {
+                if (json.location) {
+                    setResult(`Location: x=${json.location.x} y=${json.location.y} z=${json.location.z}\n\nRaw:\n${JSON.stringify(json.raw, null, 2)}`);
+                } else {
+                    setResult(`No parsed location found.\n\nRaw:\n${JSON.stringify(json.raw, null, 2)}`);
+                }
+            } else {
+                setResult("UE error: " + JSON.stringify(json));
+            }
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
 
 
     return (
@@ -86,6 +106,8 @@ export default function Unreal() {
             />
 
             <button onClick={aa}> get property</button>
+            <button onClick={getLocation} style={{ marginLeft: 8 }}>Get Location</button>
+
         </div>
     );
 }
