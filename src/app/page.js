@@ -14,6 +14,7 @@ import Nrcs2 from './Nrcs2'
 import MosServer from './MosServer'
 import VideoPlayer from './components/VideoPlayer';
 import NrcsScroll from './components/NrcsScroll';
+import Unreal from './components/Unreal';
 
 import dynamic from "next/dynamic";
 const Scroll = dynamic(() => import("./components/Scroll"), {
@@ -32,6 +33,7 @@ export default function Page() {
     >
       <TabList>
 
+        <Tab> Unreal</Tab>
         <Tab> Scroll BreakingNews Clock</Tab>
         <Tab> NRCS Scroll</Tab>
         <Tab> Video Player</Tab>
@@ -46,7 +48,9 @@ export default function Page() {
         <Tab> MosServer</Tab>
 
       </TabList>
-
+      <TabPanel>
+        < Unreal />
+      </TabPanel>
       <TabPanel>
         < ScrollBreakingNewsClock />
       </TabPanel>
