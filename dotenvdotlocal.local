@@ -18,6 +18,8 @@ R3_PATH=C:/Users/wtvision/Documents/R3.Space.Projects/projects
 # R3_PORT=9009 #   this is for program 
 R3_PORT=9010 #   this is for preview
 
+UNREAL_HOST=localhost
+UNREAL_PORT=30010
 
 # MOS_ID=SAMVAD
 MOS_ID=WTVISION.STUDIO.MOS
@@ -30,7 +32,7 @@ PROJECT_NAME=DD_TESTING
 credentialsfromenv=1
 
 DB_HOST=103.196.4.141
-# DB_HOST=localhost
+DB_HOST=192.168.15.112
 # DB_HOST=localhost
 DB_USER=itmaint
 DB_PASSWORD=itddkchn

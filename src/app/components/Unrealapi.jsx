@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function Unreal() {
+export default function Unrealapi() {
     const [result, setResult] = useState("Click the button to send request...");
 
     async function handleSend() {
