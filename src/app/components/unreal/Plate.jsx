@@ -12,7 +12,7 @@ const Plate = ({ objectPath }) => {
         console.log("Sending:", value)
 
         try {
-            await fetch("/api/unreal/remote/object/call", {
+            const res = await fetch("/api/unreal/remote/object/call", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -22,6 +22,10 @@ const Plate = ({ objectPath }) => {
                     GenerateTransaction: true,
                 }),
             });
+
+            const json = await res.json().catch(() => null);
+            console.log("API replied:", res.status, json);
+
         } catch (err) {
             console.error("Error:", err.message)
         }

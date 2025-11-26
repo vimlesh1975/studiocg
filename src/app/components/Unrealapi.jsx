@@ -60,6 +60,51 @@ export default function Unrealapi() {
         }
     }
 
+
+
+    async function IsEditorMode() {
+        setResult("Loading location...");
+        try {
+            const res = await fetch("/api/unreal/remote/object/call", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    objectPath: "/Script/Wingman.Default__V3FL",
+                    functionName: "IsEditorMode",
+                    Parameters: {},
+                    GenerateTransaction: true,
+                }),
+            });
+            // console.log(res)
+            const json = await res.json();
+            setResult(JSON.stringify(json));
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
+    async function FetchV3PathLabels() {
+        setResult("Loading location...");
+        try {
+            const res = await fetch("/api/unreal/remote/object/call", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    objectPath: "/Script/Wingman.Default__V3FL",
+                    functionName: "FetchV3PathLabels",
+                    Parameters: {},
+                    GenerateTransaction: true,
+                }),
+            });
+            // console.log(res)
+            const json = await res.json();
+            setResult(JSON.stringify(json));
+        } catch (err) {
+            setResult("Error: " + err.message);
+        }
+    }
+
+
+
     // set actor location
     async function setActorLocation() {
         setResult("Setting actor location...");
@@ -152,6 +197,8 @@ export default function Unrealapi() {
             <button onClick={getLocation} style={{ marginLeft: 8 }}>Get Location</button>
             <button onClick={setActorLocation}>Set Actor Location</button>
             <button onClick={setComponentrelativeLocation} style={{ marginLeft: 8 }}>Set Component Location</button>
+            <button onClick={FetchV3PathLabels} style={{ marginLeft: 8 }}>FetchV3PathLabels</button>
+            <button onClick={IsEditorMode} style={{ marginLeft: 8 }}>IsEditorMode</button>
 
         </div>
     );
