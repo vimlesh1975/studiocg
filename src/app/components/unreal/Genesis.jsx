@@ -125,22 +125,24 @@ const Genesis = () => {
     }
     return (<>
         <div>
-            <button onClick={openImage}>{imageFileName ?? "Open Image"}</button>
-            {imageFileHandle && <button onClick={setImage}>set Image</button>}
+            <h2>Giant LED</h2>
+            <div>Image
+                <button onClick={openImage}>{imageFileName ?? "Open Image"}</button>
+                {imageFileHandle && <button onClick={setImage}>set Image</button>}
+            </div>
+
+            <div>Video
+                <button onClick={openVideo}>{videoFileHandle ? videoFileName : "Open Video"}</button>
+                {videoFileHandle && <button onClick={cueVideo}>cue Video</button>}
+                {videoFileHandle && <button onClick={playVideo}>PLAY VIDEO</button>}
+            </div>
+
+            <div> Dcklink
+                <button onClick={() => setdecklink(7)}>Decklink 7</button>
+                <button onClick={() => setdecklink(8)}>Decklink 8</button>
+
+            </div>
         </div>
-
-        <div>
-            <button onClick={openVideo}>{videoFileHandle ? videoFileName : "Open Video"}</button>
-            {videoFileHandle && <button onClick={cueVideo}>cue Video</button>}
-            {videoFileHandle && <button onClick={playVideo}>PLAY VIDEO</button>}
-        </div>
-
-        <div>
-            <button onClick={() => setdecklink(7)}>Decklink 7</button>
-            <button onClick={() => setdecklink(8)}>Decklink 8</button>
-
-        </div>
-
     </>)
 }
 
