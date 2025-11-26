@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Plate from './Plate';
+import Cam from './Cam';
 
 const Unreal = () => {
     const [worldX, setWorldX] = useState(0)
@@ -108,6 +109,10 @@ const Unreal = () => {
                     Plate4  <Plate objectPath={"/Game/000_wTV_AR/Maps/UEDPIE_0_COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_0"} />
                 </div>
 
+            </div>
+
+            <div>
+                Cam1  <Cam objectPath={"/Game/000_wTV_AR/Maps/UEDPIE_0_COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_1"} />
             </div>
 
         </>
