@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Plate from './Plate';
 import Cam from './Cam';
 import Worldlocation from './Worldlocation';
+import Genesis from './Genesis';
 
 const intance = 9
 
@@ -37,7 +38,9 @@ const Unreal = () => {
                     Cam 3 <Cam objectPath={`/Game/000_wTV_AR/Maps/UEDPIE_0_COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_3`} />
                 </div>
             </div>
-
+            <div>
+                <Genesis />
+            </div>
 
 
         </>
