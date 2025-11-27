@@ -6,12 +6,19 @@ import Genesis from './Genesis';
 
 const intance = 1
 // const editmode="UEDPIE_0_"
-const editmode = ""
+// const editmode = ""
 
 const Unreal = () => {
+    const [editmode, setEditmode] = useState("");
 
     return (
         <>
+            {/* <div>
+            <input checked={editmode} type='checkbox' onChange={(e) => {
+                                                                    setEditmode("UEDPIE_0_")
+                                                                }
+                                                                } />
+        </div> */}
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
                     <Worldlocation objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.RWR__C_3`} />

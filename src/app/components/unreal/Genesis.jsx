@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const intance = 2
 // const editmode="UEDPIE_0_"
-const editmode = ""
+// const editmode = ""
 
 const Genesis = () => {
 
@@ -12,6 +12,7 @@ const Genesis = () => {
     const [videoFileName, setVideoFileName] = useState("");
     const [decklinkHandle, setDecklinkHandle] = useState(null);
     const [decklinkName, setDecklinkName] = useState("");
+    const [editmode, setEditmode] = useState("");
 
     async function callSet({ value, functionName, objectPath }) {
         console.log("Sending:", value)
