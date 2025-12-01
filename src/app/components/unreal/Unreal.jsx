@@ -12,15 +12,18 @@ const instance = 1
 const Unreal = () => {
     // const [editmode, setEditmode] = useState("UEDPIE_0_");
     const [editmode, setEditmode] = useState("");
+    const [editmodebool, setEditmodebool] = useState(false);
 
     return (
         <>
-            {/* <div>
-            <input checked={editmode} type='checkbox' onChange={(e) => {
-                                                                    setEditmode("UEDPIE_0_")
-                                                                }
-                                                                } />
-        </div> */}
+            <div>
+                Edit Mode:   <input checked={editmodebool} type='checkbox' onChange={(e) => {
+                    setEditmodebool(val => !val);
+                    setEditmode(e.target.checked ? "UEDPIE_0_" : "")
+                }
+                } />
+                {editmode}
+            </div>
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
                     <Worldlocation Heading={'World'} objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.RWR__C_3`} />
