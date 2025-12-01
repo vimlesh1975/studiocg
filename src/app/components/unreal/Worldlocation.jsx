@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const Worldlocation = ({ objectPath }) => {
+const Worldlocation = ({ objectPath, Heading }) => {
     const [worldX, setWorldX] = useState(0)
     const [worldY, setWorldY] = useState(0)
     const [worldZ, setWorldZ] = useState(0)
@@ -32,7 +32,7 @@ const Worldlocation = ({ objectPath }) => {
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
 
-                    World
+                    <h3> {Heading}</h3>
                     <div>
 
                         <label htmlFor="worldX">Set X:</label>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Plate = ({ objectPath }) => {
+const Plate = ({ Heading, objectPath }) => {
     const [worldX, setWorldX] = useState(0)
     const [worldY, setWorldY] = useState(0)
     const [worldZ, setWorldZ] = useState(0)
@@ -34,6 +34,7 @@ const Plate = ({ objectPath }) => {
     return (
         <>
             <div>
+                <h3> {Heading}</h3>
                 <label htmlFor="worldX">Set X:</label>
                 <input
                     style={{ width: "60px" }}

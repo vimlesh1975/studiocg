@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ChromaKey = ({ objectPath }) => {
+const ChromaKey = ({ Heading, objectPath }) => {
 
     const [BlackClip, setBlackClip] = useState(0)
     const [WhiteClip, setWhiteClip] = useState(100)
@@ -47,6 +47,8 @@ const ChromaKey = ({ objectPath }) => {
 
     return (<>
         <div>
+            <h3> {Heading}</h3>
+
             <label>Select Plate: </label>
 
             <select
