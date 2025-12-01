@@ -52,8 +52,8 @@ const Unreal = () => {
                     Cam 3 <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_3`} />
                 </div>
             </div>
-            <div>
-                <Genesis />
+            <div style={{ border: '1px solid red' }}>
+                Genesis<Genesis intance={intance + 1} editmode={editmode} />
             </div>
 
 

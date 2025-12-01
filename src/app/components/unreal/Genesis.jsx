@@ -1,18 +1,12 @@
 import React, { useState } from 'react'
 
-const intance = 2
-// const editmode="UEDPIE_0_"
-// const editmode = ""
-
-const Genesis = () => {
+const Genesis = ({ intance, editmode }) => {
 
     const [imageFileHandle, setImageFileHandle] = useState(null);
     const [imageFileName, setImageFileName] = useState(null);
     const [videoFileHandle, setVideoFileHandle] = useState(null);
     const [videoFileName, setVideoFileName] = useState("");
-    const [decklinkHandle, setDecklinkHandle] = useState(null);
-    const [decklinkName, setDecklinkName] = useState("");
-    const [editmode, setEditmode] = useState("");
+    const [loop, setLoop] = useState(true);
 
     async function callSet({ value, functionName, objectPath }) {
         console.log("Sending:", value)
@@ -24,7 +18,7 @@ const Genesis = () => {
                 body: JSON.stringify({
                     objectPath,
                     functionName,
-                    Parameters: { "FILE": { "FilePath": "c:/casparcg/_media/" + value } },
+                    Parameters: (typeof value == "boolean") ? { "bool": value } : { "FILE": { "FilePath": "c:/casparcg/_media/" + value } },
                     GenerateTransaction: true,
                 }),
             });
@@ -128,22 +122,26 @@ const Genesis = () => {
     }
     return (<>
         <div>
-            <h2>Giant LED</h2>
+            Ginat LED:
             <div>Image
                 <button onClick={openImage}>{imageFileName ?? "Open Image"}</button>
                 {imageFileHandle && <button onClick={setImage}>set Image</button>}
             </div>
-
             <div>Video
                 <button onClick={openVideo}>{videoFileHandle ? videoFileName : "Open Video"}</button>
                 {videoFileHandle && <button onClick={cueVideo}>cue Video</button>}
                 {videoFileHandle && <button onClick={playVideo}>PLAY VIDEO</button>}
-            </div>
+                {videoFileHandle && <input type='checkbox' value={loop} onChange={() => {
+                    setLoop(val => !val);
+                    callSet({ value: loop, functionName: "Loop", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
 
+                }} />}
+
+
+            </div>
             <div> Dcklink
                 <button onClick={() => setdecklink(7)}>Decklink 7</button>
                 <button onClick={() => setdecklink(8)}>Decklink 8</button>
-
             </div>
         </div>
     </>)
