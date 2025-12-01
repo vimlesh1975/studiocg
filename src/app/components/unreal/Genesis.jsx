@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Genesis = ({ intance, editmode }) => {
+const Genesis = ({ instance, editmode }) => {
 
     const [imageFileHandle, setImageFileHandle] = useState(null);
     const [imageFileName, setImageFileName] = useState(null);
@@ -52,7 +52,7 @@ const Genesis = ({ intance, editmode }) => {
 
             setImageFileHandle(handle)
             setImageFileName(handle.name)
-            callSet({ value: handle.name, functionName: "SETIMAGEFILE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+            callSet({ value: handle.name, functionName: "SETIMAGEFILE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
 
         } catch (err) {
             // User clicked cancel
@@ -67,7 +67,7 @@ const Genesis = ({ intance, editmode }) => {
     }
 
     const setImage = async () => {
-        callSet({ value: imageFileName, functionName: "SETIMAGE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+        callSet({ value: imageFileName, functionName: "SETIMAGE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
     }
 
 
@@ -93,7 +93,7 @@ const Genesis = ({ intance, editmode }) => {
 
             setVideoFileHandle(handle)
             setVideoFileName(handle.name)
-            callSet({ value: handle.name, functionName: "SETVIDEOFILE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+            callSet({ value: handle.name, functionName: "SETVIDEOFILE", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
 
         } catch (err) {
             // User clicked cancel
@@ -108,17 +108,17 @@ const Genesis = ({ intance, editmode }) => {
     }
 
     const cueVideo = async () => {
-        callSet({ value: '', functionName: "STANDBY_VIDEO", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+        callSet({ value: '', functionName: "STANDBY_VIDEO", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
     }
 
 
 
     const playVideo = async () => {
-        callSet({ value: '', functionName: "PLAYVIDEO", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+        callSet({ value: '', functionName: "PLAYVIDEO", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
     }
 
     const setdecklink = (val) => {
-        callSet({ value: '', functionName: `SET INPUT PIN ${val}`, objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+        callSet({ value: '', functionName: `SET INPUT PIN ${val}`, objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
     }
     return (<>
         <div>
@@ -133,7 +133,7 @@ const Genesis = ({ intance, editmode }) => {
                 {videoFileHandle && <button onClick={playVideo}>PLAY VIDEO</button>}
                 {videoFileHandle && <input type='checkbox' value={loop} onChange={() => {
                     setLoop(val => !val);
-                    callSet({ value: loop, functionName: "Loop", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${intance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
+                    callSet({ value: loop, functionName: "Loop", objectPath: `/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance}.GENESIS:PersistentLevel.StaticMeshActor_392` })
 
                 }} />}
 

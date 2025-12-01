@@ -5,7 +5,7 @@ import Worldlocation from './Worldlocation';
 import Genesis from './Genesis';
 import ChromaKey from './ChromaKey';
 
-const intance = 1
+const instance = 1
 // const editmode="UEDPIE_0_"
 // const editmode = ""
 
@@ -23,37 +23,37 @@ const Unreal = () => {
         </div> */}
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
-                    <Worldlocation objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.RWR__C_3`} />
+                    <Worldlocation objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.RWR__C_3`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Plate1  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_1`} />
+                    Plate1  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_1`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Plate2 <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_2`} />
+                    Plate2 <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_2`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Plate3  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_3`} />
+                    Plate3  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_3`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Plate4  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_0`} />
+                    Plate4  <Plate objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_0`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    ChromaKey:  <ChromaKey objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_`} />
+                    ChromaKey:  <ChromaKey objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_`} />
                 </div>
             </div>
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
-                    Cam 1  <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_1`} />
+                    Cam 1  <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_1`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Cam 2  <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_2`} />
+                    Cam 2  <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_2`} />
                 </div>
                 <div style={{ border: '1px solid red' }}>
-                    Cam 3 <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${intance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_3`} />
+                    Cam 3 <Cam objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.Trackedpawn_C_3`} />
                 </div>
             </div>
             <div style={{ border: '1px solid red' }}>
-                Genesis<Genesis intance={intance + 1} editmode={editmode} />
+                Genesis<Genesis instance={instance + 1} editmode={editmode} />
             </div>
 
 
