@@ -5,6 +5,9 @@ import Worldlocation from './Worldlocation';
 import Genesis from './Genesis';
 import ChromaKey from './ChromaKey';
 import VerticalScreen from './VerticalScreen';
+import TableSwitcher from './TableSwitcher';
+
+
 
 
 
@@ -205,6 +208,10 @@ const Unreal = () => {
                     <VerticalScreen Heading={4} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1287761033`} />
                     <VerticalScreen Heading={5} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1325731037`} />
                     <VerticalScreen Heading={6} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1344537039`} />
+                </div>
+
+                <div style={{ border: '1px solid red' }}>
+                    < TableSwitcher Heading={'Table_Switcher'} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.DD_Table_Switcher_C_3`} />
                 </div>
             </div>
 
