@@ -137,7 +137,7 @@ const Unreal = () => {
             const str = aa[0].value;
             const match = str.match(/_LevelInstance_(\d+)/);
             const number = match ? match[1] : null;
-            setInstance(number)
+            setInstance(Number(number))
         } catch (err) {
         }
     }
