@@ -170,19 +170,6 @@ const Unreal = () => {
                     <ChromaKey Heading={'ChromaKey'} objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_`} />
                 </div>
 
-                <div style={{ border: '1px solid red' }}>
-                    <h1>Screens</h1>
-                    1: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
-                    2: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_402`} />
-                    3: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
-                    4: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
-                    5: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1325731037`} />
-                    6: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1344537039`} />
-
-
-
-
-                </div>
             </div>
             <div style={{ display: 'flex' }}>
                 <div style={{ border: '1px solid red' }}>
@@ -208,6 +195,16 @@ const Unreal = () => {
 
                 <div style={{ border: '1px solid red' }}>
                     <Genesis Heading={'Right LED'} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8E855F02_1924601255`} />
+                </div>
+
+                <div style={{ border: '1px solid red' }}>
+                    <h3>Vertical Screens</h3>
+                    <VerticalScreen Heading={1} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
+                    <VerticalScreen Heading={2} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_402`} />
+                    <VerticalScreen Heading={3} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1261399031`} />
+                    <VerticalScreen Heading={4} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1287761033`} />
+                    <VerticalScreen Heading={5} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1325731037`} />
+                    <VerticalScreen Heading={6} objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1344537039`} />
                 </div>
             </div>
 

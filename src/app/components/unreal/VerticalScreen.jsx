@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const VerticalScreen = ({ objectPath }) => {
+const VerticalScreen = ({ Heading, objectPath }) => {
     const [imageFileHandle, setImageFileHandle] = useState(null);
     const [imageFileName, setImageFileName] = useState(null);
 
@@ -69,7 +69,7 @@ const VerticalScreen = ({ objectPath }) => {
 
     return (<>
         <div>
-            <div>Image
+            <div>Screen {Heading}
                 <button onClick={openImage}>{imageFileName ?? "Open Image"}</button>
                 {imageFileHandle && <button onClick={setImage}>set Image</button>}
             </div>
