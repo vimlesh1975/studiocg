@@ -15,6 +15,33 @@ const Unreal = () => {
     const [editmodebool, setEditmodebool] = useState(false);
     const [labels, setLabels] = useState(null);
 
+    const [selectedValue, setSelectedValue] = useState('')
+
+    const [functions, setFunctions] = useState([]);
+    const [selectedfunction, setSelectedfunction] = useState('');
+
+    async function describe({ objectPath }) {
+        // setResult("Loading...");
+
+        try {
+            // const objectPath =
+            //     "/Game/000_wTV_AR/Maps/COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.Cone_0";
+
+            const res = await fetch(
+                `/api/unreal/remote/object/describe?objectPath=${encodeURIComponent(
+                    objectPath
+                )}`
+            );
+
+            const json = await res.json();
+            // console.log(json.data.Functions);
+            setFunctions(json.data.Functions)
+            // console.log((JSON.stringify(json)));
+        } catch (err) {
+            // setResult("Error: " + err.message);
+        }
+    }
+
 
     function LabelCombo({ returnValue }) {
         // Build options only once
@@ -27,26 +54,47 @@ const Unreal = () => {
             [returnValue]
         );
 
-        // Default selected: first option whose label is "PLATE1"
-        const defaultOption =
-            options.find(o => o.label === "PLATE1") || options[0];
+        // // Default selected: first option whose label is "PLATE1"
+        // const defaultOption =
+        //     options.find(o => o.label === "PLATE1") || options[0];
 
-        const [selectedValue, setSelectedValue] = useState(
-            defaultOption ? defaultOption.value : ""
-        );
+        // const [selectedValue, setSelectedValue] = useState(
+        //     defaultOption ? defaultOption.value : ""
+        // );
 
-        return (
+        return (<>
             <select
                 value={selectedValue}
-                onChange={e => setSelectedValue(e.target.value)}
+                onChange={(e) => {
+                    setSelectedValue(e.target.value);
+                    // describe({ objectPath: "/Game/000_wTV_AR/Maps/COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.Cone_0" })
+                    describe({ objectPath: e.target.value })
+
+                }}
             >
-                {options.map(opt => (
-                    <option key={opt.value} value={opt.value}>
+                {options.map((opt, i) => (
+                    <option key={i} value={opt.value}>
                         {opt.label}
                     </option>
                 ))}
             </select>
-        );
+            {selectedValue}
+
+            <select
+                value={selectedfunction}
+                onChange={(e) => {
+                    setSelectedfunction(e.target.value);
+                }}
+            >
+                {functions.map((opt, i) => (
+                    <option key={i} value={opt.Name}>
+                        {opt.Name}
+                    </option>
+                ))}
+            </select>
+            {/* {selectedfunction} */}
+
+        </>);
     }
 
 
@@ -97,28 +145,13 @@ const Unreal = () => {
                                 GenerateTransaction: true,
                             }),
                         });
-                        // console.log(res)
                         const json = await res.json();
-                        console.log(json.unreal.ReturnValue)
+                        // console.log(json.unreal.ReturnValue)
 
-                        // `res` is the JSON you showed
                         const returnValue = json.unreal.ReturnValue;
                         setLabels(returnValue)
 
-                        // All labels as an array: ["UWR_Cone", "COMP1", "PLATE1", ...]
-                        const labels = Object.values(returnValue);
-
-                        // If you also want to keep the UObject path with each label:
-                        const options = Object.entries(returnValue).map(([path, label]) => ({
-                            path,   // key
-                            label,  // value
-                        }));
-
-
-
-                        // setResult(JSON.stringify(json));
                     } catch (err) {
-                        // setResult("Error: " + err.message);
                     }
                 }}>Get Labels and Paths</button>
 
