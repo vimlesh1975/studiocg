@@ -77,7 +77,7 @@ const Worldlocation = ({ objectPath, Heading }) => {
                     </div>
 
                     <div>
-                        <label htmlFor="worldrotZ">Set Z:</label>
+                        <label htmlFor="worldrotZ">Set ROT Z:</label>
                         <input
                             style={{ width: "60px" }}
                             type="number"

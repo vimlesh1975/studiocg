@@ -4,6 +4,9 @@ import Cam from './Cam';
 import Worldlocation from './Worldlocation';
 import Genesis from './Genesis';
 import ChromaKey from './ChromaKey';
+import VerticalScreen from './VerticalScreen';
+
+
 
 // const instance = 3
 // const editmode="UEDPIE_0_"
@@ -165,6 +168,20 @@ const Unreal = () => {
                 </div>
                 <div style={{ border: '1px solid red' }}>
                     <ChromaKey Heading={'ChromaKey'} objectPath={`/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.SelectiveVisibilityInputFeedPlane_C_`} />
+                </div>
+
+                <div style={{ border: '1px solid red' }}>
+                    <h1>Screens</h1>
+                    1: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
+                    2: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_402`} />
+                    3: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
+                    4: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1234367029`} />
+                    5: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1325731037`} />
+                    6: <VerticalScreen objectPath={`/Game/DD_STUDIO/MAPS/${editmode}GENESIS_LevelInstance_${instance + 1}.GENESIS:PersistentLevel.StaticMeshActor_UAID_D843AECFCA8ED15402_1344537039`} />
+
+
+
+
                 </div>
             </div>
             <div style={{ display: 'flex' }}>
