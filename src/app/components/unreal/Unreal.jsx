@@ -5,7 +5,7 @@ import Worldlocation from './Worldlocation';
 import Genesis from './Genesis';
 import ChromaKey from './ChromaKey';
 
-const instance = 1
+const instance = 3
 // const editmode="UEDPIE_0_"
 // const editmode = ""
 
@@ -21,6 +21,7 @@ const Unreal = () => {
     const [selectedfunction, setSelectedfunction] = useState('');
 
     async function describe({ objectPath }) {
+        console.log(objectPath)
         // setResult("Loading...");
 
         try {
@@ -67,8 +68,9 @@ const Unreal = () => {
                 value={selectedValue}
                 onChange={(e) => {
                     setSelectedValue(e.target.value);
-                    // describe({ objectPath: "/Game/000_wTV_AR/Maps/COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.Cone_0" })
-                    describe({ objectPath: e.target.value })
+                    // describe({ objectPath: "/Game/000_wTV_AR/Maps/UEDPIE_0_COMPOSITING_LEVEL_LevelInstance_1.COMPOSITING_LEVEL:PersistentLevel.Cone_0" })
+                    // describe({ objectPath: `/Game/000_wTV_AR/Maps/${editmode}COMPOSITING_LEVEL_LevelInstance_${instance}.COMPOSITING_LEVEL:PersistentLevel.Cone_0` })
+                    describe({ objectPath: '/Game/000_wTV_AR/Maps/' + editmode + (e.target.value).split('/Game/000_wTV_AR/Maps/')[1] })
 
                 }}
             >
@@ -97,19 +99,41 @@ const Unreal = () => {
         </>);
     }
 
+    const initialise = async () => {
+        try {
+            const res = await fetch("/api/unreal/remote/object/call", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    objectPath: "/Script/Wingman.Default__V3FL",
+                    functionName: "IsEditorMode",
+                    Parameters: {},
+                    GenerateTransaction: true,
+                }),
+            });
+            // console.log(res)
+            const json = await res.json();
+            console.log(json.unreal.ReturnValue)
+            setEditmodebool(json.unreal.ReturnValue)
+            setEditmode(json.unreal.ReturnValue ? "UEDPIE_0_" : "")
 
+            // setResult(JSON.stringify(json));
+        } catch (err) {
+            // setResult("Error: " + err.message);
+        }
+    }
 
     return (
         <>
             <div>
-                Edit Mode:   <input checked={editmodebool} type='checkbox' onChange={(e) => {
+                {/* Edit Mode:   <input checked={editmodebool} type='checkbox' onChange={(e) => {
                     setEditmodebool(val => !val);
                     setEditmode(e.target.checked ? "UEDPIE_0_" : "")
                 }
-                } />
+                } /> */}
                 {editmode}
 
-                <button onClick={async () => {
+                {/* <button onClick={async () => {
                     try {
                         const res = await fetch("/api/unreal/remote/object/call", {
                             method: "POST",
@@ -131,7 +155,8 @@ const Unreal = () => {
                     } catch (err) {
                         // setResult("Error: " + err.message);
                     }
-                }}>Get Mode</button>
+                }}>Get Mode</button> */}
+                <button onClick={initialise}>Initialise</button>
 
                 <button onClick={async () => {
                     try {
