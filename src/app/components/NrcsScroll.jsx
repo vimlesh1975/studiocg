@@ -278,7 +278,8 @@ const NrcsScroll = () => {
                 }),
             });
             const result = await res.json()
-            scripts = result.data.map(row => row.Script);
+            // scripts = result.data.map(row => row.Script);
+            scripts = result.data.map(row => row.Script.split("$$$$").map(s => s.replace(/\s+/g, " ").trim()));
             if (scripts != []) {
                 const exportValues = {
                     vSpeed: `${horizontalSpeed}`,
