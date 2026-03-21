@@ -9,7 +9,6 @@ import { playwithtimer, playScene, stopScene, sendCommand } from '../lib/common'
 
 import { generalFileName, saveFile } from './common'
 const project = "ddnrcs";
-const intervalGeneral = 1; //seconds
 const ScrollBreakingNewsClock = () => {
 
     const [horizontalSpeed, setHorizontalSpeed] = useState(0.015);
@@ -218,7 +217,7 @@ const ScrollBreakingNewsClock = () => {
             tText: '',
         }
         const params = [
-            { interval_seconds: intervalGeneral },
+            { interval_seconds: 1 },
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })

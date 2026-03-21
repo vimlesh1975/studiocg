@@ -11,7 +11,7 @@ import { generalFileName, saveFile } from './common'
 
 const project = "ddnrcs";
 
-const intervalGeneral = 1; //seconds
+const intervalGeneral = 5; //seconds
 
 const Scroll = () => {
 
@@ -93,7 +93,7 @@ const Scroll = () => {
             tText: '',
         }
         const params = [
-            { interval_seconds: intervalGeneral },
+            { interval_seconds: 1 },
             { messages: scripts }
         ]
         await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })

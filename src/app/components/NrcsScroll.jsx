@@ -289,7 +289,7 @@ const NrcsScroll = () => {
                     tText: '',
                 }
                 const params = [
-                    { interval_seconds: intervalGeneral },
+                    { interval_seconds: 1 },
                     { messages: scripts }
                 ]
                 await playwithtimer({ project, scene: "vimlesh_ticker", timeline: "In", slot: "1", exportValues, functionName: "play_text_sequence", params })
