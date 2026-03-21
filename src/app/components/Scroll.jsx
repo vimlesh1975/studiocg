@@ -11,7 +11,7 @@ import { generalFileName, saveFile } from './common'
 
 const project = "ddnrcs";
 
-const intervalGeneral = 5; //seconds
+const intervalGeneral = 1; //seconds
 
 const Scroll = () => {
 
