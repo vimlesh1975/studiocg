@@ -712,13 +712,31 @@ const Nrcs2 = () => {
     };
 
     const senToSanvad = async () => {
-        const res = await fetch("/api/tcp/allsamvad", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
-        });
+        try {
+            setLoading(true);
+
+            const res = await fetch("/api/tcp/allsamvad", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Error sending to Samvad.");
+            }
+
+            console.log(data);
+            alert(data.message);
+        } catch (err) {
+            alert(err.message || "Error sending to Samvad.");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     }
 
     const senToWtVision = async () => {
@@ -761,7 +779,12 @@ const Nrcs2 = () => {
                                 value={selectedDate}
                                 onChange={handleDateChange}
                             />
-                            <button onClick={senToSanvad}>to Samvad</button>
+                            <button
+                                onClick={senToSanvad}
+                                disabled={loading}
+                            >
+                                to Samvad
+                            </button>
 
                             <button
                                 onClick={senToWtVision}
