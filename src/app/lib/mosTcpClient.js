@@ -1,7 +1,56 @@
 import net from "net";
+import { fromUTF16BE } from "./common.js";
 
 let client = null;
 let connectingPromise = null;
+let latestMosMessage = null;
+const mosMessageHistory = [];
+const messageListeners = new Set();
+
+const rememberMosMessage = (xml) => {
+  latestMosMessage = {
+    xml,
+    receivedAt: new Date().toISOString(),
+  };
+  mosMessageHistory.push(latestMosMessage);
+
+  if (mosMessageHistory.length > 50) {
+    mosMessageHistory.shift();
+  }
+
+  for (const listener of messageListeners) {
+    listener(latestMosMessage);
+  }
+};
+
+export function getLatestMosMessage() {
+  return latestMosMessage;
+}
+
+export function getMosMessageHistory() {
+  return [...mosMessageHistory];
+}
+
+export function waitForMosMessage(filter = () => true, timeoutMs = 1500) {
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => {
+      messageListeners.delete(listener);
+      resolve(null);
+    }, timeoutMs);
+
+    const listener = (message) => {
+      if (!filter(message)) {
+        return;
+      }
+
+      clearTimeout(timer);
+      messageListeners.delete(listener);
+      resolve(message);
+    };
+
+    messageListeners.add(listener);
+  });
+}
 
 export async function getMosTcpClient() {
   const mosServerHost = process.env.MOS_IP;
@@ -32,7 +81,9 @@ export async function getMosTcpClient() {
     });
 
     client.on("data", (data) => {
-      console.log("MOS replied:", data.toString());
+      const xml = fromUTF16BE(data).trim();
+      rememberMosMessage(xml);
+      console.log("MOS replied:", xml);
     });
 
     client.on("error", (err) => {

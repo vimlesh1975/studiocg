@@ -56,7 +56,13 @@ export async function POST(req) {
   let connection;
 
   try {
-    const { selectedDate, selectedRunOrderTitle } = await req.json();
+    const {
+      selectedDate,
+      selectedRunOrderTitle,
+      sendMode,
+      currentStoryID,
+      currentStoryNum,
+    } = await req.json();
 
     connection = await mysql.createConnection(config);
 
@@ -78,11 +84,45 @@ export async function POST(req) {
       return NextResponse.json({ message: 'No rows found.' });
     }
 
+    const stories = rows.map((story, index) => ({
+      story,
+      storyNum: index + 1,
+    }));
+    const sendBelowCurrent = sendMode === 'belowCurrent';
+    const currentStoryIndex = stories.findIndex(({ story, storyNum }) => {
+      if (currentStoryNum && Number(storyNum) === Number(currentStoryNum)) {
+        return true;
+      }
+
+      return currentStoryID && String(story.ScriptID) === String(currentStoryID);
+    });
+    const storiesToSend = sendBelowCurrent
+      ? stories.filter((_, index) => index > currentStoryIndex)
+      : stories;
+
+    if (sendBelowCurrent && currentStoryIndex === -1) {
+      return NextResponse.json({
+        message: 'Current story was not found in this run order. Nothing sent to Samvad.',
+        sentCount: 0,
+      });
+    }
+
+    if (storiesToSend.length === 0) {
+      return NextResponse.json({
+        message: sendBelowCurrent
+          ? 'No stories below the current Samvad story. Nothing sent.'
+          : 'No stories to send.',
+        sentCount: 0,
+      });
+    }
+
     const client = await getMosTcpClient();
     client.setNoDelay(true);
 
     const roID = `${process.env.MOS_DEVICE_ID}_RO`;
     const roSlug = `${selectedRunOrderTitle}_${selectedDate}`;
+
+    const messagePrefix = Date.now();
 
     let roReplace = `
   <roReplace>
@@ -91,13 +131,13 @@ export async function POST(req) {
     <roTrigger>MANUAL</roTrigger>
 `;
 
-    rows.forEach((story, i) => {
-      const storyID = story.ScriptID || `STORY${i + 1}`;
-      const storySlug = story.SlugName || `Story ${i + 1}`;
+    stories.forEach(({ story, storyNum }) => {
+      const storyID = story.ScriptID || `STORY${storyNum}`;
+      const storySlug = story.SlugName || `Story ${storyNum}`;
       roReplace += `    <story>
       <storyID>${escapeXml(storyID)}</storyID>
       <storySlug>${escapeXml(storySlug)}</storySlug>
-      <storyNum>${i + 1}</storyNum>
+      <storyNum>${storyNum}</storyNum>
     </story>
 `;
     });
@@ -105,14 +145,13 @@ export async function POST(req) {
     roReplace += `  </roReplace>
 `;
 
-    const messagePrefix = Date.now();
     await writeMos(client, roReplace, `${messagePrefix}0`);
     await delay(sendDelayMs);
 
-    for (let i = 0; i < rows.length; i++) {
-      const story = rows[i];
-      const storyID = story.ScriptID || `STORY${i + 1}`;
-      const storySlug = story.SlugName || `Story ${i + 1}`;
+    for (let i = 0; i < storiesToSend.length; i++) {
+      const { story, storyNum } = storiesToSend[i];
+      const storyID = story.ScriptID || `STORY${storyNum}`;
+      const storySlug = story.SlugName || `Story ${storyNum}`;
       const storyBody = stripHtml(story.Script);
 
       const roStorySend = `
@@ -120,7 +159,7 @@ export async function POST(req) {
     <roID>${escapeXml(roID)}</roID>
     <storyID>${escapeXml(storyID)}</storyID>
     <storySlug>${escapeXml(storySlug)}</storySlug>
-    <storyNum>${i + 1}</storyNum>
+    <storyNum>${storyNum}</storyNum>
     <storyBody>${escapeXml(storyBody)}</storyBody>
   </roStorySend>
 `;
@@ -130,7 +169,11 @@ export async function POST(req) {
     }
 
     return NextResponse.json({
-      message: `Samvad updated: roReplace and ${rows.length} roStorySend messages sent for roID ${roSlug}`,
+      message: sendBelowCurrent
+        ? `Samvad updated: roReplace and ${storiesToSend.length} stories below current story sent for roID ${roSlug}`
+        : `Samvad updated: roReplace and ${storiesToSend.length} roStorySend messages sent for roID ${roSlug}`,
+      sentCount: storiesToSend.length,
+      mode: sendBelowCurrent ? 'belowCurrent' : 'full',
     });
   } catch (err) {
     console.error(err);
