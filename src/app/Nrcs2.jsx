@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import {
     getFormattedDatetimeNumber,
     addressmysql,
@@ -41,6 +41,8 @@ const Nrcs2 = () => {
     const [live, setLive] = useState(false);
 
     const [loading, setLoading] = useState(false);  // Initialize loading state to true
+    const [autoSendToSamvad, setAutoSendToSamvad] = useState(false);
+    const samvadSendingRef = useRef(false);
     // const [isLoading, setIsLoading] = useState(false);
 
     // const [flashMessage, setFlashMessage] = useState("");
@@ -711,9 +713,16 @@ const Nrcs2 = () => {
         }
     };
 
-    const senToSanvad = async () => {
+    const senToSanvad = useCallback(async ({ silent = false } = {}) => {
+        if (samvadSendingRef.current) {
+            return;
+        }
+
         try {
-            setLoading(true);
+            samvadSendingRef.current = true;
+            if (!silent) {
+                setLoading(true);
+            }
 
             const res = await fetch("/api/tcp/allsamvad", {
                 method: 'POST',
@@ -730,14 +739,33 @@ const Nrcs2 = () => {
             }
 
             console.log(data);
-            alert(data.message);
+            if (!silent) {
+                alert(data.message);
+            }
         } catch (err) {
-            alert(err.message || "Error sending to Samvad.");
+            if (!silent) {
+                alert(err.message || "Error sending to Samvad.");
+            }
             console.error(err);
         } finally {
-            setLoading(false);
+            samvadSendingRef.current = false;
+            if (!silent) {
+                setLoading(false);
+            }
         }
-    }
+    }, [selectedDate, selectedRunOrderTitle]);
+
+    useEffect(() => {
+        if (!autoSendToSamvad) {
+            return;
+        }
+
+        const intervalId = setInterval(() => {
+            senToSanvad({ silent: true });
+        }, 10000);
+
+        return () => clearInterval(intervalId);
+    }, [autoSendToSamvad, senToSanvad]);
 
     const senToWtVision = async () => {
         try {
@@ -785,6 +813,14 @@ const Nrcs2 = () => {
                             >
                                 to Samvad
                             </button>
+                            <label style={{ marginLeft: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={autoSendToSamvad}
+                                    onChange={(e) => setAutoSendToSamvad(e.target.checked)}
+                                />
+                                Auto 10 sec
+                            </label>
 
                             <button
                                 onClick={senToWtVision}
