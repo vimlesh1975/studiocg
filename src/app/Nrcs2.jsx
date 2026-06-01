@@ -42,7 +42,6 @@ const Nrcs2 = () => {
 
     const [loading, setLoading] = useState(false);  // Initialize loading state to true
     const [autoSendToSamvad, setAutoSendToSamvad] = useState(false);
-    const [currentSamvadStory, setCurrentSamvadStory] = useState(null);
     const samvadSendingRef = useRef(false);
     // const [isLoading, setIsLoading] = useState(false);
 
@@ -762,56 +761,18 @@ const Nrcs2 = () => {
         }
     }, [selectedDate, selectedRunOrderTitle]);
 
-    const getCurrentSamvadStory = useCallback(async ({ silent = false } = {}) => {
-        try {
-            const res = await fetch("/api/tcp/currentStory", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ selectedDate, selectedRunOrderTitle })
-            });
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.error || "Error getting current Samvad story.");
-            }
-
-            console.log(data);
-            setCurrentSamvadStory(data.story);
-            if (!silent) {
-                alert(data.story?.storySlug || data.story?.storyID || data.message);
-            }
-            return data.story;
-        } catch (err) {
-            if (!silent) {
-                alert(err.message || "Error getting current Samvad story.");
-            }
-            console.error(err);
-            return null;
-        }
-    }, [selectedDate, selectedRunOrderTitle]);
-
     useEffect(() => {
         if (!autoSendToSamvad) {
             return;
         }
 
-        const sendAndReadStory = async () => {
-            const story = await getCurrentSamvadStory({ silent: true });
-            if (!story) {
-                console.warn("Auto Samvad skipped because current story was not found.");
-                return;
-            }
-
-            await senToSanvad({ silent: true, belowCurrentStory: story });
-        };
-
-        sendAndReadStory();
-        const intervalId = setInterval(sendAndReadStory, 10000);
+        senToSanvad({ silent: true });
+        const intervalId = setInterval(() => {
+            senToSanvad({ silent: true });
+        }, 5000);
 
         return () => clearInterval(intervalId);
-    }, [autoSendToSamvad, getCurrentSamvadStory, senToSanvad]);
+    }, [autoSendToSamvad, senToSanvad]);
 
     const senToWtVision = async () => {
         try {
@@ -865,20 +826,8 @@ const Nrcs2 = () => {
                                     checked={autoSendToSamvad}
                                     onChange={(e) => setAutoSendToSamvad(e.target.checked)}
                                 />
-                                Auto 10 sec
+                                Auto 5 sec
                             </label>
-                            <button
-                                onClick={getCurrentSamvadStory}
-                                style={{ marginLeft: 8 }}
-                            >
-                                Current Story
-                            </button>
-                            {currentSamvadStory && (
-                                <span style={{ marginLeft: 8 }}>
-                                    Story {currentSamvadStory.storyNum || currentSamvadStory.storyID}: {currentSamvadStory.storySlug || currentSamvadStory.storyID}
-                                </span>
-                            )}
-
                             <button
                                 onClick={senToWtVision}
                                 disabled={loading}
