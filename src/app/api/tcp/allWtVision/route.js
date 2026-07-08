@@ -6,6 +6,32 @@ import { config } from '../../../lib/db.js';
 
 import { MongoClient } from 'mongodb';
 
+const sendDelayMs = Number(process.env.WTVISION_SEND_DELAY_MS || 150);
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const writeMos = async (client, xmlString) => {
+  const payload = toUTF16BE(compressed(xmlString));
+  await new Promise((resolve, reject) => {
+    const onError = (err) => {
+      client.off('drain', onDrain);
+      reject(err);
+    };
+    const onDrain = () => {
+      client.off('error', onError);
+      resolve();
+    };
+    client.once('error', onError);
+    const didFlush = client.write(payload, () => {
+      client.off('error', onError);
+      client.off('drain', onDrain);
+      resolve();
+    });
+    if (!didFlush) {
+      client.once('drain', onDrain);
+    }
+  });
+};
+
 export async function POST(req) {
   let MongoClient1;
 
@@ -64,7 +90,7 @@ export async function POST(req) {
 
     const roID = `${process.env.MOS_DEVICE_ID}_RO`;
 
-    let storiesXml = "";
+    let sentCount = 0;
 
     for (let i = 0; i < rows.length; i++) {
       const story = rows[i];
@@ -145,11 +171,7 @@ ${tagsXml}
           ${itemsXml}
         </story>`.trim();
 
-      storiesXml += `\n${storyXml}`;
-    }
-
-    // Build single MOS message
-    const mosXml = `
+      const mosXml = `
 <mos>
   <ncsID>DDNRCS</ncsID>
   <mosID>WTVISION.STUDIO.MOS</mosID>
@@ -159,14 +181,17 @@ ${tagsXml}
       <storyID/>
     </element_target>
     <element_source>
-${storiesXml}
+${storyXml}
     </element_source>
   </roElementAction>
 </mos>`.trim();
 
-    client.write(toUTF16BE(compressed(mosXml)));
+      await writeMos(client, mosXml);
+      await delay(sendDelayMs);
+      sentCount++;
+    }
 
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await delay(5000);
 
     const db1 = MongoClient1.db('slidecg');
     const collection1 = db1.collection('story_items');
@@ -179,7 +204,7 @@ ${storiesXml}
 
 
     return NextResponse.json({
-      message: `✅ Single roElementAction INSERT message sent for roID ${roID}`
+      message: `✅ ${sentCount} roElementAction INSERT messages sent for roID ${roID}`
     });
 
   } catch (err) {
