@@ -1,15 +1,8 @@
-# R3_HOST=localhost
-# MONGOURI=mongodb://localhost:27017
-# REDDISURI=redis://127.0.0.1:6379
-# MOS_IP=127.0.0.1
-# R3_PATH=C:/Users/Administrator/Documents/R3.Space.Projects/projects
-
-
 
 R3_HOST=192.168.0.185
-MONGOURI=mongodb://192.168.0.185:27017
-REDDISURI=redis://192.168.0.185:6379
-MOS_IP=192.168.0.185
+MONGOURI=mongodb://${R3_HOST}:27017
+REDDISURI=redis://${R3_HOST}:6379
+MOS_IP=${R3_HOST}
 R3_PATH=C:/Users/wtvision/Documents/R3.Space.Projects/projects
 
 
