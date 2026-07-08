@@ -89,6 +89,32 @@ export async function POST(req) {
     const client = await getMosTcpClient();
 
     const roID = `${process.env.MOS_DEVICE_ID}_RO`;
+    const roSlug = `${selectedRunOrderTitle}_${selectedDate}`;
+
+    const mosDeleteXml = `
+<mos>
+  <ncsID>${process.env.MOS_DEVICE_ID || 'DDNRCS'}</ncsID>
+  <mosID>${process.env.MOS_ID || 'WTVISION.STUDIO.MOS'}</mosID>
+  <roDelete>
+    <roID>${roID}</roID>
+  </roDelete>
+</mos>`.trim();
+
+    await writeMos(client, mosDeleteXml);
+    await delay(sendDelayMs);
+
+    const mosCreateXml = `
+<mos>
+  <ncsID>${process.env.MOS_DEVICE_ID || 'DDNRCS'}</ncsID>
+  <mosID>${process.env.MOS_ID || 'WTVISION.STUDIO.MOS'}</mosID>
+  <roCreate>
+    <roID>${roID}</roID>
+    <roSlug>${roSlug}</roSlug>
+  </roCreate>
+</mos>`.trim();
+
+    await writeMos(client, mosCreateXml);
+    await delay(sendDelayMs);
 
     let sentCount = 0;
 
